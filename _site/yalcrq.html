@@ -1,0 +1,987 @@
+<!----- Conversion time: 5.405 seconds.
+
+
+Using this HTML file:
+
+1. Cut and paste this output into your source file.
+2. See the notes and action items below regarding this conversion run.
+3. Check the rendered output (headings, lists, code blocks, tables) for proper
+   formatting and use a linkchecker before you publish this page.
+
+Conversion notes:
+
+* GD2md-html version 1.0β13
+* Fri Nov 30 2018 10:27:48 GMT-0800 (PST)
+* Source doc: https://docs.google.com/open?id=1LxiYXTbasvR503mLxu7xGX-qe4hLY31BcMD4MVTSwtM
+* This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server.
+----->
+
+
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 7.</p>
+<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
+
+<p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
+<a href="#gdcalert2">alert2</a>
+<a href="#gdcalert3">alert3</a>
+<a href="#gdcalert4">alert4</a>
+<a href="#gdcalert5">alert5</a>
+<a href="#gdcalert6">alert6</a>
+<a href="#gdcalert7">alert7</a>
+
+<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
+
+
+<h2>
+
+<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/YALCQ-Yet0.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/YALCQ-Yet0.png" width="" alt="alt_text" title="image_tooltip">
+ </h2>
+
+
+<h1>#yalcrq Yet Another List of Cybersecurity Related Questions</h1>
+
+
+<p>
+From the author of this post
+</p>
+<p>
+A few weeks ago, I decided to start putting together some of the cybersecurity questions I was asked over the past few years, so that I can come back and review the questions and answers.
+</p>
+<p>
+By no means I am suggesting this post is complete and comprehensive with correct answers, since my attempt is to answer the questions in such a way that not just communicate the security basics but also points reader to the right direction whenever possible.
+</p>
+<p>
+I would appreciate if you read and comment on any part of this documentation.
+</p>
+<h2>SSH and TLS. Name a few differences between the two.</h2>
+
+
+<p>
+They both runs on top of TCP/IP. But the two are different in many ways. 
+</p>
+<p>
+Port
+</p>
+<p>
+The well known port for SSH is 22. TLS protocol itself does not specify any port, so it is up to the application to specify a port, e.g. HTTPS typically uses port 443.
+</p>
+<p>
+Authentication
+</p>
+<p>
+SSH supports multiple authentication methods which include password, publickey and a less used keyboard-interactive way which is basically a form of challenge-response. 
+</p>
+<p>
+TLS supports both server authentication (more common) and client authentication. When both are used, it is called TLS mutual authentication. TLS authentication typically involves requesting digital certificate from the other end and validating the certificate against the host.
+</p>
+<p>
+Functionality
+</p>
+<p>
+SSH protocol provides extra functionalities such as user authentication, tunneling. The functionality of the SSH transport layer alone is comparable to TLS. [wikipedia] See SSH protocol layers.
+</p>
+<h2>What is SFTP</h2>
+
+
+<p>
+SFTP stands for Secure FTP. SFTP by itself does not provide authentication and security; it expects the underlying protocol to secure this. SFTP is most often used as subsystem of SSH [wikipedia]
+</p>
+<h2>Recite a few network services and respective well known ports</h2>
+
+
+<p>
+DNS  53 tcp/udp
+</p>
+<p>
+FTP
+</p>
+<p>
+RDP 3389 tcp/udp
+</p>
+<p>
+SSH
+</p>
+<p>
+NTP 123 tcp
+</p>
+<p>
+SNMP
+</p>
+<p>
+SMB 445,139 tcp   137 udp 
+</p>
+<p>
+SMTP
+</p>
+<p>
+POP3
+</p>
+<h2>SSH protocol layers</h2>
+
+
+<p>
+SSH protocol has an internal architecture with several layers, including:
+</p>
+<p>
+The transport layer. Key exchange method, public key algorithm, symmetric encryption algorithm, message authentication algorithm, and hash algorithm are all negotiated. [RFC 4253]. This is also where session key is negotiated. 
+</p>
+<p>
+The user authentication layer. It supports methods such as password, publickey etc.
+</p>
+<p>
+The connection layer. It provides the ability to multiplex many secondary sessions into a single SSH connection. Consider local port forwarding, remote port forwarding etc.
+</p>
+<h2>How is SSH connection encrypted?</h2>
+
+
+<p>
+At the beginning of a session, symmetric encryption algorithm is negotiated, and a session key is also negotiated using Diffie-Hellman. The session key is then used to encrypt the entire session. <a href="https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process?utm_content=understanding-the-ssh-encryption-and-connection-process">Understanding the SSH Encryption and Connection Process</a>
+</p>
+<h2>Screened Host Architecture and Screened Subnet Architecture </h2>
+
+
+<p>
+First off, the following diagrams illustrate the different architectures of the two.
+</p>
+<p>
+
+
+<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/YALCQ-Yet1.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/YALCQ-Yet1.png" width="" alt="alt_text" title="image_tooltip">
+
+</p>
+<p>
+Screened host architecture [internet]
+</p>
+<p>
+
+
+<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/YALCQ-Yet2.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/YALCQ-Yet2.png" width="" alt="alt_text" title="image_tooltip">
+
+</p>
+<p>
+Screened Subnet Architecture [internet]
+</p>
+<p>
+Disadvantages with screened host architecture: (a) Layered security wise, if an attacker manages to break in to the bastion host, there is nothing left in the way of network security between the bastion host and the rest of the internal hosts; (b) The interior router presents a single point of failure: if the router is compromised, the entire network is available to an attacker.
+</p>
+<p>
+Advantages with screened subnet architecture: It adds an extra layer of security by adding a perimeter network that further isolates the internal network from the Internet. Bastion hosts are considered more vulnerable on the network, therefore by isolating the bastion host(s) on a perimeter network, it reduces the impact of a break-in on the bastion host. The break-in gives an intruder some access, but not full access.
+</p>
+<h2>Hash, MAC and Digital Signature</h2>
+
+
+<p>
+I found the following table best in describing the differences in a concise way. [<a href="https://crypto.stackexchange.com/a/5647">https://crypto.stackexchange.com/a/5647</a>]
+</p>
+
+
+
+<pre class="prettyprint">Cryptographic primitive | Hash |    MAC    | Digital
+Security Goal           |      |           | signature
+------------------------+------+-----------+-------------
+Integrity               |  Yes |    Yes    |   Yes
+Authentication          |  No  |    Yes    |   Yes
+Non-repudiation         |  No  |    No     |   Yes
+------------------------+------+-----------+-------------
+Kind of keys            | none | symmetric | asymmetric
+                        |      |    keys   |    keys 
+</pre>
+
+
+<h2>MAC and HMAC</h2>
+
+
+<p>
+HMAC is one type of MAC that uses hash algorithm as part of the algorithm set.
+</p>
+<h2>Name a few encryption algorithms and protocols that are considered vulnerable</h2>
+
+
+<p>
+Network protocol: all versions of SSL, TLS v1.1 and lower, SNMP any version lower than v3.
+</p>
+<p>
+Hash algorithm: MD5, SHA1, RC4 
+</p>
+<p>
+Symmetric algorithm: DES, 3DES
+</p>
+<p>
+Asymmetric algorithm: DSS, DSA (it is worth noting that both are invented by NSA)
+</p>
+<p>
+TLS cipher suite: Any combination that uses CBC mode.
+</p>
+<h2>Name a few data breaches that went public lately</h2>
+
+
+<p>
+There are just too many LOL. The key words there are "went public". Needless to say, there are many more breaches that gone unnoticed or have not gone public just yet. For starters, visit <a href="https://en.wikipedia.org/wiki/List_of_data_breaches">List of data breaches</a>. Verizon data breach investigation report is also worth reading. Be advised that there are many reports published by government and private sectors that discuss some breaches and cyber attacks in greater detail. 
+</p>
+<h2>Describe "The Cyber(intrusion) Kill Chain"</h2>
+
+
+<p>
+A framework/model developed by Lockheed-Martin. It intends to reveal the phases of a cyber attack: 7 steps from early reconnaissance to the goal of data exfiltration. The framework is used by organizations to define phases of a typical cyber attack.
+</p>
+<h2>SSH tunneling, port forwarding</h2>
+
+
+<p>
+It is widely used on bastion hosts (a.k.a. jump server). There is a <a href="https://youtu.be/JKrO5WABdoY">youtube video</a> that explains SSH local port forwarding and remote port forwarding.
+</p>
+<h2>Common concerns with bastion host (jump server)</h2>
+
+<ul>
+
+<li>Single point of failure, given there is only one bastion host for a specific service
+<li>Performance compromise. Bastion host itself can be the bottleneck of the end-to-end performance in terms of bandwidth, network latency etc.</li></ul>
+
+<h2>TCP handshake steps</h2>
+
+
+<p>
+To establish a connection, the 3-step handshake occurs: SYN, SYN-ACK, ACK.
+</p>
+<p>
+Step 1. Client sends a TCP segment with SYN = 1, ACK = 0, ISN (Initial Sequence Number) = 2000, a randomly chosen number.
+</p>
+<p>
+Step 2. Server receives client's TCP segment and returns a TCP segment with SYN = 1, ACK = 1, ISN = 5000, server's randomly chosen Initial Sequence Number, Acknowledgment Number = 2001 (2000 + 1)
+</p>
+<p>
+Step 3. Client sends a TCP segment to server that acknowledges receipt of server's ISN, with flags set as SYN = 0, ACK = 1, sequence number = 2001, Acknowledgment number = 5001 (5000 + 1)
+</p>
+<h2>Forward proxy and Reverse proxy</h2>
+
+
+<p>
+Reverse proxy. 
+</p>
+<p>
+A common use-case is setting the reverse proxy up as the TLS gateway so you can communicate via HTTP behind the firewall. 
+</p>
+<p>
+Failover for non-responding servers is also possible.
+</p>
+<p>
+ 
+</p>
+<h2>TLS Inspection</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>What is SAML</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>What is OAuth 2.0</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>What is OpenID Connect (OIDC)</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>What is Federation and how it works</h2>
+
+
+<p>
+To be added. <a href="https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/">https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/</a> 
+</p>
+<p>
+<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html</a> 
+</p>
+<p>
+Use case: Windows AD, ADFS, AWS 
+</p>
+<p>
+ADFS acts as broker in this use case.
+</p>
+<p>
+Prior to the following use case, configuration steps are required in AD, ADFS, and AWS. 
+</p>
+<p>
+AWS SAML identity provider (IdP) can be used to establish trust between AWS and ADFS. One of the steps is to determine IAM Role Naming Convention for User Access. In a federated authentication scenario, users (as defined in the IdP) assume an AWS role during the sign-in process. 
+</p>
+<p>
+
+
+<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/YALCQ-Yet3.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/YALCQ-Yet3.png" width="" alt="alt_text" title="image_tooltip">
+
+</p>
+<h2>Authentication and Authorization</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>The different between scripting language and compiled language</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>Stateful firewall and stateless firewall</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>Name a few layers in OSI 7</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>What protection WAF can provide</h2>
+
+
+<p>
+WAF helps protect web applications by filtering and monitoring HTTP traffic between a web application and the Internet. It typically protects web applications from attacks such as cross-site forgery, cross-site-scripting (XSS), file inclusion, and SQL injection, among others. 
+</p>
+<p>
+WAF is a protocol layer 7 defense , and is not designed to defend against all types of attacks. This method of attack mitigation is usually part of a suite of tools which together create a holistic defense against a range of attack vectors.
+</p>
+<p>
+By deploying a WAF in front of a web application, a shield is placed between the web application and the Internet. While a proxy server protects a client machine's identity by using an intermediary, a WAF is a type of reverse-proxy, protecting the server from exposure by having requests pass through the WAF before reaching the server.
+</p>
+<p>
+A WAF operates through a set of rules often called policies. These policies aim to protect against vulnerabilities in the application by filtering out malicious traffic. 
+</p>
+<p>
+The value of a WAF comes in part from the speed and ease with which policy modification can be implemented, allowing for faster response to varying attack vectors; during a DDoS attack, rate limiting can be quickly implemented by modifying WAF policies. 
+</p>
+<p>
+<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/">https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/</a> 
+</p>
+<h2>IPS and IDS</h2>
+
+
+<p>
+The Intrusion Detection System (IDS) watches and listens, then logs an alert, but unlike IPS, an IDS does nothing to stop the traffic from continuing on its way, in other words, network traffic is not dependent on the IDS working to flow properly. IDS works by taking a SPAN port or network tap, so it does not present a risk of single point of failure. 
+</p>
+<p>
+Intrusion Prevention System (IPS) executes real-time responses to active attacks and violations. An IPS is the same as an IDS but with some sort of active defense. Since traffic flows through the IPS, network traffic can be stopped, block and reported when IPS decided it is violating policies, rules, security, etc. 
+</p>
+<p>
+IPS has its own challenges such as having too many false positives and causing a disruptive user experience. Or the parameters sometimes results in an IPS generating a large number of alerts that can't be responded to effectively.  
+</p>
+<h2>FISMA and FEDRAMP</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>RDBMS and NoSQL</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>QSA's role in PCI compliance program</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>Describe typical NoSQL storage</h2>
+
+
+<p>
+To be added. JSON format / in memory 
+</p>
+<p>
+<a href="https://www.devbridge.com/articles/benefits-of-nosql/">https://www.devbridge.com/articles/benefits-of-nosql/</a> 
+</p>
+<h2>Durability and availability for data storage</h2>
+
+
+<p>
+Availability and durability are two different aspects of data accessibility. Availability refers to system uptime, i.e. the storage system is operational and can deliver data upon request. 
+</p>
+<p>
+Durability concerns more about long-term data protection, i.e. the stored data does not suffer from bit rot, degradation or other corruption.
+</p>
+<h2>NIST SP-800</h2>
+
+
+<p>
+NIST Special Publication is a series of guidelines, technical spec, recommendations reference model for all U.S. federal information systems. Worth noting ones include SP 800-53 Security and Privacy Controls for Federal Information Systems and Organizations
+</p>
+<p>
+	
+</p>
+<h2>HIPAA</h2>
+
+
+<p>
+Health Insurance Portability and Accountability Act. it protects PHI protected health information (individually identifiable health information) 
+</p>
+<h2>Common 2FA methods? How does Google Authenticator work?</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>How do you manage keys in PKI ? How should you protect Secret? </h2>
+
+
+<p>
+To be added.
+</p>
+<h2>GDPR</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>SOC1, SOC2, SOC3</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>PCI DSS environment, can you store CVV code?</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>In ISO 27001, what is stage 1 and stage 2 audit?</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>What is segmentation in PCI's definition? And what is the advantage of that?</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>Describe an example of defense-in-depth</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>Application threat modeling</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>SSH Man-in-the-Middle Attack</h2>
+
+
+<p>
+To be added. <a href="https://www.gremwell.com/ssh-mitm-public-key-authentication">https://www.gremwell.com/ssh-mitm-public-key-authentication</a> 
+</p>
+<h2>Pentest and Red team</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>What is container</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>CIS Benchmarks and hardening</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>NIST Cybersecurity Framework</h2>
+
+
+<p>
+Five high level functions: identify, protect, detect, respond, recover.
+</p>
+<h2>AWS security</h2>
+
+
+<p>
+AWS whitepapers pertaining to security should be read first. Visit the website at <a href="https://aws.amazon.com/whitepapers/#security">https://aws.amazon.com/whitepapers/#security</a> for latest publications. 
+</p>
+<h2>Type 1 and type 2 hypervisor </h2>
+
+
+<p>
+Type 1 runs on hardware directly. So called "bare metal". e.g. VMware ESX, Citrix Xen
+</p>
+<p>
+Type 2 runs on a host OS that provides virtualization services such as I/O and memory management. E.g. VMware workstation
+</p>
+<h2>AWS KMS and CloudHSM</h2>
+
+
+<p>
+KMS: managed service. Based on multi tenant infrastructure. 
+</p>
+<p>
+CloudHSM: dedicated hardware. 
+</p>
+<p>
+KMS: master keys. Only used to encrypt and decrypt up to 4KB data, use it to generate, encrypt and decrypt the data keys. It is so called envelope encryption <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html</a> 
+</p>
+<p>
+3 types of CMK: customer managed MK (typical use). AWS managed CMKs (owned by an AWS services on your behalf), AWS owned MKs, AWS itself owns and for use in multiple AWS account
+</p>
+<p>
+Master key never goes out of KMS unencrypted. 
+</p>
+<p>
+Data keys are generated by master key but it is not managed, stored or tracked in KMS. 
+</p>
+<p>
+Use case
+</p>
+<p>
+Create a data key
+</p>
+<p>
+To create a data key, AWS KMS uses the CMK that you specify to generate a data key. The operation returns a plaintext copy of the data key and a copy of the data key encrypted under the CMK, as shown in the following image. 
+</p>
+<p>
+Encrypt the data
+</p>
+<p>
+Client uses the plaintext data key to encrypt data, and ditch the plaintext key but retain the encrypted data key alongside the encrypted data.
+</p>
+<p>
+Decrypt the data
+</p>
+<h2>AWS auto scaling group</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>DNS and AWS Route 53</h2>
+
+
+<p>
+To be added.
+</p>
+<p>
+This is a 30,000 feet view of how DNS works
+</p>
+<p>
+
+
+<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/YALCQ-Yet4.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/YALCQ-Yet4.png" width="" alt="alt_text" title="image_tooltip">
+
+</p>
+<p>
+hosted zone: On Name server for example.com, it creates records that point out to the individual servers within the domain.
+</p>
+<p>
+DNS Records (NS, A, MX, CNAME)
+</p>
+<p>
+The most widely used DNS record types, and their purpose are as follows:
+</p>
+<p>
+A - specifies IP addresses corresponding to your domain and its subdomains;
+</p>
+<p>
+NS - lists which name servers can answer lookups on a DNS zone;
+</p>
+<p>
+MX - specifies where the emails for your domain should be delivered;
+</p>
+<p>
+CNAME - Canonical name record, is a type of resource record which maps one domain name to another. CNAME records must always point to another domain name, never directly to an IP address.
+</p>
+<p>
+DNAME - A DNAME record creates an alias for an entire subtree of the domain name tree. In contrast, the CNAME record creates an alias for a single name and not its subdomains. Like the CNAME record, the DNS lookup will continue by retrying the lookup with the new name.
+</p>
+<p>
+Alias - In AWS you can create alias records for ELB, S3 etc.
+</p>
+<p>
+Use case
+</p>
+<p>
+CNAME can prove convenient when running multiple services (like an FTP server and a web server) on a single IP address. One can have two CNAME records for ftp.example.com and www.example.com both pointing to the DNS entry for example.com, which in turn has an A record which points to the IP address. Then, if the IP address ever changes, one only has to record the change in one place within the network: in the DNS A record for example.com.
+</p>
+<p>
+Advantages of managed DNS such as AWS route 53:
+</p><ul>
+
+<li>Redundant locations
+<li>LBR, Geo, Failover
+<li>Managed via APIs</li></ul>
+
+<p>
+This <a href="https://www.youtube.com/watch?v=e2xLV7pCOLI">youtube video</a> from AWS covers some basics of DNS and Route 53. 
+
+<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/YALCQ-Yet5.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/YALCQ-Yet5.png" width="" alt="alt_text" title="image_tooltip">
+
+</p>
+<h2>AWS elastic load balancing ELB</h2>
+
+
+<p>
+Amazon offers two types of load balancers, each with its own strengths. 
+</p>
+<p>
+Classic load balancers can balance both HTTPS and TCP traffic, and they have basic health check and routing abilities.
+</p>
+<p>
+Application load balancers (ALBs) are a new type recently released by Amazon. They offer the ability to route requests based on their content, which is great for applications that comprise several containers or microservices per host. ALBs also add support for HTTP/2, WebSockets, and offer enhanced metrics for monitoring.
+</p>
+<h2>Cloud Custodian and Anchore</h2>
+
+
+<p>
+To be added.
+</p>
+<h2>AWS VPCs and subnets </h2>
+
+
+<p>
+Security groups supports only Allow rules.
+</p>
+<p>
+<a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html</a> 
+</p>
+<p>
+VPC Flow Logs shows the egress and ingress traffic logs. You can create a flow log for a VPC, a subnet, or a network interface. If you create a flow log for a subnet or VPC, each network interface in the VPC or subnet is monitored. A flow log record represents a network flow in your flow log. Each record captures the network flow for a specific 5-tuple, for a specific capture window, such as IP address, port, protocol, time etc.
+</p>
+<h2>AWS security group and Network ACL</h2>
+
+
+<p>
+Security groups supports only Allow rules.
+</p>
+<p>
+Network ACL supports Allow and Deny rules.
+</p>
+<p>
+Security groups by default has no inbound rules, By default, a security group includes an outbound rule that allows all outbound traffic.
+</p>
+<p>
+The default network ACL comes with VPC by default allows all inbound and outbound IPv4 traffic. New custom network ACL is deny all by default. A subnet can be associated with only one network ACL at a time. A network ACL contains a numbered list of rules that we evaluate in order, starting with the lowest numbered rule.
+</p>
+<p>
+Security Group is stateful, e.g. responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules. 
+</p>
+<p>
+Network ACL is stateless, responses to allowed inbound traffic are subject to the rules for outbound traffic.
+</p>
+<p>
+Security groups are tied to an instance.
+</p>
+<p>
+Network ACL are tied to the subnet. 
+</p>
+<h2>Blockchain technology </h2>
+
+
+<p>
+Oct 2018. NIST. <a href="https://nvlpubs.nist.gov/nistpubs/ir/2018/NIST.IR.8202.pdf">NISTIR 8202 Blockchain Technology Overview</a> explains blockchain in some detail there. In the report there is also a flowchart that helps one determine whether a blockchain may be needed for a development initiative.
+</p>
+<p>
+
+
+<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/YALCQ-Yet6.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+<img src="images/YALCQ-Yet6.png" width="" alt="alt_text" title="image_tooltip">
+
+</p>
+<p>
+If you know a good article regarding blockchain technology, please feel free to share it with the author.
+</p>
+<h2>OWASP Top 10 </h2>
+
+
+<p>
+OWASP top 10 vulnerabilities for web application security. The complete report can be found <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">here</a> on OWASP website. The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications. Project members include a variety of security experts from around the world who have shared their expertise to produce this list.
+</p>
+<p>
+We urge all companies to adopt this awareness document within their organization and start the process of ensuring that their web applications minimize these risks. Adopting the OWASP Top 10 is perhaps the most effective first step towards changing the software development culture within your organization into one that produces secure code. 
+</p>
+<h2>Equifax data breach </h2>
+
+
+<p>
+A full report released in Sept 2018 by the U.S. government discussed the breach in detail. The full report can be found here at <a href="https://www.gao.gov/products/GAO-18-559">GAO website</a>. 
+</p>
+<p>
+Some takeaway shared on <a href="https://castraconsulting.com/GAO-Equifax-Breach-Report">this post</a>: 
+</p>
+<p>
+• The GAO report provides the most detail to date about the specifics of the breach summarized in the graphic below, such as how the attack started on the Equifax dispute portal servers, how they gained access to 51 databases and extracted data from them for over 76 days in small increments to avoid detection.
+</p>
+<p>
+• The report details that the attackers used network scanning tools on March 10, 2017, to detect and confirm the vulnerability in the Apache Struts Web Framework software only 2 days after the vulnerability was described and published by the US Computer Emergency Readiness Team (CERT) group. Interestingly, when the Equifax security office distributed information about this Apache Struts vulnerability using an internal mailing list, it was discovered during the investigation that the system administrators who are responsible for updating the software did not receive the notice because the mailing list was out of date. Additionally, the Apache Struts vulnerability was not detected in the weekly vulnerability scans that Equifax ran on their own systems, hinting that the quality, configuration, and/or design of the vulnerability scanning tools were not sufficient at Equifax prior to the breach.
+</p>
+<p>
+• It took another 2 months after this vulnerability was confirmed by the attackers before they began to actively work on exploiting what they had gained access to, initially gaining access to the 3 dispute portal-related databases and extending their reach to 48 other databases. Over the course of the breach, the attackers ran ~9,000 queries. Had the network at Equifax been more segmented, the attackers would not have been able to get to so many other databases and widen the scope of the breach.
+</p>
+<p>
+• Attackers were able to find clear-text credentials to gain access to additional databases on the systems they originally breached, which allowed them to run their queries on additional databases. Often inside databases or in configuration files, there are clear-text passwords and for full-control or full-access usernames. Had better data governance procedures been in place, credentials would have been encrypted and sensitive information more restricted, further limiting the scope of the breach.
+</p>
+<p>
+• Equifax admitted that because of an expired digital certificate on the affected systems, their Intrusion Detection System failed to work properly and did not detect the attackers activities until the digital certificate was updated – had they maintained their digital certificates, the initial attacker activity would have been detected much earlier.
+</p>
+<p>
+• It's comforting to know that it took 1 day for the attack to be detected after the system administrator updated the expired digital certificate, and only 2 days after that for the company to formally engage the FBI to assist on August 2, 2017. It appears that their Incident Response Procedures were implemented and carried out properly.
+</p>
+<p>
+• We know so much now about the scope and details of the attack because the attackers thankfully did not erase the system logs that recorded their commands and activity.
+</p>
+<p>
+ 
+</p>
+<h2>SQL Injection </h2>
+
+
+<p>
+A SQL injection attack consists of insertion or "injection" of a SQL query via the input data from the client to the application. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to effect the execution of predefined SQL commands. 
+</p>
+<h2>CSRF </h2>
+
+
+<p>
+Cross-Site Request Forgery is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker's choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application. 
+</p>
+<p>
+How does it work? Check out on <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">OWASP</a> where two scenarios were given: one using HTTP GET, the other one using HTTP POST and javascript.
+</p>
+<h2>XSS </h2>
+
+
+<p>
+Cross-Site Scripting attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
+</p>
+<p>
+An attacker can use XSS to send a malicious script to an unsuspecting user. The end user's browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page. For more details on the different types of XSS flaws, see: Types of Cross-Site Scripting. 
+</p>
+<p>
+There are two common categories: stored and reflected. There is a third, much less well-known type of XSS attack called DOM Based XSS.
+</p>
+<h2>URL reputation protection </h2>
+
+
+<h2>AWS ARN</h2>
+
+
+<p>
+As far as I am concerned, there is a rather generic requirement in many domains: The need to uniquely identify an individual entity with no ambiguity. Many different approaches have been invented (and re-invented over and over again) since to fulfil it in their respective domain. To name a few, social security number, credit number, phone number, GUID, URI, IP address etc. ARN is just another approach that Amazon uses within the AWS world.
+</p>
+<p>
+Amazon Resource Names (ARNs) uniquely identify AWS resources. A typical ARN is string that consists of a number of values that concatenated with each other following a pattern as follows: arn:partition:service:region:account-id:resource 
+</p>
+<p>
+partition
+</p>
+<p>
+The partition that the resource is in. For standard AWS regions, the partition is aws. If you have resources in other partitions, the partition is aws-partitionname. For example, the partition for resources in the China (Beijing) region is aws-cn.
+</p>
+<p>
+service
+</p>
+<p>
+The service namespace that identifies the AWS product (for example, Amazon S3, IAM, or Amazon RDS). For a list of namespaces, see AWS Service Namespaces.
+</p>
+<p>
+region
+</p>
+<p>
+The region the resource resides in. Note that the ARNs for some resources do not require a region, so this component might be omitted.
+</p>
+<p>
+account-id
+</p>
+<p>
+The ID of the AWS account that owns the resource, without the hyphens. For example, 123456789012. Note that the ARNs for some resources don't require an account number, so this component might be omitted.
+</p>
+<p>
+resource
+</p>
+<p>
+The content of this part of the ARN varies by service, such as resourcetype:resource, or resourcetype/resource.
+</p>
+<h2>Security challenges when moving on-prem workloads to cloud</h2>
+
+
+<h2>AWS Account Strategy </h2>
+
+
+<p>
+AWS Account Structure — Strategies for Enterprises
+</p>
+<p>
+Organisations typically need a multi-account strategy to support the requirements of running their AWS ecosystem. It's important to setup the accounts in a consistent fashion at the start, to ensure simple management and tracking of many AWS accounts in the future.
+</p>
+<p>
+This post looks at ways an organisation may decide to structure their AWS accounts.
+</p>
+<p>
+<a href="https://medium.com/stax-blog/aws-account-structure-strategies-for-enterprises-a6bae76be487">https://medium.com/stax-blog/aws-account-structure-strategies-for-enterprises-a6bae76be487</a> 
+</p>
+<h2>AWS Service Control Policies (SCP) </h2>
+
+
+<p>
+SCPs are similar to IAM permission policies and use almost the exact same syntax. However, an SCP never grants permissions. Instead, think of an SCP as a filter that enables you to restrict what service and actions can be accessed by users and roles in the accounts that you attach the SCP to. 
+</p>
+<p>
+An SCP that is applied at the root cascades its permissions to the OUs below it. Any account has only those permissions permitted by every parent above it. If a permission is blocked at any level above the account, either implicitly (by not being included in an Allow policy statement) or explicitly (by being included in a Deny policy statement), a user or role in the affected account cannot use that permission, even if the account administrator attaches the Administrator Access IAM policy with */* permissions to the user.
+</p>
+<h2>AWS systems manager </h2>
+
+
+<p>
+Dashboard
+</p>
+<p>
+It has a dashboard that shows centralized information pulling from other services, such as API call logs from CloudTrail, Cloudwatch metrics, config changes, software inventory, patch compliance etc. 
+</p>
+<p>
+Run commands on instances. An agent must be installed on each instance prior to being able to support commends.
+</p>
+<p>
+Session Manager
+</p>
+<p>
+It provides a browser-based interactive shell for Linux and Windows  
+</p>
+<p>
+Patch Manager. AWS Systems Manager helps you select and deploy operating system and software patches automatically across large groups of Amazon EC2 or on-premises instances.
+</p>
+<p>
+Distributor
+</p>
+<p>
+AWS Systems Manager helps you securely distribute and install software packages, such as software agents. 
+</p>
+<p>
+State Manager - just like what Configuration management does
+</p>
+<p>
+AWS Systems Manager provides configuration management, which helps you maintain consistent configuration of your Amazon EC2 or on-premises instances. You can define configuration policies for your servers through the AWS Management Console or use existing scripts, PowerShell modules, or Ansible playbooks directly from GitHub or Amazon S3 buckets. 
+</p>
+<h2>AWS S3 server side encryption </h2>
+
+
+<p>
+Server-side encryption protects data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) uses strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it rotates regularly. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
+</p>
+<p>
+If you need server-side encryption for all of the objects that are stored in a bucket, use a bucket policy. 
+</p>
+<h2>AWS trusted advisor </h2>
+
+
+<p>
+Performance , Fault Tolerance, Cost Optimization, Service Limits, and Security.
+</p>
+<p>
+Under security, it checks
+</p>
+<p>
+Improve the security of your application by closing gaps, enabling various AWS security features, and examining your permissions.
+</p>
+<p>
+Security Groups - open on specific ports or rules that allow unrestricted access to a resource
+</p>
+<p>
+Amazon S3 Bucket Permissions - open access permissions
+</p>
+<p>
+MFA on Root Account - 
+</p>
+<p>
+IAM Password Policy - if there is an enabled policy
+</p>
+<p>
+AWS CloudTrail Logging- checks for your use of AWS CloudTrail
+</p>
+<p>
+Amazon Route 53 MX and SPF Resource Record Sets
+</p>
+<p>
+ELB Listener Security - Checks for load balancers with listeners that do not use recommended security configurations for encrypted communication
+</p>
+<p>
+ELB Security Groups
+</p>
+<p>
+CloudFront Custom SSL Certificates in the IAM Certificate Store
+</p>
+<p>
+CloudFront SSL Certificate on the Origin Server
+</p>
+<p>
+IAM Access Key Rotation - active IAM access keys that have not been rotated in the last 90 days
+</p>
+<p>
+Exposed Access Keys - checks popular code repositories for access keys that have been exposed to the public 
+</p>
+<p>
+Amazon EBS Public Snapshots (Free!) - check if Amazon EBS) volume snapshots and alerts you if any snapshots are marked as public.
+</p>
+<h2>AWS tagging</h2>
+
+
+<p>
+AWS allows customers to assign metadata to their AWS resources in the form of tags. Each tag is a simple label consisting of a customer-defined key and an optional value that can make it easier to manage, search for, and filter resources. Although there are no inherent types of tags, they enable customers to categorize resources by purpose, owner, environment, or other criteria. This webpage describes commonly used tagging categories and strategies to help AWS customers implement a consistent and effective tagging strategy. The following sections assume basic knowledge of AWS resources, tagging, detailed billing, and AWS Identity and Access Management (IAM).
+</p>
+<p>
+General Best Practices
+</p>
+<p>
+When creating a tagging strategy for AWS resources, make sure that it accurately represents organizationally relevant dimensions and adheres to the following tagging best practices:
+</p>
+<p>
+Always use a standardized, case-sensitive format for tags, and implement it consistently across all resource types.
+</p>
+<p>
+Consider tag dimensions that support the ability to manage resource access control, cost tracking, automation, and organization.
+</p>
+<p>
+Implement automated tools to help manage resource tags. The Resource Groups Tagging API enables programmatic control of tags, making it easier to automatically manage, search, and filter tags and resources. It also simplifies backups of tag data across all supported services with a single API call per AWS Region.
+</p>
+<p>
+Err on the side of using too many tags rather than too few tags.
+</p>
+<p>
+Remember that it is easy to modify tags to accommodate changing business requirements, however consider the ramifications of future changes, especially in relation to tag-based access control, automation, or upstream billing reports. 
+</p>
+<p>
+<a href="https://aws.amazon.com/answers/account-management/aws-tagging-strategies/">https://aws.amazon.com/answers/account-management/aws-tagging-strategies/</a> 
+</p>
