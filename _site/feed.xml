@@ -1,4 +1,887 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-30T13:53:36-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-11-30T13:32:28-05:00</published><updated>2018-11-30T13:32:28-05:00</updated><id>http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-01T15:12:39-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Yet another list of cybersecurity and devsecops questions #yalcdq</title><link href="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html" rel="alternate" type="text/html" title="Yet another list of cybersecurity and devsecops questions #yalcdq" /><published>2018-11-30T14:09:28-05:00</published><updated>2018-11-30T14:09:28-05:00</updated><id>http://localhost:4000/jekyll/update/2018/11/30/yalcdq</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html">&lt;p&gt;From the author of this post&lt;/p&gt;
+
+&lt;p&gt;A few weeks ago, I decided to start putting together some of the cybersecurity questions I was asked over the past few years, so that I can come back and review the questions and answers.&lt;/p&gt;
+
+&lt;p&gt;By no means I am suggesting this post is complete and comprehensive with correct answers, since my attempt is to answer the questions in such a way that not just communicate the security basics but also points reader to the right direction whenever possible.&lt;/p&gt;
+
+&lt;p&gt;I would appreciate if you read and comment on any part of this documentation.&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-and-tls-name-a-few-differences-between-the-two&quot;&gt;SSH and TLS. Name a few differences between the two.&lt;/h2&gt;
+
+&lt;p&gt;They both runs on top of TCP/IP. But the two are different in many ways.&lt;/p&gt;
+
+&lt;p&gt;Port&lt;/p&gt;
+
+&lt;p&gt;The well known port for SSH is 22. TLS protocol itself does not specify any port, so it is up to the application to specify a port, e.g. HTTPS typically uses port 443.&lt;/p&gt;
+
+&lt;p&gt;Authentication&lt;/p&gt;
+
+&lt;p&gt;SSH supports multiple authentication methods which include password, publickey and a less used keyboard-interactive way which is basically a form of challenge-response.&lt;/p&gt;
+
+&lt;p&gt;TLS supports both server authentication (more common) and client authentication. When both are used, it is called TLS mutual authentication. TLS authentication typically involves requesting digital certificate from the other end and validating the certificate against the host.&lt;/p&gt;
+
+&lt;p&gt;Functionality&lt;/p&gt;
+
+&lt;p&gt;SSH protocol provides extra functionalities such as user authentication, tunneling. The functionality of the SSH transport layer alone is comparable to TLS. [wikipedia] See SSH protocol layers.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-sftp&quot;&gt;What is SFTP&lt;/h2&gt;
+
+&lt;p&gt;SFTP stands for Secure FTP. SFTP by itself does not provide authentication and security; it expects the underlying protocol to secure this. SFTP is most often used as subsystem of SSH [wikipedia]&lt;/p&gt;
+
+&lt;h2 id=&quot;name-a-few-network-services-and-respective-well-known-ports&quot;&gt;Name a few network services and respective well known ports&lt;/h2&gt;
+
+&lt;p&gt;This question is rather pentester related than GRC related.&lt;/p&gt;
+
+&lt;p&gt;DNS  53 tcp/udp&lt;/p&gt;
+
+&lt;p&gt;FTP&lt;/p&gt;
+
+&lt;p&gt;RDP 3389 tcp/udp&lt;/p&gt;
+
+&lt;p&gt;SSH&lt;/p&gt;
+
+&lt;p&gt;NTP 123 tcp&lt;/p&gt;
+
+&lt;p&gt;SNMP&lt;/p&gt;
+
+&lt;p&gt;SMB 445,139 tcp   137 udp&lt;/p&gt;
+
+&lt;p&gt;SMTP&lt;/p&gt;
+
+&lt;p&gt;POP3&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-protocol-layers&quot;&gt;SSH protocol layers&lt;/h2&gt;
+
+&lt;p&gt;SSH protocol has an internal architecture with several layers, including:&lt;/p&gt;
+
+&lt;p&gt;The transport layer (RFC 4253). Key exchange method, public key algorithm, symmetric encryption algorithm, message authentication algorithm, and hash algorithm are all negotiated. This is also where session key is negotiated.&lt;/p&gt;
+
+&lt;p&gt;The user authentication layer. It supports methods such as password, publickey etc.&lt;/p&gt;
+
+&lt;p&gt;The connection layer. It provides the ability to multiplex many secondary sessions into a single SSH connection. Consider local port forwarding, remote port forwarding etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-publickey-method-is-considered-better-than-password-in-ssh-authentication&quot;&gt;Why publickey method is considered better than password in SSH authentication&lt;/h2&gt;
+
+&lt;p&gt;For one reason, password method can be compromised by MTLM (man in the middle attack) in some case.&lt;/p&gt;
+
+&lt;p&gt;Consider this situation: client failed to authenticate the server properly so that an attacker managed to trick the client into connecting to attacker’s server.&lt;/p&gt;
+
+&lt;p&gt;If password method is used, it’s pretty much game over at that point.&lt;/p&gt;
+
+&lt;p&gt;But in publickey method, client sends signature that is encrypted by its privatekey, the session identifier is encrypted by signature. The attacker has no way to extract the session identifier from the signature without knowing the client’s publickey, and if the attacker attempts to trick the server into using the attacker’s own session identifier by forging and sending its own signature, that will also fail when server is verifying the signature against the client’s public key which was pre-shared out-of-band.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-is-ssh-connection-encrypted&quot;&gt;How is SSH connection encrypted?&lt;/h2&gt;
+
+&lt;p&gt;At the beginning of a session, symmetric encryption algorithm is negotiated, and a session key is also negotiated using Diffie-Hellman. The session key is then used to encrypt the entire session. &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process?utm_content=understanding-the-ssh-encryption-and-connection-process&quot;&gt;Understanding the SSH Encryption and Connection Process&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is worth noting that in a SSH session, establishment of such a secure channel happens BEFORE user authentication.&lt;/p&gt;
+
+&lt;h2 id=&quot;diffie-hellman&quot;&gt;Diffie-Hellman&lt;/h2&gt;
+
+&lt;p&gt;This &lt;a href=&quot;https://youtu.be/YEBfamv-_do?list=PL87386AD236727A1B&quot;&gt;Youtube video&lt;/a&gt; from Khan Academy explains how it works.&lt;/p&gt;
+
+&lt;p&gt;In a nutshell, DH provides a solution to a very essential cryptographic requirement: To allow two parties who have never met to agree on a shared secret key by communication in such a way that the secret can’t be seen by observing the communication. There is an important distinction in here: The two are not sharing an existing scret key during the communication, they are creating a secret key together.&lt;/p&gt;
+
+&lt;h2 id=&quot;forward-secrecy&quot;&gt;forward secrecy&lt;/h2&gt;
+
+&lt;p&gt;forward secrecy (FS), is a feature of specific key agreement protocols that gives assurances your session keys will not be compromised even if the private key of the server is compromised.&lt;/p&gt;
+
+&lt;p&gt;key exchange, hash, MAC, asymmetric and symmetric enyption all play a part in the effort of providing FS capabilities.&lt;/p&gt;
+
+&lt;p&gt;https://en.wikipedia.org/wiki/Forward_secrecy&lt;/p&gt;
+
+&lt;h2 id=&quot;screened-host-architecture-and-screened-subnet-architecture&quot;&gt;Screened Host Architecture and Screened Subnet Architecture&lt;/h2&gt;
+
+&lt;p&gt;First off, the following diagrams illustrate the different architectures of the two.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pic/screened host.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Screened host architecture (credit: internet)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pic/screened subnet.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Screened Subnet Architecture (credit: internet)&lt;/p&gt;
+
+&lt;p&gt;Advantages with screened subnet architecture:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It adds an extra layer of security by adding a perimeter network that further isolates the internal network from the Internet. Bastion hosts are considered more vulnerable on the network, therefore by isolating the bastion host(s) on a perimeter network, it reduces the impact of a break-in on the bastion host. The break-in gives an intruder some access, but not full access.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Disadvantages with screened host architecture:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Layered security wise, if an attacker manages to break in to the bastion host, there is nothing left in the way of network security between the bastion host and the rest of the internal hosts;&lt;/li&gt;
+  &lt;li&gt;The interior router presents a single point of failure: if the router is compromised, the entire network is available to an attacker.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;hash-mac-and-digital-signature&quot;&gt;Hash, MAC and Digital Signature&lt;/h2&gt;
+
+&lt;p&gt;I found the following table best in describing the differences in a concise way. &lt;a href=&quot;https://crypto.stackexchange.com/a/5647&quot;&gt;[source]&lt;/a&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Cryptographic security goal&lt;/th&gt;
+      &lt;th&gt;Hash&lt;/th&gt;
+      &lt;th&gt;MAC&lt;/th&gt;
+      &lt;th&gt;Digital signature&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Integrity&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Authentication&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Non-repudiation&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Kind of keys&lt;/td&gt;
+      &lt;td&gt;none&lt;/td&gt;
+      &lt;td&gt;symmetric keys&lt;/td&gt;
+      &lt;td&gt;asymmetric keys&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;mac-and-hmac&quot;&gt;MAC and HMAC&lt;/h2&gt;
+
+&lt;p&gt;HMAC is one type of MAC that uses hash algorithm as part of the algorithm set.&lt;/p&gt;
+
+&lt;h2 id=&quot;name-a-few-encryption-algorithms-and-protocols-that-are-considered-vulnerable&quot;&gt;Name a few encryption algorithms and protocols that are considered vulnerable&lt;/h2&gt;
+
+&lt;p&gt;Network protocol: all versions of SSL, TLS v1.1 and lower, SNMP any version lower than v3.&lt;/p&gt;
+
+&lt;p&gt;Hash algorithm: MD5, SHA1, RC4&lt;/p&gt;
+
+&lt;p&gt;Symmetric algorithm: DES, 3DES&lt;/p&gt;
+
+&lt;p&gt;Asymmetric algorithm: DSS, DSA (it is worth noting that both are invented by NSA)&lt;/p&gt;
+
+&lt;p&gt;TLS cipher suite: Any combination that uses CBC mode.&lt;/p&gt;
+
+&lt;h2 id=&quot;name-a-few-data-breaches-that-went-public-lately&quot;&gt;Name a few data breaches that went public lately&lt;/h2&gt;
+
+&lt;p&gt;There are just too many LOL. The key words there are “went public”. Needless to say, there are many more breaches that gone unnoticed or have not gone public just yet. For starters, visit &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_data_breaches&quot;&gt;List of data breaches&lt;/a&gt;. Verizon data breach investigation report is also worth reading. Be advised that there are many reports published by government and private sectors that discuss some breaches and cyber attacks in greater detail.&lt;/p&gt;
+
+&lt;h2 id=&quot;describe-the-cyberintrusion-kill-chain&quot;&gt;Describe “The Cyber(intrusion) Kill Chain”&lt;/h2&gt;
+
+&lt;p&gt;A framework/model developed by Lockheed-Martin. It intends to reveal the phases of a cyber attack: 7 steps from early reconnaissance to the goal of data exfiltration. The framework is used by organizations to define phases of a typical cyber attack.&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-tunneling-port-forwarding&quot;&gt;SSH tunneling, port forwarding&lt;/h2&gt;
+
+&lt;p&gt;It is widely used on bastion hosts (a.k.a. jump server). There is a &lt;a href=&quot;https://youtu.be/JKrO5WABdoY&quot;&gt;youtube video&lt;/a&gt; that explains SSH local port forwarding and remote port forwarding.&lt;/p&gt;
+
+&lt;h2 id=&quot;common-concerns-with-bastion-host-jump-server&quot;&gt;Common concerns with bastion host (jump server)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Single point of failure, given there is only one bastion host for a specific service&lt;/li&gt;
+  &lt;li&gt;Performance compromise. Bastion host itself can be the bottleneck of the end-to-end performance in terms of bandwidth, network latency etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tcp-handshake-steps&quot;&gt;TCP handshake steps&lt;/h2&gt;
+
+&lt;p&gt;To establish a connection, the 3-step handshake occurs: SYN, SYN-ACK, ACK.&lt;/p&gt;
+
+&lt;p&gt;Step 1. Client sends a TCP segment with SYN = 1, ACK = 0, ISN (Initial Sequence Number) = 2000, a randomly chosen number.&lt;/p&gt;
+
+&lt;p&gt;Step 2. Server receives client’s TCP segment and returns a TCP segment with SYN = 1, ACK = 1, ISN = 5000, server’s randomly chosen Initial Sequence Number, Acknowledgment Number = 2001 (2000 + 1)&lt;/p&gt;
+
+&lt;p&gt;Step 3. Client sends a TCP segment to server that acknowledges receipt of server’s ISN, with flags set as SYN = 0, ACK = 1, sequence number = 2001, Acknowledgment number = 5001 (5000 + 1)&lt;/p&gt;
+
+&lt;h2 id=&quot;forward-proxy-and-reverse-proxy&quot;&gt;Forward proxy and Reverse proxy&lt;/h2&gt;
+
+&lt;p&gt;Reverse proxy.&lt;/p&gt;
+
+&lt;p&gt;A common use-case is setting the reverse proxy up as the TLS gateway so you can communicate via HTTP behind the firewall.&lt;/p&gt;
+
+&lt;p&gt;Failover for non-responding servers is also possible.&lt;/p&gt;
+
+&lt;h2 id=&quot;tls-inspection&quot;&gt;TLS Inspection&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-saml&quot;&gt;What is SAML&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-oauth-20&quot;&gt;What is OAuth 2.0&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-openid-connect-oidc&quot;&gt;What is OpenID Connect (OIDC)&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-federation-and-how-it-works&quot;&gt;What is Federation and how it works&lt;/h2&gt;
+
+&lt;p&gt;To be added. &lt;a href=&quot;https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/&quot;&gt;https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html&quot;&gt;https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Use case: Windows AD, ADFS, AWS&lt;/p&gt;
+
+&lt;p&gt;ADFS acts as broker in this use case.&lt;/p&gt;
+
+&lt;p&gt;Prior to the following use case, configuration steps are required in AD, ADFS, and AWS.&lt;/p&gt;
+
+&lt;p&gt;AWS SAML identity provider (IdP) can be used to establish trust between AWS and ADFS. One of the steps is to determine IAM Role Naming Convention for User Access. In a federated authentication scenario, users (as defined in the IdP) assume an AWS role during the sign-in process.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pic/aws federation.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;authentication-and-authorization&quot;&gt;Authentication and Authorization&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-different-between-scripting-language-and-compiled-language&quot;&gt;The different between scripting language and compiled language&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;stateful-firewall-and-stateless-firewall&quot;&gt;Stateful firewall and stateless firewall&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;name-a-few-layers-in-osi-7&quot;&gt;Name a few layers in OSI 7&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-protection-waf-can-provide&quot;&gt;What protection WAF can provide&lt;/h2&gt;
+
+&lt;p&gt;WAF helps protect web applications by filtering and monitoring HTTP traffic between a web application and the Internet. It typically protects web applications from attacks such as cross-site forgery, cross-site-scripting (XSS), file inclusion, and SQL injection, among others.&lt;/p&gt;
+
+&lt;p&gt;WAF is a protocol layer 7 defense , and is not designed to defend against all types of attacks. This method of attack mitigation is usually part of a suite of tools which together create a holistic defense against a range of attack vectors.&lt;/p&gt;
+
+&lt;p&gt;By deploying a WAF in front of a web application, a shield is placed between the web application and the Internet. While a proxy server protects a client machine’s identity by using an intermediary, a WAF is a type of reverse-proxy, protecting the server from exposure by having requests pass through the WAF before reaching the server.&lt;/p&gt;
+
+&lt;p&gt;A WAF operates through a set of rules often called policies. These policies aim to protect against vulnerabilities in the application by filtering out malicious traffic.&lt;/p&gt;
+
+&lt;p&gt;The value of a WAF comes in part from the speed and ease with which policy modification can be implemented, allowing for faster response to varying attack vectors; during a DDoS attack, rate limiting can be quickly implemented by modifying WAF policies.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/&quot;&gt;https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ips-and-ids&quot;&gt;IPS and IDS&lt;/h2&gt;
+
+&lt;p&gt;The Intrusion Detection System (IDS) watches and listens, then logs an alert, but unlike IPS, an IDS does nothing to stop the traffic from continuing on its way, in other words, network traffic is not dependent on the IDS working to flow properly. IDS works by taking a SPAN port or network tap, so it does not present a risk of single point of failure.&lt;/p&gt;
+
+&lt;p&gt;Intrusion Prevention System (IPS) executes real-time responses to active attacks and violations. An IPS is the same as an IDS but with some sort of active defense. Since traffic flows through the IPS, network traffic can be stopped, block and reported when IPS decided it is violating policies, rules, security, etc.&lt;/p&gt;
+
+&lt;p&gt;IPS has its own challenges such as having too many false positives and causing a disruptive user experience. Or the parameters sometimes results in an IPS generating a large number of alerts that can’t be responded to effectively.&lt;/p&gt;
+
+&lt;h2 id=&quot;fisma-and-fedramp&quot;&gt;FISMA and FEDRAMP&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;rdbms-and-nosql&quot;&gt;RDBMS and NoSQL&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;qsas-role-in-pci-compliance-program&quot;&gt;QSA’s role in PCI compliance program&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;describe-typical-nosql-storage&quot;&gt;Describe typical NoSQL storage&lt;/h2&gt;
+
+&lt;p&gt;To be added. JSON format / in memory&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.devbridge.com/articles/benefits-of-nosql/&quot;&gt;https://www.devbridge.com/articles/benefits-of-nosql/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;durability-and-availability-for-data-storage&quot;&gt;Durability and availability for data storage&lt;/h2&gt;
+
+&lt;p&gt;Availability and durability are two different aspects of data accessibility. Availability refers to system uptime, i.e. the storage system is operational and can deliver data upon request.&lt;/p&gt;
+
+&lt;p&gt;Durability concerns more about long-term data protection, i.e. the stored data does not suffer from bit rot, degradation or other corruption.&lt;/p&gt;
+
+&lt;h2 id=&quot;nist-sp-800&quot;&gt;NIST SP-800&lt;/h2&gt;
+
+&lt;p&gt;NIST Special Publication is a series of guidelines, technical spec, recommendations reference model for all U.S. federal information systems. Worth noting ones include SP 800-53 Security and Privacy Controls for Federal Information Systems and Organizations&lt;/p&gt;
+
+&lt;h2 id=&quot;hipaa&quot;&gt;HIPAA&lt;/h2&gt;
+
+&lt;p&gt;Health Insurance Portability and Accountability Act. it protects PHI protected health information (individually identifiable health information)&lt;/p&gt;
+
+&lt;h2 id=&quot;common-2fa-methods-how-does-google-authenticator-work&quot;&gt;Common 2FA methods? How does Google Authenticator work?&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-you-manage-keys-in-pki--how-should-you-protect-secret&quot;&gt;How do you manage keys in PKI ? How should you protect Secret?&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;gdpr&quot;&gt;GDPR&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;soc1-soc2-soc3&quot;&gt;SOC1, SOC2, SOC3&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;pci-dss-environment-can-you-store-cvv-code&quot;&gt;PCI DSS environment, can you store CVV code?&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;in-iso-27001-what-is-stage-1-and-stage-2-audit&quot;&gt;In ISO 27001, what is stage 1 and stage 2 audit?&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-segmentation-in-pcis-definition-and-what-is-the-advantage-of-that&quot;&gt;What is segmentation in PCI’s definition? And what is the advantage of that?&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;describe-an-example-of-defense-in-depth&quot;&gt;Describe an example of defense-in-depth&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;application-threat-modeling&quot;&gt;Application threat modeling&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-man-in-the-middle-attack&quot;&gt;SSH Man-in-the-Middle Attack&lt;/h2&gt;
+
+&lt;p&gt;To be added. &lt;a href=&quot;https://www.gremwell.com/ssh-mitm-public-key-authentication&quot;&gt;https://www.gremwell.com/ssh-mitm-public-key-authentication&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;pentest-and-red-team&quot;&gt;Pentest and Red team&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-container&quot;&gt;What is container&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;cis-benchmarks-and-hardening&quot;&gt;CIS Benchmarks and hardening&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;nist-cybersecurity-framework&quot;&gt;NIST Cybersecurity Framework&lt;/h2&gt;
+
+&lt;p&gt;Five high level functions: identify, protect, detect, respond, recover.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-security&quot;&gt;AWS security&lt;/h2&gt;
+
+&lt;p&gt;AWS whitepapers pertaining to security should be read first. Visit the website at &lt;a href=&quot;https://aws.amazon.com/whitepapers/#security&quot;&gt;https://aws.amazon.com/whitepapers/#security&lt;/a&gt; for latest publications.&lt;/p&gt;
+
+&lt;h2 id=&quot;type-1-and-type-2-hypervisor&quot;&gt;Type 1 and type 2 hypervisor&lt;/h2&gt;
+
+&lt;p&gt;Type 1 runs on hardware directly. So called “bare metal”. e.g. VMware ESX, Citrix Xen&lt;/p&gt;
+
+&lt;p&gt;Type 2 runs on a host OS that provides virtualization services such as I/O and memory management. E.g. VMware workstation&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-kms-and-cloudhsm&quot;&gt;AWS KMS and CloudHSM&lt;/h2&gt;
+
+&lt;p&gt;KMS: managed service. Based on multi tenant infrastructure.&lt;/p&gt;
+
+&lt;p&gt;CloudHSM: dedicated hardware.&lt;/p&gt;
+
+&lt;p&gt;KMS: master keys. Only used to encrypt and decrypt up to 4KB data, use it to generate, encrypt and decrypt the data keys. It is so called envelope encryption &lt;a href=&quot;https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html&quot;&gt;https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3 types of CMK: customer managed MK (typical use). AWS managed CMKs (owned by an AWS services on your behalf), AWS owned MKs, AWS itself owns and for use in multiple AWS account&lt;/p&gt;
+
+&lt;p&gt;Master key never goes out of KMS unencrypted.&lt;/p&gt;
+
+&lt;p&gt;Data keys are generated by master key but it is not managed, stored or tracked in KMS.&lt;/p&gt;
+
+&lt;p&gt;Use case&lt;/p&gt;
+
+&lt;p&gt;Create a data key&lt;/p&gt;
+
+&lt;p&gt;To create a data key, AWS KMS uses the CMK that you specify to generate a data key. The operation returns a plaintext copy of the data key and a copy of the data key encrypted under the CMK, as shown in the following image.&lt;/p&gt;
+
+&lt;p&gt;Encrypt the data&lt;/p&gt;
+
+&lt;p&gt;Client uses the plaintext data key to encrypt data, and ditch the plaintext key but retain the encrypted data key alongside the encrypted data.&lt;/p&gt;
+
+&lt;p&gt;Decrypt the data&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-auto-scaling-group&quot;&gt;AWS auto scaling group&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;dns-and-aws-route-53&quot;&gt;DNS and AWS Route 53&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;p&gt;This is a 30,000 feet view of how DNS works&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pic/aws dns.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;hosted zone: On Name server for example.com, it creates records that point out to the individual servers within the domain.&lt;/p&gt;
+
+&lt;p&gt;DNS Records (NS, A, MX, CNAME)&lt;/p&gt;
+
+&lt;p&gt;The most widely used DNS record types, and their purpose are as follows:&lt;/p&gt;
+
+&lt;p&gt;A - specifies IP addresses corresponding to your domain and its subdomains;&lt;/p&gt;
+
+&lt;p&gt;NS - lists which name servers can answer lookups on a DNS zone;&lt;/p&gt;
+
+&lt;p&gt;MX - specifies where the emails for your domain should be delivered;&lt;/p&gt;
+
+&lt;p&gt;CNAME - Canonical name record, is a type of resource record which maps one domain name to another. CNAME records must always point to another domain name, never directly to an IP address.&lt;/p&gt;
+
+&lt;p&gt;DNAME - A DNAME record creates an alias for an entire subtree of the domain name tree. In contrast, the CNAME record creates an alias for a single name and not its subdomains. Like the CNAME record, the DNS lookup will continue by retrying the lookup with the new name.&lt;/p&gt;
+
+&lt;p&gt;Alias - In AWS you can create alias records for ELB, S3 etc.&lt;/p&gt;
+
+&lt;p&gt;Use case&lt;/p&gt;
+
+&lt;p&gt;CNAME can prove convenient when running multiple services (like an FTP server and a web server) on a single IP address. One can have two CNAME records for ftp.example.com and www.example.com both pointing to the DNS entry for example.com, which in turn has an A record which points to the IP address. Then, if the IP address ever changes, one only has to record the change in one place within the network: in the DNS A record for example.com.&lt;/p&gt;
+
+&lt;p&gt;Advantages of managed DNS such as AWS route 53:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Redundant locations&lt;/li&gt;
+  &lt;li&gt;LBR, Geo, Failover&lt;/li&gt;
+  &lt;li&gt;Managed via APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This &lt;a href=&quot;https://www.youtube.com/watch?v=e2xLV7pCOLI&quot;&gt;youtube video&lt;/a&gt; from AWS covers some basics of DNS and Route 53.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-elastic-load-balancing-elb&quot;&gt;AWS elastic load balancing ELB&lt;/h2&gt;
+
+&lt;p&gt;Amazon offers two types of load balancers, each with its own strengths.&lt;/p&gt;
+
+&lt;p&gt;Classic load balancers can balance both HTTPS and TCP traffic, and they have basic health check and routing abilities.&lt;/p&gt;
+
+&lt;p&gt;Application load balancers (ALBs) are a new type recently released by Amazon. They offer the ability to route requests based on their content, which is great for applications that comprise several containers or microservices per host. ALBs also add support for HTTP/2, WebSockets, and offer enhanced metrics for monitoring.&lt;/p&gt;
+
+&lt;h2 id=&quot;cloud-custodian-and-anchore&quot;&gt;Cloud Custodian and Anchore&lt;/h2&gt;
+
+&lt;p&gt;To be added.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-vpcs-and-subnets&quot;&gt;AWS VPCs and subnets&lt;/h2&gt;
+
+&lt;p&gt;Security groups supports only Allow rules.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html&quot;&gt;https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;VPC Flow Logs shows the egress and ingress traffic logs. You can create a flow log for a VPC, a subnet, or a network interface. If you create a flow log for a subnet or VPC, each network interface in the VPC or subnet is monitored. A flow log record represents a network flow in your flow log. Each record captures the network flow for a specific 5-tuple, for a specific capture window, such as IP address, port, protocol, time etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-security-group-and-network-acl&quot;&gt;AWS security group and Network ACL&lt;/h2&gt;
+
+&lt;p&gt;Security groups supports only Allow rules.&lt;/p&gt;
+
+&lt;p&gt;Network ACL supports Allow and Deny rules.&lt;/p&gt;
+
+&lt;p&gt;Security groups by default has no inbound rules, By default, a security group includes an outbound rule that allows all outbound traffic.&lt;/p&gt;
+
+&lt;p&gt;The default network ACL comes with VPC by default allows all inbound and outbound IPv4 traffic. New custom network ACL is deny all by default. A subnet can be associated with only one network ACL at a time. A network ACL contains a numbered list of rules that we evaluate in order, starting with the lowest numbered rule.&lt;/p&gt;
+
+&lt;p&gt;Security Group is stateful, e.g. responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.&lt;/p&gt;
+
+&lt;p&gt;Network ACL is stateless, responses to allowed inbound traffic are subject to the rules for outbound traffic.&lt;/p&gt;
+
+&lt;p&gt;Security groups are tied to an instance.&lt;/p&gt;
+
+&lt;p&gt;Network ACL are tied to the subnet.&lt;/p&gt;
+
+&lt;h2 id=&quot;blockchain-technology&quot;&gt;Blockchain technology&lt;/h2&gt;
+
+&lt;p&gt;Oct 2018. NIST. &lt;a href=&quot;https://nvlpubs.nist.gov/nistpubs/ir/2018/NIST.IR.8202.pdf&quot;&gt;NISTIR 8202 Blockchain Technology Overview&lt;/a&gt; explains blockchain in some detail there. In the report there is also a flowchart that helps one determine whether a blockchain may be needed for a development initiative.
+&lt;img src=&quot;/pic/nist blockchain.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you know a good article regarding technical implementation of blockchain, please feel free to share it with the author.&lt;/p&gt;
+
+&lt;h2 id=&quot;owasp-top-10&quot;&gt;OWASP Top 10&lt;/h2&gt;
+
+&lt;p&gt;OWASP top 10 vulnerabilities for web application security. The complete report can be found &lt;a href=&quot;https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project&quot;&gt;here&lt;/a&gt; on OWASP website. The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications.&lt;/p&gt;
+
+&lt;h2 id=&quot;equifax-data-breach&quot;&gt;Equifax data breach&lt;/h2&gt;
+
+&lt;p&gt;A full report released in Sept 2018 by the U.S. government discussed the breach in detail. The full report can be found here at &lt;a href=&quot;https://www.gao.gov/products/GAO-18-559&quot;&gt;GAO website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Some takeaway shared on &lt;a href=&quot;https://castraconsulting.com/GAO-Equifax-Breach-Report&quot;&gt;this post&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;• The GAO report provides the most detail to date about the specifics of the breach summarized in the graphic below, such as how the attack started on the Equifax dispute portal servers, how they gained access to 51 databases and extracted data from them for over 76 days in small increments to avoid detection.&lt;/p&gt;
+
+&lt;p&gt;• The report details that the attackers used network scanning tools on March 10, 2017, to detect and confirm the vulnerability in the Apache Struts Web Framework software only 2 days after the vulnerability was described and published by the US Computer Emergency Readiness Team (CERT) group. Interestingly, when the Equifax security office distributed information about this Apache Struts vulnerability using an internal mailing list, it was discovered during the investigation that the system administrators who are responsible for updating the software did not receive the notice because the mailing list was out of date. Additionally, the Apache Struts vulnerability was not detected in the weekly vulnerability scans that Equifax ran on their own systems, hinting that the quality, configuration, and/or design of the vulnerability scanning tools were not sufficient at Equifax prior to the breach.&lt;/p&gt;
+
+&lt;p&gt;• It took another 2 months after this vulnerability was confirmed by the attackers before they began to actively work on exploiting what they had gained access to, initially gaining access to the 3 dispute portal-related databases and extending their reach to 48 other databases. Over the course of the breach, the attackers ran ~9,000 queries. Had the network at Equifax been more segmented, the attackers would not have been able to get to so many other databases and widen the scope of the breach.&lt;/p&gt;
+
+&lt;p&gt;• Attackers were able to find clear-text credentials to gain access to additional databases on the systems they originally breached, which allowed them to run their queries on additional databases. Often inside databases or in configuration files, there are clear-text passwords and for full-control or full-access usernames. Had better data governance procedures been in place, credentials would have been encrypted and sensitive information more restricted, further limiting the scope of the breach.&lt;/p&gt;
+
+&lt;p&gt;• Equifax admitted that because of an expired digital certificate on the affected systems, their Intrusion Detection System failed to work properly and did not detect the attackers activities until the digital certificate was updated – had they maintained their digital certificates, the initial attacker activity would have been detected much earlier.&lt;/p&gt;
+
+&lt;p&gt;• It’s comforting to know that it took 1 day for the attack to be detected after the system administrator updated the expired digital certificate, and only 2 days after that for the company to formally engage the FBI to assist on August 2, 2017. It appears that their Incident Response Procedures were implemented and carried out properly.&lt;/p&gt;
+
+&lt;p&gt;• We know so much now about the scope and details of the attack because the attackers thankfully did not erase the system logs that recorded their commands and activity.&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-injection&quot;&gt;SQL Injection&lt;/h2&gt;
+
+&lt;p&gt;A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from the client to the application. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to effect the execution of predefined SQL commands.&lt;/p&gt;
+
+&lt;h2 id=&quot;csrf&quot;&gt;CSRF&lt;/h2&gt;
+
+&lt;p&gt;Cross-Site Request Forgery is an attack that forces an end user to execute unwanted actions on a web application in which they’re currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker’s choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application.&lt;/p&gt;
+
+&lt;p&gt;How does it work? Check out on &lt;a href=&quot;https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)&quot;&gt;OWASP&lt;/a&gt; where two scenarios were given: one using HTTP GET, the other one using HTTP POST and javascript.&lt;/p&gt;
+
+&lt;h2 id=&quot;xss&quot;&gt;XSS&lt;/h2&gt;
+
+&lt;p&gt;Cross-Site Scripting attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.&lt;/p&gt;
+
+&lt;p&gt;An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page. For more details on the different types of XSS flaws, see: Types of Cross-Site Scripting.&lt;/p&gt;
+
+&lt;p&gt;There are two common categories: stored and reflected. There is a third, much less well-known type of XSS attack called DOM Based XSS.&lt;/p&gt;
+
+&lt;h2 id=&quot;url-reputation-protection&quot;&gt;URL reputation protection&lt;/h2&gt;
+
+&lt;h2 id=&quot;aws-arn&quot;&gt;AWS ARN&lt;/h2&gt;
+
+&lt;p&gt;As far as I am concerned, there is a rather generic requirement in many domains: The need to uniquely identify an individual entity with no ambiguity. Many different approaches have been invented (and re-invented over and over again) since to fulfil it in their respective domain. To name a few, social security number, credit number, phone number, GUID, URI, IP address etc. ARN is just another approach that Amazon uses within the AWS world.&lt;/p&gt;
+
+&lt;p&gt;Amazon Resource Names (ARNs) uniquely identify AWS resources. A typical ARN is string that consists of a number of values that concatenated with each other following a pattern as follows: arn:partition:service:region:account-id:resource&lt;/p&gt;
+
+&lt;p&gt;partition&lt;/p&gt;
+
+&lt;p&gt;The partition that the resource is in. For standard AWS regions, the partition is aws. If you have resources in other partitions, the partition is aws-partitionname. For example, the partition for resources in the China (Beijing) region is aws-cn.&lt;/p&gt;
+
+&lt;p&gt;service&lt;/p&gt;
+
+&lt;p&gt;The service namespace that identifies the AWS product (for example, Amazon S3, IAM, or Amazon RDS). For a list of namespaces, see AWS Service Namespaces.&lt;/p&gt;
+
+&lt;p&gt;region&lt;/p&gt;
+
+&lt;p&gt;The region the resource resides in. Note that the ARNs for some resources do not require a region, so this component might be omitted.&lt;/p&gt;
+
+&lt;p&gt;account-id&lt;/p&gt;
+
+&lt;p&gt;The ID of the AWS account that owns the resource, without the hyphens. For example, 123456789012. Note that the ARNs for some resources don’t require an account number, so this component might be omitted.&lt;/p&gt;
+
+&lt;p&gt;resource&lt;/p&gt;
+
+&lt;p&gt;The content of this part of the ARN varies by service, such as resourcetype:resource, or resourcetype/resource.&lt;/p&gt;
+
+&lt;h2 id=&quot;security-challenges-when-moving-on-prem-workloads-to-cloud&quot;&gt;Security challenges when moving on-prem workloads to cloud&lt;/h2&gt;
+
+&lt;h2 id=&quot;aws-account-strategy&quot;&gt;AWS Account Strategy&lt;/h2&gt;
+
+&lt;p&gt;AWS Account Structure — Strategies for Enterprises&lt;/p&gt;
+
+&lt;p&gt;Organisations typically need a multi-account strategy to support the requirements of running their AWS ecosystem. It’s important to setup the accounts in a consistent fashion at the start, to ensure simple management and tracking of many AWS accounts in the future.&lt;/p&gt;
+
+&lt;p&gt;This post looks at ways an organisation may decide to structure their AWS accounts.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/stax-blog/aws-account-structure-strategies-for-enterprises-a6bae76be487&quot;&gt;https://medium.com/stax-blog/aws-account-structure-strategies-for-enterprises-a6bae76be487&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-service-control-policies-scp&quot;&gt;AWS Service Control Policies (SCP)&lt;/h2&gt;
+
+&lt;p&gt;SCPs are similar to IAM permission policies and use almost the exact same syntax. However, an SCP never grants permissions. Instead, think of an SCP as a filter that enables you to restrict what service and actions can be accessed by users and roles in the accounts that you attach the SCP to.&lt;/p&gt;
+
+&lt;p&gt;An SCP that is applied at the root cascades its permissions to the OUs below it. Any account has only those permissions permitted by every parent above it. If a permission is blocked at any level above the account, either implicitly (by not being included in an Allow policy statement) or explicitly (by being included in a Deny policy statement), a user or role in the affected account cannot use that permission, even if the account administrator attaches the Administrator Access IAM policy with &lt;em&gt;/&lt;/em&gt; permissions to the user.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-systems-manager&quot;&gt;AWS systems manager&lt;/h2&gt;
+
+&lt;p&gt;Dashboard&lt;/p&gt;
+
+&lt;p&gt;It has a dashboard that shows centralized information pulling from other services, such as API call logs from CloudTrail, Cloudwatch metrics, config changes, software inventory, patch compliance etc.&lt;/p&gt;
+
+&lt;p&gt;Run commands on instances. An agent must be installed on each instance prior to being able to support commends.&lt;/p&gt;
+
+&lt;p&gt;Session Manager&lt;/p&gt;
+
+&lt;p&gt;It provides a browser-based interactive shell for Linux and Windows&lt;/p&gt;
+
+&lt;p&gt;Patch Manager. AWS Systems Manager helps you select and deploy operating system and software patches automatically across large groups of Amazon EC2 or on-premises instances.&lt;/p&gt;
+
+&lt;p&gt;Distributor&lt;/p&gt;
+
+&lt;p&gt;AWS Systems Manager helps you securely distribute and install software packages, such as software agents.&lt;/p&gt;
+
+&lt;p&gt;State Manager - just like what Configuration management does&lt;/p&gt;
+
+&lt;p&gt;AWS Systems Manager provides configuration management, which helps you maintain consistent configuration of your Amazon EC2 or on-premises instances. You can define configuration policies for your servers through the AWS Management Console or use existing scripts, PowerShell modules, or Ansible playbooks directly from GitHub or Amazon S3 buckets.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-s3-server-side-encryption&quot;&gt;AWS S3 server side encryption&lt;/h2&gt;
+
+&lt;p&gt;Server-side encryption protects data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) uses strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it rotates regularly. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.&lt;/p&gt;
+
+&lt;p&gt;If you need server-side encryption for all of the objects that are stored in a bucket, use a bucket policy.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-trusted-advisor&quot;&gt;AWS trusted advisor&lt;/h2&gt;
+
+&lt;p&gt;Performance , Fault Tolerance, Cost Optimization, Service Limits, and Security.&lt;/p&gt;
+
+&lt;p&gt;Under security, it checks&lt;/p&gt;
+
+&lt;p&gt;Improve the security of your application by closing gaps, enabling various AWS security features, and examining your permissions.&lt;/p&gt;
+
+&lt;p&gt;Security Groups - open on specific ports or rules that allow unrestricted access to a resource&lt;/p&gt;
+
+&lt;p&gt;Amazon S3 Bucket Permissions - open access permissions&lt;/p&gt;
+
+&lt;p&gt;MFA on Root Account -&lt;/p&gt;
+
+&lt;p&gt;IAM Password Policy - if there is an enabled policy&lt;/p&gt;
+
+&lt;p&gt;AWS CloudTrail Logging- checks for your use of AWS CloudTrail&lt;/p&gt;
+
+&lt;p&gt;Amazon Route 53 MX and SPF Resource Record Sets&lt;/p&gt;
+
+&lt;p&gt;ELB Listener Security - Checks for load balancers with listeners that do not use recommended security configurations for encrypted communication&lt;/p&gt;
+
+&lt;p&gt;ELB Security Groups&lt;/p&gt;
+
+&lt;p&gt;CloudFront Custom SSL Certificates in the IAM Certificate Store&lt;/p&gt;
+
+&lt;p&gt;CloudFront SSL Certificate on the Origin Server&lt;/p&gt;
+
+&lt;p&gt;IAM Access Key Rotation - active IAM access keys that have not been rotated in the last 90 days&lt;/p&gt;
+
+&lt;p&gt;Exposed Access Keys - checks popular code repositories for access keys that have been exposed to the public&lt;/p&gt;
+
+&lt;p&gt;Amazon EBS Public Snapshots (Free!) - check if Amazon EBS) volume snapshots and alerts you if any snapshots are marked as public.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-tagging&quot;&gt;AWS tagging&lt;/h2&gt;
+
+&lt;p&gt;AWS allows customers to assign metadata to their AWS resources in the form of tags. Each tag is a simple label consisting of a customer-defined key and an optional value that can make it easier to manage, search for, and filter resources. Although there are no inherent types of tags, they enable customers to categorize resources by purpose, owner, environment, or other criteria. This webpage describes commonly used tagging categories and strategies to help AWS customers implement a consistent and effective tagging strategy. The following sections assume basic knowledge of AWS resources, tagging, detailed billing, and AWS Identity and Access Management (IAM).&lt;/p&gt;
+
+&lt;p&gt;General Best Practices&lt;/p&gt;
+
+&lt;p&gt;When creating a tagging strategy for AWS resources, make sure that it accurately represents organizationally relevant dimensions and adheres to the following tagging best practices:&lt;/p&gt;
+
+&lt;p&gt;Always use a standardized, case-sensitive format for tags, and implement it consistently across all resource types.&lt;/p&gt;
+
+&lt;p&gt;Consider tag dimensions that support the ability to manage resource access control, cost tracking, automation, and organization.&lt;/p&gt;
+
+&lt;p&gt;Implement automated tools to help manage resource tags. The Resource Groups Tagging API enables programmatic control of tags, making it easier to automatically manage, search, and filter tags and resources. It also simplifies backups of tag data across all supported services with a single API call per AWS Region.&lt;/p&gt;
+
+&lt;p&gt;Err on the side of using too many tags rather than too few tags.&lt;/p&gt;
+
+&lt;p&gt;Remember that it is easy to modify tags to accommodate changing business requirements, however consider the ramifications of future changes, especially in relation to tag-based access control, automation, or upstream billing reports.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/answers/account-management/aws-tagging-strategies/&quot;&gt;https://aws.amazon.com/answers/account-management/aws-tagging-strategies/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;agile-and-devops&quot;&gt;Agile and Devops&lt;/h2&gt;
+
+&lt;p&gt;https://www.guru99.com/agile-vs-devops.html&lt;/p&gt;
+
+&lt;p&gt;Agile involves continuous iteration of development and testing in the SDLC process. This software development method emphasizes on iterative, incremental, and evolutionary development.&lt;/p&gt;
+
+&lt;p&gt;Agile process breaks the product into smaller pieces and integrates them for final testing. It can be implemented in many ways such as scrum and sprint. It focuses on&lt;/p&gt;
+
+&lt;p&gt;Small Team is at the core of Agile. As smaller is the team, the fewer people on it, the faster they can move.&lt;/p&gt;
+
+&lt;p&gt;Agile development is managed in units of “sprints.” This time is much less than a month for each sprint.&lt;/p&gt;
+
+&lt;p&gt;Agile is consider an effective enabler for Devops.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;View&lt;/th&gt;
+      &lt;th&gt;Agile&lt;/th&gt;
+      &lt;th&gt;DevOps&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;What is it?&lt;/td&gt;
+      &lt;td&gt;Agile refers to an iterative approach which focuses on collaboration, customer feedback, and small, rapid releases.&lt;/td&gt;
+      &lt;td&gt;DevOps is considered a practice of bringing development and operations teams together.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Purpose&lt;/td&gt;
+      &lt;td&gt;Agile helps to manage complex projects.&lt;/td&gt;
+      &lt;td&gt;DevOps central concept is to manage end-to-end engineering processes.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Task&lt;/td&gt;
+      &lt;td&gt;Agile process focusses on constant changes.&lt;/td&gt;
+      &lt;td&gt;DevOps focuses on constant testing and delivery.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Implementation&lt;/td&gt;
+      &lt;td&gt;Agile method can be implemented within a range of tactical frameworks like a sprint, safe and scrum.&lt;/td&gt;
+      &lt;td&gt;The primary goal of DevOps is to focus on collaboration, so it doesn’t have any commonly accepted framework.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Team skill set&lt;/td&gt;
+      &lt;td&gt;Agile development emphasizes training all team members to have a wide variety of similar and equal skills.&lt;/td&gt;
+      &lt;td&gt;DevOps divides and spreads the skill set between the development and operation teams.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Team size&lt;/td&gt;
+      &lt;td&gt;Small Team is at the core of Agile. As smaller is the team, the fewer people on it, the faster they can move.&lt;/td&gt;
+      &lt;td&gt;Relatively larger team size as it involves all the stack holders.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Duration&lt;/td&gt;
+      &lt;td&gt;Agile development is managed in units of “sprints.” This time is much less than a month for each sprint.&lt;/td&gt;
+      &lt;td&gt;DevOps strives for deadlines and benchmarks with major releases. The ideal goal is to deliver code to production DAILY or every few hours.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Feedback&lt;/td&gt;
+      &lt;td&gt;Feedback is given by the customer.&lt;/td&gt;
+      &lt;td&gt;Feedback comes from the internal team.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Target Areas&lt;/td&gt;
+      &lt;td&gt;Software Development&lt;/td&gt;
+      &lt;td&gt;End-to-end business solution and fast delivery.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Shift-Left Principles&lt;/td&gt;
+      &lt;td&gt;Leverage shift-left&lt;/td&gt;
+      &lt;td&gt;Leverage both shifts left and right.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Emphasis&lt;/td&gt;
+      &lt;td&gt;Agile emphasizes on software development methodology for developing software. When the software is developed and released, the agile team will not care what happens to it.&lt;/td&gt;
+      &lt;td&gt;DevOps is all about taking software which is ready for release and deploying it in a reliable and secure manner.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cross-functional&lt;/td&gt;
+      &lt;td&gt;Any team member should be able to do what’s required for the progress of the project. Also, when each team member can perform every job, it increases understanding and bonding between them.&lt;/td&gt;
+      &lt;td&gt;In DevOps, development teams and operational teams are separate. So, communication is quite complex.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Communication&lt;/td&gt;
+      &lt;td&gt;Scrum is most common methods of implementing Agile software development. Daily scrum meeting is carried out.&lt;/td&gt;
+      &lt;td&gt;DevOps communications involve specs and design documents. It’s essential for the operational team to fully understand the software release and its hardware/network implications for adequately running the deployment process.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Documentation&lt;/td&gt;
+      &lt;td&gt;Agile method is to give priority to the working system over complete documentation. It is ideal when you’re flexible and responsive. However, it can hurt when you’re trying to turn things over to another team for deployment.&lt;/td&gt;
+      &lt;td&gt;In the DevOps, process documentation is foremost because it will send the software to the operational team for deployment. Automation minimizes the impact of insufficient documentation. However, in the development of complex software, it’s difficult to transfer all the knowledge required.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Automation&lt;/td&gt;
+      &lt;td&gt;Agile doesn’t emphasize on automation. Though it helps.&lt;/td&gt;
+      &lt;td&gt;Automation is the primary goal of DevOps. It works on the principle to maximize efficiency when deploying software.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Goal&lt;/td&gt;
+      &lt;td&gt;It addresses the gap between customer need and development &amp;amp; testing teams.&lt;/td&gt;
+      &lt;td&gt;It addresses the gap between development + testing and Ops.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Focus&lt;/td&gt;
+      &lt;td&gt;It focuses on functional and non-function readiness.&lt;/td&gt;
+      &lt;td&gt;It focuses more on operational and business readiness.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Importance&lt;/td&gt;
+      &lt;td&gt;Developing software is inherent to Agile.&lt;/td&gt;
+      &lt;td&gt;Developing, testing and implementation all are equally important.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Speed vs. Risk&lt;/td&gt;
+      &lt;td&gt;Teams using Agile support rapid change, and a robust application structure.&lt;/td&gt;
+      &lt;td&gt;In the DevOps method, the teams must make sure that the changes which are made to the architecture never develop a risk to the entire project.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Quality&lt;/td&gt;
+      &lt;td&gt;Agile produces better applications suites with the desired requirements. It can easily adapt according to the changes made on time, during the project life.&lt;/td&gt;
+      &lt;td&gt;DevOps, along with automation and early bug removal, contributes to creating better quality. Developers need to follow Coding and Architectural best practices to maintain quality standards.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Tools used&lt;/td&gt;
+      &lt;td&gt;JIRA, Bugzilla, Kanboard are some popular Agile tools.&lt;/td&gt;
+      &lt;td&gt;Puppet, Chef, TeamCity OpenStack, AWS are popular DevOps tools.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Challenges&lt;/td&gt;
+      &lt;td&gt;The agile method needs teams to be more productive which is difficult to match every time.&lt;/td&gt;
+      &lt;td&gt;DevOps process needs to development, testing and production environments to streamline work.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Advantage&lt;/td&gt;
+      &lt;td&gt;Agile offers shorter development cycle and improved defect detection.&lt;/td&gt;
+      &lt;td&gt;DevOps supports Agile’s release cycle.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;five-principles-for-securing-devops&quot;&gt;Five principles for securing Devops&lt;/h2&gt;
+
+&lt;p&gt;From (ISC)2 DevSecOps: Integrating Security into DevOps, 2018&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Automate security in leveraging API in cycle of initiate, control, return results, and productized support (CA Veracode, 2018)&lt;/li&gt;
+  &lt;li&gt;Integrate to fail quickly. Testing happens with every release by using CI/CD pipeline, avoid to leave security issues entirely with the developers, NOT a late step in the process - as early as possible&lt;/li&gt;
+  &lt;li&gt;No false positives. Not tolerable if the finding is a false positive&lt;/li&gt;
+  &lt;li&gt;Build security champions by training developers in secure coding. The training can be a force multiplier by reducing culture conflict and embeding app sec knowledge into the team&lt;/li&gt;
+  &lt;li&gt;Keep operational visibility. The app sec related processes need to support closed loop feedback from prod as well as security incidents and other inputs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;traditional-security-controls-that-require-adaptation&quot;&gt;Traditional security controls that require adaptation&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;static analysis&lt;/li&gt;
+  &lt;li&gt;dynamic scanning&lt;/li&gt;
+  &lt;li&gt;security code reviews&lt;/li&gt;
+  &lt;li&gt;feedback&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;threat-modeling&quot;&gt;Threat modeling&lt;/h2&gt;
+
+&lt;p&gt;https://www.dummies.com/programming/certification/security-threat-modeling/&lt;/p&gt;
+
+&lt;p&gt;Threat modeling is a type of risk analysis used to identify security defects in the design phase of an information system. Threat modeling is most often applied to software applications.&lt;/p&gt;
+
+&lt;p&gt;Threat modeling is typically attack-centric; threat modeling most often is used to identify vulnerabilities that can be exploited by an attacker in software applications.&lt;/p&gt;
+
+&lt;p&gt;Threat modeling is most effective when performed at the design phase of an information system or application. When threats and their mitigation are identified at the design phase, much effort is saved through the avoidance of design changes and fixes in an existing system.&lt;/p&gt;
+
+&lt;p&gt;While there are different approaches to threat modeling, the typical steps are&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Identifying threats&lt;/li&gt;
+  &lt;li&gt;Determining and diagramming potential attacks&lt;/li&gt;
+  &lt;li&gt;Performing reduction analysis&lt;/li&gt;
+  &lt;li&gt;Remediation of threats&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Identifying threats&lt;/p&gt;
+
+&lt;p&gt;One of the commonly referred model is called STRIDE developed by Microsoft, which is a list of basic threat categories:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spoofing of user identity&lt;/li&gt;
+  &lt;li&gt;Tampering&lt;/li&gt;
+  &lt;li&gt;Repudiation&lt;/li&gt;
+  &lt;li&gt;Information disclosure&lt;/li&gt;
+  &lt;li&gt;Denial of service&lt;/li&gt;
+  &lt;li&gt;Elevation of privilege&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Determining and diagramming potential attacks&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A commonly used diagram at this stage is called &lt;a href=&quot;https://en.wikipedia.org/wiki/Attack_tree&quot;&gt;Attack tree&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;software-composition-analysis-sca&quot;&gt;Software Composition Analysis (SCA)&lt;/h2&gt;
+
+&lt;p&gt;https://resources.whitesourcesoftware.com/blog-whitesource/software-composition-security-analysis&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What is SCA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;SCA is a relatively new industry term for a set of tools that provides users visibility into their open source inventory. SCA tools come in different forms, offering a range of capabilities from those focused on licensing compliance only to others encompassing both security and license management.&lt;/p&gt;
+
+&lt;p&gt;First and foremost, SCA tools generate an inventory report of all open source components in your products, including all direct and transitive dependencies. Taking inventory of open source usage is critical as it is the basis for properly managing your open source usage. After all, how can you secure or ensure compliance of something you do not know you’re using?&lt;/p&gt;
+
+&lt;p&gt;Some fancy functionalities such as automatic policy enforcements can cross reference open source components found in your code with your organizational policies, triggering different responses from initiating an automated approval workflow to failing the build. The idea behind is to use only approved workflow. This step is sometimes automated and integrated into CI/CD.&lt;/p&gt;
+
+&lt;p&gt;Leading tools are also able to automate the entire process of open source selection, approval and tracking, saving developers precious time and increasing their accuracy significantly. Some such tools are able to alert of vulnerabilities in a component while still on the web, before a pull is made and the component enters the system. Other tools are able to navigate developers to the precise location of a vulnerable component thereby reducing remediation efforts.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why is SCA becoming an integral part of tooling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Open source components have become the main building block in software applications in all verticals. Yet despite the heavy reliance on open source, most companies have been generally lax about ensuring that open source components meet basic security standards and that organizations are compliant with the required open source licenses.&lt;/p&gt;</content><author><name></name></author><summary type="html">From the author of this post</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-11-30T13:32:28-05:00</published><updated>2018-11-30T13:32:28-05:00</updated><id>http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
