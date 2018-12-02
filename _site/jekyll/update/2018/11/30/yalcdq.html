@@ -7,15 +7,15 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Yet another list of cybersecurity and devsecops questions #yalcdq" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="From the author of this post" />
-<meta property="og:description" content="From the author of this post" />
+<meta name="description" content="From the author" />
+<meta property="og:description" content="From the author" />
 <link rel="canonical" href="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html" />
 <meta property="og:url" content="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-11-30T14:09:28-05:00" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html","headline":"Yet another list of cybersecurity and devsecops questions #yalcdq","dateModified":"2018-11-30T14:09:28-05:00","datePublished":"2018-11-30T14:09:28-05:00","description":"From the author of this post","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html","headline":"Yet another list of cybersecurity and devsecops questions #yalcdq","dateModified":"2018-11-30T14:09:28-05:00","datePublished":"2018-11-30T14:09:28-05:00","description":"From the author","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" /></head>
 <body><header class="site-header" role="banner">
@@ -45,13 +45,15 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>From the author of this post</p>
+    <p>From the author</p>
 
 <p>A few weeks ago, I decided to start putting together some of the cybersecurity questions I was asked over the past few years, so that I can come back and review the questions and answers.</p>
 
 <p>By no means I am suggesting this post is complete and comprehensive with correct answers, since my attempt is to answer the questions in such a way that not just communicate the security basics but also points reader to the right direction whenever possible.</p>
 
 <p>I would appreciate if you read and comment on any part of this documentation.</p>
+
+<p>– David Xiao</p>
 
 <h2 id="ssh-and-tls-name-a-few-differences-between-the-two">SSH and TLS. Name a few differences between the two.</h2>
 
@@ -127,15 +129,15 @@
 
 <p>This <a href="https://youtu.be/YEBfamv-_do?list=PL87386AD236727A1B">Youtube video</a> from Khan Academy explains how it works.</p>
 
-<p>In a nutshell, DH provides a solution to a very essential cryptographic requirement: To allow two parties who have never met to agree on a shared secret key by communication in such a way that the secret can’t be seen by observing the communication. There is an important distinction in here: The two are not sharing an existing scret key during the communication, they are creating a secret key together.</p>
+<p>In a nutshell, DH provides a solution to a very essential cryptographic requirement: To allow two parties who have never met to agree on a shared secret key by communicating in such a way that the secret can’t be seen by observing the communication. There is an important distinction in here: The two are not sharing an existing scret key during the communication, they are creating a secret key together.</p>
 
-<h2 id="forward-secrecy">forward secrecy</h2>
+<h2 id="forward-secrecy">Forward secrecy</h2>
 
 <p>forward secrecy (FS), is a feature of specific key agreement protocols that gives assurances your session keys will not be compromised even if the private key of the server is compromised.</p>
 
 <p>key exchange, hash, MAC, asymmetric and symmetric enyption all play a part in the effort of providing FS capabilities.</p>
 
-<p>https://en.wikipedia.org/wiki/Forward_secrecy</p>
+<p><a href="https://en.wikipedia.org/wiki/Forward_secrecy">https://en.wikipedia.org/wiki/Forward_secrecy</a></p>
 
 <h2 id="screened-host-architecture-and-screened-subnet-architecture">Screened Host Architecture and Screened Subnet Architecture</h2>
 
@@ -262,21 +264,17 @@
 
 <p>To be added.</p>
 
-<h2 id="what-is-saml">What is SAML</h2>
+<h2 id="saml">SAML</h2>
 
 <p>To be added.</p>
 
-<h2 id="what-is-oauth-20">What is OAuth 2.0</h2>
-
-<p>To be added.</p>
-
-<h2 id="what-is-openid-connect-oidc">What is OpenID Connect (OIDC)</h2>
+<h2 id="oauth-20-and-openid-connect-oidc">OAuth 2.0 and OpenID Connect (OIDC)</h2>
 
 <p>To be added.</p>
 
 <h2 id="what-is-federation-and-how-it-works">What is Federation and how it works</h2>
 
-<p>To be added. <a href="https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/">https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/</a></p>
+<p><a href="https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/">https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/</a></p>
 
 <p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html</a></p>
 
@@ -395,10 +393,6 @@
 <h2 id="application-threat-modeling">Application threat modeling</h2>
 
 <p>To be added.</p>
-
-<h2 id="ssh-man-in-the-middle-attack">SSH Man-in-the-Middle Attack</h2>
-
-<p>To be added. <a href="https://www.gremwell.com/ssh-mitm-public-key-authentication">https://www.gremwell.com/ssh-mitm-public-key-authentication</a></p>
 
 <h2 id="pentest-and-red-team">Pentest and Red team</h2>
 
@@ -543,7 +537,7 @@
 
 <h2 id="owasp-top-10">OWASP Top 10</h2>
 
-<p>OWASP top 10 vulnerabilities for web application security. The complete report can be found <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">here</a> on OWASP website. The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications.</p>
+<p>OWASP top 10 vulnerabilities for web application security. The complete report can be found at <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project</a> on OWASP website. The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications.</p>
 
 <h2 id="equifax-data-breach">Equifax data breach</h2>
 
@@ -625,7 +619,7 @@
 
 <h2 id="aws-service-control-policies-scp">AWS Service Control Policies (SCP)</h2>
 
-<p>SCPs are similar to IAM permission policies and use almost the exact same syntax. However, an SCP never grants permissions. Instead, think of an SCP as a filter that enables you to restrict what service and actions can be accessed by users and roles in the accounts that you attach the SCP to.</p>
+<p>SCPs are similar to IAM permission policies and use almost the exact same syntax. However, a SCP never grants permissions. Instead, think of an SCP as a filter that enables you to restrict what service and actions can be accessed by users and roles in the accounts that you attach the SCP to.</p>
 
 <p>An SCP that is applied at the root cascades its permissions to the OUs below it. Any account has only those permissions permitted by every parent above it. If a permission is blocked at any level above the account, either implicitly (by not being included in an Allow policy statement) or explicitly (by being included in a Deny policy statement), a user or role in the affected account cannot use that permission, even if the account administrator attaches the Administrator Access IAM policy with <em>/</em> permissions to the user.</p>
 
@@ -713,7 +707,7 @@
 
 <h2 id="agile-and-devops">Agile and Devops</h2>
 
-<p>https://www.guru99.com/agile-vs-devops.html</p>
+<p><a href="https://www.guru99.com/agile-vs-devops.html">https://www.guru99.com/agile-vs-devops.html</a></p>
 
 <p>Agile involves continuous iteration of development and testing in the SDLC process. This software development method emphasizes on iterative, incremental, and evolutionary development.</p>
 
@@ -852,6 +846,10 @@
   </tbody>
 </table>
 
+<h2 id="a-collection-of-devops-books">A collection of Devops books</h2>
+
+<p><a href="https://landing.google.com/sre/books/">Google Site Reliability Engineering</a></p>
+
 <h2 id="five-principles-for-securing-devops">Five principles for securing Devops</h2>
 
 <p>From (ISC)2 DevSecOps: Integrating Security into DevOps, 2018</p>
@@ -864,6 +862,30 @@
   <li>Keep operational visibility. The app sec related processes need to support closed loop feedback from prod as well as security incidents and other inputs</li>
 </ul>
 
+<p>Reference</p>
+
+<p><a href="/doc/ISC2 Standard Development and Productivity Tools.pdf">ISC2 Standard Development and Productivity Tools</a></p>
+
+<p>Note: For app scanning tools, from a practical view, I would suggest adding Veracode to the tooling list provided it is widely used in industry.</p>
+
+<p><a href="/doc/State of DevOps Report 2018.pdf">State of DevOps Report 2018</a></p>
+
+<p><a href="/doc/Gartner devsecops_how_to_seamlessly.pdf">DevSecOps: How to Seamlessly Integrate Security Into DevOps. Gartner</a></p>
+
+<h2 id="security-champions-in-devsecops">Security champions in devsecops</h2>
+
+<p>Some of the roles that security champion should assume as member of the dev team</p>
+
+<ul>
+  <li>Act as voice of security</li>
+  <li>Decide when to engage security team</li>
+  <li>Participate in code reviews</li>
+  <li>Participate in threat modeling exercises</li>
+  <li>Help with QA, testing</li>
+  <li>Assist in triging security bugs</li>
+  <li>App sec skills is not a key requirement as skills can be gained through training</li>
+</ul>
+
 <h2 id="traditional-security-controls-that-require-adaptation">Traditional security controls that require adaptation</h2>
 
 <ul>
@@ -873,9 +895,15 @@
   <li>feedback</li>
 </ul>
 
+<h2 id="integrating-sast-and-dast-into-cicd-pipeline">Integrating SAST and DAST into CI/CD pipeline</h2>
+
+<p>From Veracode</p>
+
+<p><img src="/pic/sast dast cicd.png" alt="alt text" /></p>
+
 <h2 id="threat-modeling">Threat modeling</h2>
 
-<p>https://www.dummies.com/programming/certification/security-threat-modeling/</p>
+<p><a href="https://www.dummies.com/programming/certification/security-threat-modeling/">https://www.dummies.com/programming/certification/security-threat-modeling/</a></p>
 
 <p>Threat modeling is a type of risk analysis used to identify security defects in the design phase of an information system. Threat modeling is most often applied to software applications.</p>
 
@@ -910,13 +938,18 @@
 
 <h2 id="software-composition-analysis-sca">Software Composition Analysis (SCA)</h2>
 
-<p>https://resources.whitesourcesoftware.com/blog-whitesource/software-composition-security-analysis</p>
+<p><a href="https://resources.whitesourcesoftware.com/blog-whitesource/software-composition-security-analysis">https://resources.whitesourcesoftware.com/blog-whitesource/software-composition-security-analysis</a></p>
 
+<p>(extracted from above post)</p>
 <ul>
   <li>What is SCA</li>
 </ul>
 
 <p>SCA is a relatively new industry term for a set of tools that provides users visibility into their open source inventory. SCA tools come in different forms, offering a range of capabilities from those focused on licensing compliance only to others encompassing both security and license management.</p>
+
+<ul>
+  <li>What is SCA’s typical functionality</li>
+</ul>
 
 <p>First and foremost, SCA tools generate an inventory report of all open source components in your products, including all direct and transitive dependencies. Taking inventory of open source usage is critical as it is the basis for properly managing your open source usage. After all, how can you secure or ensure compliance of something you do not know you’re using?</p>
 
@@ -925,10 +958,29 @@
 <p>Leading tools are also able to automate the entire process of open source selection, approval and tracking, saving developers precious time and increasing their accuracy significantly. Some such tools are able to alert of vulnerabilities in a component while still on the web, before a pull is made and the component enters the system. Other tools are able to navigate developers to the precise location of a vulnerable component thereby reducing remediation efforts.</p>
 
 <ul>
-  <li>Why is SCA becoming an integral part of tooling</li>
+  <li>Why is SCA becoming an integral part of tooling used in devops</li>
 </ul>
 
 <p>Open source components have become the main building block in software applications in all verticals. Yet despite the heavy reliance on open source, most companies have been generally lax about ensuring that open source components meet basic security standards and that organizations are compliant with the required open source licenses.</p>
+
+<p>The more popular an open source component is, the greater the value to hackers of exploiting a vulnerability found in it.</p>
+
+<p>This is where SCA tools come into play. They provide essential security for software comprised in part of open source components. SCA tools identify which open source components a corporation is using in its source code, and match these components with community databases, advisories and issue trackers to bring to the surface any vulnerabilities that may exist in the source code.</p>
+
+<p>SCA tools provide detailed view about a corporation’s open source inventory to executives, development, security and legal teams with the capability to generate reports for visibility.</p>
+
+<ul>
+  <li>The evolution of SCA</li>
+</ul>
+
+<p>1st Generation: Open Source Code Scanning</p>
+
+<p>2nd generation: Continuous Open Source Components Management</p>
+
+<p><a href="/doc/Forrester Wave SCA 2017.pdf" target="_blank">Forrester Wave SCA 2017</a></p>
+
+<p><a href="/doc/Gartner Application Security Testing 2018.pdf" target="_blank">Gartner Application Security Testing 2018</a></p>
+
 
   </div><a class="u-url" href="/jekyll/update/2018/11/30/yalcdq.html" hidden></a>
 </article>

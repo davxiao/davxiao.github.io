@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-01T15:14:27-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Yet another list of cybersecurity and devsecops questions #yalcdq</title><link href="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html" rel="alternate" type="text/html" title="Yet another list of cybersecurity and devsecops questions #yalcdq" /><published>2018-11-30T14:09:28-05:00</published><updated>2018-11-30T14:09:28-05:00</updated><id>http://localhost:4000/jekyll/update/2018/11/30/yalcdq</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html">&lt;p&gt;From the author of this post&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-01T23:59:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Yet another list of cybersecurity and devsecops questions #yalcdq</title><link href="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html" rel="alternate" type="text/html" title="Yet another list of cybersecurity and devsecops questions #yalcdq" /><published>2018-11-30T14:09:28-05:00</published><updated>2018-11-30T14:09:28-05:00</updated><id>http://localhost:4000/jekyll/update/2018/11/30/yalcdq</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/11/30/yalcdq.html">&lt;p&gt;From the author&lt;/p&gt;
 
 &lt;p&gt;A few weeks ago, I decided to start putting together some of the cybersecurity questions I was asked over the past few years, so that I can come back and review the questions and answers.&lt;/p&gt;
 
 &lt;p&gt;By no means I am suggesting this post is complete and comprehensive with correct answers, since my attempt is to answer the questions in such a way that not just communicate the security basics but also points reader to the right direction whenever possible.&lt;/p&gt;
 
 &lt;p&gt;I would appreciate if you read and comment on any part of this documentation.&lt;/p&gt;
+
+&lt;p&gt;– David Xiao&lt;/p&gt;
 
 &lt;h2 id=&quot;ssh-and-tls-name-a-few-differences-between-the-two&quot;&gt;SSH and TLS. Name a few differences between the two.&lt;/h2&gt;
 
@@ -80,15 +82,15 @@
 
 &lt;p&gt;This &lt;a href=&quot;https://youtu.be/YEBfamv-_do?list=PL87386AD236727A1B&quot;&gt;Youtube video&lt;/a&gt; from Khan Academy explains how it works.&lt;/p&gt;
 
-&lt;p&gt;In a nutshell, DH provides a solution to a very essential cryptographic requirement: To allow two parties who have never met to agree on a shared secret key by communication in such a way that the secret can’t be seen by observing the communication. There is an important distinction in here: The two are not sharing an existing scret key during the communication, they are creating a secret key together.&lt;/p&gt;
+&lt;p&gt;In a nutshell, DH provides a solution to a very essential cryptographic requirement: To allow two parties who have never met to agree on a shared secret key by communicating in such a way that the secret can’t be seen by observing the communication. There is an important distinction in here: The two are not sharing an existing scret key during the communication, they are creating a secret key together.&lt;/p&gt;
 
-&lt;h2 id=&quot;forward-secrecy&quot;&gt;forward secrecy&lt;/h2&gt;
+&lt;h2 id=&quot;forward-secrecy&quot;&gt;Forward secrecy&lt;/h2&gt;
 
 &lt;p&gt;forward secrecy (FS), is a feature of specific key agreement protocols that gives assurances your session keys will not be compromised even if the private key of the server is compromised.&lt;/p&gt;
 
 &lt;p&gt;key exchange, hash, MAC, asymmetric and symmetric enyption all play a part in the effort of providing FS capabilities.&lt;/p&gt;
 
-&lt;p&gt;https://en.wikipedia.org/wiki/Forward_secrecy&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Forward_secrecy&quot;&gt;https://en.wikipedia.org/wiki/Forward_secrecy&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;screened-host-architecture-and-screened-subnet-architecture&quot;&gt;Screened Host Architecture and Screened Subnet Architecture&lt;/h2&gt;
 
@@ -215,21 +217,17 @@
 
 &lt;p&gt;To be added.&lt;/p&gt;
 
-&lt;h2 id=&quot;what-is-saml&quot;&gt;What is SAML&lt;/h2&gt;
+&lt;h2 id=&quot;saml&quot;&gt;SAML&lt;/h2&gt;
 
 &lt;p&gt;To be added.&lt;/p&gt;
 
-&lt;h2 id=&quot;what-is-oauth-20&quot;&gt;What is OAuth 2.0&lt;/h2&gt;
-
-&lt;p&gt;To be added.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-openid-connect-oidc&quot;&gt;What is OpenID Connect (OIDC)&lt;/h2&gt;
+&lt;h2 id=&quot;oauth-20-and-openid-connect-oidc&quot;&gt;OAuth 2.0 and OpenID Connect (OIDC)&lt;/h2&gt;
 
 &lt;p&gt;To be added.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-federation-and-how-it-works&quot;&gt;What is Federation and how it works&lt;/h2&gt;
 
-&lt;p&gt;To be added. &lt;a href=&quot;https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/&quot;&gt;https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/&quot;&gt;https://aws.amazon.com/blogs/security/aws-federated-authentication-with-active-directory-federation-services-ad-fs/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html&quot;&gt;https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html&lt;/a&gt;&lt;/p&gt;
 
@@ -348,10 +346,6 @@
 &lt;h2 id=&quot;application-threat-modeling&quot;&gt;Application threat modeling&lt;/h2&gt;
 
 &lt;p&gt;To be added.&lt;/p&gt;
-
-&lt;h2 id=&quot;ssh-man-in-the-middle-attack&quot;&gt;SSH Man-in-the-Middle Attack&lt;/h2&gt;
-
-&lt;p&gt;To be added. &lt;a href=&quot;https://www.gremwell.com/ssh-mitm-public-key-authentication&quot;&gt;https://www.gremwell.com/ssh-mitm-public-key-authentication&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;pentest-and-red-team&quot;&gt;Pentest and Red team&lt;/h2&gt;
 
@@ -496,7 +490,7 @@
 
 &lt;h2 id=&quot;owasp-top-10&quot;&gt;OWASP Top 10&lt;/h2&gt;
 
-&lt;p&gt;OWASP top 10 vulnerabilities for web application security. The complete report can be found &lt;a href=&quot;https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project&quot;&gt;here&lt;/a&gt; on OWASP website. The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications.&lt;/p&gt;
+&lt;p&gt;OWASP top 10 vulnerabilities for web application security. The complete report can be found at &lt;a href=&quot;https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project&quot;&gt;https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project&lt;/a&gt; on OWASP website. The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications.&lt;/p&gt;
 
 &lt;h2 id=&quot;equifax-data-breach&quot;&gt;Equifax data breach&lt;/h2&gt;
 
@@ -578,7 +572,7 @@
 
 &lt;h2 id=&quot;aws-service-control-policies-scp&quot;&gt;AWS Service Control Policies (SCP)&lt;/h2&gt;
 
-&lt;p&gt;SCPs are similar to IAM permission policies and use almost the exact same syntax. However, an SCP never grants permissions. Instead, think of an SCP as a filter that enables you to restrict what service and actions can be accessed by users and roles in the accounts that you attach the SCP to.&lt;/p&gt;
+&lt;p&gt;SCPs are similar to IAM permission policies and use almost the exact same syntax. However, a SCP never grants permissions. Instead, think of an SCP as a filter that enables you to restrict what service and actions can be accessed by users and roles in the accounts that you attach the SCP to.&lt;/p&gt;
 
 &lt;p&gt;An SCP that is applied at the root cascades its permissions to the OUs below it. Any account has only those permissions permitted by every parent above it. If a permission is blocked at any level above the account, either implicitly (by not being included in an Allow policy statement) or explicitly (by being included in a Deny policy statement), a user or role in the affected account cannot use that permission, even if the account administrator attaches the Administrator Access IAM policy with &lt;em&gt;/&lt;/em&gt; permissions to the user.&lt;/p&gt;
 
@@ -666,7 +660,7 @@
 
 &lt;h2 id=&quot;agile-and-devops&quot;&gt;Agile and Devops&lt;/h2&gt;
 
-&lt;p&gt;https://www.guru99.com/agile-vs-devops.html&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.guru99.com/agile-vs-devops.html&quot;&gt;https://www.guru99.com/agile-vs-devops.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Agile involves continuous iteration of development and testing in the SDLC process. This software development method emphasizes on iterative, incremental, and evolutionary development.&lt;/p&gt;
 
@@ -805,6 +799,10 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
+&lt;h2 id=&quot;a-collection-of-devops-books&quot;&gt;A collection of Devops books&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://landing.google.com/sre/books/&quot;&gt;Google Site Reliability Engineering&lt;/a&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;five-principles-for-securing-devops&quot;&gt;Five principles for securing Devops&lt;/h2&gt;
 
 &lt;p&gt;From (ISC)2 DevSecOps: Integrating Security into DevOps, 2018&lt;/p&gt;
@@ -817,6 +815,30 @@
   &lt;li&gt;Keep operational visibility. The app sec related processes need to support closed loop feedback from prod as well as security incidents and other inputs&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;Reference&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/doc/ISC2 Standard Development and Productivity Tools.pdf&quot;&gt;ISC2 Standard Development and Productivity Tools&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: For app scanning tools, from a practical view, I would suggest adding Veracode to the tooling list provided it is widely used in industry.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/doc/State of DevOps Report 2018.pdf&quot;&gt;State of DevOps Report 2018&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/doc/Gartner devsecops_how_to_seamlessly.pdf&quot;&gt;DevSecOps: How to Seamlessly Integrate Security Into DevOps. Gartner&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;security-champions-in-devsecops&quot;&gt;Security champions in devsecops&lt;/h2&gt;
+
+&lt;p&gt;Some of the roles that security champion should assume as member of the dev team&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Act as voice of security&lt;/li&gt;
+  &lt;li&gt;Decide when to engage security team&lt;/li&gt;
+  &lt;li&gt;Participate in code reviews&lt;/li&gt;
+  &lt;li&gt;Participate in threat modeling exercises&lt;/li&gt;
+  &lt;li&gt;Help with QA, testing&lt;/li&gt;
+  &lt;li&gt;Assist in triging security bugs&lt;/li&gt;
+  &lt;li&gt;App sec skills is not a key requirement as skills can be gained through training&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;traditional-security-controls-that-require-adaptation&quot;&gt;Traditional security controls that require adaptation&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -826,9 +848,15 @@
   &lt;li&gt;feedback&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&quot;integrating-sast-and-dast-into-cicd-pipeline&quot;&gt;Integrating SAST and DAST into CI/CD pipeline&lt;/h2&gt;
+
+&lt;p&gt;From Veracode&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/pic/sast dast cicd.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;threat-modeling&quot;&gt;Threat modeling&lt;/h2&gt;
 
-&lt;p&gt;https://www.dummies.com/programming/certification/security-threat-modeling/&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.dummies.com/programming/certification/security-threat-modeling/&quot;&gt;https://www.dummies.com/programming/certification/security-threat-modeling/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Threat modeling is a type of risk analysis used to identify security defects in the design phase of an information system. Threat modeling is most often applied to software applications.&lt;/p&gt;
 
@@ -863,13 +891,18 @@
 
 &lt;h2 id=&quot;software-composition-analysis-sca&quot;&gt;Software Composition Analysis (SCA)&lt;/h2&gt;
 
-&lt;p&gt;https://resources.whitesourcesoftware.com/blog-whitesource/software-composition-security-analysis&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://resources.whitesourcesoftware.com/blog-whitesource/software-composition-security-analysis&quot;&gt;https://resources.whitesourcesoftware.com/blog-whitesource/software-composition-security-analysis&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;(extracted from above post)&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;What is SCA&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;SCA is a relatively new industry term for a set of tools that provides users visibility into their open source inventory. SCA tools come in different forms, offering a range of capabilities from those focused on licensing compliance only to others encompassing both security and license management.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What is SCA’s typical functionality&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;First and foremost, SCA tools generate an inventory report of all open source components in your products, including all direct and transitive dependencies. Taking inventory of open source usage is critical as it is the basis for properly managing your open source usage. After all, how can you secure or ensure compliance of something you do not know you’re using?&lt;/p&gt;
 
@@ -878,10 +911,28 @@
 &lt;p&gt;Leading tools are also able to automate the entire process of open source selection, approval and tracking, saving developers precious time and increasing their accuracy significantly. Some such tools are able to alert of vulnerabilities in a component while still on the web, before a pull is made and the component enters the system. Other tools are able to navigate developers to the precise location of a vulnerable component thereby reducing remediation efforts.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Why is SCA becoming an integral part of tooling&lt;/li&gt;
+  &lt;li&gt;Why is SCA becoming an integral part of tooling used in devops&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Open source components have become the main building block in software applications in all verticals. Yet despite the heavy reliance on open source, most companies have been generally lax about ensuring that open source components meet basic security standards and that organizations are compliant with the required open source licenses.&lt;/p&gt;</content><author><name></name></author><summary type="html">From the author of this post</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-11-30T13:32:28-05:00</published><updated>2018-11-30T13:32:28-05:00</updated><id>http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;Open source components have become the main building block in software applications in all verticals. Yet despite the heavy reliance on open source, most companies have been generally lax about ensuring that open source components meet basic security standards and that organizations are compliant with the required open source licenses.&lt;/p&gt;
+
+&lt;p&gt;The more popular an open source component is, the greater the value to hackers of exploiting a vulnerability found in it.&lt;/p&gt;
+
+&lt;p&gt;This is where SCA tools come into play. They provide essential security for software comprised in part of open source components. SCA tools identify which open source components a corporation is using in its source code, and match these components with community databases, advisories and issue trackers to bring to the surface any vulnerabilities that may exist in the source code.&lt;/p&gt;
+
+&lt;p&gt;SCA tools provide detailed view about a corporation’s open source inventory to executives, development, security and legal teams with the capability to generate reports for visibility.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The evolution of SCA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;1st Generation: Open Source Code Scanning&lt;/p&gt;
+
+&lt;p&gt;2nd generation: Continuous Open Source Components Management&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/doc/Forrester Wave SCA 2017.pdf&quot; target=&quot;_blank&quot;&gt;Forrester Wave SCA 2017&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/doc/Gartner Application Security Testing 2018.pdf&quot; target=&quot;_blank&quot;&gt;Gartner Application Security Testing 2018&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">From the author</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-11-30T13:32:28-05:00</published><updated>2018-11-30T13:32:28-05:00</updated><id>http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/11/30/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
