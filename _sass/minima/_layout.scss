@@ -248,6 +248,10 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.375);
     }
+    line-height: 1.2;
+    border-bottom:1px solid #adadad;
+    padding-top: 20px;
+    padding-bottom:8px
   }
 
   h4 {
