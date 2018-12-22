@@ -7,10 +7,11 @@ categories: network tcpdump
 tags:  network tcpdump
 ---
 
-Listen on loopback for tcp traffic on port 4000. This is useful when you are debugging something purely local. Please be advised that the following command works for mac os, if you are using other OS, you may need to change the name of the interface `lo0`.
+### Monitor on loopback interface for tcp traffic on port 4000
 
-`tcpdump -i lo0 tcp port 4000 -w test.pcap`
+This is useful when you are debugging something local. The following sample command works for mac os, if you are using other OS, you may need to change the `-i lo0` portion.
 
-For reading and analyzing .pcap file, I recommend Wireshark.
+`tcpdump -i lo0 port 4000 -w test.pcap`
 
+Then you can use wireshark to read and analyze the .pcap file.
 
