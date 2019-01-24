@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Youtube videos about cloud data encryption"
+title:  "Youtube videos about cybersecurity"
 date:   2018-12-10
 author: David Xiao
 categories: cybersecurity aws encryption
@@ -12,6 +12,9 @@ tags:  cybersecurity aws encryption
 
 Comment
 
-Eric is awesome. If you think you are experience in data encrytion and information security, you will be amazed at how he was able to explains things to broader audience in such a clear and concise way. 
+Eric is awesome. If you think you are experienced in data encrytion and information security, you will be amazed at how he was able to explains things to broader audience in such a clear and concise way. 
 
-In the 53-min video, he talks about why implementing encryption properly can be more challenging that it first appears to be. 
+In this 53 minutes video, he talks about why implementing encryption properly can be more challenging that it first appears to be. 
+
+
+[AWS re:Invent 2018: Data Protection: Encryption, Availability, Resiliency, & Durability](https://www.youtube.com/watch?v=FH6AXreSQWQ)
