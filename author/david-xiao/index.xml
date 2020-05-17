@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>David Xiao | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/author/david-xiao/</link>
+      <atom:link href="https://davidxiao.me/author/david-xiao/index.xml" rel="self" type="application/rss+xml" />
+    <description>David Xiao</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>David Xiao</title>
+      <link>https://davidxiao.me/author/david-xiao/</link>
+    </image>
+    
+    <item>
+      <title>Building a website in 2020</title>
+      <link>https://davidxiao.me/post/building-a-website-in-2020/</link>
+      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/building-a-website-in-2020/</guid>
+      <description>&lt;p&gt;In this post I will talk about how I built this website from the ground up using Hugo as site generator and Firebase as hosting provider. I wish you&amp;rsquo;ll find it helpful.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;span class=&#34;my-dropcap&#34;&gt;W&lt;/span&gt;eb development has come a long way. Back in the late 90&amp;rsquo;s when I first came across Internet, anyone who knows anything about 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/HTML&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HTML&lt;/a&gt; would be considered very technical.&lt;/p&gt;
+&lt;p&gt;Fast forward into 2020, social media and smart phone is ubiquitous, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Web_hosting_service&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;web hosting services&lt;/a&gt; such as 
+&lt;a href=&#34;https://www.wix.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wix&lt;/a&gt; and 
+&lt;a href=&#34;https://wordpress.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wordpress&lt;/a&gt; have made 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Content_creation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;content creation&lt;/a&gt; possible for anyone who wishes to create a website without much headache.&lt;/p&gt;
+&lt;p&gt;Why should you building a website from the ground up as opposed to using a web hosting service?&lt;/p&gt;
+&lt;h2 id=&#34;maybe-its-for-you&#34;&gt;Maybe it&amp;rsquo;s for you&lt;/h2&gt;
+&lt;p&gt;Building a website with a static site generator is not for everyone. George Cushen who is Hugo theme Academic&amp;rsquo;s main contributor once put:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;hellip;(it would) require a basic understanding of using the command line in the Terminal (Mac/Linux) or Command Prompt (Windows) app on your computer. If you are not interested in this, perhaps this is not for you&amp;hellip;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://georgecushen.com/create-your-website-with-hugo/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Original post&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;But if going beyond content creation and learning more about building a website that is lightweight and secure, cost effective yet no 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Vendor_lock-in&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;vendor lock-in&lt;/a&gt; is your thing, then let&amp;rsquo;s dive right in.&lt;/p&gt;
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;First and foremost, let&amp;rsquo;s take a look on what will be covered in the post.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Register a domain name.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set up Hugo as static site generator.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use a kick-starter theme to get going quickly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy the site to Firebase.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add your domain to the new site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-register-a-domain-name&#34;&gt;1. Register a domain name&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s pretty straightforward. You come up with a great domain name. It is better to be concise and easy to remember. Be creative &amp;lt;3.&lt;/p&gt;
+&lt;p&gt;Then complete the domain registration on any 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain_name_registrar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Domain Name Registrar&lt;/a&gt; you prefer. I use 
+&lt;a href=&#34;https://domains.google/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Domains&lt;/a&gt; but there are other good choices such as 
+&lt;a href=&#34;https://namecheap.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Namecheap&lt;/a&gt; and 
+&lt;a href=&#34;https://godaddy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Go Daddy&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-register-a-domain-name-on-google-domains&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/googledomain_hua80840076dd6af33bd83daa8ff78b57a_385165_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Register a domain name on Google Domains&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/googledomain_hua80840076dd6af33bd83daa8ff78b57a_385165_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2812&#34; height=&#34;1530&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Register a domain name on Google Domains
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;2-setting-up-hugo&#34;&gt;2. Setting up Hugo&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hugo&lt;/a&gt; is a 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Web_template_system#Static_site_generators&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;static site generator&lt;/a&gt;. There are many other site generators, I picked Hugo for a few reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Open_source&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;open source&lt;/a&gt; and backed by an active developer team and support community.&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s a monolithic program with no external dependencies.&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s production ready.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In a nutshell, Hugo renders content into HTML files and uploads the files onto your choice of hosting provider. Your content is what you write as content creator. Hugo takes content files written in 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Markdown&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Markdown&lt;/a&gt; (&lt;code&gt;.md&lt;/code&gt;), a format that is intended to be used by technical and non-technical writers alike. Since inception, Markdown has become the &lt;em&gt;de facto&lt;/em&gt; format in content creation and blogging.&lt;/p&gt;
+&lt;p&gt;If you need to learn about Markdown syntax, there are good guides such as 
+&lt;a href=&#34;https://www.markdownguide.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Markdown Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;installing-hugo&#34;&gt;Installing Hugo&lt;/h3&gt;
+&lt;p&gt;On macOS, I recommend using a package manager such as 
+&lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Homebrew&lt;/a&gt; to manage third-party packages. With Homebrew installed, to install Hugo, just run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ brew install hugo ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;All set. In case you need to check which Hugo version is installed, run &lt;code&gt;hugo version&lt;/code&gt;. On my mac it returns &lt;code&gt;Hugo Static Site Generator v0.70.0/extended darwin/amd64&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For installing Hugo on Windows or Linux, refer to Hugo&amp;rsquo;s documentation.&lt;/p&gt;
+&lt;h2 id=&#34;3-use-a-kick-starter-theme&#34;&gt;3. Use a kick-starter theme&lt;/h2&gt;
+&lt;p&gt;Hugo has built-in theme mechanism that allows developers to quickly run a theme and see the results. It also provides all the necessary building blocks for user to personalize the theme. There are many themes available on Hugo, for my own website I use Academic Theme. It also comes with a 
+&lt;a href=&#34;https://github.com/sourcethemes/academic-kickstart/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;academic-kickstart repo&lt;/a&gt; on github for teasers.&lt;/p&gt;
+&lt;p&gt;The easy way to get started is to just fork the repo, download the code and run it.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-fork-the-kickstart-into-your-own-repo&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/forkrepo_hub00e36fa908e191c517c523b2f035a7a_337164_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Fork the kickstart into your own repo&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/forkrepo_hub00e36fa908e191c517c523b2f035a7a_337164_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2068&#34; height=&#34;1406&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Fork the kickstart into your own repo
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Download the code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git clone &amp;lt;replace-it-with-your-own-repo-url&amp;gt; ;
+$ cd &amp;lt;your-repo-root-dir&amp;gt; ;
+$ git submodule update --init --recursive ; # get the latest Academic theme
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run Hugo to serve the test site:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ hugo server -D ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now visit 
+&lt;a href=&#34;http://127.0.0.1:1313/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://127.0.0.1:1313/&lt;/a&gt; on your web browser and you should see the homepage.&lt;/p&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve got your first Hugo website up and running on your local environment!&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Hugo only binds to local network address for &lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_by_default&#34;&gt;security by default&lt;/a&gt;. If you need to test the site on another computer in your local network, run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ hugo server -D --bind=0.0.0.0 ;
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;4-deploy-the-new-site-to-firebase&#34;&gt;4. Deploy the new site to Firebase&lt;/h2&gt;
+&lt;p&gt;There are many out there: 
+&lt;a href=&#34;https://http://firebase.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Firebase&lt;/a&gt;, 
+&lt;a href=&#34;https://pages.github.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub Pages&lt;/a&gt;, 
+&lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Netlify&lt;/a&gt; and 
+&lt;a href=&#34;http://aws.amazon.com/amplify/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AWS Amplify&lt;/a&gt; to name a few. Each one has its own offering. I picked Firebase as my hosting provider because they seem to offer a bit more on their free tier.&lt;/p&gt;
+&lt;p&gt;First, install Firebase CLI and (optional) Google Cloud SDK CLI.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Firebase CLI. The recommended way is to run &lt;code&gt;npm i -g firebase-tools ;&lt;/code&gt; See its 
+&lt;a href=&#34;https://github.com/firebase/firebase-tools&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;github repo&lt;/a&gt; for more detail. If you don&amp;rsquo;t have &lt;code&gt;npm&lt;/code&gt; installed yet, run: &lt;code&gt;brew install node ;&lt;/code&gt;. npm will be installed alongside node.js.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Google Cloud SDK CLI. Run &lt;code&gt;brew cask install google-cloud-sdk ;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Next, go to 
+&lt;a href=&#34;https://firebase.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Firebase&lt;/a&gt; to set up an account and create a new Firebase project. Make sure it uses the default free tier plan which is called &lt;code&gt;Spark&lt;/code&gt;. Be noted you need to specify GCP resource location under &lt;strong&gt;Project Overview&lt;/strong&gt; in Firebase Dashboard after project is created. The location can not be changed afterwards, so choose something close to you would be wise.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-specify-resource-location-under-project-overview-in-firebase-dashboard&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/gcplocation_hu7482e11487f16a9bd601892124435dbc_331705_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Specify resource location under Project Overview in Firebase Dashboard&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/gcplocation_hu7482e11487f16a9bd601892124435dbc_331705_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2356&#34; height=&#34;1516&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Specify resource location under Project Overview in Firebase Dashboard
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;set-up-service-account-authenication-on-firebase&#34;&gt;Set up service account authenication on Firebase&lt;/h3&gt;
+&lt;p&gt;Authenticating with a service account allows you to use Firebase CLI to manage your Firebase project. Google has provided a step by step guide 
+&lt;a href=&#34;https://firebase.google.com/docs/app-distribution/authenticate-service-account.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When authentication is set up, go to your project root directory and follow the recorded screens below to initialize firebase and deploy the very first version of your site onto firebase.&lt;/p&gt;
+&lt;script id=&#34;asciicast-331048&#34; src=&#34;https://asciinema.org/a/331048.js&#34; async&gt;&lt;/script&gt;
+
+&lt;p&gt;Congratulations! Your website is online! You should find your Hosting URL at the end of the Firebase deploy output, it&amp;rsquo;s typically something like: &lt;code&gt;https://your-project-id.web.app&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-add-your-domain-to-the-new-site&#34;&gt;5. Add your domain to the new site&lt;/h2&gt;
+&lt;p&gt;Go to &lt;strong&gt;Hosting&lt;/strong&gt; on Firebase, click on &amp;ldquo;Add custom domain&amp;rdquo;. Typically you wanted to add your root domain name and a sub domain name such as &amp;ldquo;www&amp;rdquo;. For example, I added &amp;ldquo;davidxiao.me&amp;rdquo; for my website and added another entry for redirecting &lt;code&gt;www.davidxiao.me&lt;/code&gt; to &lt;code&gt;davidxiao.me&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When it&amp;rsquo;s complete, you will be able to visit your website by your custom domain regsitered on step 1.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-add-custom-domain-to-your-website&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/customdomain_hu5e404376bd7baccdc222e51f4545ac8f_377474_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Add custom domain to your website&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/customdomain_hu5e404376bd7baccdc222e51f4545ac8f_377474_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2318&#34; height=&#34;1026&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Add custom domain to your website
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>
