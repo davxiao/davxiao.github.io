@@ -5,12 +5,64 @@
     <link>https://davidxiao.me/</link>
       <atom:link href="https://davidxiao.me/index.xml" rel="self" type="application/rss+xml" />
     <description>DAVID&#39;S GARAGE</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 19 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>DAVID&#39;S GARAGE</title>
       <link>https://davidxiao.me/</link>
     </image>
+    
+    <item>
+      <title>Privacy Policy</title>
+      <link>https://davidxiao.me/privacy/</link>
+      <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/privacy/</guid>
+      <description>&lt;p&gt;Last Updated: May 19, 2020&lt;/p&gt;
+&lt;p&gt;This Privacy Policy (&amp;ldquo;Policy&amp;rdquo;) outlines the personal information handling practices on 
+&lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; (&amp;ldquo;this site&amp;rdquo;, &amp;ldquo;I,&amp;quot;, &amp;ldquo;me,&amp;rdquo; and &amp;ldquo;my&amp;rdquo;).&lt;/p&gt;
+&lt;p&gt;Before you post any comments on this site, please carefully review this 
+&lt;a href=&#34;https://davidxiao.me/privacy/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Privacy Policy&lt;/a&gt;. By posting comments on this site, you understand that your information will be collected, used, and disclosed as outlined in this Privacy Policy.&lt;/p&gt;
+&lt;p&gt;IF YOU DO NOT AGREE TO THIS PRIVACY POLICY, PLEASE DO NOT POST ANY COMMENTS ON THIS SITE.&lt;/p&gt;
+&lt;h2 id=&#34;types-and-uses-of-personal-information&#34;&gt;Types and Uses of Personal Information&lt;/h2&gt;
+&lt;p&gt;If you are browsing this site but not posting any comments on this site, no personal information is collected.&lt;/p&gt;
+&lt;p&gt;However, if you wish to post comments on this site, you would first need to complete 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Social_login&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Social Login&lt;/a&gt; on this site with one of the following 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Identity_provider&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Identity Providers&lt;/a&gt;: Google, Twitter, Facebook, Github.&lt;/p&gt;
+&lt;p&gt;Your name, language preference, and profile pictures will be shared with this site&amp;rsquo;s comment engine by the identity provider upon completion of the social login.&lt;/p&gt;
+&lt;h2 id=&#34;comment-engine&#34;&gt;Comment Engine&lt;/h2&gt;
+&lt;p&gt;I use 
+&lt;a href=&#34;https://github.com/umputun/remark42&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Remark42&lt;/a&gt; as this site&amp;rsquo;s comment engine. It is 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Open_source&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;open source&lt;/a&gt; and privacy focused. It saves the minimum amount of information required to be able to show comments. Such information includes name, avatar (to be shown with comment message) and your id in service you used to login (to understand it&amp;rsquo;s still you when you log in next time). Id is 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cryptographic_hash_function&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hashed&lt;/a&gt;, there&amp;rsquo;s no easy way for me to identify the profile you used for login.&lt;/p&gt;
+&lt;p&gt;Find more details about Remark42&amp;rsquo;s privacy in 
+&lt;a href=&#34;https://github.com/umputun/remark42#privacy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; and be sure to check its source code in case you have further questions.&lt;/p&gt;
+&lt;h2 id=&#34;aggregate-information-non-personally-identifiable&#34;&gt;Aggregate Information (non-personally identifiable)&lt;/h2&gt;
+&lt;p&gt;This site uses 
+&lt;a href=&#34;https://analytics.google.com/analytics/web/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Analytics&lt;/a&gt; to collect aggregated information including browser information and site traffic statistics. Find more detail about Google Analytics privacy information 
+&lt;a href=&#34;https://support.google.com/analytics/answer/6004245&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This site does not use any 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Web_banner&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Web Banner&lt;/a&gt; or 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Online_advertising&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Online advertising&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;cookies&#34;&gt;Cookies&lt;/h2&gt;
+&lt;p&gt;A cookie is a small text file that is stored on a user&amp;rsquo;s computer for record-keeping purposes.&lt;/p&gt;
+&lt;p&gt;This website uses cookies to work properly. Cookies are small pieces of information your browser sends to server with every request. Here&amp;rsquo;s the list of cookies used on this website:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Analytics uses cookies for its analytics purposes.&lt;/li&gt;
+&lt;li&gt;When logging in to post a comment, comment engine requests two cookies: one to 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/HTTP_cookie#Session_management&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;determine it&amp;rsquo;s still you&lt;/a&gt;; the other one is added as an information security measure against 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cross-site_request_forgery&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cross-site request forgery&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you reject cookies, you may still visit this site, but your ability to use some areas of this
+site, such as comments, will require logging in.&lt;/p&gt;
+&lt;h2 id=&#34;links-to-other-sites&#34;&gt;Links to Other Sites&lt;/h2&gt;
+&lt;p&gt;This site contains links to other sites that are not owned or controlled by davidxiao.me. Please be aware that I am not responsible for the privacy practices of such other sites. This privacy statement applies only to information collected by this site.&lt;/p&gt;
+&lt;h2 id=&#34;changes-in-this-privacy-statement&#34;&gt;Changes in This Privacy Statement&lt;/h2&gt;
+&lt;p&gt;If this privacy policy needs to be updated, the updated version will be posted to this privacy statement, the homepage, and other places I deem appropriate.&lt;/p&gt;
+&lt;h2 id=&#34;questions&#34;&gt;Questions&lt;/h2&gt;
+&lt;p&gt;If you have any questions about this Privacy Policy or our privacy practices, you can contact me at: &lt;a href=&#34;mailto:root@davidxiao.me&#34;&gt;root@davidxiao.me&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+    </item>
     
     <item>
       <title>Building a website in 2020</title>
@@ -280,6 +332,53 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 
 
 &lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h3&gt;Comments&lt;/h3&gt;
+&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
+&lt;script&gt;
+  var remark_config = {
+    host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
+    site_id: &#39;davidxiao&#39;,
+    components: [&#39;embed&#39;], 
+                           
+                           
+                           
+                           
+                           
+    url: &#34;https://davidxiao.me/post/building-a-website-in-2020/&#34;, 
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+    max_shown_comments: 10, 
+    theme: &#39;dark&#39;, 
+    locale: &#39;en&#39; 
+  };
+
+  (function(c) {
+    for(var i = 0; i &lt; c.length; i++){
+      var d = document, s = d.createElement(&#39;script&#39;);
+      s.src = remark_config.host + &#39;/web/&#39; +c[i] +&#39;.js&#39;;
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components || [&#39;embed&#39;]);
+&lt;/script&gt;
 
 </description>
     </item>

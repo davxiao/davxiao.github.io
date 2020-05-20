@@ -7,7 +7,7 @@
     <description>David Xiao</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://davidxiao.me/author/david-xiao/avatar_huc9a803f18ab730e706c7c1ec5503b96b_29954_270x270_fill_lanczos_center_2.png</url>
       <title>David Xiao</title>
       <link>https://davidxiao.me/author/david-xiao/</link>
     </image>
@@ -280,6 +280,53 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 
 
 &lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h3&gt;Comments&lt;/h3&gt;
+&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
+&lt;script&gt;
+  var remark_config = {
+    host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
+    site_id: &#39;davidxiao&#39;,
+    components: [&#39;embed&#39;], 
+                           
+                           
+                           
+                           
+                           
+    url: &#34;https://davidxiao.me/post/building-a-website-in-2020/&#34;, 
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+    max_shown_comments: 10, 
+    theme: &#39;dark&#39;, 
+    locale: &#39;en&#39; 
+  };
+
+  (function(c) {
+    for(var i = 0; i &lt; c.length; i++){
+      var d = document, s = d.createElement(&#39;script&#39;);
+      s.src = remark_config.host + &#39;/web/&#39; +c[i] +&#39;.js&#39;;
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components || [&#39;embed&#39;]);
+&lt;/script&gt;
 
 </description>
     </item>
