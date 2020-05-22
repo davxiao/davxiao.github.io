@@ -282,8 +282,7 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 &lt;/figure&gt;
 
 &lt;hr&gt;
-&lt;h3&gt;Comments&lt;/h3&gt;
-&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
+&lt;h3&gt;Comments&lt;/h3&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   var remark_config = {
     host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
