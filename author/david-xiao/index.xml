@@ -5,12 +5,173 @@
     <link>https://davidxiao.me/author/david-xiao/</link>
       <atom:link href="https://davidxiao.me/author/david-xiao/index.xml" rel="self" type="application/rss+xml" />
     <description>David Xiao</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/author/david-xiao/avatar_huc9a803f18ab730e706c7c1ec5503b96b_29954_270x270_fill_lanczos_center_2.png</url>
       <title>David Xiao</title>
       <link>https://davidxiao.me/author/david-xiao/</link>
     </image>
+    
+    <item>
+      <title>Cross Compile MMDVMHost on Ubuntu</title>
+      <link>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</guid>
+      <description>&lt;p&gt;A little teaser: Raspberry Pi is not really ediable :-)&lt;/p&gt;
+&lt;p&gt;So I have a 
+&lt;a href=&#34;https://www.raspberrypi.org/blog/raspberry-pi-zero-w-joins-family/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspberry Pi Zero W&lt;/a&gt; for about one year now.&lt;/p&gt;
+&lt;p&gt;It runs a few software. One of them is called Pi-Star. It&amp;rsquo;s an open source toolkit for digial voice over 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Amateur_radio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;amateur radio&lt;/a&gt;. Find more detail about Pi-Star 
+&lt;a href=&#34;https://www.pistar.uk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Amateur radio is one of my hobbies. Figuring out how 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_amateur_radio_modes#Digital_voice&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;digital voice modes&lt;/a&gt; work in the amateur radio world took some time for me but it was rewarding. At the end of the day, listening to hams talking about their passions from all over the world on my little handheld radio feels amazing.&lt;/p&gt;
+&lt;p&gt;Pi-Star works very well in my setup, so when I found out Pi-Star does not display my public IP address on OLED, I decided to write some code for it.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s what it looks like.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-oled-display-showing-my-public-ip&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/pistar-inetip_hu15853694f5406fd361772a3bb29a5fde_1385514_2000x2000_fit_q90_lanczos.jpg&#34; data-caption=&#34;OLED display showing my Public IP&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/pistar-inetip_hu15853694f5406fd361772a3bb29a5fde_1385514_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2842&#34; height=&#34;2131&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    OLED display showing my Public IP
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;1-download-the-toolchain-with-extra-libs-and-headers&#34;&gt;1. Download the Toolchain with Extra Libs and Headers&lt;/h2&gt;
+&lt;p&gt;I use Ubuntu 20.04 on my homelab as cross compiling platform, but any recent Linux distro should work.&lt;/p&gt;
+&lt;p&gt;My toolchain is a fork from the original toolchain with extra libs and headers for compiling MMDVMHost.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd ~/code
+$ git clone https://github.com/davxiao/tools.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2-code-is-the-easy-part-3&#34;&gt;2. Code is the Easy Part &amp;lt;3&lt;/h2&gt;
+&lt;p&gt;Pi-Star consists of a few components including a PHP frontend and a few programs as backend for data exchange over various digital voice networks.&lt;/p&gt;
+&lt;p&gt;MMDVMHost is the program that interfaces to the digital voice modem (MMDVM) on one side, and a suitable network on the other. It&amp;rsquo;s written in standard C++ with dependencies to external libs such as 
+&lt;a href=&#34;https://github.com/hallard/ArduiPi_OLED&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ArduiPi_OLED&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For my purpose, I added some code in &lt;code&gt;CNetworkinfo&lt;/code&gt; class and &lt;code&gt;COLED&lt;/code&gt; class. If you don&amp;rsquo;t know much about C++, no worries, just download all source code from my github repo.&lt;/p&gt;
+&lt;p&gt;Download my repo:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd ~/code
+$ git clone https://github.com/davxiao/MMDVMHost.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-prep-for-the-cross-compilation&#34;&gt;3. Prep for the Cross Compilation&lt;/h2&gt;
+&lt;p&gt;In &lt;code&gt;MMDVMHost/cmake/CrossCompile.cmake&lt;/code&gt;, you wanted to update toolchain paths so that CMake will be able to generate correct Makefile afterwards.&lt;/p&gt;
+&lt;p&gt;When it&amp;rsquo;s done, run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd MMDVMHost/cmake
+$ cmake ../ -DCMAKE_TOOLCHAIN_FILE=./CrossCompile.cmake
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you see warnings like this, try delete &lt;code&gt;CMakeCache.txt&lt;/code&gt; and run the cmake command again.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;CMake Warning:
+  Manually-specified variables were not used by the project:
+    CMAKE_TOOLCHAIN_FILE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-last-step&#34;&gt;4. Last Step&lt;/h2&gt;
+&lt;p&gt;When Cmake is done, a &lt;code&gt;Makefile&lt;/code&gt; was generated under the same directory. Run the following in the same directory:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ make ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When the complication is complete, you should see &lt;code&gt;MMDVMHost&lt;/code&gt; in the &lt;code&gt;cmake/&lt;/code&gt; directory. You may wish to run &lt;code&gt;file ./MMDVMHost&lt;/code&gt; to confirm the target platform is ARM as opposed to amd64. Here&amp;rsquo;s my output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt; ./MMDVMHost: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
+ dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 2.6.32,
+ with debug_info, not stripped
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve built MMDVMHost using cross compilcation.&lt;/p&gt;
+&lt;h2 id=&#34;deployment&#34;&gt;Deployment&lt;/h2&gt;
+&lt;p&gt;You can skip this section if you have set up your own deployment pipeline.&lt;/p&gt;
+&lt;p&gt;On my homelab, I mount the same Samba share folder on both the Ubuntu and the Pi, then just copy the MMDVMHost over. Before replacing the MMDVMHost, you need to confirm the SD card is mounted in R/W mode and MMDVMHost service is stopped. Make a backup of the original MMDVMHost is also a good idea.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ rpi-rw ; 
+$ sudo systemctl stop mmdvmhost ; 
+$ sudo systemctl stop mmdvmhost.timer ;
+$ sudo cp ~/nas-dir/MMDVMHost.build /usr/local/bin/MMDVMHost ;
+$ sudo systemctl start mmdvmhost ;
+$ sudo systemctl start mmdvmhost.timer ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;If you experience &lt;code&gt;mount error(115): Operation now in progress&lt;/code&gt; when mounting CIFS on Pi, it might be caused by the iptable rules set by Pi-Star.&lt;/p&gt;
+&lt;p&gt;To troubleshooting the issue, run the following commands on Pi-Star and see if mount works.&lt;/p&gt;
+&lt;p&gt;No worries, the following changes do not persist between restarts.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;    sudo iptables -P INPUT ACCEPT; 
+    sudo iptables -P FORWARD ACCEPT; 
+    sudo iptables -P OUTPUT ACCEPT; 
+    sudo iptables -F; 
+    sudo iptables -X ; 
+    sudo iptables -nvL ;
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
+&lt;script&gt;
+  var remark_config = {
+    host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
+    site_id: &#39;davidxiao&#39;,
+    components: [&#39;embed&#39;], 
+                           
+                           
+                           
+                           
+                           
+    url: &#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/&#34;, 
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+    max_shown_comments: 10, 
+    theme: &#39;dark&#39;, 
+    locale: &#39;en&#39; 
+  };
+
+  (function(c) {
+    for(var i = 0; i &lt; c.length; i++){
+      var d = document, s = d.createElement(&#39;script&#39;);
+      s.src = remark_config.host + &#39;/web/&#39; +c[i] +&#39;.js&#39;;
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components || [&#39;embed&#39;]);
+&lt;/script&gt;
+
+</description>
+    </item>
     
     <item>
       <title>Building a website in 2020</title>
@@ -281,8 +442,7 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 
 &lt;/figure&gt;
 
-&lt;hr&gt;
-&lt;h3&gt;Comments&lt;/h3&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
+&lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   var remark_config = {
     host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 

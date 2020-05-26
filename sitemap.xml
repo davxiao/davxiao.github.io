@@ -3,6 +3,76 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</loc>
+    <lastmod>2020-05-25T23:08:43-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/</loc>
+    <lastmod>2020-05-25T23:08:43-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</loc>
+    <lastmod>2020-05-25T23:08:01-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/authors/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/c-/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/categories/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/cmake/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/cross-compile/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/author/david-xiao/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/it/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/linux/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/raspberrypi/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tags/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://davidxiao.me/</loc>
     <lastmod>2020-05-19T00:00:00+00:00</lastmod>
   </url>
@@ -13,22 +83,27 @@
   </url>
   
   <url>
-    <loc>https://davidxiao.me/authors/</loc>
-    <lastmod>2020-04-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://davidxiao.me/post/building-a-website-in-2020/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://davidxiao.me/author/david-xiao/</loc>
+    <loc>https://davidxiao.me/tag/firebase/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://davidxiao.me/post/</loc>
+    <loc>https://davidxiao.me/tag/hugo/</loc>
+    <lastmod>2020-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/markdown/</loc>
+    <lastmod>2020-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/website/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -68,17 +143,7 @@
   </url>
   
   <url>
-    <loc>https://davidxiao.me/categories/</loc>
-    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://davidxiao.me/tag/opensource/</loc>
-    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tags/</loc>
     <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
