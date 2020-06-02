@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homelab | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/category/homelab/</link>
+      <atom:link href="https://davidxiao.me/category/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <description>Homelab</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Homelab</title>
+      <link>https://davidxiao.me/category/homelab/</link>
+    </image>
+    
+    <item>
+      <title>My Homelab Setup From Hardware to KVM - Part 2</title>
+      <link>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TL;DR&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Install and configure Proxmox as KVM hypervisor.&lt;/em&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-playing-三國志xiiihttpsstoresteampoweredcomapp363150romance_of_the_three_kingdoms_xiii-on-win10-guest-through-remote-desktop&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;playsan13.png&#34; data-caption=&#34;Playing 三國志XIII on Win10 guest through Remote Desktop&#34;&gt;
+
+
+  &lt;img src=&#34;playsan13.png&#34; alt=&#34;&#34;  &gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Playing &lt;a href=&#34;https://store.steampowered.com/app/363150/ROMANCE_OF_THE_THREE_KINGDOMS_XIII/&#34;&gt;三國志XIII&lt;/a&gt; on Win10 guest through Remote Desktop
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

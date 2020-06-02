@@ -5,7 +5,7 @@
     <link>https://davidxiao.me/post/</link>
       <atom:link href="https://davidxiao.me/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Mon, 25 May 2020 23:08:43 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
@@ -15,17 +15,504 @@
     <item>
       <title>My Homelab Setup From Hardware to KVM - Part 2</title>
       <link>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</link>
-      <pubDate>Mon, 25 May 2020 23:08:43 -0400</pubDate>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TL;DR&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Install and configure Proxmox as KVM hypervisor.&lt;/em&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-playing-三國志xiiihttpsstoresteampoweredcomapp363150romance_of_the_three_kingdoms_xiii-on-win10-guest-through-remote-desktop&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;playsan13.png&#34; data-caption=&#34;Playing 三國志XIII on Win10 guest through Remote Desktop&#34;&gt;
+
+
+  &lt;img src=&#34;playsan13.png&#34; alt=&#34;&#34;  &gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Playing &lt;a href=&#34;https://store.steampowered.com/app/363150/ROMANCE_OF_THE_THREE_KINGDOMS_XIII/&#34;&gt;三國志XIII&lt;/a&gt; on Win10 guest through Remote Desktop
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+</description>
     </item>
     
     <item>
-      <title>My Homelab Setup From Hardware to KVM - Part 1</title>
-      <link>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</link>
-      <pubDate>Mon, 25 May 2020 23:08:01 -0400</pubDate>
-      <guid>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</guid>
-      <description></description>
+      <title>Building Your First App on Google Home in 10 minutes</title>
+      <link>https://davidxiao.me/post/building-your-first-app-on-google-home/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/building-your-first-app-on-google-home/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TL;DR&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This post will show you how to build and deploy a voice-activated app on Google Cloud in 10 minutes. It responds to your commands and plays personalized music if you ask! Not a bad way to play on someone&amp;rsquo;s birthday, eh?&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;create-a-new-project-on-google-actions-console&#34;&gt;Create a New Project on Google Actions Console&lt;/h2&gt;
+&lt;p&gt;The app is built on Google Cloud using Google Actions and Dialogflow. If you don&amp;rsquo;t have a Google Actions account, click 
+&lt;a href=&#34;https://console.actions.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; to create a new one. It&amp;rsquo;s free.&lt;/p&gt;
+&lt;p&gt;When the account is created, go ahead and create a new project. Google Actions allows you to add Actions support to existing GCP projects, but we will create a new one to keep it simple.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-create-a-new-project&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/newproject_hu743e9e3ec8e102a213e0e2f07b641661_182403_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Create a new project&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/newproject_hu743e9e3ec8e102a213e0e2f07b641661_182403_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2392&#34; height=&#34;1042&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Create a new project
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;specify-a-catchy-name-for-your-app&#34;&gt;Specify a Catchy Name for Your App&lt;/h2&gt;
+&lt;p&gt;You need to specify a catchy name for the app so that every time when you say those &amp;ldquo;gateway words&amp;rdquo; to the Google Home device, it will activate the app for you.&lt;/p&gt;
+&lt;p&gt;Go to the project dashboard, click on &amp;ldquo;Quick setup&amp;rdquo; followed by &amp;ldquo;Decide how your action is invoked&amp;rdquo; and put the app name here. It may reject the name if it&amp;rsquo;s too common or ambiguous, e.g. &amp;ldquo;Hello&amp;rdquo; is probably not a good choice here.&lt;/p&gt;
+&lt;p&gt;For example, my app is called &amp;ldquo;Hello Jukebox&amp;rdquo;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-specify-a-catchy-name-for-your-app&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/hellojukebox_hu00583f257256ac5d2540f09ced6a2a1c_203654_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Specify a catchy name for your app&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/hellojukebox_hu00583f257256ac5d2540f09ced6a2a1c_203654_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2398&#34; height=&#34;1514&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Specify a catchy name for your app
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;add-actions-to-your-app&#34;&gt;Add Actions to Your App&lt;/h2&gt;
+&lt;p&gt;There is no secret sauce. An app is only as smart as what it&amp;rsquo;s taught. This app will respond to voice commands and act accordingly based on the intents developeed for it. &amp;ldquo;Intent&amp;rdquo; is a Google term referring to a combination of voice command and its response.&lt;/p&gt;
+&lt;p&gt;Within one app, developer can create as many intents as they want as long as no intent is stepping on one another&amp;rsquo;s toes. For example, trying to create two separate intents both responding to the same command &amp;ldquo;what is my favoriate color&amp;rdquo; would be confusing to begin with.&lt;/p&gt;
+&lt;p&gt;Within an intent, developer can decide on the kind of response it needs to give: it can be as simple as having Google Home say something or be more complicated with custom logic.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-add-a-new-action-to-your-app&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/addaction_hu5a34da406b359feaea235349c9d3070a_89800_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Add a new Action to your app&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/addaction_hu5a34da406b359feaea235349c9d3070a_89800_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1962&#34; height=&#34;800&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Add a new Action to your app
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;use-case-1-simple-voice-commands-and-text-responses&#34;&gt;Use Case 1: Simple Voice Commands and Text Responses&lt;/h3&gt;
+&lt;p&gt;Scroll down the Actions dashboard until the Fulfillment section, click on &amp;ldquo;Edit in Dialogflow&amp;rdquo; and click on the Intents. Start adding intents.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-edit-in-dialogflow&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/editdialogflow_hu0a5e6ae8e7a5a9d21267103e72f6723b_121154_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Edit in Dialogflow&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/editdialogflow_hu0a5e6ae8e7a5a9d21267103e72f6723b_121154_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2290&#34; height=&#34;1378&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Edit in Dialogflow
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-add-new-intent&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/addintents_hu5caf5e9408c46163cab731953699f0c0_150879_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Add new Intent&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/addintents_hu5caf5e9408c46163cab731953699f0c0_150879_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2126&#34; height=&#34;848&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Add new Intent
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;For example, you may want to create an intent called &amp;ldquo;special-intent&amp;rdquo;, add &amp;ldquo;Do you know why today is so special&amp;rdquo; as voice command and add &amp;ldquo;Of course I know, David&amp;rdquo; as text responses to the intent. Those are what you would say to the app and what the app will say back respectively.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-a-list-of-intents-i-added&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/addnewintent_hu4379dc9c90fb0c256e025ee19dca75f6_98047_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;A list of intents I added&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/addnewintent_hu4379dc9c90fb0c256e025ee19dca75f6_98047_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1568&#34; height=&#34;866&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    A list of intents I added
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-text-responses&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/response_hu977f95ac59ecb13bada691ae3f06f746_90426_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Text Responses&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/response_hu977f95ac59ecb13bada691ae3f06f746_90426_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1570&#34; height=&#34;732&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Text Responses
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;use-case-2-implement-custom-logic-using-cloud-function&#34;&gt;Use Case 2: Implement custom logic using Cloud Function&lt;/h3&gt;
+&lt;p&gt;The second use case is enabling webhook in an intent and developing a handler for it.&lt;/p&gt;
+&lt;p&gt;This approach allows you to implement custom logic for an intent. GCP supports either running your custom code on a 
+&lt;a href=&#34;https://cloud.google.com/functions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cloud Function&lt;/a&gt; or calling an external web service you specify.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-text-responses&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/inline_hu7df3c6f58ea55e824903f43390cf3d99_512086_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Text Responses&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/inline_hu7df3c6f58ea55e824903f43390cf3d99_512086_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2144&#34; height=&#34;1514&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Text Responses
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;I will use the Cloud Function way for this example since we don&amp;rsquo;t need to worry about resource or storage thanks to its serverless nature.&lt;/p&gt;
+&lt;p&gt;First, you need to enable &amp;ldquo;Webhook&amp;rdquo; on the intent that needs to have custom logic. Second, click on the Fulfillment on the left navbar and enable Inline editor. Last, copy and paste the following code example and click on save. That&amp;rsquo;s it.&lt;/p&gt;
+&lt;p&gt;The code example will first say something then play an audio clip. If you need to play something else, e.g. a peronalized audio clip, you can replace the URL with your own thing, but then you would have to deal with access control.&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/8d0d35d3c88078e5fc96114d02c8ee6b.js&#34;&gt;&lt;/script&gt;
+
+&lt;h3 id=&#34;testing-your-new-app-on-simulator&#34;&gt;Testing Your New App on Simulator&lt;/h3&gt;
+&lt;p&gt;Click on &amp;ldquo;Google Assistant&amp;rdquo; on the right bar to open the Simulator on Google Actions. From there you can tinker with your app until you&amp;rsquo;re satisfied with it :-)&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-text-responses&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/test_hu4c7ce97dca92ec99c2a240b81e7d53b6_267148_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Text Responses&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/test_hu4c7ce97dca92ec99c2a240b81e7d53b6_267148_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2854&#34; height=&#34;1422&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Text Responses
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;deploying-to-your-google-home-device&#34;&gt;Deploying to your Google Home Device&lt;/h3&gt;
+&lt;p&gt;Making your app available on 
+&lt;a href=&#34;https://assistant.google.com/explore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Assistant Actions Portal&lt;/a&gt; sounds like a great idea, however the releasing process could take some time as Google needs to review and approve your app first before it can be released. Since my post promised you a 10-minute ride, let&amp;rsquo;s rolling to get the freshly baked app onto your own Google Home device.&lt;/p&gt;
+&lt;p&gt;On Actions console, click on &amp;ldquo;Deploy&amp;rdquo;, choose &amp;ldquo;Alpha&amp;rdquo;, click on &amp;ldquo;Manage Alpha Testers&amp;rdquo;, and add your own Google Home device account email here. You can then switch to your Google Home account and use the opt-in link received on the invitation email to accept the invite.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-make-an-alpha-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/deploy_hub0f70cc191eb1433db74b863010b6132_192039_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Make an Alpha Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-your-first-app-on-google-home/deploy_hub0f70cc191eb1433db74b863010b6132_192039_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2290&#34; height=&#34;1364&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Make an Alpha Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;When it&amp;rsquo;s ready, click on &amp;ldquo;Create a release&amp;rdquo;, and wait it to complete. It can take a few minutes.&lt;/p&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve just developed and deployed your first Google Home app in 10 minutes! Try say to your Google Home: &amp;ldquo;Hey Google, Talk to your_app_name_here&amp;rdquo; and see what happens :)&lt;/p&gt;
+&lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
+&lt;script&gt;
+  var remark_config = {
+    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
+    site_id: &#39;davidxiao&#39;,
+    components: [&#39;embed&#39;], 
+                           
+                           
+                           
+                           
+                           
+    url: &#34;https://davidxiao.me/post/building-your-first-app-on-google-home/&#34;, 
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+    max_shown_comments: 10, 
+    theme: &#39;dark&#39;, 
+    locale: &#39;en&#39; 
+  };
+
+  (function(c) {
+    for(var i = 0; i &lt; c.length; i++){
+      var d = document, s = d.createElement(&#39;script&#39;);
+      s.src = remark_config.host + &#39;/web/&#39; +c[i] +&#39;.js&#39;;
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components || [&#39;embed&#39;]);
+&lt;/script&gt;
+
+</description>
     </item>
     
     <item>
@@ -33,7 +520,7 @@
       <link>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</guid>
-      <description>&lt;p&gt;A little teaser: Raspberry Pi is not really ediable :-)&lt;/p&gt;
+      <description>&lt;p&gt;A little teaser here: Raspberry Pi is not really ediable :-)&lt;/p&gt;
 &lt;p&gt;So I have a 
 &lt;a href=&#34;https://www.raspberrypi.org/blog/raspberry-pi-zero-w-joins-family/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspberry Pi Zero W&lt;/a&gt; for about one year now.&lt;/p&gt;
 &lt;p&gt;It runs a few software. One of them is called Pi-Star. It&amp;rsquo;s an open source toolkit for digial voice over 
@@ -144,7 +631,7 @@ $ sudo systemctl start mmdvmhost.timer ;
 &lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   var remark_config = {
-    host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
+    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
     site_id: &#39;davidxiao&#39;,
     components: [&#39;embed&#39;], 
                            
@@ -461,7 +948,7 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 &lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   var remark_config = {
-    host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
+    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
     site_id: &#39;davidxiao&#39;,
     components: [&#39;embed&#39;], 
                            
@@ -504,6 +991,14 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 &lt;/script&gt;
 
 </description>
+    </item>
+    
+    <item>
+      <title>Adding Your Own Commenting System to a Static Site</title>
+      <link>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</guid>
+      <description></description>
     </item>
     
   </channel>

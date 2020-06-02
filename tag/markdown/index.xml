@@ -284,7 +284,7 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 &lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   var remark_config = {
-    host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
+    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
     site_id: &#39;davidxiao&#39;,
     components: [&#39;embed&#39;], 
                            

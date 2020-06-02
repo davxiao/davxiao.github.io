@@ -17,7 +17,7 @@
       <link>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</guid>
-      <description>&lt;p&gt;A little teaser: Raspberry Pi is not really ediable :-)&lt;/p&gt;
+      <description>&lt;p&gt;A little teaser here: Raspberry Pi is not really ediable :-)&lt;/p&gt;
 &lt;p&gt;So I have a 
 &lt;a href=&#34;https://www.raspberrypi.org/blog/raspberry-pi-zero-w-joins-family/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspberry Pi Zero W&lt;/a&gt; for about one year now.&lt;/p&gt;
 &lt;p&gt;It runs a few software. One of them is called Pi-Star. It&amp;rsquo;s an open source toolkit for digial voice over 
@@ -128,7 +128,7 @@ $ sudo systemctl start mmdvmhost.timer ;
 &lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   var remark_config = {
-    host: &#34;https://api8964.duckdns.org:8964/remark42&#34;, 
+    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
     site_id: &#39;davidxiao&#39;,
     components: [&#39;embed&#39;], 
                            
