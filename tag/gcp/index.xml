@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GCP | DAVID&#39;S GARAGE</title>
+    <title>gcp | DAVID&#39;S GARAGE</title>
     <link>https://davidxiao.me/tag/gcp/</link>
       <atom:link href="https://davidxiao.me/tag/gcp/index.xml" rel="self" type="application/rss+xml" />
-    <description>GCP</description>
+    <description>gcp</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>GCP</title>
+      <title>gcp</title>
       <link>https://davidxiao.me/tag/gcp/</link>
     </image>
     
@@ -422,51 +422,6 @@
 
 &lt;p&gt;When it&amp;rsquo;s ready, click on &amp;ldquo;Create a release&amp;rdquo;, and wait it to complete. It can take a few minutes.&lt;/p&gt;
 &lt;p&gt;Congrats! You&amp;rsquo;ve just developed and deployed your first Google Home app in 10 minutes! Try say to your Google Home: &amp;ldquo;Hey Google, Talk to your_app_name_here&amp;rdquo; and see what happens :)&lt;/p&gt;
-&lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
-&lt;script&gt;
-  var remark_config = {
-    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
-    site_id: &#39;davidxiao&#39;,
-    components: [&#39;embed&#39;], 
-                           
-                           
-                           
-                           
-                           
-    url: &#34;https://davidxiao.me/post/building-your-first-app-on-google-home/&#34;, 
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-    max_shown_comments: 10, 
-    theme: &#39;dark&#39;, 
-    locale: &#39;en&#39; 
-  };
-
-  (function(c) {
-    for(var i = 0; i &lt; c.length; i++){
-      var d = document, s = d.createElement(&#39;script&#39;);
-      s.src = remark_config.host + &#39;/web/&#39; +c[i] +&#39;.js&#39;;
-      s.defer = true;
-      (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || [&#39;embed&#39;]);
-&lt;/script&gt;
-
 </description>
     </item>
     

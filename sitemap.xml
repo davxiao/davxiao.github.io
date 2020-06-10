@@ -4,31 +4,76 @@
   
   <url>
     <loc>https://davidxiao.me/authors/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/categories/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/author/david-xiao/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/category/homelab/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+    <loc>https://davidxiao.me/tag/homelab/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/mailgun/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/mailgun-relay/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/postfix/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/post/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tags/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/gmail/</loc>
+    <lastmod>2020-06-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/gmail-relay/</loc>
+    <lastmod>2020-06-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/</loc>
+    <lastmod>2020-06-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</loc>
     <lastmod>2020-05-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -48,11 +93,6 @@
   </url>
   
   <url>
-    <loc>https://davidxiao.me/tag/coding/</loc>
-    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://davidxiao.me/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
   </url>
@@ -63,17 +103,17 @@
   </url>
   
   <url>
+    <loc>https://davidxiao.me/tag/google-cloud-function/</loc>
+    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://davidxiao.me/tag/google-home/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/privacy/</loc>
-    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tags/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -118,7 +158,7 @@
   </url>
   
   <url>
-    <loc>https://davidxiao.me/tag/firebase/</loc>
+    <loc>https://davidxiao.me/tag/firehose/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -138,7 +178,7 @@
   </url>
   
   <url>
-    <loc>https://davidxiao.me/tag/website/</loc>
+    <loc>https://davidxiao.me/tag/static-website/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url>
   

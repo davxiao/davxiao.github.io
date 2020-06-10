@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gmail relay | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/gmail-relay/</link>
+      <atom:link href="https://davidxiao.me/tag/gmail-relay/index.xml" rel="self" type="application/rss+xml" />
+    <description>gmail relay</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 05 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>gmail relay</title>
+      <link>https://davidxiao.me/tag/gmail-relay/</link>
+    </image>
+    
+    <item>
+      <title>Setting up a Gmail Relay With Postfix</title>
+      <link>https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/</link>
+      <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/</guid>
+      <description>&lt;p&gt;You would need the following to set up a gmail relay on Postfix:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;An app password obtained from your Gmail account. It will be effectively your Gmail SMTP password.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Admin privilege on a Linux box to set up Postfix server. Outbound internet access is required.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;google-app-password&#34;&gt;Google App Password&lt;/h2&gt;
+&lt;p&gt;App passwords let you sign in to your Google Account from apps that don&amp;rsquo;t support 2-Step Verification. 
+&lt;a href=&#34;https://support.google.com/mail/answer/185833&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;This post&lt;/a&gt; from Google explains how to obtain an app password.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-sign-up-for-an-app-password-on-your-google-account&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/apppassword_huf0e32fe416f4639906687779d0edc497_215049_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Sign up for an App Password on your Google Account&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/apppassword_huf0e32fe416f4639906687779d0edc497_215049_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2382&#34; height=&#34;1482&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Sign up for an App Password on your Google Account
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Essentially, first you need to go to 
+&lt;a href=&#34;https://myaccount.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Account&lt;/a&gt; and enable two Factor Authentication. Without enabling 2FA, app password option is disabled on Google.&lt;/p&gt;
+&lt;p&gt;Then click on &amp;lsquo;Security&amp;rsquo; from the left, click on &amp;lsquo;App passwords&amp;rsquo; under &amp;lsquo;Signing in to Google&amp;rsquo; and click on &amp;lsquo;Generate&amp;rsquo; button, here you go. Copy the password as we will need it later.&lt;/p&gt;
+&lt;p&gt;The rest of the post is using Ubuntu as an example, but the approach should work for most recent Linux distro in general.&lt;/p&gt;
+&lt;h2 id=&#34;postfix&#34;&gt;Postfix&lt;/h2&gt;
+&lt;p&gt;Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install libsasl2-modules postfix ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your@gmail.com&lt;/code&gt; with your actual Gmail; &lt;code&gt;abcdefghijk123&lt;/code&gt; with your actual app password.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[smtp.gmail.com]:587 your@gmail.com:abcdefghijk123
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo postmap /etc/postfix/sasl/sasl_passwd ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Gmail SMTP authentication.&lt;/p&gt;
+&lt;h3 id=&#34;secure-the-passwords&#34;&gt;Secure the passwords&lt;/h3&gt;
+&lt;p&gt;Both &lt;code&gt;sasl_passwd&lt;/code&gt; and &lt;code&gt;sasl_passwd.db&lt;/code&gt; contain plain text of your app password, to secure the access, you need to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
+&lt;p&gt;Postfix&amp;rsquo;s main configuration file is &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt;. See the following my own configuration for your reference.&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js&#34;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;myhostname&lt;/code&gt; indicates the hostname of the Postfix&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;mynetworks&lt;/code&gt; is the IP CIDRs that are allowed to relay mails through Postfix. It should only contain your local networks&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;smtp_sasl_password_maps&lt;/code&gt; is where the sasl_passwd file is located&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;relayhost&lt;/code&gt; is the server name and port&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Edit the values respectively.&lt;/p&gt;
+&lt;p&gt;For security reason, do not expose Postfix service to anywhere outside of your trusted networks.&lt;/p&gt;
+&lt;p&gt;In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.&lt;/p&gt;
+&lt;h3 id=&#34;testing-and-troubleshooting&#34;&gt;Testing and Troubleshooting&lt;/h3&gt;
+&lt;p&gt;When config file is done, reload Postfix configurations without having to restart the service:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo postfix reload ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For SMTP testing, I personally like to use 
+&lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
+&lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./swaks \
+    --server &amp;lt;your-postfix-server-ip&amp;gt; \
+    --port 25 \
+    --from yourmail@gmail.com \
+    --to anymailbox@wherever.com \
+    --h-Subject: &amp;quot;Hello world&amp;quot; \
+    --body &#39;Testing some Mailgun awesomness!&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
+# and
+sudo tail -f /var/log/mail.err ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+&lt;p&gt;On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.&lt;/p&gt;
+&lt;p&gt;Let me know if you have any questions or comments. On my post I will be discussing setting up a 
+&lt;a href=&#34;https://www.mailgun.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mailgun&lt;/a&gt; relay. Stay tuned!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

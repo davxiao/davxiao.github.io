@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mailgun | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/mailgun/</link>
+      <atom:link href="https://davidxiao.me/tag/mailgun/index.xml" rel="self" type="application/rss+xml" />
+    <description>mailgun</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>mailgun</title>
+      <link>https://davidxiao.me/tag/mailgun/</link>
+    </image>
+    
+    <item>
+      <title>Setting Up a Mailgun Relay With Postfix</title>
+      <link>https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/</guid>
+      <description>&lt;p&gt;&lt;span class=&#34;my-dropcap&#34;&gt;M&lt;/span&gt;ailgun is a SaaS that provides email services (both sending and receiving) through both conventional SMTP and RESTful APIs. Find more detail 
+&lt;a href=&#34;https://www.mailgun.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this post we will cover the SMTP option as it can be easily integrated with Postfix.&lt;/p&gt;
+&lt;h2 id=&#34;whats-required&#34;&gt;What&amp;rsquo;s Required&lt;/h2&gt;
+&lt;p&gt;You would need the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A custom domain name, something like &lt;code&gt;yourcompany.com&lt;/code&gt;. You also need to have admin access to your DNS provider.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A Mailgun account that allows you to send out mails using your custom domain name. Payment information is required when signing up but no charges will take place at the moment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Admin privilege on a Linux box to set up Postfix server. Outbound internet access is required.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;onboarding-mailgun&#34;&gt;Onboarding Mailgun&lt;/h2&gt;
+&lt;p&gt;Make sure you fill out payment information when signing up a new account on Mailgun. There&amp;rsquo;s no charge for small volume mail delivery but it&amp;rsquo;s a Mailgun requirement if you plan on delivering emails with your custom mail address like &lt;code&gt;yourname@yourdomain.com&lt;/code&gt;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-sign-up-on-mailgun&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/signup_hu867205e8853227b914c922186800e8cc_196605_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Sign up on Mailgun&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/signup_hu867205e8853227b914c922186800e8cc_196605_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1996&#34; height=&#34;1418&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Sign up on Mailgun
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Mailgun provides multiple plans, the &lt;code&gt;Flex Trial&lt;/code&gt; is essentially a pay-as-you-go option that works very well if you don&amp;rsquo;t need to deliver a large volume of emails everyday.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-flex-trial-is-pay-as-you-go&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/plan_hu43c153f088264a5e4e95f76b3262b01c_51876_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Flex Trial is pay-as-you-go&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/plan_hu43c153f088264a5e4e95f76b3262b01c_51876_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;612&#34; height=&#34;514&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Flex Trial is pay-as-you-go
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;dns-settings&#34;&gt;DNS Settings&lt;/h3&gt;
+&lt;p&gt;For &lt;strong&gt;Sending&lt;/strong&gt; on Mailgun to work properly, you&amp;rsquo;ve got to update a few DNS settings. First, you&amp;rsquo;d have to add a subdomain to your domain for Mailgun MX. For example, I&amp;rsquo;ve added &lt;code&gt;mg.davidxiao.me&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then you&amp;rsquo;d have to add a few TXT records on DNS.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-adding-txt-records-for-sending-emails&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/dns_hub98922f910e183e0ae40b95602dd546f_374557_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Adding TXT records for sending emails&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/dns_hub98922f910e183e0ae40b95602dd546f_374557_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2878&#34; height=&#34;1304&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Adding TXT records for sending emails
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;what-about-receiving&#34;&gt;What About Receiving&lt;/h3&gt;
+&lt;p&gt;Receiving and forwarding incoming mails is a premium feature on Mailgun that requires spending commitments.&lt;/p&gt;
+&lt;p&gt;I will write another post talking about using a free-of-charge mail forwading service. Stay tuned.&lt;/p&gt;
+&lt;h3 id=&#34;smtp-credential&#34;&gt;SMTP Credential&lt;/h3&gt;
+&lt;p&gt;On Mailgun portal, under Settings/Domain Settings and click on SMTP credentials, you will be able to provision new SMTP credentials. The SMTP password will only show one time during user provisioning for security.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-smtp-user-credential-and-smtp-server-detail&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/smtp_hu723168efb4910bc035f808acecc7a6ae_196531_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;SMTP user credential and SMTP server detail&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/smtp_hu723168efb4910bc035f808acecc7a6ae_196531_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2436&#34; height=&#34;1188&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    SMTP user credential and SMTP server detail
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;which-smtp-port-to-use&#34;&gt;Which SMTP Port to Use&lt;/h3&gt;
+&lt;p&gt;Short version: It depends on what your client can support.&lt;/p&gt;
+&lt;p&gt;Long version:&lt;/p&gt;
+&lt;p&gt;Mailgun indicates the following ports are open: 25, 587, and 465 (SSL/TLS)&lt;/p&gt;
+&lt;p&gt;Port 25 is not recommended because many enterprise firewalls deny it for security reasons.&lt;/p&gt;
+&lt;p&gt;Port 587 is the &lt;code&gt;STARTTLS&lt;/code&gt; version. In short, client first initiates a plain TCP connection. When server advises that it supports STARTTLS, client will respond with STARTTLS and proceed with reconnecting to the same 587 port, this time with TLS handshake. The protocol is such that server will deny TLS handshakes in the first place if client did not complete an initial TCP session and ask for STARTTLS.&lt;/p&gt;
+&lt;p&gt;Port 465 is the &amp;ldquo;straight-in&amp;rdquo; SSL/TLS in that it deals with every session as TLS.&lt;/p&gt;
+&lt;h2 id=&#34;postfix&#34;&gt;Postfix&lt;/h2&gt;
+&lt;p&gt;Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install libsasl2-modules postfix ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your-username@mg.yourdomain.com:your-password-here&lt;/code&gt; with your actual SMTP credential.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[smtp.mailgun.org]:587 your-username@mg.yourdomain.com:your-password-here
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo postmap /etc/postfix/sasl/sasl_passwd_mailgun ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Mailgun SMTP authentication.&lt;/p&gt;
+&lt;h3 id=&#34;secure-the-passwords&#34;&gt;Secure the passwords&lt;/h3&gt;
+&lt;p&gt;Both &lt;code&gt;sasl_passwd_mailgun&lt;/code&gt; and &lt;code&gt;sasl_passwd_mailgun.db&lt;/code&gt; contain plain text of your app password, to secure the access, you need to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
+sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
+&lt;p&gt;Postfix&amp;rsquo;s main configuration file is &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt;. See the following my own configuration for your reference.&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js&#34;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;myhostname&lt;/code&gt; indicates the hostname of the Postfix&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;mynetworks&lt;/code&gt; is the IP CIDRs that are allowed to relay mails through Postfix. It should only contain your local networks&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;smtp_sasl_password_maps&lt;/code&gt; is where the sasl_passwd file is located&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;relayhost&lt;/code&gt; is the server name and port. Replace it with&lt;code&gt;[smtp.mailgun.org]:587&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Edit the values respectively.&lt;/p&gt;
+&lt;p&gt;For security reason, do not expose Postfix service to anywhere outside of your trusted networks.&lt;/p&gt;
+&lt;p&gt;In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.&lt;/p&gt;
+&lt;h3 id=&#34;testing-and-troubleshooting&#34;&gt;Testing and Troubleshooting&lt;/h3&gt;
+&lt;p&gt;When config file is done, reload Postfix configurations without having to restart the service:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo postfix reload ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For SMTP testing, I personally like to use 
+&lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
+&lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./swaks \
+    --server &amp;lt;your-postfix-server-ip&amp;gt; \
+    --port 25 \
+    --from yourname@yourdomain.com \
+    --to anymailbox@wherever.com \
+    --h-Subject: &amp;quot;Hello world&amp;quot; \
+    --body &#39;Testing some Mailgun awesomness!&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
+# and
+sudo tail -f /var/log/mail.err ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+&lt;p&gt;On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.&lt;/p&gt;
+&lt;p&gt;Let me know if you have any questions or comments.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo | DAVID&#39;S GARAGE</title>
+    <title>hugo | DAVID&#39;S GARAGE</title>
     <link>https://davidxiao.me/tag/hugo/</link>
       <atom:link href="https://davidxiao.me/tag/hugo/index.xml" rel="self" type="application/rss+xml" />
-    <description>Hugo</description>
+    <description>hugo</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>Hugo</title>
+      <title>hugo</title>
       <link>https://davidxiao.me/tag/hugo/</link>
     </image>
     
@@ -58,10 +58,7 @@
 &lt;h2 id=&#34;1-register-a-domain-name&#34;&gt;1. Register a domain name&lt;/h2&gt;
 &lt;p&gt;It&amp;rsquo;s pretty straightforward. You come up with a great domain name. It is better to be concise and easy to remember. Be creative &amp;lt;3.&lt;/p&gt;
 &lt;p&gt;Then complete the domain registration on any 
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain_name_registrar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Domain Name Registrar&lt;/a&gt; you prefer. I use 
-&lt;a href=&#34;https://domains.google/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Domains&lt;/a&gt; but there are other good choices such as 
-&lt;a href=&#34;https://namecheap.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Namecheap&lt;/a&gt; and 
-&lt;a href=&#34;https://godaddy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Go Daddy&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain_name_registrar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Domain Name Registrar&lt;/a&gt; you prefer. &lt;del&gt;I use Google Domains but there are other good choices such as Namecheap and GoDaddy.&lt;/del&gt;&lt;/p&gt;
 
 
 
@@ -99,6 +96,9 @@
 
 &lt;/figure&gt;
 
+&lt;p&gt;&lt;em&gt;June 2020: For a few reasons, one being Google domains does not provide API for dynamic DNS (A records), I&amp;rsquo;ve changed my domain name registrar to 
+&lt;a href=&#34;https://www.namecheap.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Namecheap&lt;/a&gt;, my DNS provider to 
+&lt;a href=&#34;https://www.cloudflare.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cloudflare&lt;/a&gt;].&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;2-setting-up-hugo&#34;&gt;2. Setting up Hugo&lt;/h2&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hugo&lt;/a&gt; is a 
@@ -218,10 +218,10 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 &lt;figure id=&#34;figure-specify-resource-location-under-project-overview-in-firebase-dashboard&#34;&gt;
 
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/gcplocation_hu7482e11487f16a9bd601892124435dbc_331705_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Specify resource location under Project Overview in Firebase Dashboard&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/gcplocation_hud9b4ca14f10cd788bd7fa102c656d069_282084_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Specify resource location under Project Overview in Firebase Dashboard&#34;&gt;
 
 
-  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/gcplocation_hu7482e11487f16a9bd601892124435dbc_331705_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2356&#34; height=&#34;1516&#34;&gt;
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/gcplocation_hud9b4ca14f10cd788bd7fa102c656d069_282084_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2356&#34; height=&#34;1516&#34;&gt;
 &lt;/a&gt;
 
 
@@ -265,10 +265,10 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 &lt;figure id=&#34;figure-add-custom-domain-to-your-website&#34;&gt;
 
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/customdomain_hu5e404376bd7baccdc222e51f4545ac8f_377474_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Add custom domain to your website&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/building-a-website-in-2020/customdomain_hu5078b5b3d5bdae7e24676b63cc4c7b97_300325_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Add custom domain to your website&#34;&gt;
 
 
-  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/customdomain_hu5e404376bd7baccdc222e51f4545ac8f_377474_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2318&#34; height=&#34;1026&#34;&gt;
+  &lt;img data-src=&#34;https://davidxiao.me/post/building-a-website-in-2020/customdomain_hu5078b5b3d5bdae7e24676b63cc4c7b97_300325_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2318&#34; height=&#34;1026&#34;&gt;
 &lt;/a&gt;
 
 
@@ -280,51 +280,6 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 
 
 &lt;/figure&gt;
-
-&lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
-&lt;script&gt;
-  var remark_config = {
-    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
-    site_id: &#39;davidxiao&#39;,
-    components: [&#39;embed&#39;], 
-                           
-                           
-                           
-                           
-                           
-    url: &#34;https://davidxiao.me/post/building-a-website-in-2020/&#34;, 
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-    max_shown_comments: 10, 
-    theme: &#39;dark&#39;, 
-    locale: &#39;en&#39; 
-  };
-
-  (function(c) {
-    for(var i = 0; i &lt; c.length; i++){
-      var d = document, s = d.createElement(&#39;script&#39;);
-      s.src = remark_config.host + &#39;/web/&#39; +c[i] +&#39;.js&#39;;
-      s.defer = true;
-      (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || [&#39;embed&#39;]);
-&lt;/script&gt;
 
 </description>
     </item>

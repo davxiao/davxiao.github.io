@@ -48,10 +48,10 @@
 &lt;figure id=&#34;figure-oled-display-showing-my-public-ip&#34;&gt;
 
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/pistar-inetip_hu15853694f5406fd361772a3bb29a5fde_1385514_2000x2000_fit_q90_lanczos.jpg&#34; data-caption=&#34;OLED display showing my Public IP&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/pistar-inetip_hu15853694f5406fd361772a3bb29a5fde_1182819_2000x2000_fit_q90_lanczos.jpg&#34; data-caption=&#34;OLED display showing my Public IP&#34;&gt;
 
 
-  &lt;img data-src=&#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/pistar-inetip_hu15853694f5406fd361772a3bb29a5fde_1385514_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2842&#34; height=&#34;2131&#34;&gt;
+  &lt;img data-src=&#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/pistar-inetip_hu15853694f5406fd361772a3bb29a5fde_1182819_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2842&#34; height=&#34;2131&#34;&gt;
 &lt;/a&gt;
 
 
@@ -125,51 +125,6 @@ $ sudo systemctl start mmdvmhost.timer ;
 &lt;/code&gt;&lt;/pre&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;h2&gt;Comments&lt;/h2&gt;&lt;div id=&#34;remark42&#34;&gt;&lt;/div&gt;
-&lt;script&gt;
-  var remark_config = {
-    host: &#34;https://api.davidxiao.me:8964/remark42&#34;, 
-    site_id: &#39;davidxiao&#39;,
-    components: [&#39;embed&#39;], 
-                           
-                           
-                           
-                           
-                           
-    url: &#34;https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/&#34;, 
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-    max_shown_comments: 10, 
-    theme: &#39;dark&#39;, 
-    locale: &#39;en&#39; 
-  };
-
-  (function(c) {
-    for(var i = 0; i &lt; c.length; i++){
-      var d = document, s = d.createElement(&#39;script&#39;);
-      s.src = remark_config.host + &#39;/web/&#39; +c[i] +&#39;.js&#39;;
-      s.defer = true;
-      (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || [&#39;embed&#39;]);
-&lt;/script&gt;
-
 </description>
     </item>
     
