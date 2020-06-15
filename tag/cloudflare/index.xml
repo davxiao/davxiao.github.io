@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cloudflare | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/cloudflare/</link>
+      <atom:link href="https://davidxiao.me/tag/cloudflare/index.xml" rel="self" type="application/rss+xml" />
+    <description>cloudflare</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Wed, 10 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>cloudflare</title>
+      <link>https://davidxiao.me/tag/cloudflare/</link>
+    </image>
+    
+    <item>
+      <title>Dynamic DNS on Cloudflare in 5 Minutes</title>
+      <link>https://davidxiao.me/post/dynamic-dns-on-cloudflare/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/dynamic-dns-on-cloudflare/</guid>
+      <description>&lt;p&gt;You will need the following to get dynamic DNS working on Cloudflare:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Cloudflare as your DNS provider. Migrating from your current DNS provider over to Cloudflare is easy and free whether you are using Godaddy, Namecheap or another one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get API token set up on Cloudflare.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install 
+&lt;a href=&#34;https://github.com/danielpigott/cloudflare-cli&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cloudflare-cli&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-cloudflare-api-token&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/token_hucd115d0ccd33b06635afdf2056bad027_83044_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Cloudflare API token&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/token_hucd115d0ccd33b06635afdf2056bad027_83044_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2076&#34; height=&#34;548&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Cloudflare API token
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Cloudflare Token is preferred way over API key as token enables added security by allowing to specify access level with permissions and resources.&lt;/p&gt;
+&lt;p&gt;Token can be disabled when not in use.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;When those are met, a one-liner like the following will update A record &lt;code&gt;api.davidxiao.me&lt;/code&gt; with your public internet IP.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE: If you are only using DDNS on Cloudflare and not using its CDN, remove &lt;code&gt;--activate&lt;/code&gt; from the command below.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    $ env CF_API_KEY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your-own-cloudflare-token-NOT-api-key&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        CF_API_DOMAIN&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your-own-TLD-such-as-davidxiao.me&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        cfcli --activate --type A edit your-subdomain-such-as-api.davidxiao.me &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;curl -s &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://ip.seeip.org/&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, put the code it into crontab will automate the process.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Integrating a Self-Hosting Commenting System to Your Site</title>
+      <link>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</link>
+      <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</guid>
+      <description>&lt;p&gt;&lt;em&gt;TLDR 👉 It talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a Hugo static site which is built on Hugo and using academic theme.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Before getting started, have a look at any post on my blog at 
+&lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; and see the way commenting works. If you like what you saw, please read on.&lt;/p&gt;
+&lt;h2 id=&#34;what-will-be-covered-in-this-post&#34;&gt;What Will be Covered in This Post&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy remark42 container on Docker&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Protect your remark42 endpoint with Cloudflare CDN&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Integrate remark42 to your Hugo site&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;step-1-hosting-remark42&#34;&gt;Step 1. Hosting Remark42&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://remark42.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Remark42&lt;/a&gt; is an open source commenting system that can be deployed as container. It&amp;rsquo;s self-contained with little external dependencies. You can find deployement guide on its Remark42&amp;rsquo;s git repo.&lt;/p&gt;
+&lt;p&gt;Feel free to do container your way but if you are interested in what tool I use for docker management, it&amp;rsquo;s 
+&lt;a href=&#34;https://github.com/portainer/portainer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Portainer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have the following parameters on my remark42 container:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
+SITE	                site id. For example: davidxiao
+SECRET	                required. can be a long and hard-to-guess string
+DEBUG	                true
+AUTH_GOOGLE_CID         your own value
+AUTH_GOOGLE_CSEC        same
+AUTH_FACEBOOK_CID       same
+AUTH_FACEBOOK_CSEC      same
+AUTH_TWITTER_CID        same
+AUTH_TWITTER_CSEC       same
+AUTH_GITHUB_CID         same
+AUTH_GITHUB_CSEC        same
+ADMIN_SHARED_EMAIL      mail address that will receive notifications such as new comments
+NOTIFY_EMAIL_ADMIN	true
+NOTIFY_TYPE	        email
+NOTIFY_EMAIL_FROM	mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
+AUTH_EMAIL_FROM	        same as above
+ADMIN_SHARED_ID	        OAuth authenticated user id that has admin access. see https://github.com/umputun/remark42#admin-users
+SMTP_HOST	        smtp.mailgun.org
+SMTP_PORT	        465
+SMTP_TLS	        true
+SMTP_USERNAME	        SMTP credential from Mailgun
+SMTP_PASSWORD	        
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;NOTES: for more detail on Remark42 email configuration, check this 
+&lt;a href=&#34;https://github.com/umputun/remark42/blob/master/docs/email.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;app-registration-on-the-oauth-providers&#34;&gt;App Registration on the OAuth Providers&lt;/h3&gt;
+&lt;p&gt;Before you can complete app registration on the 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_OAuth_providers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OAuth providers&lt;/a&gt; supported by Remark42 (Google, facebook, twitter, github), you would need to determine the domain name of your Remark42 api endpoint.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-my-app-registration-page-on-facebook-as-an-example&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/facebook_hu9747433adb773f60d55694d972e5edfc_320108_2000x2000_fit_q90_lanczos.jpg&#34; data-caption=&#34;My app registration page on facebook as an example&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/facebook_hu9747433adb773f60d55694d972e5edfc_320108_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2682&#34; height=&#34;1342&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    My app registration page on facebook as an example
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Using a dynamic DNS (DDNS) would allow you to update IP address when your endpoint IP changes. If you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, DDNS can be helpful.&lt;/p&gt;
+&lt;p&gt;Selecting a proper one as your DDNS provider is important to your solution. There are a few reasons.&lt;/p&gt;
+&lt;p&gt;Each OAuth provider has its own rules over what kind of OAuth redirect URIs is allowed, some just don&amp;rsquo;t allow certain DDNS domains. For instance, facebook does not allow any &lt;code&gt;duckdns.org&lt;/code&gt; domain as part of redirect URIs at time of writing.&lt;/p&gt;
+&lt;p&gt;Second, a typical DDNS provider would resolve your domain to your public IP. It&amp;rsquo;s what DDNS does. But for our purpose of hosting web apps, it&amp;rsquo;s not a great idea to expose your public IP as it could be exploited during an attack. CDN is a better approach but some DDNS providers may not offer that.&lt;/p&gt;
+&lt;p&gt;Service availability is another concern. Without any service level agreement, your API will become inaccessible when the DDNS it relies on stops working.&lt;/p&gt;
+&lt;p&gt;Last, the security posture of some DDNS providers can be doubtful. When the service platform itself gets compromised, bad things could happen really quickly before you are made aware of as end user.&lt;/p&gt;
+&lt;p&gt;👉 See my solution in twofold:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Use a large-scale commercial DNS provider that supports DNS management over API, or even better - when it offers CDN protection over your origin endpoint.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &amp;ldquo;tunneled through&amp;rdquo; a single domain name when needed. See 
+&lt;a href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/&#34;&gt;here&lt;/a&gt; for detail.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With respect to DDNS provider, I landed on Cloudflare after having reviewed a few choices including Cloudflare, Duckdns, No-IP. See my Cloudflare DDNS setup 
+&lt;a href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;step-2-protecttunnel-your-endpoint&#34;&gt;Step 2. Protect(tunnel) your Endpoint&lt;/h2&gt;
+&lt;p&gt;I assume you are using Cloudflare as DNS provider as it&amp;rsquo;s a prerequisite if you need to enable Cloudflare CDN.&lt;/p&gt;
+&lt;p&gt;To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case that&amp;rsquo;s &lt;code&gt;api.davidxiao.me&lt;/code&gt;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-enabling-proxy-by-clicking-on-the-proxy-status-icon&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/cdn_hu16e75ec25f0125b652450b7f91b4df42_98125_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Enabling Proxy by clicking on the Proxy status icon&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/cdn_hu16e75ec25f0125b652450b7f91b4df42_98125_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2096&#34; height=&#34;758&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Enabling Proxy by clicking on the Proxy status icon
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Second, modify caching level to &amp;ldquo;No query string&amp;rdquo;. No Query String means it only delivers files from cache when there is no query string. It&amp;rsquo;s the caching behavior we expect for an API endpoint, isn&amp;rsquo;t it?&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-enabling-proxied-by-clicking-on-proxy-status-icon&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/caching_hu1b96b407d2d894423ea0f28de5f404e7_230832_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Enabling Proxied by clicking on Proxy status icon&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/caching_hu1b96b407d2d894423ea0f28de5f404e7_230832_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2126&#34; height=&#34;1352&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Enabling Proxied by clicking on Proxy status icon
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;step-21-enable-end-to-end-https-with-cloudflare&#34;&gt;Step 2.1 Enable End-to-end HTTPS with Cloudflare&lt;/h2&gt;
+&lt;p&gt;There are several SSL options provided by Cloudflare. Check 
+&lt;a href=&#34;https://support.cloudflare.com/hc/en-us/articles/200170416-End-to-end-HTTPS-with-Cloudflare-Part-3-SSL-options#h_845b3d60-9a03-4db0-8de6-20edc5b11057&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; out to understand the difference.&lt;/p&gt;
+&lt;p&gt;Based on my own needs, I&amp;rsquo;ve set up a &amp;ldquo;Full&amp;rdquo; mode in Cloudflare, which ensures a secure connection between both the web browser and Cloudflare and between Cloudflare and my endpoint. This option uses a self-signed certificate at the my endpoint web server.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-enabling-ssl-in-full-mode&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl1_hu718aada9808213d1863d35c04aab4c8f_284146_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Enabling SSL in Full mode&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl1_hu718aada9808213d1863d35c04aab4c8f_284146_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2178&#34; height=&#34;1348&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Enabling SSL in Full mode
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-generate-and-download-cloudflares-self-signed-certificates&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl2_hu40bb48d6d163b284766543eb6db65c71_208391_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Generate and download Cloudflare&amp;rsquo;s self-signed certificates&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl2_hu40bb48d6d163b284766543eb6db65c71_208391_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2140&#34; height=&#34;1128&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Generate and download Cloudflare&amp;rsquo;s self-signed certificates
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Save the origin certificat as &lt;code&gt;origin-cert.pem&lt;/code&gt; and the private key as &lt;code&gt;priv.key&lt;/code&gt;, place both files on your host and make sure they both have ownership of &lt;code&gt;root&lt;/code&gt; and have &lt;code&gt;0600&lt;/code&gt; permissions.&lt;/p&gt;
+&lt;p&gt;Then you just need to add the file locations in your nginx configuration file. See below my configruation files for example:&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/c4f16ebbcdb2ec0701bcaad24640d12c.js&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;step-3-integrate-remark42-to-your-hugo-site&#34;&gt;Step 3. Integrate Remark42 to Your Hugo Site&lt;/h2&gt;
+&lt;p&gt;Override the &lt;code&gt;comments.html&lt;/code&gt; template by:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and modify the new one as you see fit.&lt;/p&gt;
+&lt;p&gt;The following is my modified version of &lt;code&gt;comments.html&lt;/code&gt;.&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/2c4373dbbf55823ccb3460cd79b37ee5.js&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve got the remark42 commenting system integrated to your Hugo site. Comment, Suggestion, and Feedback are all welcome!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

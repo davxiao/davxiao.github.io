@@ -243,15 +243,14 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./swaks \
-    --server &amp;lt;your-postfix-server-ip&amp;gt; \
-    --port 25 \
-    --from yourname@yourdomain.com \
-    --to anymailbox@wherever.com \
-    --h-Subject: &amp;quot;Hello world&amp;quot; \
-    --body &#39;Testing some Mailgun awesomness!&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --server &amp;lt;your-postfix-server-ip&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --port &lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --from yourname@yourdomain.com &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --to anymailbox@wherever.com &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
 # and
 sudo tail -f /var/log/mail.err ;

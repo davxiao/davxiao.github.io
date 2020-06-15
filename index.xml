@@ -5,12 +5,606 @@
     <link>https://davidxiao.me/</link>
       <atom:link href="https://davidxiao.me/index.xml" rel="self" type="application/rss+xml" />
     <description>DAVID&#39;S GARAGE</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 12 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>DAVID&#39;S GARAGE</title>
       <link>https://davidxiao.me/</link>
     </image>
+    
+    <item>
+      <title>My Awesome GitHub CheatSheet</title>
+      <link>https://davidxiao.me/post/my-awesome-github-cheatsheet/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/my-awesome-github-cheatsheet/</guid>
+      <description>&lt;h2 id=&#34;onboarding-an-existing-project-to-github&#34;&gt;Onboarding an existing project to GitHub&lt;/h2&gt;
+&lt;p&gt;If the project is not yet initialized by git, do the following first&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git init ;
+&lt;span style=&#34;color:#75715e&#34;&gt;# then create a .gitignore file if needed&lt;/span&gt;
+git add . ;
+git status -u ; &lt;span style=&#34;color:#75715e&#34;&gt;# will show you all the files to be committed.&lt;/span&gt;
+git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;init commit&amp;#34;&lt;/span&gt; ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then connect it to GitHub&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git remote add origin git@github.com:davxiao/my-proj.git ;
+git branch --set-upstream-to&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;origin/master master ;
+git pull origin master --allow-unrelated-histories ;
+git push ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Secure Your HTTPS / SSL / TLS</title>
+      <link>https://davidxiao.me/post/secure-your-https-ssl-tls/</link>
+      <pubDate>Thu, 11 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/secure-your-https-ssl-tls/</guid>
+      <description>&lt;p&gt;If you own a personal site and like to make both your site and visitors secure, read this: Just because you&amp;rsquo;ve enabled HTTPS does not mean it&amp;rsquo;s sound and secure.&lt;/p&gt;
+&lt;p&gt;TLS v1.0 and v1.1 are known to be vulnerable and should not be allowed on your site. It is a security best practice to make TLS v1.2 the minimum version allowed on your site.&lt;/p&gt;
+&lt;p&gt;For more detail, check out 
+&lt;a href=&#34;https://security.googleblog.com/2018/10/modernizing-transport-security.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; on Google Security Blog and 
+&lt;a href=&#34;https://developers.google.com/web/updates/2020/02/chrome-81-deps-rems#remove_tls_10_and_tls_11&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; on Google Chrome Browser Updates.&lt;/p&gt;
+&lt;h2 id=&#34;get-a-test-on-your-site&#34;&gt;Get a Test on your Site&lt;/h2&gt;
+&lt;p&gt;You can use 
+&lt;a href=&#34;https://www.ssllabs.com/ssltest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSLLabs&lt;/a&gt; to conduct a quick test on your site.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-initial-test-results&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport1_hu4983f44c036a3ff7c6c18a3e1d69f764_337807_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Initial test results&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport1_hu4983f44c036a3ff7c6c18a3e1d69f764_337807_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2230&#34; height=&#34;1516&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Initial test results
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Click on any of the server will give you a brief explaination on the findings.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-see-explaination-here&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport2_hu3b6b7884631da49756285134b8c40644_167991_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;See explaination here&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport2_hu3b6b7884631da49756285134b8c40644_167991_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2236&#34; height=&#34;1184&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    See explaination here
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;I&amp;rsquo;m using Cloudflare as CDN for api.davidxiao.me, so I went on to the Cloudflare portal and updated the &amp;ldquo;Minimum TLS Version&amp;rdquo; to &amp;ldquo;TLS 1.2&amp;rdquo;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-updating-minimum-tls-version-to-12&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/tls_hu8dc6d5d801d6201179ba0c66dc555f46_76902_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Updating minimum TLS version to 1.2&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/tls_hu8dc6d5d801d6201179ba0c66dc555f46_76902_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2072&#34; height=&#34;806&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Updating minimum TLS version to 1.2
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Then performed a re-scan. It looks much better this time.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-the-new-results&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport3_hu06b46150dc388fe5c30dd7fb161e2545_330910_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;The new results&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport3_hu06b46150dc388fe5c30dd7fb161e2545_330910_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2232&#34; height=&#34;1512&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    The new results
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Hope this is helpful!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dynamic DNS on Cloudflare in 5 Minutes</title>
+      <link>https://davidxiao.me/post/dynamic-dns-on-cloudflare/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/dynamic-dns-on-cloudflare/</guid>
+      <description>&lt;p&gt;You will need the following to get dynamic DNS working on Cloudflare:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Cloudflare as your DNS provider. Migrating from your current DNS provider over to Cloudflare is easy and free whether you are using Godaddy, Namecheap or another one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get API token set up on Cloudflare.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install 
+&lt;a href=&#34;https://github.com/danielpigott/cloudflare-cli&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cloudflare-cli&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-cloudflare-api-token&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/token_hucd115d0ccd33b06635afdf2056bad027_83044_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Cloudflare API token&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/token_hucd115d0ccd33b06635afdf2056bad027_83044_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2076&#34; height=&#34;548&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Cloudflare API token
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Cloudflare Token is preferred way over API key as token enables added security by allowing to specify access level with permissions and resources.&lt;/p&gt;
+&lt;p&gt;Token can be disabled when not in use.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;When those are met, a one-liner like the following will update A record &lt;code&gt;api.davidxiao.me&lt;/code&gt; with your public internet IP.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE: If you are only using DDNS on Cloudflare and not using its CDN, remove &lt;code&gt;--activate&lt;/code&gt; from the command below.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    $ env CF_API_KEY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your-own-cloudflare-token-NOT-api-key&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        CF_API_DOMAIN&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your-own-TLD-such-as-davidxiao.me&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        cfcli --activate --type A edit your-subdomain-such-as-api.davidxiao.me &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;curl -s &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://ip.seeip.org/&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, put the code it into crontab will automate the process.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hosting Multiple Apps With Nginx Rewrite Rules</title>
+      <link>https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/</guid>
+      <description>&lt;p&gt;&lt;span class=&#34;my-dropcap&#34;&gt;S&lt;/span&gt;uppose you plan on hosting multiple API endpoints on one domain, make it &lt;code&gt;api.your-domain.com&lt;/code&gt;, one way to do it is to put each endpoint under a distinctive path, each one would look like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    https://api.your-domain.com/myapp1/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-tunneling-through-a-nginx-reverse-proxy&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/rewrite_hube19bdb3e2a40b92a2fbfcd1b97b96f6_90876_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Tunneling through a Nginx reverse proxy&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/rewrite_hube19bdb3e2a40b92a2fbfcd1b97b96f6_90876_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;860&#34; height=&#34;984&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Tunneling through a Nginx reverse proxy
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Configure a reverse proxy such as Nginx and set up rewrite rules can get it done quickly.&lt;/p&gt;
+&lt;p&gt;See below my example:&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/c4f16ebbcdb2ec0701bcaad24640d12c.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Depending on your Linux distro and Nginx, most would need to put the conf file under &lt;code&gt;/etc/nginx/sites-available/&lt;/code&gt; directory and create a symbol link in &lt;code&gt;/etc/nginx/sites-enabled/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Restart nginx service by &lt;code&gt;sudo systemctl restart nginx ;&lt;/code&gt; and it&amp;rsquo;s working!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Integrating a Self-Hosting Commenting System to Your Site</title>
+      <link>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</link>
+      <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</guid>
+      <description>&lt;p&gt;&lt;em&gt;TLDR 👉 It talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a Hugo static site which is built on Hugo and using academic theme.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Before getting started, have a look at any post on my blog at 
+&lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; and see the way commenting works. If you like what you saw, please read on.&lt;/p&gt;
+&lt;h2 id=&#34;what-will-be-covered-in-this-post&#34;&gt;What Will be Covered in This Post&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy remark42 container on Docker&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Protect your remark42 endpoint with Cloudflare CDN&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Integrate remark42 to your Hugo site&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;step-1-hosting-remark42&#34;&gt;Step 1. Hosting Remark42&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://remark42.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Remark42&lt;/a&gt; is an open source commenting system that can be deployed as container. It&amp;rsquo;s self-contained with little external dependencies. You can find deployement guide on its Remark42&amp;rsquo;s git repo.&lt;/p&gt;
+&lt;p&gt;Feel free to do container your way but if you are interested in what tool I use for docker management, it&amp;rsquo;s 
+&lt;a href=&#34;https://github.com/portainer/portainer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Portainer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have the following parameters on my remark42 container:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
+SITE	                site id. For example: davidxiao
+SECRET	                required. can be a long and hard-to-guess string
+DEBUG	                true
+AUTH_GOOGLE_CID         your own value
+AUTH_GOOGLE_CSEC        same
+AUTH_FACEBOOK_CID       same
+AUTH_FACEBOOK_CSEC      same
+AUTH_TWITTER_CID        same
+AUTH_TWITTER_CSEC       same
+AUTH_GITHUB_CID         same
+AUTH_GITHUB_CSEC        same
+ADMIN_SHARED_EMAIL      mail address that will receive notifications such as new comments
+NOTIFY_EMAIL_ADMIN	true
+NOTIFY_TYPE	        email
+NOTIFY_EMAIL_FROM	mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
+AUTH_EMAIL_FROM	        same as above
+ADMIN_SHARED_ID	        OAuth authenticated user id that has admin access. see https://github.com/umputun/remark42#admin-users
+SMTP_HOST	        smtp.mailgun.org
+SMTP_PORT	        465
+SMTP_TLS	        true
+SMTP_USERNAME	        SMTP credential from Mailgun
+SMTP_PASSWORD	        
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;NOTES: for more detail on Remark42 email configuration, check this 
+&lt;a href=&#34;https://github.com/umputun/remark42/blob/master/docs/email.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;app-registration-on-the-oauth-providers&#34;&gt;App Registration on the OAuth Providers&lt;/h3&gt;
+&lt;p&gt;Before you can complete app registration on the 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_OAuth_providers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OAuth providers&lt;/a&gt; supported by Remark42 (Google, facebook, twitter, github), you would need to determine the domain name of your Remark42 api endpoint.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-my-app-registration-page-on-facebook-as-an-example&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/facebook_hu9747433adb773f60d55694d972e5edfc_320108_2000x2000_fit_q90_lanczos.jpg&#34; data-caption=&#34;My app registration page on facebook as an example&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/facebook_hu9747433adb773f60d55694d972e5edfc_320108_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2682&#34; height=&#34;1342&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    My app registration page on facebook as an example
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Using a dynamic DNS (DDNS) would allow you to update IP address when your endpoint IP changes. If you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, DDNS can be helpful.&lt;/p&gt;
+&lt;p&gt;Selecting a proper one as your DDNS provider is important to your solution. There are a few reasons.&lt;/p&gt;
+&lt;p&gt;Each OAuth provider has its own rules over what kind of OAuth redirect URIs is allowed, some just don&amp;rsquo;t allow certain DDNS domains. For instance, facebook does not allow any &lt;code&gt;duckdns.org&lt;/code&gt; domain as part of redirect URIs at time of writing.&lt;/p&gt;
+&lt;p&gt;Second, a typical DDNS provider would resolve your domain to your public IP. It&amp;rsquo;s what DDNS does. But for our purpose of hosting web apps, it&amp;rsquo;s not a great idea to expose your public IP as it could be exploited during an attack. CDN is a better approach but some DDNS providers may not offer that.&lt;/p&gt;
+&lt;p&gt;Service availability is another concern. Without any service level agreement, your API will become inaccessible when the DDNS it relies on stops working.&lt;/p&gt;
+&lt;p&gt;Last, the security posture of some DDNS providers can be doubtful. When the service platform itself gets compromised, bad things could happen really quickly before you are made aware of as end user.&lt;/p&gt;
+&lt;p&gt;👉 See my solution in twofold:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Use a large-scale commercial DNS provider that supports DNS management over API, or even better - when it offers CDN protection over your origin endpoint.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &amp;ldquo;tunneled through&amp;rdquo; a single domain name when needed. See 
+&lt;a href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/&#34;&gt;here&lt;/a&gt; for detail.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With respect to DDNS provider, I landed on Cloudflare after having reviewed a few choices including Cloudflare, Duckdns, No-IP. See my Cloudflare DDNS setup 
+&lt;a href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;step-2-protecttunnel-your-endpoint&#34;&gt;Step 2. Protect(tunnel) your Endpoint&lt;/h2&gt;
+&lt;p&gt;I assume you are using Cloudflare as DNS provider as it&amp;rsquo;s a prerequisite if you need to enable Cloudflare CDN.&lt;/p&gt;
+&lt;p&gt;To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case that&amp;rsquo;s &lt;code&gt;api.davidxiao.me&lt;/code&gt;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-enabling-proxy-by-clicking-on-the-proxy-status-icon&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/cdn_hu16e75ec25f0125b652450b7f91b4df42_98125_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Enabling Proxy by clicking on the Proxy status icon&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/cdn_hu16e75ec25f0125b652450b7f91b4df42_98125_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2096&#34; height=&#34;758&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Enabling Proxy by clicking on the Proxy status icon
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Second, modify caching level to &amp;ldquo;No query string&amp;rdquo;. No Query String means it only delivers files from cache when there is no query string. It&amp;rsquo;s the caching behavior we expect for an API endpoint, isn&amp;rsquo;t it?&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-enabling-proxied-by-clicking-on-proxy-status-icon&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/caching_hu1b96b407d2d894423ea0f28de5f404e7_230832_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Enabling Proxied by clicking on Proxy status icon&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/caching_hu1b96b407d2d894423ea0f28de5f404e7_230832_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2126&#34; height=&#34;1352&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Enabling Proxied by clicking on Proxy status icon
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;step-21-enable-end-to-end-https-with-cloudflare&#34;&gt;Step 2.1 Enable End-to-end HTTPS with Cloudflare&lt;/h2&gt;
+&lt;p&gt;There are several SSL options provided by Cloudflare. Check 
+&lt;a href=&#34;https://support.cloudflare.com/hc/en-us/articles/200170416-End-to-end-HTTPS-with-Cloudflare-Part-3-SSL-options#h_845b3d60-9a03-4db0-8de6-20edc5b11057&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; out to understand the difference.&lt;/p&gt;
+&lt;p&gt;Based on my own needs, I&amp;rsquo;ve set up a &amp;ldquo;Full&amp;rdquo; mode in Cloudflare, which ensures a secure connection between both the web browser and Cloudflare and between Cloudflare and my endpoint. This option uses a self-signed certificate at the my endpoint web server.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-enabling-ssl-in-full-mode&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl1_hu718aada9808213d1863d35c04aab4c8f_284146_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Enabling SSL in Full mode&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl1_hu718aada9808213d1863d35c04aab4c8f_284146_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2178&#34; height=&#34;1348&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Enabling SSL in Full mode
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-generate-and-download-cloudflares-self-signed-certificates&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl2_hu40bb48d6d163b284766543eb6db65c71_208391_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Generate and download Cloudflare&amp;rsquo;s self-signed certificates&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/ssl2_hu40bb48d6d163b284766543eb6db65c71_208391_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2140&#34; height=&#34;1128&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Generate and download Cloudflare&amp;rsquo;s self-signed certificates
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Save the origin certificat as &lt;code&gt;origin-cert.pem&lt;/code&gt; and the private key as &lt;code&gt;priv.key&lt;/code&gt;, place both files on your host and make sure they both have ownership of &lt;code&gt;root&lt;/code&gt; and have &lt;code&gt;0600&lt;/code&gt; permissions.&lt;/p&gt;
+&lt;p&gt;Then you just need to add the file locations in your nginx configuration file. See below my configruation files for example:&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/c4f16ebbcdb2ec0701bcaad24640d12c.js&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;step-3-integrate-remark42-to-your-hugo-site&#34;&gt;Step 3. Integrate Remark42 to Your Hugo Site&lt;/h2&gt;
+&lt;p&gt;Override the &lt;code&gt;comments.html&lt;/code&gt; template by:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and modify the new one as you see fit.&lt;/p&gt;
+&lt;p&gt;The following is my modified version of &lt;code&gt;comments.html&lt;/code&gt;.&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/2c4373dbbf55823ccb3460cd79b37ee5.js&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve got the remark42 commenting system integrated to your Hugo site. Comment, Suggestion, and Feedback are all welcome!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Setting Up a Mailgun Relay With Postfix</title>
@@ -243,15 +837,14 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./swaks \
-    --server &amp;lt;your-postfix-server-ip&amp;gt; \
-    --port 25 \
-    --from yourname@yourdomain.com \
-    --to anymailbox@wherever.com \
-    --h-Subject: &amp;quot;Hello world&amp;quot; \
-    --body &#39;Testing some Mailgun awesomness!&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --server &amp;lt;your-postfix-server-ip&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --port &lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --from yourname@yourdomain.com &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --to anymailbox@wherever.com &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
 # and
 sudo tail -f /var/log/mail.err ;
@@ -364,15 +957,14 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 &lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./swaks \
-    --server &amp;lt;your-postfix-server-ip&amp;gt; \
-    --port 25 \
-    --from yourmail@gmail.com \
-    --to anymailbox@wherever.com \
-    --h-Subject: &amp;quot;Hello world&amp;quot; \
-    --body &#39;Testing some Mailgun awesomness!&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --server &amp;lt;your-postfix-server-ip&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --port &lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --from yourmail@gmail.com &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --to anymailbox@wherever.com &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
 # and
 sudo tail -f /var/log/mail.err ;
@@ -426,6 +1018,252 @@ sudo tail -f /var/log/mail.err ;
 
 &lt;/figure&gt;
 
+</description>
+    </item>
+    
+    <item>
+      <title>My Homelab Setup From Hardware to KVM - Part 1</title>
+      <link>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TL;DR&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I plan on writing a few posts about my Homelab project. This is the first one focusing on the hardware spec and networking.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Last year I decided to set up a homelab to learn technologies, to run some services for my own use and more importantly, to have fun.&lt;/p&gt;
+&lt;p&gt;There is a budget and a few high level requirements on the infrastructure side I worked on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Be able to run a hypervisor that supports both Linux and Windows virtual machine&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;One single host. No clustering&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use open source as long as the it&amp;rsquo;s mature enough&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Easy to manage and operate&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cost effective&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No dedicated networking hardware&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I plan on writing a few posts with respect to the HW spec I chose, the architecture decisions I made along the way and how I built the whole lab. This is the first post.&lt;/p&gt;
+&lt;h2 id=&#34;hardware&#34;&gt;Hardware&lt;/h2&gt;
+&lt;style&gt;
+table th:nth-of-type(1){
+    width: 20%;
+}
+table th:nth-of-type(2) {
+    width: 30%;
+}
+table th:nth-of-type(3) {
+    width: 50%;
+}
+&lt;/style&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Item&lt;/th&gt;
+&lt;th&gt;Spec&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CPU&lt;/td&gt;
+&lt;td&gt;AMD Ryzen 7 3700x&lt;/td&gt;
+&lt;td&gt;65W TDP. 8-core, 16-thread, 7nm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Motherboard&lt;/td&gt;
+&lt;td&gt;ASUS PRIME X470-PRO&lt;/td&gt;
+&lt;td&gt;See my 
+&lt;a href=&#34;#motherboard&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Memory&lt;/td&gt;
+&lt;td&gt;16gb x2 ECC UDIMM&lt;/td&gt;
+&lt;td&gt;Unbuffered ECC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;System Storage&lt;/td&gt;
+&lt;td&gt;250GB SATA SSD&lt;/td&gt;
+&lt;td&gt;See my 
+&lt;a href=&#34;#storage&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Data Storage&lt;/td&gt;
+&lt;td&gt;4TB HDD&lt;/td&gt;
+&lt;td&gt;As temporary data storage&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Networking&lt;/td&gt;
+&lt;td&gt;On-board Gigabit Ethernet&lt;/td&gt;
+&lt;td&gt;See my 
+&lt;a href=&#34;#networking&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Graphics Card #1&lt;/td&gt;
+&lt;td&gt;Asus GeForce GTX 1660 Super&lt;/td&gt;
+&lt;td&gt;model: TUF-GTX1660S-O6G-GAMING See my 
+&lt;a href=&#34;#gpu-passthrough&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Graphics Card #2&lt;/td&gt;
+&lt;td&gt;MSI GeForce GT 710 1GB&lt;/td&gt;
+&lt;td&gt;Fanless design&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Accessories such as case and power supply are not listed but included in the total cost.&lt;/p&gt;
+&lt;h2 id=&#34;total-cost&#34;&gt;Total Cost&lt;/h2&gt;
+&lt;p&gt;The hardware cost of my homelab is around CA $1,400 when I bought them back in December 2019.&lt;/p&gt;
+&lt;h2 id=&#34;motherboard&#34;&gt;Motherboard&lt;/h2&gt;
+&lt;p&gt;If you need to use ECC memory, you have to pick a motherboard that support ECC. In consumer grade motherboard market, look no further than ASUS and ASROCK. Those two are know for building consumer grade ECC-enabled motherboards.&lt;/p&gt;
+&lt;p&gt;If you need to manage your homelab hypervisor from a remote location, and be able to access it when troubleshooting something low level, e.g. when hypervisor is crashed or configuring BIOS, you have two choices: Phyical Access or IPMI.&lt;/p&gt;
+&lt;h3 id=&#34;phyical-access&#34;&gt;Phyical Access&lt;/h3&gt;
+&lt;p&gt;It means hook up a display, a keyboard and a mouse to your server and sit in front of it when troubleshooting.&lt;/p&gt;
+&lt;h3 id=&#34;ipmi&#34;&gt;IPMI&lt;/h3&gt;
+&lt;p&gt;With IPMI, tasks such as power on/off the machine, configure BIOS settings and monitor console output all can be done from remote wia a web portal. Motherboards that support IPMI typically provide a dedicated Ethernet port for IPMI management. Learn more about IPMI 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;ASROCK has some pretty good IPMI-enabled workstartion motherboards. For AMD cpu, take a look at ASROCK X470D4U or x470d4u2-2t with 10G networking. There are also x570d4i-2t to be released in 2020.&lt;/p&gt;
+&lt;h2 id=&#34;storage&#34;&gt;Storage&lt;/h2&gt;
+&lt;p&gt;To have flexability and speed, I need two kinds of storage. 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Direct-attached_storage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Direct Attached Storage&lt;/a&gt; (DAS) for hypervisor and guest OS images and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Network-attached_storage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Network Attached Storage&lt;/a&gt; (NAS) for data such as video and photos.&lt;/p&gt;
+&lt;h3 id=&#34;ssd-as-das&#34;&gt;SSD as DAS&lt;/h3&gt;
+&lt;p&gt;M2.SSD is my primary choice for DAS since it&amp;rsquo;s much faster than SATA SSD both on paper and in reality. So I bought a 
+&lt;a href=&#34;https://www.xpg.com/us/feature/637/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;XPG SX8800 PRO&lt;/a&gt; 1TB and installed it on my server.&lt;/p&gt;
+&lt;p&gt;Unfortunately my server started freezing up randomly every a few hours to a few days. Troubleshooting proved to be one hell of an effort when my server is in the basement without a dedicated display. I&amp;rsquo;d have to take an external display from my home office down to the basement for troubleshooting. IPMI could have saved my day.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-error-messages-showing-io-error-on-nvme0n1&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/m2ssderror_huf31a9320da0c1a5686802b65e9bd1936_7726651_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Error messages showing I/O error on nvme0n1&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/m2ssderror_huf31a9320da0c1a5686802b65e9bd1936_7726651_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2624&#34; height=&#34;1520&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Error messages showing I/O error on nvme0n1
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;It took some time to reproduce the problem and troubleshoot the issues. Finally I was able to conclude that the controller chip that XPG SX8800 PRO uses may have compatibility issue with PRIME X470-PRO. After I replaced the M2.SSD with an old SATA SSD that I have, the server runs smoothly without any issues.&lt;/p&gt;
+&lt;h3 id=&#34;synology-nas&#34;&gt;Synology NAS&lt;/h3&gt;
+&lt;p&gt;I have a Synology DS416play. It&amp;rsquo;s a little home NAS with 4 bays and 1GB memory. I&amp;rsquo;ve since upgraded the memory to 8G and have it fitted with 4x10G HDD. In terms of usable space it has around 27T with one disk fault tolerance which is more than enough for me.&lt;/p&gt;
+&lt;p&gt;The downside of this NAS is it only has Gigabit Ethernet. If you think 10G is appealing, I&amp;rsquo;m totally with you. QNAP is offering a number of 10G ready NAS. Check it out 
+&lt;a href=&#34;https://www.qnap.com/solution/10gbe-ready/en-us/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; for detail.&lt;/p&gt;
+&lt;h2 id=&#34;networking&#34;&gt;Networking&lt;/h2&gt;
+&lt;p&gt;My home network topology is rather simple. Both homlab server and NAS are connected to the internet router. The router provides basic functionalities such as IP management and port mapping.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-home-network-diagram&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/network_hudc03804a00527dca3247c3973ee82eb5_250291_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Home Network Diagram&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/network_hudc03804a00527dca3247c3973ee82eb5_250291_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1216&#34; height=&#34;1069&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Home Network Diagram
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Given my home network cables are all Cat5 supporting up to 1 Gigabit, I have to stay with 1G network and the on-board Gigabit Ethernet works well in my setup.&lt;/p&gt;
+&lt;p&gt;If you are considering 10G, you would need to make sure all critial devices on the network (e.g. router, NAS, Wifi etc.) are capable of dealing with the throughput, since any performance bottleneck can be the low watermark that undermines the overall network performance.&lt;/p&gt;
+&lt;h2 id=&#34;gpu-passthrough&#34;&gt;GPU Passthrough&lt;/h2&gt;
+&lt;p&gt;The KVM hypervisor supports passing graphics card(s) onto dedicated guest OS.&lt;/p&gt;
+&lt;p&gt;On my setup, GTX1660 is the primary card for tasks such as streaming encoding/decoding whereas the GT710 is pass-through to a Win10 guest. This setup allows me to play a few not-so-demanding games on the Win10 through remote desktop.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-playing-三國志xiiihttpsstoresteampoweredcomapp363150romance_of_the_three_kingdoms_xiii-on-win10-guest-through-remote-desktop&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/playsan13_hu0db209418eed430cc60aa3a34435c293_6154409_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Playing 三國志XIII on Win10 guest through Remote Desktop&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/playsan13_hu0db209418eed430cc60aa3a34435c293_6154409_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2732&#34; height=&#34;1746&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Playing &lt;a href=&#34;https://store.steampowered.com/app/363150/ROMANCE_OF_THE_THREE_KINGDOMS_XIII/&#34;&gt;三國志XIII&lt;/a&gt; on Win10 guest through Remote Desktop
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;I will discuss more on GPU passthrough in the next post.&lt;/p&gt;
 </description>
     </item>
     
@@ -850,7 +1688,7 @@ sudo tail -f /var/log/mail.err ;
       <description>&lt;p&gt;Last Updated: May 26, 2020&lt;/p&gt;
 &lt;p&gt;This Privacy Policy (&amp;ldquo;Policy&amp;rdquo;) outlines the personal information handling practices on main site 
 &lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; and mirror site 
-&lt;a href=&#34;https://davxiao.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davxiao.github.io&lt;/a&gt; (&amp;ldquo;this site&amp;rdquo;, &amp;ldquo;I,&amp;quot;, &amp;ldquo;me,&amp;rdquo; and &amp;ldquo;my&amp;rdquo;).&lt;/p&gt;
+&lt;a href=&#34;https://davxiao.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davxiao.github.io&lt;/a&gt; (&amp;ldquo;this site&amp;rdquo;, &amp;ldquo;I,&amp;rdquo;, &amp;ldquo;me,&amp;rdquo; and &amp;ldquo;my&amp;rdquo;).&lt;/p&gt;
 &lt;p&gt;Before you post any comments on this site, please carefully review this 
 &lt;a href=&#34;https://davidxiao.me/privacy/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Privacy Policy&lt;/a&gt;. By posting comments on this site, you understand that your information will be collected, used, and disclosed as outlined in this Privacy Policy.&lt;/p&gt;
 &lt;p&gt;IF YOU DO NOT AGREE TO THIS PRIVACY POLICY, PLEASE DO NOT POST ANY COMMENTS ON THIS SITE.&lt;/p&gt;
@@ -970,20 +1808,18 @@ $ git clone https://github.com/davxiao/MMDVMHost.git
 $ cmake ../ -DCMAKE_TOOLCHAIN_FILE=./CrossCompile.cmake
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you see warnings like this, try delete &lt;code&gt;CMakeCache.txt&lt;/code&gt; and run the cmake command again.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;CMake Warning:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;CMake Warning:
   Manually-specified variables were not used by the project:
     CMAKE_TOOLCHAIN_FILE
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-last-step&#34;&gt;4. Last Step&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-last-step&#34;&gt;4. Last Step&lt;/h2&gt;
 &lt;p&gt;When Cmake is done, a &lt;code&gt;Makefile&lt;/code&gt; was generated under the same directory. Run the following in the same directory:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ make ;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;When the complication is complete, you should see &lt;code&gt;MMDVMHost&lt;/code&gt; in the &lt;code&gt;cmake/&lt;/code&gt; directory. You may wish to run &lt;code&gt;file ./MMDVMHost&lt;/code&gt; to confirm the target platform is ARM as opposed to amd64. Here&amp;rsquo;s my output:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt; ./MMDVMHost: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt; ./MMDVMHost: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
  dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 2.6.32,
  with debug_info, not stripped
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Congrats! You&amp;rsquo;ve built MMDVMHost using cross compilcation.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Congrats! You&amp;rsquo;ve built MMDVMHost using cross compilcation.&lt;/p&gt;
 &lt;h2 id=&#34;deployment&#34;&gt;Deployment&lt;/h2&gt;
 &lt;p&gt;You can skip this section if you have set up your own deployment pipeline.&lt;/p&gt;
 &lt;p&gt;On my homelab, I mount the same Samba share folder on both the Ubuntu and the Pi, then just copy the MMDVMHost over. Before replacing the MMDVMHost, you need to confirm the SD card is mounted in R/W mode and MMDVMHost service is stopped. Make a backup of the original MMDVMHost is also a good idea.&lt;/p&gt;
@@ -999,13 +1835,13 @@ $ sudo systemctl start mmdvmhost.timer ;
     &lt;p&gt;If you experience &lt;code&gt;mount error(115): Operation now in progress&lt;/code&gt; when mounting CIFS on Pi, it might be caused by the iptable rules set by Pi-Star.&lt;/p&gt;
 &lt;p&gt;To troubleshooting the issue, run the following commands on Pi-Star and see if mount works.&lt;/p&gt;
 &lt;p&gt;No worries, the following changes do not persist between restarts.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;    sudo iptables -P INPUT ACCEPT; 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;    sudo iptables -P INPUT ACCEPT; 
     sudo iptables -P FORWARD ACCEPT; 
     sudo iptables -P OUTPUT ACCEPT; 
     sudo iptables -F; 
     sudo iptables -X ; 
     sudo iptables -nvL ;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -1281,14 +2117,6 @@ $ git submodule update --init --recursive ; # get the latest Academic theme
 &lt;/figure&gt;
 
 </description>
-    </item>
-    
-    <item>
-      <title>Adding Your Own Commenting System to a Static Site</title>
-      <link>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</link>
-      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</guid>
-      <description></description>
     </item>
     
   </channel>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx rewrite | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/nginx-rewrite/</link>
+      <atom:link href="https://davidxiao.me/tag/nginx-rewrite/index.xml" rel="self" type="application/rss+xml" />
+    <description>nginx rewrite</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Wed, 10 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>nginx rewrite</title>
+      <link>https://davidxiao.me/tag/nginx-rewrite/</link>
+    </image>
+    
+    <item>
+      <title>Hosting Multiple Apps With Nginx Rewrite Rules</title>
+      <link>https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/</guid>
+      <description>&lt;p&gt;&lt;span class=&#34;my-dropcap&#34;&gt;S&lt;/span&gt;uppose you plan on hosting multiple API endpoints on one domain, make it &lt;code&gt;api.your-domain.com&lt;/code&gt;, one way to do it is to put each endpoint under a distinctive path, each one would look like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    https://api.your-domain.com/myapp1/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-tunneling-through-a-nginx-reverse-proxy&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/rewrite_hube19bdb3e2a40b92a2fbfcd1b97b96f6_90876_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Tunneling through a Nginx reverse proxy&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/rewrite_hube19bdb3e2a40b92a2fbfcd1b97b96f6_90876_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;860&#34; height=&#34;984&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Tunneling through a Nginx reverse proxy
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Configure a reverse proxy such as Nginx and set up rewrite rules can get it done quickly.&lt;/p&gt;
+&lt;p&gt;See below my example:&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/c4f16ebbcdb2ec0701bcaad24640d12c.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Depending on your Linux distro and Nginx, most would need to put the conf file under &lt;code&gt;/etc/nginx/sites-available/&lt;/code&gt; directory and create a symbol link in &lt;code&gt;/etc/nginx/sites-enabled/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Restart nginx service by &lt;code&gt;sudo systemctl restart nginx ;&lt;/code&gt; and it&amp;rsquo;s working!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

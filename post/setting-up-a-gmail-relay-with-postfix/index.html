@@ -59,14 +59,6 @@
       
     
     
-      
-      
-        
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-        
-      
-    
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
@@ -677,15 +669,14 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 <p>For SMTP testing, I personally like to use 
 <a href="http://www.jetmore.org/john/code/swaks/" target="_blank" rel="noopener">swaks</a>, a purpose-built Perl script.</p>
 <p>With swaks installed, it will be just a one-liner to send out a testing mail:</p>
-<pre><code class="language-bash">./swaks \
-    --server &lt;your-postfix-server-ip&gt; \
-    --port 25 \
-    --from yourmail@gmail.com \
-    --to anymailbox@wherever.com \
-    --h-Subject: &quot;Hello world&quot; \
-    --body 'Testing some Mailgun awesomness!'
-</code></pre>
-<p>If you suspect something went wrong, go check the logs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./swaks <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --server &lt;your-postfix-server-ip&gt; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --port <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --from yourmail@gmail.com <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --to anymailbox@wherever.com <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --h-Subject: <span style="color:#e6db74">&#34;Hello world&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --body <span style="color:#e6db74">&#39;Testing some Mailgun awesomness!&#39;</span>
+</code></pre></div><p>If you suspect something went wrong, go check the logs:</p>
 <pre><code>sudo tail -f /var/log/syslog ;
 # and
 sudo tail -f /var/log/mail.err ;
@@ -809,52 +800,51 @@ sudo tail -f /var/log/mail.err ;
 
 
 <section id="comments">
-    <hr>
-<h2>Comments</h2><div id="remark42"></div>
-<script>
-  var remark_config = {
-    host: "https://api.davidxiao.me/remark42", 
-    site_id: 'davidxiao',
-    components: ['embed'], 
-                           
-                           
-                           
-                           
-                           
-    url: "https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/", 
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-    max_shown_comments: 10, 
-    theme: 'dark', 
-    locale: 'en' 
-  };
+  <hr>
+  <h2>Comments</h2><div id="remark42"></div>
+  <script>
+    var remark_config = {
+      host: "https://api.davidxiao.me/remark42", 
+      site_id: 'davidxiao',
+      components: ['embed'], 
+                            
+                            
+                            
+                            
+                            
+      url: "https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/", 
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+      max_shown_comments: 10, 
+      theme: 'dark', 
+      locale: 'en' 
+    };
 
-  (function(c) {
-    for(var i = 0; i < c.length; i++){
-      var d = document, s = d.createElement('script');
-      s.src = remark_config.host + '/web/' +c[i] +'.js';
-      s.defer = true;
-      (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || ['embed']);
-</script>
-
+    (function(c) {
+      for(var i = 0; i < c.length; i++){
+        var d = document, s = d.createElement('script');
+        s.src = remark_config.host + '/web/' +c[i] +'.js';
+        s.defer = true;
+        (d.head || d.body).appendChild(s);
+      }
+    })(remark_config.components || ['embed']);
+  </script>
 </section>
 
 
@@ -863,6 +853,15 @@ sudo tail -f /var/log/mail.err ;
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/my-homelab-setup-from-hardware-to-kvm-part-1/">My Homelab Setup From Hardware to KVM - Part 1</a></li>
+      
+    </ul>
+  </div>
   
 
 
@@ -883,12 +882,6 @@ sudo tail -f /var/log/mail.err ;
       
 
       
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
-        
-      
 
     
 
@@ -899,7 +892,7 @@ sudo tail -f /var/log/mail.err ;
 
     
     
-    <script>const code_highlighting = true;</script>
+    <script>const code_highlighting = false;</script>
     
 
     
@@ -1001,12 +994,9 @@ sudo tail -f /var/log/mail.err ;
   <p class="powered-by">
     ©2020 David Xiao. 
 
-    Powered by the
+    Made with ❤️ , the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
-    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
-
-    Hosted on
-    <a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a>.
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, <a href="https://remark42.com/" target="_blank" rel="noopener">Remark42</a>, <a href="https://cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a> and <a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a>.
 
     
     <span class="float-right" aria-hidden="true">

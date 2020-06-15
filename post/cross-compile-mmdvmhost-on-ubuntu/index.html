@@ -59,14 +59,6 @@
       
     
     
-      
-      
-        
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-        
-      
-    
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
@@ -652,20 +644,18 @@ $ git clone https://github.com/davxiao/MMDVMHost.git
 $ cmake ../ -DCMAKE_TOOLCHAIN_FILE=./CrossCompile.cmake
 </code></pre>
 <p>If you see warnings like this, try delete <code>CMakeCache.txt</code> and run the cmake command again.</p>
-<pre><code class="language-text">CMake Warning:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">CMake Warning:
   Manually-specified variables were not used by the project:
     CMAKE_TOOLCHAIN_FILE
-</code></pre>
-<h2 id="4-last-step">4. Last Step</h2>
+</code></pre></div><h2 id="4-last-step">4. Last Step</h2>
 <p>When Cmake is done, a <code>Makefile</code> was generated under the same directory. Run the following in the same directory:</p>
 <pre><code>$ make ;
 </code></pre>
 <p>When the complication is complete, you should see <code>MMDVMHost</code> in the <code>cmake/</code> directory. You may wish to run <code>file ./MMDVMHost</code> to confirm the target platform is ARM as opposed to amd64. Here&rsquo;s my output:</p>
-<pre><code class="language-text"> ./MMDVMHost: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"> ./MMDVMHost: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
  dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 2.6.32,
  with debug_info, not stripped
-</code></pre>
-<p>Congrats! You&rsquo;ve built MMDVMHost using cross compilcation.</p>
+</code></pre></div><p>Congrats! You&rsquo;ve built MMDVMHost using cross compilcation.</p>
 <h2 id="deployment">Deployment</h2>
 <p>You can skip this section if you have set up your own deployment pipeline.</p>
 <p>On my homelab, I mount the same Samba share folder on both the Ubuntu and the Pi, then just copy the MMDVMHost over. Before replacing the MMDVMHost, you need to confirm the SD card is mounted in R/W mode and MMDVMHost service is stopped. Make a backup of the original MMDVMHost is also a good idea.</p>
@@ -681,13 +671,13 @@ $ sudo systemctl start mmdvmhost.timer ;
     <p>If you experience <code>mount error(115): Operation now in progress</code> when mounting CIFS on Pi, it might be caused by the iptable rules set by Pi-Star.</p>
 <p>To troubleshooting the issue, run the following commands on Pi-Star and see if mount works.</p>
 <p>No worries, the following changes do not persist between restarts.</p>
-<pre><code class="language-text">    sudo iptables -P INPUT ACCEPT; 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">    sudo iptables -P INPUT ACCEPT; 
     sudo iptables -P FORWARD ACCEPT; 
     sudo iptables -P OUTPUT ACCEPT; 
     sudo iptables -F; 
     sudo iptables -X ; 
     sudo iptables -nvL ;
-</code></pre>
+</code></pre></div>
   </div>
 </div>
 
@@ -807,52 +797,51 @@ $ sudo systemctl start mmdvmhost.timer ;
 
 
 <section id="comments">
-    <hr>
-<h2>Comments</h2><div id="remark42"></div>
-<script>
-  var remark_config = {
-    host: "https://api.davidxiao.me/remark42", 
-    site_id: 'davidxiao',
-    components: ['embed'], 
-                           
-                           
-                           
-                           
-                           
-    url: "https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/", 
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-    max_shown_comments: 10, 
-    theme: 'dark', 
-    locale: 'en' 
-  };
+  <hr>
+  <h2>Comments</h2><div id="remark42"></div>
+  <script>
+    var remark_config = {
+      host: "https://api.davidxiao.me/remark42", 
+      site_id: 'davidxiao',
+      components: ['embed'], 
+                            
+                            
+                            
+                            
+                            
+      url: "https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/", 
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+      max_shown_comments: 10, 
+      theme: 'dark', 
+      locale: 'en' 
+    };
 
-  (function(c) {
-    for(var i = 0; i < c.length; i++){
-      var d = document, s = d.createElement('script');
-      s.src = remark_config.host + '/web/' +c[i] +'.js';
-      s.defer = true;
-      (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || ['embed']);
-</script>
-
+    (function(c) {
+      for(var i = 0; i < c.length; i++){
+        var d = document, s = d.createElement('script');
+        s.src = remark_config.host + '/web/' +c[i] +'.js';
+        s.defer = true;
+        (d.head || d.body).appendChild(s);
+      }
+    })(remark_config.components || ['embed']);
+  </script>
 </section>
 
 
@@ -881,12 +870,6 @@ $ sudo systemctl start mmdvmhost.timer ;
       
 
       
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
-        
-      
 
     
 
@@ -897,7 +880,7 @@ $ sudo systemctl start mmdvmhost.timer ;
 
     
     
-    <script>const code_highlighting = true;</script>
+    <script>const code_highlighting = false;</script>
     
 
     
@@ -999,12 +982,9 @@ $ sudo systemctl start mmdvmhost.timer ;
   <p class="powered-by">
     ©2020 David Xiao. 
 
-    Powered by the
+    Made with ❤️ , the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
-    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
-
-    Hosted on
-    <a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a>.
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, <a href="https://remark42.com/" target="_blank" rel="noopener">Remark42</a>, <a href="https://cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a> and <a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a>.
 
     
     <span class="float-right" aria-hidden="true">

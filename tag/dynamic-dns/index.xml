@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dynamic-dns | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/dynamic-dns/</link>
+      <atom:link href="https://davidxiao.me/tag/dynamic-dns/index.xml" rel="self" type="application/rss+xml" />
+    <description>dynamic-dns</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Wed, 10 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>dynamic-dns</title>
+      <link>https://davidxiao.me/tag/dynamic-dns/</link>
+    </image>
+    
+    <item>
+      <title>Dynamic DNS on Cloudflare in 5 Minutes</title>
+      <link>https://davidxiao.me/post/dynamic-dns-on-cloudflare/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/dynamic-dns-on-cloudflare/</guid>
+      <description>&lt;p&gt;You will need the following to get dynamic DNS working on Cloudflare:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Cloudflare as your DNS provider. Migrating from your current DNS provider over to Cloudflare is easy and free whether you are using Godaddy, Namecheap or another one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get API token set up on Cloudflare.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install 
+&lt;a href=&#34;https://github.com/danielpigott/cloudflare-cli&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cloudflare-cli&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-cloudflare-api-token&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/token_hucd115d0ccd33b06635afdf2056bad027_83044_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Cloudflare API token&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/token_hucd115d0ccd33b06635afdf2056bad027_83044_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2076&#34; height=&#34;548&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Cloudflare API token
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Cloudflare Token is preferred way over API key as token enables added security by allowing to specify access level with permissions and resources.&lt;/p&gt;
+&lt;p&gt;Token can be disabled when not in use.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;When those are met, a one-liner like the following will update A record &lt;code&gt;api.davidxiao.me&lt;/code&gt; with your public internet IP.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE: If you are only using DDNS on Cloudflare and not using its CDN, remove &lt;code&gt;--activate&lt;/code&gt; from the command below.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    $ env CF_API_KEY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your-own-cloudflare-token-NOT-api-key&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        CF_API_DOMAIN&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your-own-TLD-such-as-davidxiao.me&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        cfcli --activate --type A edit your-subdomain-such-as-api.davidxiao.me &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;curl -s &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://ip.seeip.org/&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, put the code it into crontab will automate the process.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/git/</link>
+      <atom:link href="https://davidxiao.me/tag/git/index.xml" rel="self" type="application/rss+xml" />
+    <description>git</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 12 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>git</title>
+      <link>https://davidxiao.me/tag/git/</link>
+    </image>
+    
+    <item>
+      <title>My Awesome GitHub CheatSheet</title>
+      <link>https://davidxiao.me/post/my-awesome-github-cheatsheet/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/my-awesome-github-cheatsheet/</guid>
+      <description>&lt;h2 id=&#34;onboarding-an-existing-project-to-github&#34;&gt;Onboarding an existing project to GitHub&lt;/h2&gt;
+&lt;p&gt;If the project is not yet initialized by git, do the following first&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git init ;
+&lt;span style=&#34;color:#75715e&#34;&gt;# then create a .gitignore file if needed&lt;/span&gt;
+git add . ;
+git status -u ; &lt;span style=&#34;color:#75715e&#34;&gt;# will show you all the files to be committed.&lt;/span&gt;
+git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;init commit&amp;#34;&lt;/span&gt; ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then connect it to GitHub&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git remote add origin git@github.com:davxiao/my-proj.git ;
+git branch --set-upstream-to&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;origin/master master ;
+git pull origin master --allow-unrelated-histories ;
+git push ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

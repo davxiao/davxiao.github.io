@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="If you are looking for integrating a commenting system on your site but also like to have control over its infrastructure and data, this is how I did it.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/">
@@ -58,14 +58,6 @@
     
       
     
-    
-      
-      
-        
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-        
-      
     
 
     
@@ -227,21 +219,20 @@
   
   
     
-    
   
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="DAVID&#39;S GARAGE">
   <meta property="og:url" content="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/">
-  <meta property="og:title" content="Adding Your Own Commenting System to a Static Site | DAVID&#39;S GARAGE">
-  <meta property="og:description" content=""><meta property="og:image" content="https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:title" content="Integrating a Self-Hosting Commenting System to Your Site | DAVID&#39;S GARAGE">
+  <meta property="og:description" content="If you are looking for integrating a commenting system on your site but also like to have control over its infrastructure and data, this is how I did it."><meta property="og:image" content="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/featured.jpg">
+  <meta property="twitter:image" content="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/featured.jpg"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-04-01T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2020-06-09T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-04-01T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2020-06-09T00:00:00&#43;00:00">
   
 
   
@@ -267,10 +258,14 @@
     "@type": "WebPage",
     "@id": "https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/"
   },
-  "headline": "Adding Your Own Commenting System to a Static Site",
+  "headline": "Integrating a Self-Hosting Commenting System to Your Site",
   
-  "datePublished": "2020-04-01T00:00:00Z",
-  "dateModified": "2020-04-01T00:00:00Z",
+  "image": [
+    "https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/featured.jpg"
+  ],
+  
+  "datePublished": "2020-06-09T00:00:00Z",
+  "dateModified": "2020-06-09T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -285,7 +280,7 @@
       "url": "https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": ""
+  "description": "If you are looking for integrating a commenting system on your site but also like to have control over its infrastructure and data, this is how I did it."
 }
 </script>
 
@@ -303,7 +298,7 @@
 
 
 
-  <title>Adding Your Own Commenting System to a Static Site | DAVID&#39;S GARAGE</title>
+  <title>Integrating a Self-Hosting Commenting System to Your Site | DAVID&#39;S GARAGE</title>
 
 </head>
 
@@ -478,22 +473,42 @@
 
 
 
-  
+
+
+
+
+
+
+
 
   
-  
-  
-<div class="article-container pt-3">
-  <h1>Adding Your Own Commenting System to a Static Site</h1>
-
-  
-
   
     
+  
+
+
+<div class="article-container pt-3">
+  <h1>Integrating a Self-Hosting Commenting System to Your Site</h1>
+
+  
+  <p class="page-subtitle">using Remark42, Hugo, Docker and Cloudflare</p>
+  
+
+  
 
 
 <div class="article-metadata">
 
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/author/david-xiao/">David Xiao</a></span>
+  </div>
   
   
 
@@ -503,7 +518,7 @@
     
       
     
-    Apr 1, 2020
+    Jun 9, 2020
   </span>
   
 
@@ -512,7 +527,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    5 min read
   </span>
   
 
@@ -522,25 +537,36 @@
 
   
   
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/site-building/">Site-Building</a>, <a href="/category/homelab/">Homelab</a>, <a href="/category/cloud/">Cloud</a></span>
+  
 
 </div>
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 476px;">
+  <div style="position: relative">
+    <img src="/post/adding-your-own-commenting-system-to-a-static-site/featured_hue701476aa072493c5b52c773ccf9391f_439632_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <a href="https://unsplash.com/photos/uq5RMAZdZG4"><strong>Unsplash</strong></a></span>
+  </div>
 </div>
 
 
@@ -548,7 +574,281 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <p><em>TLDR 👉 It talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a Hugo static site which is built on Hugo and using academic theme.</em></p>
+<p>Before getting started, have a look at any post on my blog at 
+<a href="https://davidxiao.me/" target="_blank" rel="noopener">davidxiao.me</a> and see the way commenting works. If you like what you saw, please read on.</p>
+<h2 id="what-will-be-covered-in-this-post">What Will be Covered in This Post</h2>
+<ul>
+<li>
+<p>Deploy remark42 container on Docker</p>
+</li>
+<li>
+<p>Protect your remark42 endpoint with Cloudflare CDN</p>
+</li>
+<li>
+<p>Integrate remark42 to your Hugo site</p>
+</li>
+</ul>
+<h2 id="step-1-hosting-remark42">Step 1. Hosting Remark42</h2>
+<p>
+<a href="https://remark42.com/" target="_blank" rel="noopener">Remark42</a> is an open source commenting system that can be deployed as container. It&rsquo;s self-contained with little external dependencies. You can find deployement guide on its Remark42&rsquo;s git repo.</p>
+<p>Feel free to do container your way but if you are interested in what tool I use for docker management, it&rsquo;s 
+<a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a>.</p>
+<p>I have the following parameters on my remark42 container:</p>
+<pre><code>REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
+SITE	                site id. For example: davidxiao
+SECRET	                required. can be a long and hard-to-guess string
+DEBUG	                true
+AUTH_GOOGLE_CID         your own value
+AUTH_GOOGLE_CSEC        same
+AUTH_FACEBOOK_CID       same
+AUTH_FACEBOOK_CSEC      same
+AUTH_TWITTER_CID        same
+AUTH_TWITTER_CSEC       same
+AUTH_GITHUB_CID         same
+AUTH_GITHUB_CSEC        same
+ADMIN_SHARED_EMAIL      mail address that will receive notifications such as new comments
+NOTIFY_EMAIL_ADMIN	true
+NOTIFY_TYPE	        email
+NOTIFY_EMAIL_FROM	mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
+AUTH_EMAIL_FROM	        same as above
+ADMIN_SHARED_ID	        OAuth authenticated user id that has admin access. see https://github.com/umputun/remark42#admin-users
+SMTP_HOST	        smtp.mailgun.org
+SMTP_PORT	        465
+SMTP_TLS	        true
+SMTP_USERNAME	        SMTP credential from Mailgun
+SMTP_PASSWORD	        
+</code></pre><p>NOTES: for more detail on Remark42 email configuration, check this 
+<a href="https://github.com/umputun/remark42/blob/master/docs/email.md" target="_blank" rel="noopener">page</a></p>
+<h3 id="app-registration-on-the-oauth-providers">App Registration on the OAuth Providers</h3>
+<p>Before you can complete app registration on the 
+<a href="https://en.wikipedia.org/wiki/List_of_OAuth_providers" target="_blank" rel="noopener">OAuth providers</a> supported by Remark42 (Google, facebook, twitter, github), you would need to determine the domain name of your Remark42 api endpoint.</p>
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-my-app-registration-page-on-facebook-as-an-example">
+
+
+  <a data-fancybox="" href="/post/adding-your-own-commenting-system-to-a-static-site/facebook_hu9747433adb773f60d55694d972e5edfc_320108_2000x2000_fit_q90_lanczos.jpg" data-caption="My app registration page on facebook as an example">
+
+
+  <img data-src="/post/adding-your-own-commenting-system-to-a-static-site/facebook_hu9747433adb773f60d55694d972e5edfc_320108_2000x2000_fit_q90_lanczos.jpg" class="lazyload" alt="" width="2682" height="1342">
+</a>
+
+
+  
+  
+  <figcaption>
+    My app registration page on facebook as an example
+  </figcaption>
+
+
+</figure>
+
+<p>Using a dynamic DNS (DDNS) would allow you to update IP address when your endpoint IP changes. If you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, DDNS can be helpful.</p>
+<p>Selecting a proper one as your DDNS provider is important to your solution. There are a few reasons.</p>
+<p>Each OAuth provider has its own rules over what kind of OAuth redirect URIs is allowed, some just don&rsquo;t allow certain DDNS domains. For instance, facebook does not allow any <code>duckdns.org</code> domain as part of redirect URIs at time of writing.</p>
+<p>Second, a typical DDNS provider would resolve your domain to your public IP. It&rsquo;s what DDNS does. But for our purpose of hosting web apps, it&rsquo;s not a great idea to expose your public IP as it could be exploited during an attack. CDN is a better approach but some DDNS providers may not offer that.</p>
+<p>Service availability is another concern. Without any service level agreement, your API will become inaccessible when the DDNS it relies on stops working.</p>
+<p>Last, the security posture of some DDNS providers can be doubtful. When the service platform itself gets compromised, bad things could happen really quickly before you are made aware of as end user.</p>
+<p>👉 See my solution in twofold:</p>
+<ul>
+<li>
+<p>Use a large-scale commercial DNS provider that supports DNS management over API, or even better - when it offers CDN protection over your origin endpoint.</p>
+</li>
+<li>
+<p>Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &ldquo;tunneled through&rdquo; a single domain name when needed. See 
+<a href="https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/">here</a> for detail.</p>
+</li>
+</ul>
+<p>With respect to DDNS provider, I landed on Cloudflare after having reviewed a few choices including Cloudflare, Duckdns, No-IP. See my Cloudflare DDNS setup 
+<a href="https://davidxiao.me/post/dynamic-dns-on-cloudflare/">here</a>.</p>
+<h2 id="step-2-protecttunnel-your-endpoint">Step 2. Protect(tunnel) your Endpoint</h2>
+<p>I assume you are using Cloudflare as DNS provider as it&rsquo;s a prerequisite if you need to enable Cloudflare CDN.</p>
+<p>To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case that&rsquo;s <code>api.davidxiao.me</code>.</p>
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-enabling-proxy-by-clicking-on-the-proxy-status-icon">
+
+
+  <a data-fancybox="" href="/post/adding-your-own-commenting-system-to-a-static-site/cdn_hu16e75ec25f0125b652450b7f91b4df42_98125_2000x2000_fit_lanczos_2.png" data-caption="Enabling Proxy by clicking on the Proxy status icon">
+
+
+  <img data-src="/post/adding-your-own-commenting-system-to-a-static-site/cdn_hu16e75ec25f0125b652450b7f91b4df42_98125_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="2096" height="758">
+</a>
+
+
+  
+  
+  <figcaption>
+    Enabling Proxy by clicking on the Proxy status icon
+  </figcaption>
+
+
+</figure>
+
+<p>Second, modify caching level to &ldquo;No query string&rdquo;. No Query String means it only delivers files from cache when there is no query string. It&rsquo;s the caching behavior we expect for an API endpoint, isn&rsquo;t it?</p>
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-enabling-proxied-by-clicking-on-proxy-status-icon">
+
+
+  <a data-fancybox="" href="/post/adding-your-own-commenting-system-to-a-static-site/caching_hu1b96b407d2d894423ea0f28de5f404e7_230832_2000x2000_fit_lanczos_2.png" data-caption="Enabling Proxied by clicking on Proxy status icon">
+
+
+  <img data-src="/post/adding-your-own-commenting-system-to-a-static-site/caching_hu1b96b407d2d894423ea0f28de5f404e7_230832_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="2126" height="1352">
+</a>
+
+
+  
+  
+  <figcaption>
+    Enabling Proxied by clicking on Proxy status icon
+  </figcaption>
+
+
+</figure>
+
+<h2 id="step-21-enable-end-to-end-https-with-cloudflare">Step 2.1 Enable End-to-end HTTPS with Cloudflare</h2>
+<p>There are several SSL options provided by Cloudflare. Check 
+<a href="https://support.cloudflare.com/hc/en-us/articles/200170416-End-to-end-HTTPS-with-Cloudflare-Part-3-SSL-options#h_845b3d60-9a03-4db0-8de6-20edc5b11057" target="_blank" rel="noopener">this</a> out to understand the difference.</p>
+<p>Based on my own needs, I&rsquo;ve set up a &ldquo;Full&rdquo; mode in Cloudflare, which ensures a secure connection between both the web browser and Cloudflare and between Cloudflare and my endpoint. This option uses a self-signed certificate at the my endpoint web server.</p>
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-enabling-ssl-in-full-mode">
+
+
+  <a data-fancybox="" href="/post/adding-your-own-commenting-system-to-a-static-site/ssl1_hu718aada9808213d1863d35c04aab4c8f_284146_2000x2000_fit_lanczos_2.png" data-caption="Enabling SSL in Full mode">
+
+
+  <img data-src="/post/adding-your-own-commenting-system-to-a-static-site/ssl1_hu718aada9808213d1863d35c04aab4c8f_284146_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="2178" height="1348">
+</a>
+
+
+  
+  
+  <figcaption>
+    Enabling SSL in Full mode
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-generate-and-download-cloudflares-self-signed-certificates">
+
+
+  <a data-fancybox="" href="/post/adding-your-own-commenting-system-to-a-static-site/ssl2_hu40bb48d6d163b284766543eb6db65c71_208391_2000x2000_fit_lanczos_2.png" data-caption="Generate and download Cloudflare&rsquo;s self-signed certificates">
+
+
+  <img data-src="/post/adding-your-own-commenting-system-to-a-static-site/ssl2_hu40bb48d6d163b284766543eb6db65c71_208391_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="2140" height="1128">
+</a>
+
+
+  
+  
+  <figcaption>
+    Generate and download Cloudflare&rsquo;s self-signed certificates
+  </figcaption>
+
+
+</figure>
+
+<p>Save the origin certificat as <code>origin-cert.pem</code> and the private key as <code>priv.key</code>, place both files on your host and make sure they both have ownership of <code>root</code> and have <code>0600</code> permissions.</p>
+<p>Then you just need to add the file locations in your nginx configuration file. See below my configruation files for example:</p>
+<script type="application/javascript" src="https://gist.github.com/davxiao/c4f16ebbcdb2ec0701bcaad24640d12c.js"></script>
+
+<h2 id="step-3-integrate-remark42-to-your-hugo-site">Step 3. Integrate Remark42 to Your Hugo Site</h2>
+<p>Override the <code>comments.html</code> template by:</p>
+<pre><code>$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
+</code></pre>
+<p>and modify the new one as you see fit.</p>
+<p>The following is my modified version of <code>comments.html</code>.</p>
+<script type="application/javascript" src="https://gist.github.com/davxiao/2c4373dbbf55823ccb3460cd79b37ee5.js"></script>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Congrats! You&rsquo;ve got the remark42 commenting system integrated to your Hugo site. Comment, Suggestion, and Feedback are all welcome!</p>
+
     </div>
 
     
@@ -556,6 +856,22 @@
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/cloudflare/">cloudflare</a>
+  
+  <a class="badge badge-light" href="/tag/self-hosting/">self-hosting</a>
+  
+  <a class="badge badge-light" href="/tag/docker/">docker</a>
+  
+  <a class="badge badge-light" href="/tag/hugo/">hugo</a>
+  
+  <a class="badge badge-light" href="/tag/hugo-academic/">hugo-academic</a>
+  
+  <a class="badge badge-light" href="/tag/remark42/">remark42</a>
+  
+</div>
 
 
 
@@ -570,7 +886,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;text=Adding%20Your%20Own%20Commenting%20System%20to%20a%20Static%20Site" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;text=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -583,7 +899,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;t=Adding%20Your%20Own%20Commenting%20System%20to%20a%20Static%20Site" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;t=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -596,7 +912,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Adding%20Your%20Own%20Commenting%20System%20to%20a%20Static%20Site&amp;body=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site&amp;body=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -609,7 +925,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;title=Adding%20Your%20Own%20Commenting%20System%20to%20a%20Static%20Site" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;title=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -622,7 +938,7 @@
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Adding%20Your%20Own%20Commenting%20System%20to%20a%20Static%20Site%20https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site%20https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -635,7 +951,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;title=Adding%20Your%20Own%20Commenting%20System%20to%20a%20Static%20Site" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;title=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -650,147 +966,52 @@
 
 
 
-
-
-
-
-  
-  
-
-
-
-
-
-  
-    
-    
-    
-      
-    
-    
-    
-    <div class="media author-card content-widget-hr">
-      
-        
-        <img class="avatar mr-3 avatar-square" src="/author/david-xiao/avatar_huc9a803f18ab730e706c7c1ec5503b96b_29954_270x270_fill_lanczos_center_2.png" alt="David Xiao">
-      
-
-      <div class="media-body">
-        <h5 class="card-title"><a href="https://davidxiao.me/">David Xiao</a></h5>
-        <h6 class="card-subtitle">Senior Cloud Engineer</h6>
-        <p class="card-text">My research interests include cybersecurity, cloud security and AI.</p>
-        <ul class="network-icon" aria-hidden="true">
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="/#contact" >
-        <i class="fas fa-envelope"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://twitter.com/davxiao" target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://github.com/davxiao" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-      </a>
-    </li>
-  
-</ul>
-
-      </div>
-    </div>
-  
-
-
-
-
-
-
-
 <section id="comments">
-    <hr>
-<h2>Comments</h2><div id="remark42"></div>
-<script>
-  var remark_config = {
-    host: "https://api.davidxiao.me/remark42", 
-    site_id: 'davidxiao',
-    components: ['embed'], 
-                           
-                           
-                           
-                           
-                           
-    url: "https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/", 
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-    max_shown_comments: 10, 
-    theme: 'dark', 
-    locale: 'en' 
-  };
+  <hr>
+  <h2>Comments</h2><div id="remark42"></div>
+  <script>
+    var remark_config = {
+      host: "https://api.davidxiao.me/remark42", 
+      site_id: 'davidxiao',
+      components: ['embed'], 
+                            
+                            
+                            
+                            
+                            
+      url: "https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/", 
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+      max_shown_comments: 10, 
+      theme: 'dark', 
+      locale: 'en' 
+    };
 
-  (function(c) {
-    for(var i = 0; i < c.length; i++){
-      var d = document, s = d.createElement('script');
-      s.src = remark_config.host + '/web/' +c[i] +'.js';
-      s.defer = true;
-      (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || ['embed']);
-</script>
-
+    (function(c) {
+      for(var i = 0; i < c.length; i++){
+        var d = document, s = d.createElement('script');
+        s.src = remark_config.host + '/web/' +c[i] +'.js';
+        s.defer = true;
+        (d.head || d.body).appendChild(s);
+      }
+    })(remark_config.components || ['embed']);
+  </script>
 </section>
 
 
@@ -799,6 +1020,15 @@
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/building-a-website-in-2020/">Building a website in 2020</a></li>
+      
+    </ul>
+  </div>
   
 
 
@@ -819,12 +1049,6 @@
       
 
       
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
-        
-      
 
     
 
@@ -835,7 +1059,7 @@
 
     
     
-    <script>const code_highlighting = true;</script>
+    <script>const code_highlighting = false;</script>
     
 
     
@@ -937,12 +1161,9 @@
   <p class="powered-by">
     ©2020 David Xiao. 
 
-    Powered by the
+    Made with ❤️ , the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
-    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
-
-    Hosted on
-    <a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a>.
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, <a href="https://remark42.com/" target="_blank" rel="noopener">Remark42</a>, <a href="https://cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a> and <a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a>.
 
     
     <span class="float-right" aria-hidden="true">

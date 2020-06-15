@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>https | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/https/</link>
+      <atom:link href="https://davidxiao.me/tag/https/index.xml" rel="self" type="application/rss+xml" />
+    <description>https</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 11 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>https</title>
+      <link>https://davidxiao.me/tag/https/</link>
+    </image>
+    
+    <item>
+      <title>Secure Your HTTPS / SSL / TLS</title>
+      <link>https://davidxiao.me/post/secure-your-https-ssl-tls/</link>
+      <pubDate>Thu, 11 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/secure-your-https-ssl-tls/</guid>
+      <description>&lt;p&gt;If you own a personal site and like to make both your site and visitors secure, read this: Just because you&amp;rsquo;ve enabled HTTPS does not mean it&amp;rsquo;s sound and secure.&lt;/p&gt;
+&lt;p&gt;TLS v1.0 and v1.1 are known to be vulnerable and should not be allowed on your site. It is a security best practice to make TLS v1.2 the minimum version allowed on your site.&lt;/p&gt;
+&lt;p&gt;For more detail, check out 
+&lt;a href=&#34;https://security.googleblog.com/2018/10/modernizing-transport-security.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; on Google Security Blog and 
+&lt;a href=&#34;https://developers.google.com/web/updates/2020/02/chrome-81-deps-rems#remove_tls_10_and_tls_11&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; on Google Chrome Browser Updates.&lt;/p&gt;
+&lt;h2 id=&#34;get-a-test-on-your-site&#34;&gt;Get a Test on your Site&lt;/h2&gt;
+&lt;p&gt;You can use 
+&lt;a href=&#34;https://www.ssllabs.com/ssltest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSLLabs&lt;/a&gt; to conduct a quick test on your site.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-initial-test-results&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport1_hu4983f44c036a3ff7c6c18a3e1d69f764_337807_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Initial test results&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport1_hu4983f44c036a3ff7c6c18a3e1d69f764_337807_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2230&#34; height=&#34;1516&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Initial test results
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Click on any of the server will give you a brief explaination on the findings.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-see-explaination-here&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport2_hu3b6b7884631da49756285134b8c40644_167991_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;See explaination here&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport2_hu3b6b7884631da49756285134b8c40644_167991_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2236&#34; height=&#34;1184&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    See explaination here
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;I&amp;rsquo;m using Cloudflare as CDN for api.davidxiao.me, so I went on to the Cloudflare portal and updated the &amp;ldquo;Minimum TLS Version&amp;rdquo; to &amp;ldquo;TLS 1.2&amp;rdquo;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-updating-minimum-tls-version-to-12&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/tls_hu8dc6d5d801d6201179ba0c66dc555f46_76902_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Updating minimum TLS version to 1.2&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/tls_hu8dc6d5d801d6201179ba0c66dc555f46_76902_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2072&#34; height=&#34;806&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Updating minimum TLS version to 1.2
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Then performed a re-scan. It looks much better this time.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-the-new-results&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport3_hu06b46150dc388fe5c30dd7fb161e2545_330910_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;The new results&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/secure-your-https-ssl-tls/sslreport3_hu06b46150dc388fe5c30dd7fb161e2545_330910_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2232&#34; height=&#34;1512&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    The new results
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Hope this is helpful!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

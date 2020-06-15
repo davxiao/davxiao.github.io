@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>proxmox | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/proxmox/</link>
+      <atom:link href="https://davidxiao.me/tag/proxmox/index.xml" rel="self" type="application/rss+xml" />
+    <description>proxmox</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>proxmox</title>
+      <link>https://davidxiao.me/tag/proxmox/</link>
+    </image>
+    
+    <item>
+      <title>My Homelab Setup From Hardware to KVM - Part 1</title>
+      <link>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TL;DR&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I plan on writing a few posts about my Homelab project. This is the first one focusing on the hardware spec and networking.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Last year I decided to set up a homelab to learn technologies, to run some services for my own use and more importantly, to have fun.&lt;/p&gt;
+&lt;p&gt;There is a budget and a few high level requirements on the infrastructure side I worked on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Be able to run a hypervisor that supports both Linux and Windows virtual machine&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;One single host. No clustering&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use open source as long as the it&amp;rsquo;s mature enough&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Easy to manage and operate&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cost effective&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No dedicated networking hardware&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I plan on writing a few posts with respect to the HW spec I chose, the architecture decisions I made along the way and how I built the whole lab. This is the first post.&lt;/p&gt;
+&lt;h2 id=&#34;hardware&#34;&gt;Hardware&lt;/h2&gt;
+&lt;style&gt;
+table th:nth-of-type(1){
+    width: 20%;
+}
+table th:nth-of-type(2) {
+    width: 30%;
+}
+table th:nth-of-type(3) {
+    width: 50%;
+}
+&lt;/style&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Item&lt;/th&gt;
+&lt;th&gt;Spec&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CPU&lt;/td&gt;
+&lt;td&gt;AMD Ryzen 7 3700x&lt;/td&gt;
+&lt;td&gt;65W TDP. 8-core, 16-thread, 7nm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Motherboard&lt;/td&gt;
+&lt;td&gt;ASUS PRIME X470-PRO&lt;/td&gt;
+&lt;td&gt;See my 
+&lt;a href=&#34;#motherboard&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Memory&lt;/td&gt;
+&lt;td&gt;16gb x2 ECC UDIMM&lt;/td&gt;
+&lt;td&gt;Unbuffered ECC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;System Storage&lt;/td&gt;
+&lt;td&gt;250GB SATA SSD&lt;/td&gt;
+&lt;td&gt;See my 
+&lt;a href=&#34;#storage&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Data Storage&lt;/td&gt;
+&lt;td&gt;4TB HDD&lt;/td&gt;
+&lt;td&gt;As temporary data storage&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Networking&lt;/td&gt;
+&lt;td&gt;On-board Gigabit Ethernet&lt;/td&gt;
+&lt;td&gt;See my 
+&lt;a href=&#34;#networking&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Graphics Card #1&lt;/td&gt;
+&lt;td&gt;Asus GeForce GTX 1660 Super&lt;/td&gt;
+&lt;td&gt;model: TUF-GTX1660S-O6G-GAMING See my 
+&lt;a href=&#34;#gpu-passthrough&#34;&gt;notes&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Graphics Card #2&lt;/td&gt;
+&lt;td&gt;MSI GeForce GT 710 1GB&lt;/td&gt;
+&lt;td&gt;Fanless design&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Accessories such as case and power supply are not listed but included in the total cost.&lt;/p&gt;
+&lt;h2 id=&#34;total-cost&#34;&gt;Total Cost&lt;/h2&gt;
+&lt;p&gt;The hardware cost of my homelab is around CA $1,400 when I bought them back in December 2019.&lt;/p&gt;
+&lt;h2 id=&#34;motherboard&#34;&gt;Motherboard&lt;/h2&gt;
+&lt;p&gt;If you need to use ECC memory, you have to pick a motherboard that support ECC. In consumer grade motherboard market, look no further than ASUS and ASROCK. Those two are know for building consumer grade ECC-enabled motherboards.&lt;/p&gt;
+&lt;p&gt;If you need to manage your homelab hypervisor from a remote location, and be able to access it when troubleshooting something low level, e.g. when hypervisor is crashed or configuring BIOS, you have two choices: Phyical Access or IPMI.&lt;/p&gt;
+&lt;h3 id=&#34;phyical-access&#34;&gt;Phyical Access&lt;/h3&gt;
+&lt;p&gt;It means hook up a display, a keyboard and a mouse to your server and sit in front of it when troubleshooting.&lt;/p&gt;
+&lt;h3 id=&#34;ipmi&#34;&gt;IPMI&lt;/h3&gt;
+&lt;p&gt;With IPMI, tasks such as power on/off the machine, configure BIOS settings and monitor console output all can be done from remote wia a web portal. Motherboards that support IPMI typically provide a dedicated Ethernet port for IPMI management. Learn more about IPMI 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;ASROCK has some pretty good IPMI-enabled workstartion motherboards. For AMD cpu, take a look at ASROCK X470D4U or x470d4u2-2t with 10G networking. There are also x570d4i-2t to be released in 2020.&lt;/p&gt;
+&lt;h2 id=&#34;storage&#34;&gt;Storage&lt;/h2&gt;
+&lt;p&gt;To have flexability and speed, I need two kinds of storage. 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Direct-attached_storage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Direct Attached Storage&lt;/a&gt; (DAS) for hypervisor and guest OS images and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Network-attached_storage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Network Attached Storage&lt;/a&gt; (NAS) for data such as video and photos.&lt;/p&gt;
+&lt;h3 id=&#34;ssd-as-das&#34;&gt;SSD as DAS&lt;/h3&gt;
+&lt;p&gt;M2.SSD is my primary choice for DAS since it&amp;rsquo;s much faster than SATA SSD both on paper and in reality. So I bought a 
+&lt;a href=&#34;https://www.xpg.com/us/feature/637/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;XPG SX8800 PRO&lt;/a&gt; 1TB and installed it on my server.&lt;/p&gt;
+&lt;p&gt;Unfortunately my server started freezing up randomly every a few hours to a few days. Troubleshooting proved to be one hell of an effort when my server is in the basement without a dedicated display. I&amp;rsquo;d have to take an external display from my home office down to the basement for troubleshooting. IPMI could have saved my day.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-error-messages-showing-io-error-on-nvme0n1&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/m2ssderror_huf31a9320da0c1a5686802b65e9bd1936_7726651_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Error messages showing I/O error on nvme0n1&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/m2ssderror_huf31a9320da0c1a5686802b65e9bd1936_7726651_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2624&#34; height=&#34;1520&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Error messages showing I/O error on nvme0n1
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;It took some time to reproduce the problem and troubleshoot the issues. Finally I was able to conclude that the controller chip that XPG SX8800 PRO uses may have compatibility issue with PRIME X470-PRO. After I replaced the M2.SSD with an old SATA SSD that I have, the server runs smoothly without any issues.&lt;/p&gt;
+&lt;h3 id=&#34;synology-nas&#34;&gt;Synology NAS&lt;/h3&gt;
+&lt;p&gt;I have a Synology DS416play. It&amp;rsquo;s a little home NAS with 4 bays and 1GB memory. I&amp;rsquo;ve since upgraded the memory to 8G and have it fitted with 4x10G HDD. In terms of usable space it has around 27T with one disk fault tolerance which is more than enough for me.&lt;/p&gt;
+&lt;p&gt;The downside of this NAS is it only has Gigabit Ethernet. If you think 10G is appealing, I&amp;rsquo;m totally with you. QNAP is offering a number of 10G ready NAS. Check it out 
+&lt;a href=&#34;https://www.qnap.com/solution/10gbe-ready/en-us/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; for detail.&lt;/p&gt;
+&lt;h2 id=&#34;networking&#34;&gt;Networking&lt;/h2&gt;
+&lt;p&gt;My home network topology is rather simple. Both homlab server and NAS are connected to the internet router. The router provides basic functionalities such as IP management and port mapping.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-home-network-diagram&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/network_hudc03804a00527dca3247c3973ee82eb5_250291_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Home Network Diagram&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/network_hudc03804a00527dca3247c3973ee82eb5_250291_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1216&#34; height=&#34;1069&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Home Network Diagram
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Given my home network cables are all Cat5 supporting up to 1 Gigabit, I have to stay with 1G network and the on-board Gigabit Ethernet works well in my setup.&lt;/p&gt;
+&lt;p&gt;If you are considering 10G, you would need to make sure all critial devices on the network (e.g. router, NAS, Wifi etc.) are capable of dealing with the throughput, since any performance bottleneck can be the low watermark that undermines the overall network performance.&lt;/p&gt;
+&lt;h2 id=&#34;gpu-passthrough&#34;&gt;GPU Passthrough&lt;/h2&gt;
+&lt;p&gt;The KVM hypervisor supports passing graphics card(s) onto dedicated guest OS.&lt;/p&gt;
+&lt;p&gt;On my setup, GTX1660 is the primary card for tasks such as streaming encoding/decoding whereas the GT710 is pass-through to a Win10 guest. This setup allows me to play a few not-so-demanding games on the Win10 through remote desktop.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-playing-三國志xiiihttpsstoresteampoweredcomapp363150romance_of_the_three_kingdoms_xiii-on-win10-guest-through-remote-desktop&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/playsan13_hu0db209418eed430cc60aa3a34435c293_6154409_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Playing 三國志XIII on Win10 guest through Remote Desktop&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/playsan13_hu0db209418eed430cc60aa3a34435c293_6154409_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2732&#34; height=&#34;1746&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Playing &lt;a href=&#34;https://store.steampowered.com/app/363150/ROMANCE_OF_THE_THREE_KINGDOMS_XIII/&#34;&gt;三國志XIII&lt;/a&gt; on Win10 guest through Remote Desktop
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;I will discuss more on GPU passthrough in the next post.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

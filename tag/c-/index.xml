@@ -87,20 +87,18 @@ $ git clone https://github.com/davxiao/MMDVMHost.git
 $ cmake ../ -DCMAKE_TOOLCHAIN_FILE=./CrossCompile.cmake
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you see warnings like this, try delete &lt;code&gt;CMakeCache.txt&lt;/code&gt; and run the cmake command again.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;CMake Warning:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;CMake Warning:
   Manually-specified variables were not used by the project:
     CMAKE_TOOLCHAIN_FILE
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;4-last-step&#34;&gt;4. Last Step&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-last-step&#34;&gt;4. Last Step&lt;/h2&gt;
 &lt;p&gt;When Cmake is done, a &lt;code&gt;Makefile&lt;/code&gt; was generated under the same directory. Run the following in the same directory:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ make ;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;When the complication is complete, you should see &lt;code&gt;MMDVMHost&lt;/code&gt; in the &lt;code&gt;cmake/&lt;/code&gt; directory. You may wish to run &lt;code&gt;file ./MMDVMHost&lt;/code&gt; to confirm the target platform is ARM as opposed to amd64. Here&amp;rsquo;s my output:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt; ./MMDVMHost: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt; ./MMDVMHost: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
  dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 2.6.32,
  with debug_info, not stripped
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Congrats! You&amp;rsquo;ve built MMDVMHost using cross compilcation.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Congrats! You&amp;rsquo;ve built MMDVMHost using cross compilcation.&lt;/p&gt;
 &lt;h2 id=&#34;deployment&#34;&gt;Deployment&lt;/h2&gt;
 &lt;p&gt;You can skip this section if you have set up your own deployment pipeline.&lt;/p&gt;
 &lt;p&gt;On my homelab, I mount the same Samba share folder on both the Ubuntu and the Pi, then just copy the MMDVMHost over. Before replacing the MMDVMHost, you need to confirm the SD card is mounted in R/W mode and MMDVMHost service is stopped. Make a backup of the original MMDVMHost is also a good idea.&lt;/p&gt;
@@ -116,13 +114,13 @@ $ sudo systemctl start mmdvmhost.timer ;
     &lt;p&gt;If you experience &lt;code&gt;mount error(115): Operation now in progress&lt;/code&gt; when mounting CIFS on Pi, it might be caused by the iptable rules set by Pi-Star.&lt;/p&gt;
 &lt;p&gt;To troubleshooting the issue, run the following commands on Pi-Star and see if mount works.&lt;/p&gt;
 &lt;p&gt;No worries, the following changes do not persist between restarts.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;    sudo iptables -P INPUT ACCEPT; 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;    sudo iptables -P INPUT ACCEPT; 
     sudo iptables -P FORWARD ACCEPT; 
     sudo iptables -P OUTPUT ACCEPT; 
     sudo iptables -F; 
     sudo iptables -X ; 
     sudo iptables -nvL ;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </description>
