@@ -5,12 +5,22 @@
     <link>https://davidxiao.me/post/</link>
       <atom:link href="https://davidxiao.me/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 12 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://davidxiao.me/post/</link>
     </image>
+    
+    <item>
+      <title>What I have Been Reading</title>
+      <link>https://davidxiao.me/post/what-ive-been-reading/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/what-ive-been-reading/</guid>
+      <description>&lt;p&gt;A Conflict of Visions: Ideological Origins of Political Struggles by Thomas Sowell. 2007. 
+&lt;a href=&#34;https://www.amazon.com/dp/B06XBV7WHL&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On Amazon&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>My Awesome GitHub CheatSheet</title>
