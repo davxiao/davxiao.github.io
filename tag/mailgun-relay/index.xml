@@ -201,21 +201,17 @@
 &lt;p&gt;Port 465 is the &amp;ldquo;straight-in&amp;rdquo; SSL/TLS in that it deals with every session as TLS.&lt;/p&gt;
 &lt;h2 id=&#34;postfix&#34;&gt;Postfix&lt;/h2&gt;
 &lt;p&gt;Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install libsasl2-modules postfix ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your-username@mg.yourdomain.com:your-password-here&lt;/code&gt; with your actual SMTP credential.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[smtp.mailgun.org]:587 your-username@mg.yourdomain.com:your-password-here
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postmap /etc/postfix/sasl/sasl_passwd_mailgun ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Mailgun SMTP authentication.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo apt install libsasl2-modules postfix ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your-username@mg.yourdomain.com:your-password-here&lt;/code&gt; with your actual SMTP credential.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[smtp.mailgun.org]:587 your-username@mg.yourdomain.com:your-password-here
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo postmap /etc/postfix/sasl/sasl_passwd_mailgun ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Mailgun SMTP authentication.&lt;/p&gt;
 &lt;h3 id=&#34;secure-the-passwords&#34;&gt;Secure the passwords&lt;/h3&gt;
 &lt;p&gt;Both &lt;code&gt;sasl_passwd_mailgun&lt;/code&gt; and &lt;code&gt;sasl_passwd_mailgun.db&lt;/code&gt; contain plain text of your app password, to secure the access, you need to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
 sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
 &lt;p&gt;Postfix&amp;rsquo;s main configuration file is &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt;. See the following my own configuration for your reference.&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js&#34;&gt;&lt;/script&gt;
 
@@ -238,9 +234,8 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;p&gt;In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.&lt;/p&gt;
 &lt;h3 id=&#34;testing-and-troubleshooting&#34;&gt;Testing and Troubleshooting&lt;/h3&gt;
 &lt;p&gt;When config file is done, reload Postfix configurations without having to restart the service:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postfix reload ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For SMTP testing, I personally like to use 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo postfix reload ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
@@ -251,11 +246,10 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
-# and
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo tail -f /var/log/syslog ;
+&lt;span style=&#34;color:#75715e&#34;&gt;# and&lt;/span&gt;
 sudo tail -f /var/log/mail.err ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
 &lt;p&gt;On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.&lt;/p&gt;
 &lt;p&gt;Let me know if you have any questions or comments.&lt;/p&gt;
 </description>

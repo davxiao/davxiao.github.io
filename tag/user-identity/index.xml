@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>user-identity | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/user-identity/</link>
+      <atom:link href="https://davidxiao.me/tag/user-identity/index.xml" rel="self" type="application/rss+xml" />
+    <description>user-identity</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>user-identity</title>
+      <link>https://davidxiao.me/tag/user-identity/</link>
+    </image>
+    
+    <item>
+      <title>Extract User Identity from AWS Cloudtrail</title>
+      <link>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</guid>
+      <description>&lt;h2 id=&#34;why-do-i-care&#34;&gt;Why Do I Care&lt;/h2&gt;
+&lt;p&gt;Cloudtrail is an essential service in AWS that provides the source of truth on what has happened at API and event level.&lt;/p&gt;
+&lt;p&gt;Whether you are troubleshooting or investigating something on AWS, being able to look up user identity across the Cloudtrail event logs can be very helpful.&lt;/p&gt;
+&lt;p&gt;By default AWS provides 90 days of event history and you can look up on key fields such as &lt;code&gt;User name&lt;/code&gt;, &lt;code&gt;event time&lt;/code&gt; or &lt;code&gt;event id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In some cases that&amp;rsquo;s all you need.&lt;/p&gt;
+&lt;p&gt;But there are cases where you need to go beyond the 90 days and want to be able to extract user identity information from Cloudtrail logs directly.&lt;/p&gt;
+&lt;p&gt;For example, you may wish to write a Lambda function to auto-tag any new EC2 instances with username of the creator, eventid, eventtime when a user is creating new EC2 instances.&lt;/p&gt;
+&lt;p&gt;For another example, you may need to search history go past 90 days to look for information like &lt;code&gt;WHO did WHAT and WHEN&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In those cases, understand the JSON structure of Cloudtrail log and specifically the identity related portion comes handy.&lt;/p&gt;
+&lt;h2 id=&#34;eventtype&#34;&gt;eventType&lt;/h2&gt;
+&lt;p&gt;Cloudtrail records various types of events. In each JSON record, &lt;code&gt;eventType&lt;/code&gt; indicates the type of the event. Each event type has a different JSON structure.&lt;/p&gt;
+&lt;p&gt;The following types cover the most cases I&amp;rsquo;m aware of but the list is not intended to be exhaustivee - I will add to it as I learn.&lt;/p&gt;
+&lt;h3 id=&#34;awsapicall&#34;&gt;AwsApiCall&lt;/h3&gt;
+&lt;p&gt;API call is the most common event type. It represents an API call on an AWS service.&lt;/p&gt;
+&lt;p&gt;The great thing about this event type is it can be triggered on CloudWatch event. &lt;em&gt;update: recently CloudWatch Event is renamed to AWS EventBridge&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;awsconsolesignin&#34;&gt;AwsConsoleSignIn&lt;/h3&gt;
+&lt;p&gt;This type of event is generated when a user signed in on AWS management console.&lt;/p&gt;
+&lt;h3 id=&#34;awsserviceevent&#34;&gt;AwsServiceEvent&lt;/h3&gt;
+&lt;p&gt;Services such as AWS SSO generates such type of event when authenticating or federating a user.&lt;/p&gt;
+&lt;h2 id=&#34;useridentitytype&#34;&gt;userIdentity.type&lt;/h2&gt;
+&lt;p&gt;On each record, the userIdentity block represents the identity information. Various types of userIdentity exists. The most common ones are: &lt;code&gt;IAMUser&lt;/code&gt;, &lt;code&gt;AssumedRole&lt;/code&gt;, &lt;code&gt;AWSService&lt;/code&gt;, &lt;code&gt;SAMLUser&lt;/code&gt; and &lt;code&gt;Unknown&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;iamuser&#34;&gt;IAMUser&lt;/h3&gt;
+&lt;p&gt;The below json is extracted from a Cloudtrail event that represents an API call made by an IAM user. User name can be extracted from the &lt;code&gt;userIdentity.userName&lt;/code&gt; field.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAUWQOET4WMTL6OV3SZ&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:user/tool-poc&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AKIAUWQOET4WFCRTJDF5&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tool-poc&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1e85a381-9e58-4612-a8d5-abc30ff95f65&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In another example, the eventType is different but userIdentity block structure looks similar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAVBHXPSQ567GPQHO75&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::346263884858:user/admin&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-12T18:05:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;signin.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ConsoleLogin&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0b8f0958-8507-4526-b8f5-d56741ccae77&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsConsoleSignIn&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;assumedrole&#34;&gt;AssumedRole&lt;/h3&gt;
+&lt;p&gt;AssumedRole is when an identity assumes an AWS role. The identity could be IAM user in the same account, user from another AWS account, AWS service or a SAML provider.&lt;/p&gt;
+&lt;p&gt;Below are a few examples.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:alice@example.com&#34;&gt;alice@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJKUFA6XAMROQBJRNA:alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/assume-admin-role-an-account/alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;e7f3be2f-a81b-4a87-975f-eaac58faca9e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AutoScaling&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJ6TYGYS2TFMOQYEY2:AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/AWSServiceRoleForAutoScaling/AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;b67837c3-f90c-49c9-8750-02adef205f64&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAI4O72XO7XFD2BHDUA:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/Sandbox-SSO-PowerUser/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;5921eee9-7a54-4672-84d5-9a64a81822e4&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAVBHXPSQ577YYUL4QC:test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::346263884858:assumed-role/AWSReservedSSO_AWSAdministratorAccess_33ca3b9a1184d671/test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a1b2f460-0288-4937-b850-12b521a10230&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AssumeRoleSession&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.07&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM:AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/CloudHealth/AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIAUWQOET4WKMRLT5G6&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionContext&amp;#34;: &lt;/span&gt;{
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionIssuer&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Role&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:role/CloudHealth&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;CloudHealth&amp;#34;&lt;/span&gt;
+      },
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;attributes&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;creationDate&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:53:25Z&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;mfaAuthenticated&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+      }
+    }
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T14:08:27Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dynamodb.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ListTables&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;34.230.249.2&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;de0f486d-c1ff-4032-9e86-17ba166f687e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;samluser&#34;&gt;SAMLUser&lt;/h3&gt;
+&lt;p&gt;This type of userIdentity are most commonly seen in &lt;code&gt;AssumeRoleWithSAML&lt;/code&gt; event.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SAMLUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;identityProvider&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-08T13:22:03Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRoleWithSAML&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;72.21.217.22&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;892c55be-2ab1-4e0e-a80f-5e04f05b625d&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;awsservice&#34;&gt;AWSService&lt;/h3&gt;
+&lt;p&gt;For this type of userIdentity, it simply does not have a real user. Instead, it&amp;rsquo;s AWS service that is performing an action.&lt;/p&gt;
+&lt;p&gt;User name     (blank)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWSService&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;invokedBy&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:43:16Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRole&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;93fd006e-a58f-4304-a9a1-04136ca8a1c3&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;unknown&#34;&gt;Unknown&lt;/h3&gt;
+&lt;p&gt;This is commonly seen in &lt;code&gt;AwsServiceEvent&lt;/code&gt; event. I&amp;rsquo;ve seen AWS SSO produces this type of event but I&amp;rsquo;m not aware of what else AWS services produce it.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Unknown&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;90677f325d-ffd9565d-ac85-4753-8dc6-502c67f1c727&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test@example.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:35:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sso.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authenticate&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;75.15.150.17&amp;#34;&lt;/span&gt;,
+  ...
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;63e0001b-e2fa-49b0-bf29-b7c92d977266&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsServiceEvent&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;recipientAccountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

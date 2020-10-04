@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>otp | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/otp/</link>
+      <atom:link href="https://davidxiao.me/tag/otp/index.xml" rel="self" type="application/rss+xml" />
+    <description>otp</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 10 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>otp</title>
+      <link>https://davidxiao.me/tag/otp/</link>
+    </image>
+    
+    <item>
+      <title>One Time Password, HOTP and TOTP</title>
+      <link>https://davidxiao.me/post/one-time-password-and-hotp-totp/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/one-time-password-and-hotp-totp/</guid>
+      <description>&lt;p&gt;OTP is very common in today&amp;rsquo;s MFA implementation.&lt;/p&gt;
+&lt;h2 id=&#34;hotp&#34;&gt;HOTP&lt;/h2&gt;
+&lt;p&gt;HOTP stands for HMAC-based One-time Password algorithm. It computes the value with the following inputs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A cryptographic hash method, H (default is SHA-1)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A secret key, K, which is an arbitrary byte string, and must remain private&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A counter, C, which counts the number of iterations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A HOTP value length, d (6–10, default is 6, and 6–8 is recommended)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;totp&#34;&gt;TOTP&lt;/h2&gt;
+&lt;p&gt;TOTP stands for Time-based One-time Password algorithm (TOTP). It is an extension of HOTP that generates a one-time password (OTP) by instead taking uniqueness from the current time.&lt;/p&gt;
+&lt;p&gt;More often than not, time is downsampled into larger durations (e.g., 30 seconds) to allow for validity between the parties.&lt;/p&gt;
+&lt;p&gt;To establish TOTP authentication, the authenticatee and authenticator must pre-establish both the HOTP parameters and the following TOTP parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;T0, the Unix time from which to start counting time steps (default is 0)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TX, an interval which will be used to calculate the value of the counter CT (default is 30 seconds)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

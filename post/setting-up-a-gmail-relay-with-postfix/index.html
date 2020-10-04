@@ -38,7 +38,7 @@
   
   
   
-  <meta name="theme-color" content="#2962ff">
+  <meta name="theme-color" content="#06805E">
   
 
   
@@ -60,8 +60,6 @@
     
     
 
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
     
 
     
@@ -183,7 +181,7 @@
   
   
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,300,300i%7CMerriweather+Sans:400,400i,300,300i%7CRoboto+Mono&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
   
 
   
@@ -222,6 +220,9 @@
   
   
   <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@davxiao">
+  <meta property="twitter:creator" content="@davxiao">
   
   <meta property="og:site_name" content="DAVID&#39;S GARAGE">
   <meta property="og:url" content="https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/">
@@ -432,23 +433,6 @@
       
 
       
-      <li class="nav-item dropdown theme-dropdown">
-        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
-          <i class="fas fa-palette" aria-hidden="true"></i>
-        </a>
-        <div class="dropdown-menu">
-          <a href="#" class="dropdown-item js-set-theme-light">
-            <span>Light</span>
-          </a>
-          <a href="#" class="dropdown-item js-set-theme-dark">
-            <span>Dark</span>
-          </a>
-          <a href="#" class="dropdown-item js-set-theme-auto">
-            <span>Automatic</span>
-          </a>
-        </div>
-      </li>
-      
 
       
 
@@ -627,21 +611,17 @@
 <p>The rest of the post is using Ubuntu as an example, but the approach should work for most recent Linux distro in general.</p>
 <h2 id="postfix">Postfix</h2>
 <p>Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:</p>
-<pre><code>sudo apt install libsasl2-modules postfix ;
-</code></pre>
-<p>Then create a file <code>/etc/postfix/sasl/sasl_passwd</code>. Copy the following line into the file, replacing <code>your@gmail.com</code> with your actual Gmail; <code>abcdefghijk123</code> with your actual app password.</p>
-<pre><code>[smtp.gmail.com]:587 your@gmail.com:abcdefghijk123
-</code></pre>
-<p>Run:</p>
-<pre><code>sudo postmap /etc/postfix/sasl/sasl_passwd ;
-</code></pre>
-<p>If all went well, you have a new file as <code>/etc/postfix/sasl/sasl_passwd.db</code>. It&rsquo;s what Postfix will be reading from for Gmail SMTP authentication.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install libsasl2-modules postfix ;
+</code></pre></div><p>Then create a file <code>/etc/postfix/sasl/sasl_passwd</code>. Copy the following line into the file, replacing <code>your@gmail.com</code> with your actual Gmail; <code>abcdefghijk123</code> with your actual app password.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[smtp.gmail.com]:587 your@gmail.com:abcdefghijk123
+</code></pre></div><p>Run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo postmap /etc/postfix/sasl/sasl_passwd ;
+</code></pre></div><p>If all went well, you have a new file as <code>/etc/postfix/sasl/sasl_passwd.db</code>. It&rsquo;s what Postfix will be reading from for Gmail SMTP authentication.</p>
 <h3 id="secure-the-passwords">Secure the passwords</h3>
 <p>Both <code>sasl_passwd</code> and <code>sasl_passwd.db</code> contain plain text of your app password, to secure the access, you need to:</p>
-<pre><code>sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
-sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
-</code></pre>
-<h3 id="setting-up">Setting up</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+sudo chmod <span style="color:#ae81ff">0600</span> /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+</code></pre></div><h3 id="setting-up">Setting up</h3>
 <p>Postfix&rsquo;s main configuration file is <code>/etc/postfix/main.cf</code>. See the following my own configuration for your reference.</p>
 <script type="application/javascript" src="https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js"></script>
 
@@ -664,9 +644,8 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 <p>In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.</p>
 <h3 id="testing-and-troubleshooting">Testing and Troubleshooting</h3>
 <p>When config file is done, reload Postfix configurations without having to restart the service:</p>
-<pre><code>sudo postfix reload ;
-</code></pre>
-<p>For SMTP testing, I personally like to use 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo postfix reload ;
+</code></pre></div><p>For SMTP testing, I personally like to use 
 <a href="http://www.jetmore.org/john/code/swaks/" target="_blank" rel="noopener">swaks</a>, a purpose-built Perl script.</p>
 <p>With swaks installed, it will be just a one-liner to send out a testing mail:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./swaks <span style="color:#ae81ff">\
@@ -677,11 +656,10 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 </span><span style="color:#ae81ff"></span>    --h-Subject: <span style="color:#e6db74">&#34;Hello world&#34;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --body <span style="color:#e6db74">&#39;Testing some Mailgun awesomness!&#39;</span>
 </code></pre></div><p>If you suspect something went wrong, go check the logs:</p>
-<pre><code>sudo tail -f /var/log/syslog ;
-# and
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo tail -f /var/log/syslog ;
+<span style="color:#75715e"># and</span>
 sudo tail -f /var/log/mail.err ;
-</code></pre>
-<p>That&rsquo;s it!</p>
+</code></pre></div><p>That&rsquo;s it!</p>
 <p>On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.</p>
 <p>Let me know if you have any questions or comments. On my post I will be discussing setting up a 
 <a href="https://www.mailgun.com/" target="_blank" rel="noopener">Mailgun</a> relay. Stay tuned!</p>
@@ -763,32 +741,6 @@ sudo tail -f /var/log/mail.err ;
         </a>
       </li>
     
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://web.whatsapp.com/send?text=Setting%20up%20a%20Gmail%20Relay%20With%20Postfix%20https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/" target="_blank" rel="noopener" class="share-btn-whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/&amp;title=Setting%20up%20a%20Gmail%20Relay%20With%20Postfix" target="_blank" rel="noopener" class="share-btn-weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-    
   </ul>
 </div>
 
@@ -801,7 +753,7 @@ sudo tail -f /var/log/mail.err ;
 
 <section id="comments">
   <hr>
-  <h2>Comments</h2><div id="remark42"></div>
+  <div id="remark42"></div>
   <script>
     var remark_config = {
       host: "https://api.davidxiao.me/remark42", 
@@ -832,7 +784,7 @@ sudo tail -f /var/log/mail.err ;
                       
                       
       max_shown_comments: 10, 
-      theme: 'dark', 
+      theme: 'light', 
       locale: 'en' 
     };
 
@@ -887,7 +839,10 @@ sudo tail -f /var/log/mail.err ;
 
     
     
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key="></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha256-7vjlAeb8OaTrCXZkCNun9djzuB2owUsaO72kXaFDBJs=" crossorigin="anonymous"></script>
+      
     
 
     

@@ -5,12 +5,1105 @@
     <link>https://davidxiao.me/</link>
       <atom:link href="https://davidxiao.me/index.xml" rel="self" type="application/rss+xml" />
     <description>DAVID&#39;S GARAGE</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 02 Oct 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>DAVID&#39;S GARAGE</title>
       <link>https://davidxiao.me/</link>
     </image>
+    
+    <item>
+      <title>Python3 CheatSheet</title>
+      <link>https://davidxiao.me/post/python3-cheatsheet/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/python3-cheatsheet/</guid>
+      <description>&lt;p&gt;TLDR;&lt;/p&gt;
+&lt;p&gt;This post is my tiny collection of python3 code snippets. It comes in handy when manipulating string and list.&lt;/p&gt;
+&lt;h2 id=&#34;single-or-double-quoted-string&#34;&gt;single or double quoted string&lt;/h2&gt;
+&lt;p&gt;In Python, such sequence of characters is included inside single or double quotes. There is no difference in single or double quoted string. Both can be used interchangeably.&lt;/p&gt;
+&lt;h2 id=&#34;remove-a-few-elements-from-the-beginning&#34;&gt;Remove a few elements from the beginning&lt;/h2&gt;
+&lt;p&gt;Slice out the first 2 elements and return the rest.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;:]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;cdef&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;remove-a-few-elements-from-the-end&#34;&gt;Remove a few elements from the end&lt;/h2&gt;
+&lt;p&gt;Slice out the last 3 elements and return the rest.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[:&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;abc&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;retrieve-the-first-few-elements-only&#34;&gt;Retrieve the first few elements only&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[:&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;abc&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;retrieve-the-last-few-elements-only&#34;&gt;Retrieve the last few elements only&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;:]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;def&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;retrieve-elements-from-the-middle&#34;&gt;Retrieve elements from the middle&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0123456789&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;3456&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;remove-single-element-by-zero-index&#34;&gt;Remove single element by zero-index&lt;/h2&gt;
+&lt;p&gt;Remove &amp;rsquo;d&amp;rsquo; by its index: 3&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If one-based position is given instead of zero-based index, convert from position to index. e.g. &lt;code&gt;index = position - 1&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[:&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;s[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;:]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;abcef&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;remove-multiple-elements-by-zero-index&#34;&gt;Remove multiple elements by zero-index&lt;/h2&gt;
+&lt;p&gt;Remove 4 element by its index starting from index 3&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0123456789&amp;#39;&lt;/span&gt;]
+start_index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+to_cut &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[:start_index]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;s[start_index&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;to_cut:]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;012789&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# zero-index 4 to 7 are removed&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;removereplace-element-by-value&#34;&gt;Remove/Replace element by value&lt;/h2&gt;
+&lt;p&gt;string version&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# replace &amp;#39;c&amp;#39; with &amp;#39;w&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;abwdef&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;list version&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s
+&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:  
+  pos &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;index(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt;:
+  pos &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (pos &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+  res&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;pop(pos) &lt;span style=&#34;color:#75715e&#34;&gt;#remove &amp;#39;c&amp;#39;&lt;/span&gt;
+  res&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;insert(pos, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;#replace with &amp;#39;w&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;w&amp;#39;, &amp;#39;d&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;f&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;convert-string-to-list-character-wise&#34;&gt;convert string to list character-wise&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+res&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[]
+res[:&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;s
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;f&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;convert-list-to-string&#34;&gt;convert list to string&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(s)
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;abcdef&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;split-string-into-word-list&#34;&gt;Split string into word list&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;welcome  to the  jungle&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split()
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;welcome&amp;#39;, &amp;#39;to&amp;#39;, &amp;#39;the&amp;#39;, &amp;#39;jungle&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;join-words-into-a-string-with-whitespace&#34;&gt;Join words into a string with whitespace&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;welcome&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;to&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;the&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;jungle&amp;#39;&lt;/span&gt;]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(s)
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;welcome to the jungle&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;iterate-list-items-to-generate-a-new-list&#34;&gt;iterate list items to generate a new list&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;welcome&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;to&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;the&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;jungle&amp;#39;&lt;/span&gt;]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [x&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; s]
+&lt;span style=&#34;color:#75715e&#34;&gt;#res = [&amp;#39;welcomewelcome&amp;#39;, &amp;#39;toto&amp;#39;, &amp;#39;thethe&amp;#39;, &amp;#39;junglejungle&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;swap-case-of-a-string-uppercase-to-lowercase-and-vice-versa&#34;&gt;swap case of a string (uppercase to lowercase and vice versa)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;python provides a string function that does exactly that:&lt;/p&gt;
+&lt;p&gt;res = s.swapcase()&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;swapcase&lt;/span&gt;(c):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; c&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;isupper():
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; c&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;lower()
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; c&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;islower():
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; c&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;upper()
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; c
+
+s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Welcome   To The Jungle&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [swapcase(x) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; s]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(res)
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;wELCOME   tO tHE jUNGLE&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;produce-list-or-string-in-reverse-order&#34;&gt;produce list or string in reverse order&lt;/h2&gt;
+&lt;p&gt;both string and list&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;welcome&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;to&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;the&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;jungle&amp;#39;&lt;/span&gt;]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[::&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;jungle&amp;#39;, &amp;#39;the&amp;#39;, &amp;#39;to&amp;#39;, &amp;#39;welcome&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;find-all-occurances-in-a-string&#34;&gt;find all occurances in a string&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;welcome to to the jungle&amp;#39;&lt;/span&gt;
+find_s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;to&amp;#39;&lt;/span&gt;
+find_len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; len(find_s)
+
+pointer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; True:
+  index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;find(find_s,pointer)
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; index &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;found at index &amp;#39;&lt;/span&gt;, index)
+  pointer &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; index
+  pointer &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; find_len
+&lt;span style=&#34;color:#75715e&#34;&gt;# found at index 8&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# found at index 11&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;replace-all-occurances-in-a-string&#34;&gt;replace all occurances in a string&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;welcome to to the jungle&amp;#39;&lt;/span&gt;
+find_s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;to&amp;#39;&lt;/span&gt;
+replace_s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;what&amp;#39;&lt;/span&gt;
+
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(find_s, replace_s)
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;welcome what what the jungle&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;remove-duplicate-words-in-a-string&#34;&gt;remove duplicate words in a string&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unique_list&lt;/span&gt;(l):
+  ulist &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+  [ulist&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(x) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; l &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ulist]
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; ulist
+
+s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;calvin klein design dress calvin klein&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(unique_list(s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split()))
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;calvin klein design dress&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;rot13-like-conversion-over-a-string&#34;&gt;ROT13-like conversion over a string&lt;/h2&gt;
+&lt;p&gt;Be aware ASCII code can be outside of printable range.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;This is a plaintext message&amp;#39;&lt;/span&gt;
+offset &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join([chr(ord(c)&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;offset) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; s])
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;Uijt!jt!b!qmbjoufyu!nfttbhf&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-regex-to-split-complicated-string-into-words&#34;&gt;Use regex to split complicated string into words&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
+s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Words, words, words.   &amp;#39;&lt;/span&gt;
+res&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;([,. ]+)&amp;#39;&lt;/span&gt;, s) &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#39;(...)&amp;#39; enables the matched separators included in the result list. Remove &amp;#39;()&amp;#39; so that separators will not be included.&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;Words&amp;#39;, &amp;#39;, &amp;#39;, &amp;#39;words&amp;#39;, &amp;#39;, &amp;#39;, &amp;#39;words&amp;#39;, &amp;#39;.   &amp;#39;, &amp;#39;&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-regex-to-search-a-pattern&#34;&gt;Use regex to search a pattern&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
+s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Welcome to the jungle...&amp;#39;&lt;/span&gt;
+match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;search(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;to +the +(\w+)&amp;#39;&lt;/span&gt;, s)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; match:
+  res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; match&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;group(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# match &amp;#39;to +the +(\w+)&amp;#39; as a whole&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;to the jungle&amp;#39;&lt;/span&gt;
+  res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; match&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;group(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# match &amp;#39;(\w+)&amp;#39; portion&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;jungle&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;no match found&amp;#39;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;count-number-of-occurances-of-substring&#34;&gt;count number of occurances of substring&lt;/h2&gt;
+&lt;p&gt;string.count() approach&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;jungle and jungle and another jungle...&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;count(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;jungle&amp;#39;&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = 3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;regular expression approach&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
+s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Welcome to the jungle. It is a big jungle with many animals. Lion is the king of the jungle.&amp;#39;&lt;/span&gt;
+match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;findall(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;jungle&amp;#39;&lt;/span&gt;, s)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; match:
+  res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; len(match) &lt;span style=&#34;color:#75715e&#34;&gt;# return a list of string&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;no match found&amp;#39;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;escape-string-into-html-text&#34;&gt;escape string into html text&lt;/h2&gt;
+&lt;p&gt;For HTML, it needs to escape the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;&lt;/code&gt; to &lt;code&gt;&amp;amp;lt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;gt;&lt;/code&gt; to &lt;code&gt;&amp;amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;amp;&lt;/code&gt; to &lt;code&gt;&amp;amp;amp;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;escape html string &amp;lt;body&amp;gt;&amp;amp;&amp;lt;/body&amp;gt;&amp;#39;&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;amp;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;amp;amp;&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;gt;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;amp;gt;&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;amp;lt;&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;escape html string &amp;amp;lt;body&amp;amp;gt;&amp;amp;amp;&amp;amp;lt;/body&amp;amp;gt;&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-global-variable&#34;&gt;Use global variable&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;maxlen &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;wordlength&lt;/span&gt;(x):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; maxlen &lt;span style=&#34;color:#75715e&#34;&gt;# to access global variable within a function&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(x) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; maxlen:
+    maxlen &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; len(x)
+
+s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;unsafe html string &amp;lt;body&amp;gt;&amp;amp;&amp;lt;/body&amp;gt;&amp;#39;&lt;/span&gt;
+words &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split()
+[wordlength(x) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; words]
+&lt;span style=&#34;color:#75715e&#34;&gt;# maxlen = 14&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Audit User Actions Using CloudTrail - Part 2</title>
+      <link>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/</link>
+      <pubDate>Thu, 17 Sep 2020 23:53:30 -0400</pubDate>
+      <guid>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;When auditing system events or performing an investigation to understand what happened, it is imperative to identify the IAM principal, to establish traceability and timelines.&lt;/p&gt;
+&lt;p&gt;In context of AWS CloudTrail, it means looking up events pertaining to the IAM principal and actions in question as well as looking for useful information inside such events.&lt;/p&gt;
+&lt;p&gt;When a user assumes role cross-account in a multi-account environment, it can be done two ways: either programatically or via AWS management console.&lt;/p&gt;
+&lt;p&gt;Since either way generates different CloudTrail events, I will disuss two examples in this post respectively.&lt;/p&gt;
+&lt;h2 id=&#34;assume-role-programmatically-cross-account&#34;&gt;Assume Role Programmatically Cross-Account&lt;/h2&gt;
+&lt;h2 id=&#34;assume-role-via-aws-console-cross-account&#34;&gt;Assume Role via AWS Console Cross-Account&lt;/h2&gt;
+&lt;p&gt;A typical investigation flow that involves cross-account assumerole goes like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Step 1: Identify an event on CloudTrail that needs investigation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Step 2: Identify the closest &lt;code&gt;AssumeRole&lt;/code&gt; event that happens before the event in question&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Step 3: Locate the closest &lt;code&gt;SwitchRole&lt;/code&gt; event that happens at the same time of &lt;code&gt;AssumeRole&lt;/code&gt;. If found, it indicates the user session was established via AWS Console&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Step 4: If you have access to the Identity Account, locate the AssumeRole&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the following example, we investigate a &amp;ldquo;suspicious&amp;rdquo; &lt;code&gt;CreateUser&lt;/code&gt; event.&lt;/p&gt;
+&lt;p&gt;Identity Account: &lt;code&gt;203016562928&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;IAM username: &lt;code&gt;bob@example.com&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Role Account: &lt;code&gt;776613361644&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Role Name: &lt;code&gt;assume-admin-role-example&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CreateUser&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userIdentity&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;principalId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;arn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accessKeyId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIA3JUODO7W6YEVI655&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sessionContext&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sessionIssuer&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Role&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;principalId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJBP4A5WSXVNY72RLE&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;arn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::776613361644:role/assume-admin-role-example&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;assume-admin-role-example&amp;#34;&lt;/span&gt;
+      },
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;webIdFederationData&amp;#34;&lt;/span&gt;: {},
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;attributes&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;mfaAuthenticated&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;creationDate&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-17T19:04:10Z&amp;#34;&lt;/span&gt;
+      }
+    }
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventTime&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-17T19:05:08Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventSource&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;iam.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;CreateUser&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;awsRegion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;75.15.154.15&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userAgent&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;console.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;requestParameters&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test-no-permission&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;: []
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;responseElements&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test-no-permission&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDA3JUODO7W7VCWFDJMM&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;arn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::776613361644:user/test-no-permission&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;createDate&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sep 17, 2020 7:05:08 PM&amp;#34;&lt;/span&gt;
+    }
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;requestID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cc58c060-fe96-4678-b0bf-b888f12bf008&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;38d0221b-61e0-47d6-9c45-7eb2dc55125b&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventType&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;recipientAccountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AssumeRole&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userIdentity&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWSAccount&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;principalId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAS6RF25DXSM2CA5KAD&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;203016562928&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventTime&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-17T19:04:10Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventSource&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRole&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;awsRegion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWS Internal&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userAgent&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWS Internal&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;requestParameters&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;roleArn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::776613361644:role/assume-admin-role-example&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;roleSessionName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bob@example.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;responseElements&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;credentials&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accessKeyId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIA3JUODO7WTIO2PI64&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;expiration&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sep 17, 2020 8:04:10 PM&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sessionToken&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IQoJb3JpZ2luX2VjEAMaCXVzLWVhc3QtMSJIMEYCIQDsEwOWhE/9cNh+Xpg+V6r8ug3ULRnoOCPNCQhorh13xgIhAIfc+u8ttYNsjLQJRMvo7EnDXMkOAViMFuU7Mma8zjGEKqMCCBwQARoMNzc2NjEzMzYxNjQ1Igyt06eMsyzHkQJRK84qgAIF/jUW99caWE07piwWI2EGTHU2KMx6ioRz3uDbDS24GKy3XvQRalC+5YTZoOQDQvpziRmO33BEzM6Ws5TBTggo/yXGAJRQthB8IqiGkbsClbOG8cYsuhRXK3+yK8OHhCSfr0ehO2SYNiaqEClyT9n8QtEmkQawN56IiOoE9HBzTA7xxYbj7XULL/okog7D3l18NG32rxhHS1ACDN3ro9RGjrPicn9PHFfBqvK+uP3JJQVlcQZu6yGVvtH3rIiYdwAo5bSEc3G9G/LSEiwh47o7NrTOzrRsznARBgefSPs9K3qIgMpZHs3DgqJ0TID1k5y1w4KlPvL36C/+LEmxckNYMKrmjvsFOpwBGDQAVghEOsvntE328Yt2M9Yv0x55cZ5RPJ2pGtQW4geb8+aT2ThZ1zSGwlnvMM8TE+HAwUs0+GQwZbp5UpIiDYLzUeZ0pYWVBHmv/YzN3w0bSKTrC8Jc/0aAaUnxmKMkH5AWO6pBelw8KtVIvd9BwKgBQKVo+tsAVGEdKbVTlwOvLcuhWonCvjoxPCiPgNR05HF8QANbpWet0p+k&amp;#34;&lt;/span&gt;
+    },
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;assumedRoleUser&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;assumedRoleId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;arn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&amp;#34;&lt;/span&gt;
+    }
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;requestID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;fdbb008c-63ce-4207-8171-b041d6f38672&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;40b4d219-0448-436f-9420-cdd3dc654b44&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;resources&amp;#34;&lt;/span&gt;: [
+    {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWS::IAM::Role&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;ARN&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::776613361644:role/assume-admin-role-example&amp;#34;&lt;/span&gt;
+    }
+  ],
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventType&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;recipientAccountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sharedEventID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;19ee34b2-52bd-4dfa-8c8e-cf68344062a6&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;SwitchRole&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userIdentity&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;principalId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;arn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventTime&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-17T19:04:10Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventSource&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;signin.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SwitchRole&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;awsRegion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;75.15.154.15&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userAgent&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;requestParameters&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;responseElements&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;SwitchRole&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Success&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;additionalEventData&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;SwitchFrom&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::203016562928:user/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;RedirectTo&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://console.aws.amazon.com/console/home&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;70627092-0c9c-4163-9975-42ffcc50a37a&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventType&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsConsoleSignIn&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;recipientAccountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in the source account look up for AssumeRole around the same time with the same &amp;ldquo;sharedEventID&amp;rdquo;
+AssumeRole&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userIdentity&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;principalId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAS6RF25DXSM2CA5KAD&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;arn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::203016562928:user/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;203016562928&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accessKeyId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIAS6RF25DXQR3PH2AX&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sessionContext&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sessionIssuer&amp;#34;&lt;/span&gt;: {},
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;webIdFederationData&amp;#34;&lt;/span&gt;: {},
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;attributes&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;mfaAuthenticated&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;creationDate&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-17T13:58:45Z&amp;#34;&lt;/span&gt;
+      }
+    },
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;invokedBy&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWS Internal&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventTime&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-17T19:04:10Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventSource&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRole&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;awsRegion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWS Internal&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;userAgent&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWS Internal&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;requestParameters&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;roleArn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::776613361644:role/assume-admin-role-example&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;roleSessionName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bob@example.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;responseElements&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;credentials&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accessKeyId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIA3JUODO7WTIO2PI64&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;expiration&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sep 17, 2020 8:04:10 PM&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sessionToken&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IQoJb3JpZ2luX2VjEAMaCXVzLWVhc3QtMSJIMEYCIQDsEwOWhE/9cNh+Xpg+V6r8ug3ULRnoOCPNCQhorh13xgIhAIfc+u8ttYNsjLQJRMvo7EnDXMkOAViMFuU7Mma8zjGEKqMCCBwQARoMNzc2NjEzMzYxNjQ1Igyt06eMsyzHkQJRK84qgAIF/jUW99caWE07piwWI2EGTHU2KMx6ioRz3uDbDS24GKy3XvQRalC+5YTZoOQDQvpziRmO33BEzM6Ws5TBTggo/yXGAJRQthB8IqiGkbsClbOG8cYsuhRXK3+yK8OHhCSfr0ehO2SYNiaqEClyT9n8QtEmkQawN56IiOoE9HBzTA7xxYbj7XULL/okog7D3l18NG32rxhHS1ACDN3ro9RGjrPicn9PHFfBqvK+uP3JJQVlcQZu6yGVvtH3rIiYdwAo5bSEc3G9G/LSEiwh47o7NrTOzrRsznARBgefSPs9K3qIgMpZHs3DgqJ0TID1k5y1w4KlPvL36C/+LEmxckNYMKrmjvsFOpwBGDQAVghEOsvntE328Yt2M9Yv0x55cZ5RPJ2pGtQW4geb8+aT2ThZ1zSGwlnvMM8TE+HAwUs0+GQwZbp5UpIiDYLzUeZ0pYWVBHmv/YzN3w0bSKTrC8Jc/0aAaUnxmKMkH5AWO6pBelw8KtVIvd9BwKgBQKVo+tsAVGEdKbVTlwOvLcuhWonCvjoxPCiPgNR05HF8QANbpWet0p+k&amp;#34;&lt;/span&gt;
+    },
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;assumedRoleUser&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;assumedRoleId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;arn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&amp;#34;&lt;/span&gt;
+    }
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;requestID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;fdbb008c-63ce-4207-8171-b041d6f38672&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;14fb06e3-5649-4fc3-a274-226ba85c8be6&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;resources&amp;#34;&lt;/span&gt;: [
+    {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;776613361644&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWS::IAM::Role&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;ARN&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::776613361644:role/assume-admin-role-example&amp;#34;&lt;/span&gt;
+    }
+  ],
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;eventType&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;recipientAccountId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;203016562928&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sharedEventID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;19ee34b2-52bd-4dfa-8c8e-cf68344062a6&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/security/how-to-audit-cross-account-roles-using-aws-cloudtrail-and-amazon-cloudwatch-events/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Audit Cross-Account Roles Using AWS CloudTrail and Amazon CloudWatch Events&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to Audit User Activities Using Aws Cloudtrail Part 1</title>
+      <link>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</link>
+      <pubDate>Thu, 17 Sep 2020 23:53:23 -0400</pubDate>
+      <guid>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Extract User Identity from AWS Cloudtrail</title>
+      <link>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</guid>
+      <description>&lt;h2 id=&#34;why-do-i-care&#34;&gt;Why Do I Care&lt;/h2&gt;
+&lt;p&gt;Cloudtrail is an essential service in AWS that provides the source of truth on what has happened at API and event level.&lt;/p&gt;
+&lt;p&gt;Whether you are troubleshooting or investigating something on AWS, being able to look up user identity across the Cloudtrail event logs can be very helpful.&lt;/p&gt;
+&lt;p&gt;By default AWS provides 90 days of event history and you can look up on key fields such as &lt;code&gt;User name&lt;/code&gt;, &lt;code&gt;event time&lt;/code&gt; or &lt;code&gt;event id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In some cases that&amp;rsquo;s all you need.&lt;/p&gt;
+&lt;p&gt;But there are cases where you need to go beyond the 90 days and want to be able to extract user identity information from Cloudtrail logs directly.&lt;/p&gt;
+&lt;p&gt;For example, you may wish to write a Lambda function to auto-tag any new EC2 instances with username of the creator, eventid, eventtime when a user is creating new EC2 instances.&lt;/p&gt;
+&lt;p&gt;For another example, you may need to search history go past 90 days to look for information like &lt;code&gt;WHO did WHAT and WHEN&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In those cases, understand the JSON structure of Cloudtrail log and specifically the identity related portion comes handy.&lt;/p&gt;
+&lt;h2 id=&#34;eventtype&#34;&gt;eventType&lt;/h2&gt;
+&lt;p&gt;Cloudtrail records various types of events. In each JSON record, &lt;code&gt;eventType&lt;/code&gt; indicates the type of the event. Each event type has a different JSON structure.&lt;/p&gt;
+&lt;p&gt;The following types cover the most cases I&amp;rsquo;m aware of but the list is not intended to be exhaustivee - I will add to it as I learn.&lt;/p&gt;
+&lt;h3 id=&#34;awsapicall&#34;&gt;AwsApiCall&lt;/h3&gt;
+&lt;p&gt;API call is the most common event type. It represents an API call on an AWS service.&lt;/p&gt;
+&lt;p&gt;The great thing about this event type is it can be triggered on CloudWatch event. &lt;em&gt;update: recently CloudWatch Event is renamed to AWS EventBridge&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;awsconsolesignin&#34;&gt;AwsConsoleSignIn&lt;/h3&gt;
+&lt;p&gt;This type of event is generated when a user signed in on AWS management console.&lt;/p&gt;
+&lt;h3 id=&#34;awsserviceevent&#34;&gt;AwsServiceEvent&lt;/h3&gt;
+&lt;p&gt;Services such as AWS SSO generates such type of event when authenticating or federating a user.&lt;/p&gt;
+&lt;h2 id=&#34;useridentitytype&#34;&gt;userIdentity.type&lt;/h2&gt;
+&lt;p&gt;On each record, the userIdentity block represents the identity information. Various types of userIdentity exists. The most common ones are: &lt;code&gt;IAMUser&lt;/code&gt;, &lt;code&gt;AssumedRole&lt;/code&gt;, &lt;code&gt;AWSService&lt;/code&gt;, &lt;code&gt;SAMLUser&lt;/code&gt; and &lt;code&gt;Unknown&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;iamuser&#34;&gt;IAMUser&lt;/h3&gt;
+&lt;p&gt;The below json is extracted from a Cloudtrail event that represents an API call made by an IAM user. User name can be extracted from the &lt;code&gt;userIdentity.userName&lt;/code&gt; field.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAUWQOET4WMTL6OV3SZ&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:user/tool-poc&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AKIAUWQOET4WFCRTJDF5&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tool-poc&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1e85a381-9e58-4612-a8d5-abc30ff95f65&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In another example, the eventType is different but userIdentity block structure looks similar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAVBHXPSQ567GPQHO75&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::346263884858:user/admin&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-12T18:05:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;signin.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ConsoleLogin&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0b8f0958-8507-4526-b8f5-d56741ccae77&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsConsoleSignIn&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;assumedrole&#34;&gt;AssumedRole&lt;/h3&gt;
+&lt;p&gt;AssumedRole is when an identity assumes an AWS role. The identity could be IAM user in the same account, user from another AWS account, AWS service or a SAML provider.&lt;/p&gt;
+&lt;p&gt;Below are a few examples.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:alice@example.com&#34;&gt;alice@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJKUFA6XAMROQBJRNA:alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/assume-admin-role-an-account/alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;e7f3be2f-a81b-4a87-975f-eaac58faca9e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AutoScaling&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJ6TYGYS2TFMOQYEY2:AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/AWSServiceRoleForAutoScaling/AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;b67837c3-f90c-49c9-8750-02adef205f64&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAI4O72XO7XFD2BHDUA:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/Sandbox-SSO-PowerUser/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;5921eee9-7a54-4672-84d5-9a64a81822e4&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAVBHXPSQ577YYUL4QC:test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::346263884858:assumed-role/AWSReservedSSO_AWSAdministratorAccess_33ca3b9a1184d671/test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a1b2f460-0288-4937-b850-12b521a10230&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AssumeRoleSession&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.07&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM:AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/CloudHealth/AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIAUWQOET4WKMRLT5G6&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionContext&amp;#34;: &lt;/span&gt;{
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionIssuer&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Role&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:role/CloudHealth&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;CloudHealth&amp;#34;&lt;/span&gt;
+      },
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;attributes&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;creationDate&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:53:25Z&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;mfaAuthenticated&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+      }
+    }
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T14:08:27Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dynamodb.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ListTables&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;34.230.249.2&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;de0f486d-c1ff-4032-9e86-17ba166f687e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;samluser&#34;&gt;SAMLUser&lt;/h3&gt;
+&lt;p&gt;This type of userIdentity are most commonly seen in &lt;code&gt;AssumeRoleWithSAML&lt;/code&gt; event.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SAMLUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;identityProvider&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-08T13:22:03Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRoleWithSAML&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;72.21.217.22&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;892c55be-2ab1-4e0e-a80f-5e04f05b625d&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;awsservice&#34;&gt;AWSService&lt;/h3&gt;
+&lt;p&gt;For this type of userIdentity, it simply does not have a real user. Instead, it&amp;rsquo;s AWS service that is performing an action.&lt;/p&gt;
+&lt;p&gt;User name     (blank)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWSService&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;invokedBy&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:43:16Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRole&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;93fd006e-a58f-4304-a9a1-04136ca8a1c3&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;unknown&#34;&gt;Unknown&lt;/h3&gt;
+&lt;p&gt;This is commonly seen in &lt;code&gt;AwsServiceEvent&lt;/code&gt; event. I&amp;rsquo;ve seen AWS SSO produces this type of event but I&amp;rsquo;m not aware of what else AWS services produce it.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Unknown&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;90677f325d-ffd9565d-ac85-4753-8dc6-502c67f1c727&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test@example.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:35:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sso.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authenticate&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;75.15.150.17&amp;#34;&lt;/span&gt;,
+  ...
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;63e0001b-e2fa-49b0-bf29-b7c92d977266&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsServiceEvent&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;recipientAccountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>One Time Password, HOTP and TOTP</title>
+      <link>https://davidxiao.me/post/one-time-password-and-hotp-totp/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/one-time-password-and-hotp-totp/</guid>
+      <description>&lt;p&gt;OTP is very common in today&amp;rsquo;s MFA implementation.&lt;/p&gt;
+&lt;h2 id=&#34;hotp&#34;&gt;HOTP&lt;/h2&gt;
+&lt;p&gt;HOTP stands for HMAC-based One-time Password algorithm. It computes the value with the following inputs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A cryptographic hash method, H (default is SHA-1)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A secret key, K, which is an arbitrary byte string, and must remain private&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A counter, C, which counts the number of iterations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A HOTP value length, d (6–10, default is 6, and 6–8 is recommended)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;totp&#34;&gt;TOTP&lt;/h2&gt;
+&lt;p&gt;TOTP stands for Time-based One-time Password algorithm (TOTP). It is an extension of HOTP that generates a one-time password (OTP) by instead taking uniqueness from the current time.&lt;/p&gt;
+&lt;p&gt;More often than not, time is downsampled into larger durations (e.g., 30 seconds) to allow for validity between the parties.&lt;/p&gt;
+&lt;p&gt;To establish TOTP authentication, the authenticatee and authenticator must pre-establish both the HOTP parameters and the following TOTP parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;T0, the Unix time from which to start counting time steps (default is 0)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TX, an interval which will be used to calculate the value of the counter CT (default is 30 seconds)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Threat Modeling and STRIDE Model</title>
+      <link>https://davidxiao.me/post/threat-modeling-and-stride-model/</link>
+      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/threat-modeling-and-stride-model/</guid>
+      <description>&lt;p&gt;TLDR: This post is my collection of articles related to threat modeling and Microsoft STRIDE threat model.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-threat-modeling&#34;&gt;What Is Threat Modeling&lt;/h2&gt;
+&lt;p&gt;At a high level, threat modeling is a process of putting the &amp;ldquo;bad guy&amp;rdquo; hat on and conducting an security assessment over a system (such as a website or a mobile app) to identify and prioritize threats and mitigations.&lt;/p&gt;
+&lt;p&gt;A more complete definition can be found on 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Threat_model&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are many ways to do threat modeling. Depending on the types of system and workloads that are in scope, the applicable threats can vary a lot.&lt;/p&gt;
+&lt;p&gt;For example, threat modeling over a set of highly scalable workloads deployed on MS Azure might start from a threat library that includes portential threats relevant to Azure services in use, while assessing over a simple web application hosted on on-prem data center might start from a different set of threats relevant to host based security and OWASP Top 10.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-stride&#34;&gt;What Is STRIDE&lt;/h2&gt;
+&lt;p&gt;STRIDE is both a threat model framework and a methodology that developed and adopted in Microsoft over the years.&lt;/p&gt;
+&lt;p&gt;STRIDE stands for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spoofing&lt;/strong&gt;: Impersonating something or someone else.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tampering&lt;/strong&gt;: Modifying data or code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Repudiation&lt;/strong&gt;: Claiming to have not performed an action.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Information Disclosure&lt;/strong&gt;: Exposing information to someone not authorized to see it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Denial of Service&lt;/strong&gt;: Deny or degrade service to users.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Elevation of Privilege&lt;/strong&gt;: Gain capabilities without proper authorization.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Microsoft suggests the following approach when conducting a threat modeling:&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-threat-modeling-process&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://docs.microsoft.com/en-us/azure/security/develop/media/threat-modeling-tool-getting-started/sdlapproach.png&#34; data-caption=&#34;Threat Modeling Process&#34;&gt;
+
+
+  &lt;img src=&#34;https://docs.microsoft.com/en-us/azure/security/develop/media/threat-modeling-tool-getting-started/sdlapproach.png&#34; alt=&#34;&#34;  &gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Threat Modeling Process
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;most-current-articles&#34;&gt;Most Current Articles&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling&lt;/a&gt;. A high level overview.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Azure Threat Modeling Tool&lt;/a&gt;, the framework and the tool. 02/16/2017&lt;/p&gt;
+&lt;h2 id=&#34;older-references&#34;&gt;Older References&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.microsoft.com/security/blog/2007/09/11/stride-chart/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;STRIDE chart&lt;/a&gt; 09/11/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-once-again&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling, once again&lt;/a&gt; 08/30/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-drawing-the-diagram&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling again. Drawing the diagram&lt;/a&gt; 08/31/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-stride&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, STRIDE&lt;/a&gt; 09/04/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-stride-mitigations&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, STRIDE Mitigations&lt;/a&gt; 09/05/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-what-does-stride-have-to-do-with-threat-modeling&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, What does STRIDE have to do with threat modeling&lt;/a&gt; 09/07/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-stride-per-element&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, STRIDE per Element&lt;/a&gt; 09/10/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-threat-modeling-playsound&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, Threat Modeling PlaySound&lt;/a&gt; 09/11/2007&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SSH and TLS: Differences and Similarities</title>
+      <link>https://davidxiao.me/post/ssh-and-tls/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/ssh-and-tls/</guid>
+      <description>&lt;p&gt;Both TLS and SSH are security protocols aimed to solve a specific set of problems.&lt;/p&gt;
+&lt;p&gt;TLS is the transport layer of HTTPS protocol while SSH is designed to replace plaintext Telnet protocol.&lt;/p&gt;
+&lt;p&gt;Architecture wise, TLS is relatively simple: It has a handshake protocol that does the authentication and agrees on a session key that will be used to encrypt the rest of the communication.&lt;/p&gt;
+&lt;p&gt;SSH is more 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_Shell#Architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;complicated&lt;/a&gt; than TLS. It has the following main components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;transport layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;user authentication layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;connection layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Six SSH related RFC are published in relate to SSH: 4251, 4252, 4253, 4254, 425 and 4256.&lt;/p&gt;
+&lt;h2 id=&#34;ssh-transport-layer&#34;&gt;SSH Transport Layer&lt;/h2&gt;
+&lt;p&gt;Transport layer handles key exchange, server authentication and sets up encryption, compression and integrity verification. It exposes to the upper layer an programmatic interface for sending and receiving plaintext data. The transport layer also arranges for key re-exchange, usually after 1 GB of data has been transferred or after 1 hour has passed, whichever occurs first.&lt;/p&gt;
+&lt;h2 id=&#34;user-authentication-layer&#34;&gt;User Authentication Layer&lt;/h2&gt;
+&lt;p&gt;It handles client authentication and provides a number of authentication methods. Widely used user-authentication methods include password, publickey, keyboard-interactive, GSSAPI authentication which allows SSH to authenticate using external mechanisms such as Kerberos 5 or NTLM, providing single sign-on capability to SSH sessions.&lt;/p&gt;
+&lt;h2 id=&#34;connection-layer&#34;&gt;Connection Layer&lt;/h2&gt;
+&lt;p&gt;It defines the concept of channels in SSH. A single SSH connection can host multiple channels simultaneously, each transferring data in both directions. Standard channel types include: shell for terminal shells; SFTP and exec requests (including SCP transfers); direct-tcpip for client-to-server forwarded connections; forwarded-tcpip for server-to-client forwarded connections etc.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TLS Handshake in a Nutshell</title>
+      <link>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</guid>
+      <description>&lt;p&gt;At a high level, the following occurs during a TLS handshake:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD;
+    A[Client establishes a TCP connection to the server] --&amp;gt;B[Client sends Hello and list of cipher suites including TLS version] --&amp;gt;C[Server sends Hello, selected suite and certificate] --&amp;gt; D[Client validates certificate]
+    D --&amp;gt; E[Client and server starts key exchange process. &amp;lt;br/&amp;gt;RSA and Diffie-Hellman are two common KEP algogirhtms]
+    E --&amp;gt; F{Key Exchange Protocol}
+    F --&amp;gt;|RSA| G[When both client and server have &amp;lt;br/&amp;gt;the client random, the server random, &amp;lt;br/&amp;gt;and the premaster secret, each side &amp;lt;br/&amp;gt;independently combine these three inputs&amp;lt;br/&amp;gt; to come up with the session keys. &amp;lt;br/&amp;gt;They should both arrive at the same value]
+    F --&amp;gt;|DH| H[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value using DH algorithm&amp;lt;br/&amp;gt; usually accompanied by RSA signature]
+    G --&amp;gt;I[Regardless of which KEP was used, &amp;lt;br/&amp;gt;the rest of the session uses the agreed key, an ephemeral symmetric key, &amp;lt;br/&amp;gt;to encrypt the communication both ways going forward]
+    H --&amp;gt;I
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Read more about DH 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;key-takeaways-about-the-keps&#34;&gt;Key Takeaways About the KEPs&lt;/h2&gt;
+&lt;p&gt;👉 DH achieves forward secrecy while RSA does not.&lt;/p&gt;
+&lt;p&gt;👉 DH handshake takes longer than RSA.&lt;/p&gt;
+&lt;h2 id=&#34;what-else-you-need-to-know-about-tls&#34;&gt;What Else You Need To Know about TLS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TLS 1.0 and TLS 1.1 are no longer secure and should be avoided. A best practice is to use TLS version is 1.2 or later at the time of writing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HTTPS means &amp;ldquo;HTTP over TLS&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Both SSH and TLS are purpose-built for secure communication over the Internet, but they are very different in many ways. Check out 
+&lt;a href=&#34;https://davidxiao.me/post/ssh-and-tls/&#34;&gt;my another post&lt;/a&gt; where I explain the differences between the two.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;glossary&#34;&gt;Glossary&lt;/h2&gt;
+&lt;h3 id=&#34;cipher-suite&#34;&gt;Cipher Suite&lt;/h3&gt;
+&lt;p&gt;A cipher suite is a set of algorithms. It usually contain include: a key exchange algorithm, a bulk encryption algorithm, and a message authentication code (MAC) algorithm.&lt;/p&gt;
+&lt;p&gt;For example, &lt;code&gt;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&lt;/code&gt; means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ECDHE_RSA indicates the key exchange algorithm being used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AES_128_GCM indicates the block cipher being used to encrypt the message stream, together with the block cipher mode of operation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SHA256 indicates the message authentication algorithm which is used to authenticate a message.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ecdhe_rsa-key-exchange-algorithm&#34;&gt;ECDHE_RSA key exchange algorithm&lt;/h3&gt;
+&lt;p&gt;In a nutshell, it is ECDHE signed by RSA. Signing defeats man-in-the-middle attack. See detail 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Elliptic-curve_Diffie-Hellman&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A New Pilot in the Making</title>
+      <link>https://davidxiao.me/post/pilot-in-the-making/</link>
+      <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/pilot-in-the-making/</guid>
+      <description>&lt;h2 id=&#34;primer&#34;&gt;Primer&lt;/h2&gt;
+&lt;p&gt;PPL stands for Private Pilot License. In Canada and US, PPL holders can fly an airplane under VFR rules.&lt;/p&gt;
+&lt;p&gt;The type of airplane PPL holder can legally fly depends on a few things. Usually one can legally fly small/light airplanes that he is most familiar with, such as Cessna 172 trainer.&lt;/p&gt;
+&lt;p&gt;To fly complex, high performance or tailwheel airplanes, one need to obtain respective &lt;code&gt;endorsement&lt;/code&gt; from a certified instructor first.&lt;/p&gt;
+&lt;p&gt;For heavier airplane or those equipped with turbojet powerplant, &lt;code&gt;type rating&lt;/code&gt; is required before he can legally fly one.&lt;/p&gt;
+&lt;p&gt;Above all, PPL holder needs to stay current and competent before he decides to fly as pilot. The old aviation proverb says, &amp;ldquo;Takeoffs are optional, landings are mandatory&amp;rdquo;.&lt;/p&gt;
+&lt;h2 id=&#34;regulatory-body-and-laws--regulations&#34;&gt;Regulatory Body and Laws / Regulations&lt;/h2&gt;
+&lt;p&gt;In Canada, Transport Canada governs general aviation.&lt;/p&gt;
+&lt;p&gt;In US, FAA governs general aviation.&lt;/p&gt;
+&lt;p&gt;CARs: Canadian Aviation Regulations. 
+&lt;a href=&#34;https://www.tc.gc.ca/en/transport-canada/corporate/acts-regulations/regulations/sor-96-433.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link on Transport Canada&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cruising-altitudes&#34;&gt;Cruising Altitudes&lt;/h2&gt;
+&lt;p&gt;When flying VFR above 3,000 AGL, remember &amp;ldquo;East is Odd, West is Even Odder&amp;rdquo; on Magnetic Track (not Magnetic Heading)&lt;/p&gt;
+&lt;p&gt;602.34 
+&lt;a href=&#34;https://laws-lois.justice.gc.ca/eng/regulations/SOR-96-433/FullText.html#h-993895&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cruising Altitudes and Cruising Flight Levels&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cessna-172m-procedures&#34;&gt;Cessna 172M procedures&lt;/h2&gt;
+&lt;h3 id=&#34;precautionary-landing&#34;&gt;Precautionary Landing&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;COWLS check&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Civilization (nearby population)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Obstacle (tower, treeline, powerline)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wind (headwind on final)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Length of the surface (2000 ft would be minimal for C172 considering obstacle clearance, touchdown area and distance required for T/O)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Surface condition (too soft, too much rough, uneven terrain)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;High Pass and Low Pass&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;High pass is completed at circuit altitude: 60kt with flaps 20&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If satisfied with the surface, a low pass is completed at 500 AGL with same speed and configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In both high pass and low pass, the key is to trim for straight and level flight at the correct speed and altitude before abeam threshold.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use the same pitch for speed and power for decent technique. For C172, 1900rpm is rule of thumb that can keep 60kt without decending.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On the downwind for landing, complete 3P: Prelanding checklist, Pan call, and Pax - passenger briefing)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;enroute-climb&#34;&gt;Enroute Climb&lt;/h3&gt;
+&lt;p&gt;Lookout to clear the climb&lt;/p&gt;
+&lt;p&gt;APT - Attitude, Power (control the adverse yaw), Trim&lt;/p&gt;
+&lt;p&gt;Level off from climbing - The same APT procedure applies.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.studyflight.com/climbing/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reference&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Climb&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Pitch up and hold the nose on the horizon
+
+Peek at A/S as it decreases to 75
+
+Full Power, Mix Rich. Carb Off. Right rudder when needed
+
+Trim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Level Off from enroute climb&lt;/p&gt;
+&lt;p&gt;Starts at 50-100ft below target altitude. Gradually push the nose down to cruise attitude.&lt;/p&gt;
+&lt;p&gt;Reduce Power to Cruise setting: 2300rpm. Left Rudder when needed&lt;/p&gt;
+&lt;h3 id=&#34;enroute-decent&#34;&gt;Enroute Decent&lt;/h3&gt;
+&lt;p&gt;Lookout to clear the decent&lt;/p&gt;
+&lt;p&gt;PAT - Power (control the adverse yaw), Attitude, Trim&lt;/p&gt;
+&lt;p&gt;Level off from climbing - The same APT applies.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.studyflight.com/descending/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reference&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;normal-takeoff&#34;&gt;Normal Takeoff&lt;/h3&gt;
+&lt;p&gt;Take-off Distance is the lump sum of the following three:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Takeoff roll (ground roll)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lift-off&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Initial Climb until clear 50ft obstacle&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Confirm Wind Input before takeoff. Use Cross-wind Take-off Checklist if needed.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Elevator neutral. Aileron neutral. No flaps.
+
+Full Power. Mix Rich. Carb Cold. Call &amp;#34;Power Set&amp;#34;.
+
+Stay on the centerline, use Right Rudder as needed.
+
+Check and call &amp;#34;Engine gauges green&amp;#34;.
+
+Check and call &amp;#34;Airspeed alive&amp;#34;.
+
+Wings level. Rotate at 55. Right Rudder! Call &amp;#34;Rotate&amp;#34;.
+
+Nose on the Horizon.
+
+Call &amp;#34;____, &amp;lt;callsign&amp;gt; airborne Rwy __&amp;#34;
+
+Climb out at 70. Trim.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;normal-landing&#34;&gt;Normal Landing&lt;/h3&gt;
+&lt;p&gt;Important: Set your mindset as &amp;ldquo;keep it flying without landing&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;On Down Wind:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Set Power to 2300rpm.
+
+Fly parallel to the landing Runway. Use a Crab angle when needed
+
+Pre-landing checklist.
+(Primer locked, Master ON, Magneto on Both, Circuit Breakers
+Check, Landing Lights ON, Carb ON, Mix Rich, Engine Green,
+Fuel on Both, Doors and Windows Locked, Seatbelts fastened,
+Brakes Check)
+
+&amp;#34;Pre-landing Checklist Complete&amp;#34;
+
+&amp;#34;Aiming to touch down at one third of the Rwy&amp;#34;
+
+At 45 degrees beyond threshold (turn early when having a
+tailwind), reduce power to 1500rpm, holding the
+altitude while making a turn to base.
+
+Call &amp;#34;___, &amp;lt;callsign&amp;gt;, turning base for Rwy __&amp;#34; (optional)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On Base Leg:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Holding the altitude while bleeding off A/S until it reaches
+75 knots
+
+Apply flaps 20 (be careful not to ballon up) and trim for 75
+
+Anticipate a 500fpm decent.
+
+Look out for Wind
+
+  *** When having tail winds, turn early and anticipate a bit high
+
+Turning Final and call &amp;#34;___, &amp;lt;callsign&amp;gt;, turning final
+on Rwy __. [Tough-n-Go / Full Stop]&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On Final:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Apply full flaps.
+
+A/S 65. Trim.
+
+Line up early on the extended runway centerline.
+
+Fly with a crab angle initially to correct for drift.
+
+Pitch for Airspeed, Power for altitude
+
+Transition to Sideslip.
+
+When getting the vision of &amp;#34;exploding&amp;#34; runway:
+  Power to Idle, Hold control column and gradually level off.
+  Judge the sink rate using peripheral vision.
+  When sinking, do baby steps of &amp;#34;pull-pause-pull&amp;#34; to
+  keep the nose slight below horizon.
+  When not sinking, hold the control column but no pulling.
+
+When touches down completely:
+  Wind input -
+    Aileron fully deflected into the wind
+    Opposite Rudder to stay on the centerline
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;short-field-landing&#34;&gt;Short Field Landing&lt;/h3&gt;
+&lt;p&gt;On Down wind:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&amp;#34;Aiming to touch down at second dash&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On Final:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Approach speed: 60
+
+&amp;#34;There is an 50ft obstacle before threshold&amp;#34;
+
+When obstacle is cleared, power to idle and maintain 60
+
+After touching down, HOLD control full back, RETRACT flaps
+and APPLY maximum brake pressure
+
+(from C172 POH)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;soft-field-landing&#34;&gt;Soft Field Landing&lt;/h3&gt;
+&lt;p&gt;On Down wind:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&amp;#34;Aiming to touch down at one third of the Rwy&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On Final:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Perform a 60kt approach on final
+
+Power to Idle and enter cruising attitude as normal landing
+
+Immediately after entering cruising attitude but before it
+starts sinking:
+  Apply small amount of power (100 to 200rpm is enough)
+
+Touching down at a more nose up attitude than normal landing
+(textbook says roughtly the attitude of a power-off stall)
+
+During the flaring control column likely has more back travel
+than normal landing. It can be close to the belly when
+touching down
+
+After touchdown, HOLD control full back and DO NOT apply heavy
+brake pressure
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;power-off-stall-entry-and-recovery&#34;&gt;Power-off Stall Entry and Recovery&lt;/h3&gt;
+&lt;p&gt;On straight and level flight&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;HASEL CHECK
+
+(Carb ON, Mix Rich)
+
+Power to Idle smoothly while controlling yaw
+
+Hold back control pressure to keep airplane straight and level
+
+Watch A/S decreases into slow flight range.
+
+Call out immiment stall by &amp;#34;STALL&amp;#34; when hearing horn and losing
+altitude
+
+Call out &amp;#34;RECOVER&amp;#34; and immediately nose down and apply full power
+and control yaw
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;power-on-stall-entry-and-recovery&#34;&gt;Power-on Stall Entry and Recovery&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Entry:
+
+Power to 1700rpm
+
+everything else is similiar to that of a power off stall.
+
+Expect more challenging yaw control due to slipstream and asymmetric thrust
+
+use RUDDER to control yaw
+
+Stall will happen in a more hose-up position
+
+it will be judged if heading can be kept during recovery
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>What I have Been Reading</title>
@@ -20,6 +1113,355 @@
       <description>&lt;p&gt;A Conflict of Visions: Ideological Origins of Political Struggles by Thomas Sowell. 2007. 
 &lt;a href=&#34;https://www.amazon.com/dp/B06XBV7WHL&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On Amazon&lt;/a&gt;&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Notes from My Journey Learning Javascript and React.js</title>
+      <link>https://davidxiao.me/post/notes-from-my-journey-in-reactjs/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/notes-from-my-journey-in-reactjs/</guid>
+      <description>&lt;p&gt;TLDR&lt;/p&gt;
+&lt;p&gt;As a recovering C++ developer learning React, I put together some notes along the journey.&lt;/p&gt;
+&lt;p&gt;Some of the notes and example code were extracted from the materials listed in the reference. I&amp;rsquo;ve tried to include links but feel free to let me know if I missed something.&lt;/p&gt;
+&lt;p&gt;Credit goes to the original authors.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://reactjs.org/docs/hello-world.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Step-by-step guide&lt;/a&gt;. Great learning material.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;what-is-reactjs&#34;&gt;What is React.js&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It has a few building blocks such as elements, components etc.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://reactjs.org/tutorial/tutorial.html#what-is-react&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reactjs.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;elements&#34;&gt;Elements&lt;/h2&gt;
+&lt;p&gt;An element describes what you want to see on the screen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;world&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;div1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; /&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;components&#34;&gt;Components&lt;/h2&gt;
+&lt;p&gt;Elements such as &lt;code&gt;&amp;lt;div /&amp;gt;&lt;/code&gt; are defined in 
+&lt;a href=&#34;https://developer.mozilla.org/docs/Web/HTML/Element/div&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HTML5&lt;/a&gt;. React extends it by introducing user-defined elements such as&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Welcome&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sara&amp;#34;&lt;/span&gt; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Welcome&lt;/code&gt; is a user-defined component. In React, always start component names with a capital letter to follow the naming convention.&lt;/p&gt;
+&lt;h3 id=&#34;why-components&#34;&gt;Why Components&lt;/h3&gt;
+&lt;p&gt;Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.&lt;/p&gt;
+&lt;p&gt;React component can be declared as a JS function or a JS class. Either way, it accepts input (called “props”) and return React elements describing what should appear on the screen.&lt;/p&gt;
+&lt;p&gt;When React sees an element representing a user-defined component, it wraps up JSX attributes and children and passes it as a single object (called &lt;code&gt;props&lt;/code&gt;) to the component implicitly without user code.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;props&lt;/code&gt;stands for properties.&lt;/p&gt;
+&lt;h3 id=&#34;react-function&#34;&gt;React function&lt;/h3&gt;
+&lt;p&gt;An example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Welcome&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt;, {&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;;
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Welcome&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sara&amp;#34;&lt;/span&gt; /&amp;gt;;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;ReactDOM&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;(
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;,
+  document.&lt;span style=&#34;color:#a6e22e&#34;&gt;getElementById&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;)
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;JS code starts at the top of the file. It gets executed from top to bottom. There is no entry point such as what &amp;ldquo;main()&amp;rdquo; has to do in C++.&lt;/p&gt;
+&lt;p&gt;What happens in the example above is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;React calls ReactDOM.render() with the &lt;code&gt;&amp;lt;Welcome name=&amp;quot;Sara&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;React sees &lt;code&gt;Welcome&lt;/code&gt; is a user-defined component and calls its corresponding function with &lt;code&gt;{name: &#39;Sara&#39;}&lt;/code&gt; as the props.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Welcome component returns &lt;code&gt;&amp;lt;h1&amp;gt;Hello, Sara&amp;lt;/h1&amp;gt;&lt;/code&gt; as the result.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;React takes care of updating the DOM with &lt;code&gt;&amp;lt;h1&amp;gt;Hello, Sara&amp;lt;/h1&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;react-class&#34;&gt;React class&lt;/h3&gt;
+&lt;p&gt;The function component example above can be equivalently rewritten as a class component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Welcome&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;React&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Component&lt;/span&gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt;, {&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;React class component always &amp;ldquo;inherited&amp;rdquo; from &lt;code&gt;React.Component&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;render()&lt;/code&gt; is the only method that any class &amp;ldquo;inherited&amp;rdquo; from &lt;code&gt;React.Component&lt;/code&gt; must declare.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Think of &lt;code&gt;render()&lt;/code&gt; as a C++ pure virtual function in &lt;code&gt;React.Component&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A derived class would have to implement it before the class can be instantiated.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;calling-a-component-in-another-component&#34;&gt;Calling a component in another component&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s take function component as an example.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD;
+  Comment--&amp;gt;UserInfo--&amp;gt;Avatar;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Comment passed the value of its own &lt;code&gt;props.author&lt;/code&gt; to UserInfo.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Comment&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Comment&amp;#34;&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;UserInfo&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;author&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Comment-text&amp;#34;&lt;/span&gt;&amp;gt;
+        {&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;}
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Comment-date&amp;#34;&lt;/span&gt;&amp;gt;
+        {&lt;span style=&#34;color:#a6e22e&#34;&gt;formatDate&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;)}
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;UserInfo&amp;rsquo;s props contains a key value pair &amp;ldquo;user=&amp;hellip;&amp;rdquo; received from Comment. The value then gets passed down to Avatar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UserInfo&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UserInfo&amp;#34;&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Avatar&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UserInfo-name&amp;#34;&lt;/span&gt;&amp;gt;
+        {&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;}
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;props&#34;&gt;Props&lt;/h2&gt;
+&lt;p&gt;Props gets passed to the constructor of class and stored as a class variable. Any method thereafer can reference it using &lt;code&gt;this.props&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;In a class component, think of &lt;code&gt;this.props&lt;/code&gt; as a const reference member variable in C++.&lt;/p&gt;
+&lt;p&gt;It is initiated within &lt;code&gt;constructor(props)&lt;/code&gt; where &lt;code&gt;super(props)&lt;/code&gt; is called, the superclass always being &lt;code&gt;React.Component&lt;/code&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We recommend naming props from the component’s own point of view rather than the context in which it is being used. The rationale being: It doesn’t need to know context such as where it is being rendered.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s a sort of isolation that helps in producing clear code.&lt;/p&gt;
+&lt;h3 id=&#34;props-are-immutable&#34;&gt;Props are Immutable&lt;/h3&gt;
+&lt;p&gt;Whether you declare a component as a function or a class, it must never modify its own props.&lt;/p&gt;
+&lt;p&gt;The following code is valid in javascript syntax but should not be used as React component as it changes its own input:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;withdraw&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;account&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;amount&lt;/span&gt;) {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;account&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;total&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;amount&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Think of JS function parameter as pass by reference in C++.&lt;/p&gt;
+&lt;p&gt;In React, treat &lt;code&gt;props&lt;/code&gt; as if it is const reference in C++.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;class-state-and-lifecycle&#34;&gt;Class, State and Lifecycle&lt;/h2&gt;
+&lt;p&gt;One difference between class and function is that class has a special object called &lt;code&gt;this.states&lt;/code&gt;. states acts as a &amp;ldquo;container&amp;rdquo; that preserves variables between calls. In other words, class oject is &amp;ldquo;stateful&amp;rdquo; while function is &amp;ldquo;stateless&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;A class has a few built-in methods including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;constructor()&lt;/code&gt;. See 
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#constructor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;componentDidMount()&lt;/code&gt;. It is called when the object is rendered to the DOM for the first time. See 
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#componentdidmount&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;componentWillUnmount()&lt;/code&gt;. It is called when the DOM produced by the object is removed. See 
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#componentwillunmount&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A diagram to help understand lifecycle:&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-react-lifecycle-methods-diagram&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/notes-from-my-journey-in-reactjs/lifecycle_hu99707c804d36455f483469849bfa5c31_220852_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;React lifecycle methods diagram&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/notes-from-my-journey-in-reactjs/lifecycle_hu99707c804d36455f483469849bfa5c31_220852_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2278&#34; height=&#34;1072&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    React lifecycle methods diagram
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;For a visual reference, click 
+&lt;a href=&#34;https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;state&lt;/code&gt; is a built-in object in class.&lt;/p&gt;
+&lt;details&gt;
+  &lt;summary&gt;Click to see code example and explainations&lt;/summary&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Clock&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;React&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Component&lt;/span&gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// for a React.Component subclass, you should call 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// super(props) before any other statement
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+    &lt;span style=&#34;color:#75715e&#34;&gt;// in constructor, you should not call setState(),
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// instead, assign the initial state to this.state directly
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date()};
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;componentDidMount&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;timerID&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;setInterval&lt;/span&gt;(
+      () =&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;tick&lt;/span&gt;(),
+      &lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;
+    );
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;componentWillUnmount&lt;/span&gt;() {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;clearInterval&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;timerID&lt;/span&gt;);
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;tick&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;({
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date()
+    });
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;world&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;It&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;toLocaleTimeString&lt;/span&gt;()}.&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    );
+  }
+}
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;ReactDOM&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;(
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Clock&lt;/span&gt; /&amp;gt;,
+  document.&lt;span style=&#34;color:#a6e22e&#34;&gt;getElementById&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;)
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;When &lt;code&gt;&amp;lt;Clock /&amp;gt;&lt;/code&gt; is passed to &lt;code&gt;ReactDOM.render()&lt;/code&gt;, React calls the constructor of the Clock component. Since Clock needs to display the current time, it initializes &lt;code&gt;this.state&lt;/code&gt; with an object including the current time. We will later update this state.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;React then calls the Clock component’s &lt;code&gt;render()&lt;/code&gt; method. This is how React learns what should be displayed on the screen. React then updates the DOM to match the Clock’s render output.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When the Clock output is inserted in the DOM, React calls the &lt;code&gt;componentDidMount()&lt;/code&gt; lifecycle method. Inside it, the Clock component asks the browser to set up a timer to call the component’s &lt;code&gt;tick()&lt;/code&gt; method once a second.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Every second the browser calls the &lt;code&gt;tick()&lt;/code&gt; method. Inside it, the Clock component schedules a UI update by calling &lt;code&gt;setState()&lt;/code&gt; with an object containing the current time.&lt;/p&gt;
+&lt;p&gt;👉 Important: Thanks to the &lt;code&gt;setState()&lt;/code&gt; call, React knows the state has changed, and calls the render() method again to learn what should be on the screen. This time, &lt;code&gt;this.state.date&lt;/code&gt; in the &lt;code&gt;render()&lt;/code&gt; method will be different, and so the render output will include the updated time. React updates the DOM accordingly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the Clock component is ever removed from the DOM, React calls the &lt;code&gt;componentWillUnmount()&lt;/code&gt; lifecycle method so the timer is stopped.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;props-vs-state&#34;&gt;Props vs State&lt;/h2&gt;
+&lt;p&gt;This is a growing list.&lt;/p&gt;
+&lt;h3 id=&#34;rendered-value&#34;&gt;&amp;ldquo;rendered&amp;rdquo; value&lt;/h3&gt;
+&lt;p&gt;In React, both this.props and this.state represent the rendered values, i.e. what’s currently on the screen.&lt;/p&gt;
+&lt;h3 id=&#34;both-props-and-state-can-be-accessed-by-this&#34;&gt;Both props and state can be accessed by &amp;ldquo;this&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;Both &lt;code&gt;this.state&lt;/code&gt; and &lt;code&gt;this.props&lt;/code&gt; are valid within the class scope.&lt;/p&gt;
+&lt;h3 id=&#34;props-are-immutable-1&#34;&gt;Props are immutable&lt;/h3&gt;
+&lt;p&gt;It is not supposed to be modified in any way. If the component needs to be &amp;ldquo;stateful&amp;rdquo; during the calls, always use state.&lt;/p&gt;
+&lt;h3 id=&#34;avoid-copying-props-into-state&#34;&gt;Avoid Copying Props into State&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+&lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+&lt;span style=&#34;color:#75715e&#34;&gt;// Don&amp;#39;t do this!
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;color&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;color&lt;/span&gt; };
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;details&gt;
+    &lt;summary&gt;This is a common mistake.&lt;/summary&gt;
+&lt;p&gt;It’s unnecessary (use &lt;code&gt;this.props.color&lt;/code&gt; instead) and prone to bugs (updates to the &lt;code&gt;color&lt;/code&gt; prop won’t be reflected in the state).&lt;/p&gt;
+&lt;p&gt;Only use it if you want to disregard prop updates. &lt;del&gt;In that case, it makes sense to rename the prop to be called &lt;code&gt;initialColor&lt;/code&gt; or &lt;code&gt;defaultColor&lt;/code&gt;. You can then force a component to “reset” its internal state by changing its key when necessary.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;Read 
+&lt;a href=&#34;https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; on avoiding derived state to learn about what to do if you think you need some state to depend on the props.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#constructor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reactjs.org&lt;/a&gt;&lt;/p&gt;
+  &lt;/details&gt;
+&lt;h3 id=&#34;state-updates-may-be-asynchronous&#34;&gt;State Updates May Be Asynchronous&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;setState()&lt;/code&gt; &amp;ldquo;schedules&amp;rdquo; an update to a component’s state object. When state changes, the component responds by re-rendering.&lt;/p&gt;
+&lt;p&gt;Consider using setState() that accepts a function rather than an object when you need to update state variables.&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;React may batch multiple setState() calls into a single update for performance.&lt;/summary&gt;
+&lt;p&gt;In React, &lt;code&gt;state&lt;/code&gt; must only be updated by &lt;code&gt;setState()&lt;/code&gt; (only exception is within &lt;code&gt;constructor()&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;This is because manual updates won&amp;rsquo;t trigger UI updates since React doesn&amp;rsquo;t know state has changed.&lt;/p&gt;
+&lt;p&gt;To fix it, use a second form of setState() that accepts a &amp;ldquo;updater&amp;rdquo; function object as parameter.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Wrong. counter may not be updated immediately since setState() may be delayed in execution by React
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;({
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;increment&lt;/span&gt;,
+});
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// Correct. See explaination above
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; ({
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;increment&lt;/span&gt;
+}));
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In React, &amp;ldquo;updater&amp;rdquo; function takes the following signature:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;stateChange&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The return value of the &lt;code&gt;updater&lt;/code&gt; is shallowly merged with state. For example, in the following code,  the return value of the function. will be assigned to &lt;code&gt;state.counter&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;step&lt;/span&gt;};
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/details&gt;
+&lt;h3 id=&#34;state-holds-all-its-variables&#34;&gt;State holds all its variables&lt;/h3&gt;
+&lt;p&gt;React merges the object you provide into the current state.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [],
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;comments&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; []
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When you update &lt;code&gt;comments&lt;/code&gt; with the following code, it leaves &lt;code&gt;this.state.posts&lt;/code&gt; intact, but completely replaces &lt;code&gt;this.state.comments&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;state-is-not-accessible-to-other-components&#34;&gt;State is not accessible to other components&lt;/h3&gt;
+&lt;p&gt;State is not accessible to any component other than the one that owns and sets it.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Think of state as a &amp;ldquo;protected&amp;rdquo; member variable encapsulated in React.Component class. It can be accessed by its derived classed but not from outside.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;It is the philosophy that neither parent nor child components can know if a certain component is stateful or stateless, and they shouldn’t care its implementation details, such as whether it is defined as a function or a class.&lt;/p&gt;
+&lt;p&gt;In React apps, whether a component is stateful or stateless is considered an implementation detail of the component that may change over time. You can use stateless components inside stateful components, and vice versa.&lt;/p&gt;
+&lt;h3 id=&#34;be-cautious-about-using-this-in-a-class-method&#34;&gt;Be cautious about using &amp;ldquo;this&amp;rdquo; in a class method&lt;/h3&gt;
+&lt;p&gt;Unlike in C++ where &lt;code&gt;this&lt;/code&gt; is accessible in any class method including in the constructor, in JS, &lt;code&gt;this&lt;/code&gt; is &lt;code&gt;undefined&lt;/code&gt; until it is bound.&lt;/p&gt;
+&lt;p&gt;First, let&amp;rsquo;s take a look at 
+&lt;a href=&#34;https://codepen.io/davxiao/pen/PoZpajQ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this example&lt;/a&gt; where I purposely made an attempt to access &lt;code&gt;this&lt;/code&gt; in constructor and get the following error:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Uncaught ReferenceError: Must call super constructor in derived class before accessing &#39;this&#39; or returning from derived constructor
+ at pen.js:-12
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Second, in member methods &lt;code&gt;this&lt;/code&gt; is &lt;code&gt;undefined&lt;/code&gt; until it is bound.&lt;/p&gt;
+&lt;p&gt;In the following example code, if you forget to bind &lt;code&gt;this.handleClick&lt;/code&gt; and pass it to &lt;code&gt;onClick&lt;/code&gt;, this will be undefined when the function is actually called.&lt;/p&gt;
+&lt;p&gt;This is not React-specific; it is a part of 
+&lt;a href=&#34;https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;how functions work in JavaScript&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method.&lt;/p&gt;
+&lt;p&gt;There are two (recommended) ways to do it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// bind a method in constructor
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;isToggleOn&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;};
+
+  &lt;span style=&#34;color:#75715e&#34;&gt;// This binding is necessary to make `this` work in the callback
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bind&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// or the following way
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;this is:&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In either way, the method is bound and the render() will work:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;() {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onClick&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt;}&amp;gt;
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;Click&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;me&lt;/span&gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt;&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -339,9 +1781,10 @@ git push ;
       <link>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</link>
       <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</guid>
-      <description>&lt;p&gt;&lt;em&gt;TLDR 👉 It talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a Hugo static site which is built on Hugo and using academic theme.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Before getting started, have a look at any post on my blog at 
-&lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; and see the way commenting works. If you like what you saw, please read on.&lt;/p&gt;
+      <description>&lt;p&gt;TLDR;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;👉 This post talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a static site which is built on Hugo and academic theme.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Before getting started, take a look at the posts on my blog at 
+&lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; and see the way commenting works.&lt;/p&gt;
 &lt;h2 id=&#34;what-will-be-covered-in-this-post&#34;&gt;What Will be Covered in This Post&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -354,40 +1797,40 @@ git push ;
 &lt;p&gt;Integrate remark42 to your Hugo site&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;step-1-hosting-remark42&#34;&gt;Step 1. Hosting Remark42&lt;/h2&gt;
+&lt;h2 id=&#34;step-1-deploy-remark42-on-your-host&#34;&gt;Step 1. Deploy Remark42 on your Host&lt;/h2&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://remark42.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Remark42&lt;/a&gt; is an open source commenting system that can be deployed as container. It&amp;rsquo;s self-contained with little external dependencies. You can find deployement guide on its Remark42&amp;rsquo;s git repo.&lt;/p&gt;
 &lt;p&gt;Feel free to do container your way but if you are interested in what tool I use for docker management, it&amp;rsquo;s 
 &lt;a href=&#34;https://github.com/portainer/portainer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Portainer&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I have the following parameters on my remark42 container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
 SITE	                site id. For example: davidxiao
 SECRET	                required. can be a long and hard-to-guess string
 DEBUG	                true
 AUTH_GOOGLE_CID         your own value
-AUTH_GOOGLE_CSEC        same
-AUTH_FACEBOOK_CID       same
-AUTH_FACEBOOK_CSEC      same
-AUTH_TWITTER_CID        same
-AUTH_TWITTER_CSEC       same
-AUTH_GITHUB_CID         same
-AUTH_GITHUB_CSEC        same
+AUTH_GOOGLE_CSEC        your own value
+AUTH_FACEBOOK_CID       your own value
+AUTH_FACEBOOK_CSEC      your own value
+AUTH_TWITTER_CID        your own value
+AUTH_TWITTER_CSEC       your own value
+AUTH_GITHUB_CID         your own value
+AUTH_GITHUB_CSEC        your own value
 ADMIN_SHARED_EMAIL      mail address that will receive notifications such as new comments
-NOTIFY_EMAIL_ADMIN	true
-NOTIFY_TYPE	        email
-NOTIFY_EMAIL_FROM	mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
-AUTH_EMAIL_FROM	        same as above
+NOTIFY_EMAIL_ADMIN	    true
+NOTIFY_TYPE	            email
+NOTIFY_EMAIL_FROM	    mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
+AUTH_EMAIL_FROM	        your own value
 ADMIN_SHARED_ID	        OAuth authenticated user id that has admin access. see https://github.com/umputun/remark42#admin-users
-SMTP_HOST	        smtp.mailgun.org
-SMTP_PORT	        465
-SMTP_TLS	        true
+SMTP_HOST	            smtp.mailgun.org
+SMTP_PORT	            465
+SMTP_TLS	            true
 SMTP_USERNAME	        SMTP credential from Mailgun
-SMTP_PASSWORD	        
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;NOTES: for more detail on Remark42 email configuration, check this 
-&lt;a href=&#34;https://github.com/umputun/remark42/blob/master/docs/email.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page&lt;/a&gt;&lt;/p&gt;
+SMTP_PASSWORD	        your own credential
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more detail on how to configure email configuration on Remark42, check 
+&lt;a href=&#34;https://github.com/umputun/remark42/blob/master/docs/email.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; out.&lt;/p&gt;
 &lt;h3 id=&#34;app-registration-on-the-oauth-providers&#34;&gt;App Registration on the OAuth Providers&lt;/h3&gt;
-&lt;p&gt;Before you can complete app registration on the 
-&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_OAuth_providers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OAuth providers&lt;/a&gt; supported by Remark42 (Google, facebook, twitter, github), you would need to determine the domain name of your Remark42 api endpoint.&lt;/p&gt;
+&lt;p&gt;Before registering you Remark42 app on google, facebook, twitter and github (the 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_OAuth_providers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OAuth providers&lt;/a&gt; Remark42 supports), you would need to determine the domain name of your Remark42 api endpoint.&lt;/p&gt;
 
 
 
@@ -425,27 +1868,43 @@ SMTP_PASSWORD
 
 &lt;/figure&gt;
 
-&lt;p&gt;Using a dynamic DNS (DDNS) would allow you to update IP address when your endpoint IP changes. If you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, DDNS can be helpful.&lt;/p&gt;
-&lt;p&gt;Selecting a proper one as your DDNS provider is important to your solution. There are a few reasons.&lt;/p&gt;
-&lt;p&gt;Each OAuth provider has its own rules over what kind of OAuth redirect URIs is allowed, some just don&amp;rsquo;t allow certain DDNS domains. For instance, facebook does not allow any &lt;code&gt;duckdns.org&lt;/code&gt; domain as part of redirect URIs at time of writing.&lt;/p&gt;
-&lt;p&gt;Second, a typical DDNS provider would resolve your domain to your public IP. It&amp;rsquo;s what DDNS does. But for our purpose of hosting web apps, it&amp;rsquo;s not a great idea to expose your public IP as it could be exploited during an attack. CDN is a better approach but some DDNS providers may not offer that.&lt;/p&gt;
-&lt;p&gt;Service availability is another concern. Without any service level agreement, your API will become inaccessible when the DDNS it relies on stops working.&lt;/p&gt;
-&lt;p&gt;Last, the security posture of some DDNS providers can be doubtful. When the service platform itself gets compromised, bad things could happen really quickly before you are made aware of as end user.&lt;/p&gt;
-&lt;p&gt;👉 See my solution in twofold:&lt;/p&gt;
+&lt;p&gt;DDNS(Dynamic DNS) comes in handy whether you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, since it allows you to update DNS A records whenever your endpoint IP changes.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Selecting a DDNS provider is important for a few reasons.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Use a large-scale commercial DNS provider that supports DNS management over API, or even better - when it offers CDN protection over your origin endpoint.&lt;/p&gt;
+&lt;p&gt;Protection of your host&amp;rsquo;s public IP is important for self-hosting web apps. Using DDNS alone means your domain name gets resolved to your public IP.  DDNS + CDN is a better approach.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &amp;ldquo;tunneled through&amp;rdquo; a single domain name when needed. See 
-&lt;a href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/&#34;&gt;here&lt;/a&gt; for detail.&lt;/p&gt;
+&lt;p&gt;Each OAuth provider has its own rules over whether an given OAuth redirect URI is allowed. For example, facebook does not allow any &lt;code&gt;duckdns.org&lt;/code&gt; as part of redirect URI at time of writing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Service availability concern. Your app will become inaccessible when the DDNS it relies on stops working.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The security posture of the DDNS provider. If the service provider gets compromised, you DDNS domain name can be &amp;ldquo;hijacked&amp;rdquo;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;With respect to DDNS provider, I landed on Cloudflare after having reviewed a few choices including Cloudflare, Duckdns, No-IP. See my Cloudflare DDNS setup 
-&lt;a href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;My approach:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Set up your public endpoint leveraging a DNS provider such as Cloudflare that has large operating scale, supports DDNS management over API and offers CDN protection over your private endpoint. See 
+&lt;a href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/&#34;&gt;here&lt;/a&gt; for more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On your private endpoint, Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &amp;ldquo;tunneled through&amp;rdquo; a single domain name when needed. See 
+&lt;a href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/&#34;&gt;here&lt;/a&gt; for more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use Nginx control policy to restrict access to only Cloudflare IPs and local trusted networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;step-2-protecttunnel-your-endpoint&#34;&gt;Step 2. Protect(tunnel) your Endpoint&lt;/h2&gt;
-&lt;p&gt;I assume you are using Cloudflare as DNS provider as it&amp;rsquo;s a prerequisite if you need to enable Cloudflare CDN.&lt;/p&gt;
-&lt;p&gt;To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case that&amp;rsquo;s &lt;code&gt;api.davidxiao.me&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You need to use Cloudflare as DNS provider before enabling Cloudflare CDN.&lt;/p&gt;
+&lt;p&gt;To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case it&amp;rsquo;s &lt;code&gt;api.davidxiao.me&lt;/code&gt;.&lt;/p&gt;
 
 
 
@@ -605,14 +2064,14 @@ SMTP_PASSWORD
 
 &lt;h2 id=&#34;step-3-integrate-remark42-to-your-hugo-site&#34;&gt;Step 3. Integrate Remark42 to Your Hugo Site&lt;/h2&gt;
 &lt;p&gt;Override the &lt;code&gt;comments.html&lt;/code&gt; template by:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and modify the new one as you see fit.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and modify the new one as you see fit.&lt;/p&gt;
 &lt;p&gt;The following is my modified version of &lt;code&gt;comments.html&lt;/code&gt;.&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/2c4373dbbf55823ccb3460cd79b37ee5.js&#34;&gt;&lt;/script&gt;
 
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Congrats! You&amp;rsquo;ve got the remark42 commenting system integrated to your Hugo site. Comment, Suggestion, and Feedback are all welcome!&lt;/p&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve got the remark42 commenting system integrated to your Hugo site.&lt;/p&gt;
+&lt;p&gt;Comments and Feedback are welcome!&lt;/p&gt;
 </description>
     </item>
     
@@ -805,21 +2264,17 @@ SMTP_PASSWORD
 &lt;p&gt;Port 465 is the &amp;ldquo;straight-in&amp;rdquo; SSL/TLS in that it deals with every session as TLS.&lt;/p&gt;
 &lt;h2 id=&#34;postfix&#34;&gt;Postfix&lt;/h2&gt;
 &lt;p&gt;Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install libsasl2-modules postfix ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your-username@mg.yourdomain.com:your-password-here&lt;/code&gt; with your actual SMTP credential.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[smtp.mailgun.org]:587 your-username@mg.yourdomain.com:your-password-here
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postmap /etc/postfix/sasl/sasl_passwd_mailgun ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Mailgun SMTP authentication.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo apt install libsasl2-modules postfix ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your-username@mg.yourdomain.com:your-password-here&lt;/code&gt; with your actual SMTP credential.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[smtp.mailgun.org]:587 your-username@mg.yourdomain.com:your-password-here
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo postmap /etc/postfix/sasl/sasl_passwd_mailgun ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Mailgun SMTP authentication.&lt;/p&gt;
 &lt;h3 id=&#34;secure-the-passwords&#34;&gt;Secure the passwords&lt;/h3&gt;
 &lt;p&gt;Both &lt;code&gt;sasl_passwd_mailgun&lt;/code&gt; and &lt;code&gt;sasl_passwd_mailgun.db&lt;/code&gt; contain plain text of your app password, to secure the access, you need to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
 sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
 &lt;p&gt;Postfix&amp;rsquo;s main configuration file is &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt;. See the following my own configuration for your reference.&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js&#34;&gt;&lt;/script&gt;
 
@@ -842,9 +2297,8 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;p&gt;In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.&lt;/p&gt;
 &lt;h3 id=&#34;testing-and-troubleshooting&#34;&gt;Testing and Troubleshooting&lt;/h3&gt;
 &lt;p&gt;When config file is done, reload Postfix configurations without having to restart the service:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postfix reload ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For SMTP testing, I personally like to use 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo postfix reload ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
@@ -855,11 +2309,10 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
-# and
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo tail -f /var/log/syslog ;
+&lt;span style=&#34;color:#75715e&#34;&gt;# and&lt;/span&gt;
 sudo tail -f /var/log/mail.err ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
 &lt;p&gt;On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.&lt;/p&gt;
 &lt;p&gt;Let me know if you have any questions or comments.&lt;/p&gt;
 </description>
@@ -925,21 +2378,17 @@ sudo tail -f /var/log/mail.err ;
 &lt;p&gt;The rest of the post is using Ubuntu as an example, but the approach should work for most recent Linux distro in general.&lt;/p&gt;
 &lt;h2 id=&#34;postfix&#34;&gt;Postfix&lt;/h2&gt;
 &lt;p&gt;Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install libsasl2-modules postfix ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your@gmail.com&lt;/code&gt; with your actual Gmail; &lt;code&gt;abcdefghijk123&lt;/code&gt; with your actual app password.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[smtp.gmail.com]:587 your@gmail.com:abcdefghijk123
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postmap /etc/postfix/sasl/sasl_passwd ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Gmail SMTP authentication.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install libsasl2-modules postfix ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your@gmail.com&lt;/code&gt; with your actual Gmail; &lt;code&gt;abcdefghijk123&lt;/code&gt; with your actual app password.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[smtp.gmail.com]:587 your@gmail.com:abcdefghijk123
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo postmap /etc/postfix/sasl/sasl_passwd ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Gmail SMTP authentication.&lt;/p&gt;
 &lt;h3 id=&#34;secure-the-passwords&#34;&gt;Secure the passwords&lt;/h3&gt;
 &lt;p&gt;Both &lt;code&gt;sasl_passwd&lt;/code&gt; and &lt;code&gt;sasl_passwd.db&lt;/code&gt; contain plain text of your app password, to secure the access, you need to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
-sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+sudo chmod &lt;span style=&#34;color:#ae81ff&#34;&gt;0600&lt;/span&gt; /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
 &lt;p&gt;Postfix&amp;rsquo;s main configuration file is &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt;. See the following my own configuration for your reference.&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js&#34;&gt;&lt;/script&gt;
 
@@ -962,9 +2411,8 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 &lt;p&gt;In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.&lt;/p&gt;
 &lt;h3 id=&#34;testing-and-troubleshooting&#34;&gt;Testing and Troubleshooting&lt;/h3&gt;
 &lt;p&gt;When config file is done, reload Postfix configurations without having to restart the service:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postfix reload ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For SMTP testing, I personally like to use 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo postfix reload ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
@@ -975,11 +2423,10 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
-# and
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo tail -f /var/log/syslog ;
+&lt;span style=&#34;color:#75715e&#34;&gt;# and&lt;/span&gt;
 sudo tail -f /var/log/mail.err ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
 &lt;p&gt;On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.&lt;/p&gt;
 &lt;p&gt;Let me know if you have any questions or comments. On my post I will be discussing setting up a 
 &lt;a href=&#34;https://www.mailgun.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mailgun&lt;/a&gt; relay. Stay tuned!&lt;/p&gt;

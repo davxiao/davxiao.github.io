@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>learning | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/learning/</link>
+      <atom:link href="https://davidxiao.me/tag/learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>learning</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>learning</title>
+      <link>https://davidxiao.me/tag/learning/</link>
+    </image>
+    
+    <item>
+      <title>Notes from My Journey in React.js</title>
+      <link>https://davidxiao.me/post/notes-from-my-journey-in-reactjs/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/notes-from-my-journey-in-reactjs/</guid>
+      <description>&lt;p&gt;TLDR&lt;/p&gt;
+&lt;p&gt;As a recovering C++ developer learning React, I put together some notes along the journey.&lt;/p&gt;
+&lt;p&gt;Some of the notes and example code were extracted from the materials listed in the reference. I&amp;rsquo;ve tried to include links but feel free to let me know if I missed something.&lt;/p&gt;
+&lt;p&gt;Credit goes to the original authors.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://reactjs.org/docs/hello-world.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Step-by-step guide&lt;/a&gt;. Great learning material.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;what-is-reactjs&#34;&gt;What is React.js&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It has a few building blocks such as elements, components etc.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://reactjs.org/tutorial/tutorial.html#what-is-react&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reactjs.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;elements&#34;&gt;Elements&lt;/h2&gt;
+&lt;p&gt;An element describes what you want to see on the screen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;world&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;div1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; /&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;components&#34;&gt;Components&lt;/h2&gt;
+&lt;p&gt;Elements such as &lt;code&gt;&amp;lt;div /&amp;gt;&lt;/code&gt; are defined in 
+&lt;a href=&#34;https://developer.mozilla.org/docs/Web/HTML/Element/div&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HTML5&lt;/a&gt;. React extends it by introducing user-defined elements such as&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Welcome&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sara&amp;#34;&lt;/span&gt; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Welcome&lt;/code&gt; is a user-defined component. In React, always start component names with a capital letter to follow the naming convention.&lt;/p&gt;
+&lt;h3 id=&#34;why-components&#34;&gt;Why Components&lt;/h3&gt;
+&lt;p&gt;Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.&lt;/p&gt;
+&lt;p&gt;React component can be declared as a JS function or a JS class. Either way, it accepts input (called “props”) and return React elements describing what should appear on the screen.&lt;/p&gt;
+&lt;p&gt;When React sees an element representing a user-defined component, it wraps up JSX attributes and children and passes it as a single object (called &lt;code&gt;props&lt;/code&gt;) to the component implicitly without user code.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;props&lt;/code&gt;stands for properties.&lt;/p&gt;
+&lt;h3 id=&#34;react-function&#34;&gt;React function&lt;/h3&gt;
+&lt;p&gt;An example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Welcome&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt;, {&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;;
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Welcome&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sara&amp;#34;&lt;/span&gt; /&amp;gt;;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;ReactDOM&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;(
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;,
+  document.&lt;span style=&#34;color:#a6e22e&#34;&gt;getElementById&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;)
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;JS code starts at the top of the file. It gets executed from top to bottom. There is no entry point such as what &amp;ldquo;main()&amp;rdquo; has to do in C++.&lt;/p&gt;
+&lt;p&gt;What happens in the example above is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;React calls ReactDOM.render() with the &lt;code&gt;&amp;lt;Welcome name=&amp;quot;Sara&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;React sees &lt;code&gt;Welcome&lt;/code&gt; is a user-defined component and calls its corresponding function with &lt;code&gt;{name: &#39;Sara&#39;}&lt;/code&gt; as the props.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Welcome component returns &lt;code&gt;&amp;lt;h1&amp;gt;Hello, Sara&amp;lt;/h1&amp;gt;&lt;/code&gt; as the result.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;React takes care of updating the DOM with &lt;code&gt;&amp;lt;h1&amp;gt;Hello, Sara&amp;lt;/h1&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;react-class&#34;&gt;React class&lt;/h3&gt;
+&lt;p&gt;The function component example above can be equivalently rewritten as a class component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Welcome&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;React&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Component&lt;/span&gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt;, {&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;React class component always &amp;ldquo;inherited&amp;rdquo; from &lt;code&gt;React.Component&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;render()&lt;/code&gt; is the only method that any class &amp;ldquo;inherited&amp;rdquo; from &lt;code&gt;React.Component&lt;/code&gt; must declare.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Think of &lt;code&gt;render()&lt;/code&gt; as a C++ pure virtual function in &lt;code&gt;React.Component&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A derived class would have to implement it before the class can be instantiated.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;calling-a-component-in-another-component&#34;&gt;Calling a component in another component&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s take function component as an example.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD;
+  Comment--&amp;gt;UserInfo--&amp;gt;Avatar;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Comment passed the value of its own &lt;code&gt;props.author&lt;/code&gt; to UserInfo.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Comment&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Comment&amp;#34;&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;UserInfo&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;author&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Comment-text&amp;#34;&lt;/span&gt;&amp;gt;
+        {&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;}
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Comment-date&amp;#34;&lt;/span&gt;&amp;gt;
+        {&lt;span style=&#34;color:#a6e22e&#34;&gt;formatDate&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;)}
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;UserInfo&amp;rsquo;s props contains a key value pair &amp;ldquo;user=&amp;hellip;&amp;rdquo; received from Comment. The value then gets passed down to Avatar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UserInfo&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UserInfo&amp;#34;&lt;/span&gt;&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Avatar&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;} /&amp;gt;
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;className&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UserInfo-name&amp;#34;&lt;/span&gt;&amp;gt;
+        {&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;}
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;props&#34;&gt;Props&lt;/h2&gt;
+&lt;p&gt;Props gets passed to the constructor of class and stored as a class variable. Any method thereafer can reference it using &lt;code&gt;this.props&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;In a class component, think of &lt;code&gt;this.props&lt;/code&gt; as a const reference member variable in C++.&lt;/p&gt;
+&lt;p&gt;It is initiated within &lt;code&gt;constructor(props)&lt;/code&gt; where &lt;code&gt;super(props)&lt;/code&gt; is called, the superclass always being &lt;code&gt;React.Component&lt;/code&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We recommend naming props from the component’s own point of view rather than the context in which it is being used. The rationale being: It doesn’t need to know context such as where it is being rendered.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s a sort of isolation that helps in producing clear code.&lt;/p&gt;
+&lt;h3 id=&#34;props-are-immutable&#34;&gt;Props are Immutable&lt;/h3&gt;
+&lt;p&gt;Whether you declare a component as a function or a class, it must never modify its own props.&lt;/p&gt;
+&lt;p&gt;The following code is valid in javascript syntax but should not be used as React component as it changes its own input:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;withdraw&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;account&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;amount&lt;/span&gt;) {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;account&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;total&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;amount&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Think of JS function parameter as pass by reference in C++.&lt;/p&gt;
+&lt;p&gt;In React, treat &lt;code&gt;props&lt;/code&gt; as if it is const reference in C++.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;class-state-and-lifecycle&#34;&gt;Class, State and Lifecycle&lt;/h2&gt;
+&lt;p&gt;One difference between class and function is that class has a special object called &lt;code&gt;this.states&lt;/code&gt;. states acts as a &amp;ldquo;container&amp;rdquo; that preserves variables between calls. In other words, class oject is &amp;ldquo;stateful&amp;rdquo; while function is &amp;ldquo;stateless&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;A class has a few built-in methods including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;constructor()&lt;/code&gt;. See 
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#constructor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;componentDidMount()&lt;/code&gt;. It is called when the object is rendered to the DOM for the first time. See 
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#componentdidmount&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;componentWillUnmount()&lt;/code&gt;. It is called when the DOM produced by the object is removed. See 
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#componentwillunmount&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A diagram to help understand lifecycle:&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-react-lifecycle-methods-diagram&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/notes-from-my-journey-in-reactjs/lifecycle_hu99707c804d36455f483469849bfa5c31_220852_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;React lifecycle methods diagram&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/notes-from-my-journey-in-reactjs/lifecycle_hu99707c804d36455f483469849bfa5c31_220852_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2278&#34; height=&#34;1072&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    React lifecycle methods diagram
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;For a visual reference, click 
+&lt;a href=&#34;https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;state&lt;/code&gt; is a built-in object in class.&lt;/p&gt;
+&lt;details&gt;
+  &lt;summary&gt;Click to see code example and explainations&lt;/summary&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Clock&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;React&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Component&lt;/span&gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// for a React.Component subclass, you should call 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// super(props) before any other statement
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+    &lt;span style=&#34;color:#75715e&#34;&gt;// in constructor, you should not call setState(),
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// instead, assign the initial state to this.state directly
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date()};
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;componentDidMount&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;timerID&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;setInterval&lt;/span&gt;(
+      () =&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;tick&lt;/span&gt;(),
+      &lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;
+    );
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;componentWillUnmount&lt;/span&gt;() {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;clearInterval&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;timerID&lt;/span&gt;);
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;tick&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;({
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Date()
+    });
+  }
+
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+      &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;world&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;It&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;toLocaleTimeString&lt;/span&gt;()}.&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+      &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    );
+  }
+}
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;ReactDOM&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;(
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;Clock&lt;/span&gt; /&amp;gt;,
+  document.&lt;span style=&#34;color:#a6e22e&#34;&gt;getElementById&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;root&amp;#39;&lt;/span&gt;)
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;When &lt;code&gt;&amp;lt;Clock /&amp;gt;&lt;/code&gt; is passed to &lt;code&gt;ReactDOM.render()&lt;/code&gt;, React calls the constructor of the Clock component. Since Clock needs to display the current time, it initializes &lt;code&gt;this.state&lt;/code&gt; with an object including the current time. We will later update this state.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;React then calls the Clock component’s &lt;code&gt;render()&lt;/code&gt; method. This is how React learns what should be displayed on the screen. React then updates the DOM to match the Clock’s render output.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When the Clock output is inserted in the DOM, React calls the &lt;code&gt;componentDidMount()&lt;/code&gt; lifecycle method. Inside it, the Clock component asks the browser to set up a timer to call the component’s &lt;code&gt;tick()&lt;/code&gt; method once a second.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Every second the browser calls the &lt;code&gt;tick()&lt;/code&gt; method. Inside it, the Clock component schedules a UI update by calling &lt;code&gt;setState()&lt;/code&gt; with an object containing the current time.&lt;/p&gt;
+&lt;p&gt;👉 Important: Thanks to the &lt;code&gt;setState()&lt;/code&gt; call, React knows the state has changed, and calls the render() method again to learn what should be on the screen. This time, &lt;code&gt;this.state.date&lt;/code&gt; in the &lt;code&gt;render()&lt;/code&gt; method will be different, and so the render output will include the updated time. React updates the DOM accordingly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the Clock component is ever removed from the DOM, React calls the &lt;code&gt;componentWillUnmount()&lt;/code&gt; lifecycle method so the timer is stopped.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;props-vs-state&#34;&gt;Props vs State&lt;/h2&gt;
+&lt;p&gt;This is a growing list.&lt;/p&gt;
+&lt;h3 id=&#34;rendered-value&#34;&gt;&amp;ldquo;rendered&amp;rdquo; value&lt;/h3&gt;
+&lt;p&gt;In React, both this.props and this.state represent the rendered values, i.e. what’s currently on the screen.&lt;/p&gt;
+&lt;h3 id=&#34;both-props-and-state-can-be-accessed-by-this&#34;&gt;Both props and state can be accessed by &amp;ldquo;this&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;Both &lt;code&gt;this.state&lt;/code&gt; and &lt;code&gt;this.props&lt;/code&gt; are valid within the class scope.&lt;/p&gt;
+&lt;h3 id=&#34;props-are-immutable-1&#34;&gt;Props are immutable&lt;/h3&gt;
+&lt;p&gt;It is not supposed to be modified in any way. If the component needs to be &amp;ldquo;stateful&amp;rdquo; during the calls, always use state.&lt;/p&gt;
+&lt;h3 id=&#34;avoid-copying-props-into-state&#34;&gt;Avoid Copying Props into State&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+&lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+&lt;span style=&#34;color:#75715e&#34;&gt;// Don&amp;#39;t do this!
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;color&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;color&lt;/span&gt; };
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;details&gt;
+    &lt;summary&gt;This is a common mistake.&lt;/summary&gt;
+&lt;p&gt;It’s unnecessary (use &lt;code&gt;this.props.color&lt;/code&gt; instead) and prone to bugs (updates to the &lt;code&gt;color&lt;/code&gt; prop won’t be reflected in the state).&lt;/p&gt;
+&lt;p&gt;Only use it if you want to disregard prop updates. &lt;del&gt;In that case, it makes sense to rename the prop to be called &lt;code&gt;initialColor&lt;/code&gt; or &lt;code&gt;defaultColor&lt;/code&gt;. You can then force a component to “reset” its internal state by changing its key when necessary.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;Read 
+&lt;a href=&#34;https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; on avoiding derived state to learn about what to do if you think you need some state to depend on the props.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://reactjs.org/docs/react-component.html#constructor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reactjs.org&lt;/a&gt;&lt;/p&gt;
+  &lt;/details&gt;
+&lt;h3 id=&#34;state-updates-may-be-asynchronous&#34;&gt;State Updates May Be Asynchronous&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;setState()&lt;/code&gt; &amp;ldquo;schedules&amp;rdquo; an update to a component’s state object. When state changes, the component responds by re-rendering.&lt;/p&gt;
+&lt;p&gt;Consider using setState() that accepts a function rather than an object when you need to update state variables.&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;React may batch multiple setState() calls into a single update for performance.&lt;/summary&gt;
+&lt;p&gt;In React, &lt;code&gt;state&lt;/code&gt; must only be updated by &lt;code&gt;setState()&lt;/code&gt; (only exception is within &lt;code&gt;constructor()&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;This is because manual updates won&amp;rsquo;t trigger UI updates since React doesn&amp;rsquo;t know state has changed.&lt;/p&gt;
+&lt;p&gt;To fix it, use a second form of setState() that accepts a &amp;ldquo;updater&amp;rdquo; function object as parameter.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Wrong. counter may not be updated immediately since setState() may be delayed in execution by React
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;({
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;increment&lt;/span&gt;,
+});
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// Correct. See explaination above
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; ({
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;increment&lt;/span&gt;
+}));
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In React, &amp;ldquo;updater&amp;rdquo; function takes the following signature:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;stateChange&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The return value of the &lt;code&gt;updater&lt;/code&gt; is shallowly merged with state. For example, in the following code,  the return value of the function. will be assigned to &lt;code&gt;state.counter&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setState&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) =&amp;gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;counter&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;step&lt;/span&gt;};
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/details&gt;
+&lt;h3 id=&#34;state-holds-all-its-variables&#34;&gt;State holds all its variables&lt;/h3&gt;
+&lt;p&gt;React merges the object you provide into the current state.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [],
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;comments&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; []
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When you update &lt;code&gt;comments&lt;/code&gt; with the following code, it leaves &lt;code&gt;this.state.posts&lt;/code&gt; intact, but completely replaces &lt;code&gt;this.state.comments&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;state-is-not-accessible-to-other-components&#34;&gt;State is not accessible to other components&lt;/h3&gt;
+&lt;p&gt;State is not accessible to any component other than the one that owns and sets it.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Think of state as a &amp;ldquo;protected&amp;rdquo; member variable encapsulated in React.Component class. It can be accessed by its derived classed but not from outside.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;It is the philosophy that neither parent nor child components can know if a certain component is stateful or stateless, and they shouldn’t care its implementation details, such as whether it is defined as a function or a class.&lt;/p&gt;
+&lt;p&gt;In React apps, whether a component is stateful or stateless is considered an implementation detail of the component that may change over time. You can use stateless components inside stateful components, and vice versa.&lt;/p&gt;
+&lt;h3 id=&#34;be-cautious-about-using-this-in-a-class-method&#34;&gt;Be cautious about using &amp;ldquo;this&amp;rdquo; in a class method&lt;/h3&gt;
+&lt;p&gt;Unlike in C++ where &lt;code&gt;this&lt;/code&gt; is accessible in any class method including in the constructor, in JS, &lt;code&gt;this&lt;/code&gt; is &lt;code&gt;undefined&lt;/code&gt; until it is bound.&lt;/p&gt;
+&lt;p&gt;First, let&amp;rsquo;s take a look at 
+&lt;a href=&#34;https://codepen.io/davxiao/pen/PoZpajQ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this example&lt;/a&gt; where I purposely made an attempt to access &lt;code&gt;this&lt;/code&gt; in constructor and get the following error:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Uncaught ReferenceError: Must call super constructor in derived class before accessing &#39;this&#39; or returning from derived constructor
+ at pen.js:-12
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Second, in member methods &lt;code&gt;this&lt;/code&gt; is &lt;code&gt;undefined&lt;/code&gt; until it is bound.&lt;/p&gt;
+&lt;p&gt;In the following example code, if you forget to bind &lt;code&gt;this.handleClick&lt;/code&gt; and pass it to &lt;code&gt;onClick&lt;/code&gt;, this will be undefined when the function is actually called.&lt;/p&gt;
+&lt;p&gt;This is not React-specific; it is a part of 
+&lt;a href=&#34;https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;how functions work in JavaScript&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method.&lt;/p&gt;
+&lt;p&gt;There are two (recommended) ways to do it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// bind a method in constructor
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;constructor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;isToggleOn&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;};
+
+  &lt;span style=&#34;color:#75715e&#34;&gt;// This binding is necessary to make `this` work in the callback
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bind&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// or the following way
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; () =&amp;gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;this is:&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In either way, the method is bound and the render() will work:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;render&lt;/span&gt;() {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onClick&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;handleClick&lt;/span&gt;}&amp;gt;
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;Click&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;me&lt;/span&gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt;&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

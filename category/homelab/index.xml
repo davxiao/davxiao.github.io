@@ -141,9 +141,10 @@
       <link>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</link>
       <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</guid>
-      <description>&lt;p&gt;&lt;em&gt;TLDR 👉 It talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a Hugo static site which is built on Hugo and using academic theme.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Before getting started, have a look at any post on my blog at 
-&lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; and see the way commenting works. If you like what you saw, please read on.&lt;/p&gt;
+      <description>&lt;p&gt;TLDR;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;👉 This post talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a static site which is built on Hugo and academic theme.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Before getting started, take a look at the posts on my blog at 
+&lt;a href=&#34;https://davidxiao.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;davidxiao.me&lt;/a&gt; and see the way commenting works.&lt;/p&gt;
 &lt;h2 id=&#34;what-will-be-covered-in-this-post&#34;&gt;What Will be Covered in This Post&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -156,40 +157,40 @@
 &lt;p&gt;Integrate remark42 to your Hugo site&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;step-1-hosting-remark42&#34;&gt;Step 1. Hosting Remark42&lt;/h2&gt;
+&lt;h2 id=&#34;step-1-deploy-remark42-on-your-host&#34;&gt;Step 1. Deploy Remark42 on your Host&lt;/h2&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://remark42.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Remark42&lt;/a&gt; is an open source commenting system that can be deployed as container. It&amp;rsquo;s self-contained with little external dependencies. You can find deployement guide on its Remark42&amp;rsquo;s git repo.&lt;/p&gt;
 &lt;p&gt;Feel free to do container your way but if you are interested in what tool I use for docker management, it&amp;rsquo;s 
 &lt;a href=&#34;https://github.com/portainer/portainer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Portainer&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I have the following parameters on my remark42 container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
 SITE	                site id. For example: davidxiao
 SECRET	                required. can be a long and hard-to-guess string
 DEBUG	                true
 AUTH_GOOGLE_CID         your own value
-AUTH_GOOGLE_CSEC        same
-AUTH_FACEBOOK_CID       same
-AUTH_FACEBOOK_CSEC      same
-AUTH_TWITTER_CID        same
-AUTH_TWITTER_CSEC       same
-AUTH_GITHUB_CID         same
-AUTH_GITHUB_CSEC        same
+AUTH_GOOGLE_CSEC        your own value
+AUTH_FACEBOOK_CID       your own value
+AUTH_FACEBOOK_CSEC      your own value
+AUTH_TWITTER_CID        your own value
+AUTH_TWITTER_CSEC       your own value
+AUTH_GITHUB_CID         your own value
+AUTH_GITHUB_CSEC        your own value
 ADMIN_SHARED_EMAIL      mail address that will receive notifications such as new comments
-NOTIFY_EMAIL_ADMIN	true
-NOTIFY_TYPE	        email
-NOTIFY_EMAIL_FROM	mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
-AUTH_EMAIL_FROM	        same as above
+NOTIFY_EMAIL_ADMIN	    true
+NOTIFY_TYPE	            email
+NOTIFY_EMAIL_FROM	    mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
+AUTH_EMAIL_FROM	        your own value
 ADMIN_SHARED_ID	        OAuth authenticated user id that has admin access. see https://github.com/umputun/remark42#admin-users
-SMTP_HOST	        smtp.mailgun.org
-SMTP_PORT	        465
-SMTP_TLS	        true
+SMTP_HOST	            smtp.mailgun.org
+SMTP_PORT	            465
+SMTP_TLS	            true
 SMTP_USERNAME	        SMTP credential from Mailgun
-SMTP_PASSWORD	        
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;NOTES: for more detail on Remark42 email configuration, check this 
-&lt;a href=&#34;https://github.com/umputun/remark42/blob/master/docs/email.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page&lt;/a&gt;&lt;/p&gt;
+SMTP_PASSWORD	        your own credential
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more detail on how to configure email configuration on Remark42, check 
+&lt;a href=&#34;https://github.com/umputun/remark42/blob/master/docs/email.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; out.&lt;/p&gt;
 &lt;h3 id=&#34;app-registration-on-the-oauth-providers&#34;&gt;App Registration on the OAuth Providers&lt;/h3&gt;
-&lt;p&gt;Before you can complete app registration on the 
-&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_OAuth_providers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OAuth providers&lt;/a&gt; supported by Remark42 (Google, facebook, twitter, github), you would need to determine the domain name of your Remark42 api endpoint.&lt;/p&gt;
+&lt;p&gt;Before registering you Remark42 app on google, facebook, twitter and github (the 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_OAuth_providers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OAuth providers&lt;/a&gt; Remark42 supports), you would need to determine the domain name of your Remark42 api endpoint.&lt;/p&gt;
 
 
 
@@ -227,27 +228,43 @@ SMTP_PASSWORD
 
 &lt;/figure&gt;
 
-&lt;p&gt;Using a dynamic DNS (DDNS) would allow you to update IP address when your endpoint IP changes. If you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, DDNS can be helpful.&lt;/p&gt;
-&lt;p&gt;Selecting a proper one as your DDNS provider is important to your solution. There are a few reasons.&lt;/p&gt;
-&lt;p&gt;Each OAuth provider has its own rules over what kind of OAuth redirect URIs is allowed, some just don&amp;rsquo;t allow certain DDNS domains. For instance, facebook does not allow any &lt;code&gt;duckdns.org&lt;/code&gt; domain as part of redirect URIs at time of writing.&lt;/p&gt;
-&lt;p&gt;Second, a typical DDNS provider would resolve your domain to your public IP. It&amp;rsquo;s what DDNS does. But for our purpose of hosting web apps, it&amp;rsquo;s not a great idea to expose your public IP as it could be exploited during an attack. CDN is a better approach but some DDNS providers may not offer that.&lt;/p&gt;
-&lt;p&gt;Service availability is another concern. Without any service level agreement, your API will become inaccessible when the DDNS it relies on stops working.&lt;/p&gt;
-&lt;p&gt;Last, the security posture of some DDNS providers can be doubtful. When the service platform itself gets compromised, bad things could happen really quickly before you are made aware of as end user.&lt;/p&gt;
-&lt;p&gt;👉 See my solution in twofold:&lt;/p&gt;
+&lt;p&gt;DDNS(Dynamic DNS) comes in handy whether you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, since it allows you to update DNS A records whenever your endpoint IP changes.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Selecting a DDNS provider is important for a few reasons.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Use a large-scale commercial DNS provider that supports DNS management over API, or even better - when it offers CDN protection over your origin endpoint.&lt;/p&gt;
+&lt;p&gt;Protection of your host&amp;rsquo;s public IP is important for self-hosting web apps. Using DDNS alone means your domain name gets resolved to your public IP.  DDNS + CDN is a better approach.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &amp;ldquo;tunneled through&amp;rdquo; a single domain name when needed. See 
-&lt;a href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/&#34;&gt;here&lt;/a&gt; for detail.&lt;/p&gt;
+&lt;p&gt;Each OAuth provider has its own rules over whether an given OAuth redirect URI is allowed. For example, facebook does not allow any &lt;code&gt;duckdns.org&lt;/code&gt; as part of redirect URI at time of writing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Service availability concern. Your app will become inaccessible when the DDNS it relies on stops working.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The security posture of the DDNS provider. If the service provider gets compromised, you DDNS domain name can be &amp;ldquo;hijacked&amp;rdquo;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;With respect to DDNS provider, I landed on Cloudflare after having reviewed a few choices including Cloudflare, Duckdns, No-IP. See my Cloudflare DDNS setup 
-&lt;a href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;My approach:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Set up your public endpoint leveraging a DNS provider such as Cloudflare that has large operating scale, supports DDNS management over API and offers CDN protection over your private endpoint. See 
+&lt;a href=&#34;https://davidxiao.me/post/dynamic-dns-on-cloudflare/&#34;&gt;here&lt;/a&gt; for more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On your private endpoint, Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &amp;ldquo;tunneled through&amp;rdquo; a single domain name when needed. See 
+&lt;a href=&#34;https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/&#34;&gt;here&lt;/a&gt; for more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use Nginx control policy to restrict access to only Cloudflare IPs and local trusted networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;step-2-protecttunnel-your-endpoint&#34;&gt;Step 2. Protect(tunnel) your Endpoint&lt;/h2&gt;
-&lt;p&gt;I assume you are using Cloudflare as DNS provider as it&amp;rsquo;s a prerequisite if you need to enable Cloudflare CDN.&lt;/p&gt;
-&lt;p&gt;To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case that&amp;rsquo;s &lt;code&gt;api.davidxiao.me&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You need to use Cloudflare as DNS provider before enabling Cloudflare CDN.&lt;/p&gt;
+&lt;p&gt;To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case it&amp;rsquo;s &lt;code&gt;api.davidxiao.me&lt;/code&gt;.&lt;/p&gt;
 
 
 
@@ -407,14 +424,14 @@ SMTP_PASSWORD
 
 &lt;h2 id=&#34;step-3-integrate-remark42-to-your-hugo-site&#34;&gt;Step 3. Integrate Remark42 to Your Hugo Site&lt;/h2&gt;
 &lt;p&gt;Override the &lt;code&gt;comments.html&lt;/code&gt; template by:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and modify the new one as you see fit.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and modify the new one as you see fit.&lt;/p&gt;
 &lt;p&gt;The following is my modified version of &lt;code&gt;comments.html&lt;/code&gt;.&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/2c4373dbbf55823ccb3460cd79b37ee5.js&#34;&gt;&lt;/script&gt;
 
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Congrats! You&amp;rsquo;ve got the remark42 commenting system integrated to your Hugo site. Comment, Suggestion, and Feedback are all welcome!&lt;/p&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve got the remark42 commenting system integrated to your Hugo site.&lt;/p&gt;
+&lt;p&gt;Comments and Feedback are welcome!&lt;/p&gt;
 </description>
     </item>
     
@@ -607,21 +624,17 @@ SMTP_PASSWORD
 &lt;p&gt;Port 465 is the &amp;ldquo;straight-in&amp;rdquo; SSL/TLS in that it deals with every session as TLS.&lt;/p&gt;
 &lt;h2 id=&#34;postfix&#34;&gt;Postfix&lt;/h2&gt;
 &lt;p&gt;Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install libsasl2-modules postfix ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your-username@mg.yourdomain.com:your-password-here&lt;/code&gt; with your actual SMTP credential.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[smtp.mailgun.org]:587 your-username@mg.yourdomain.com:your-password-here
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postmap /etc/postfix/sasl/sasl_passwd_mailgun ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Mailgun SMTP authentication.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo apt install libsasl2-modules postfix ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your-username@mg.yourdomain.com:your-password-here&lt;/code&gt; with your actual SMTP credential.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[smtp.mailgun.org]:587 your-username@mg.yourdomain.com:your-password-here
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo postmap /etc/postfix/sasl/sasl_passwd_mailgun ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd_mailgun.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Mailgun SMTP authentication.&lt;/p&gt;
 &lt;h3 id=&#34;secure-the-passwords&#34;&gt;Secure the passwords&lt;/h3&gt;
 &lt;p&gt;Both &lt;code&gt;sasl_passwd_mailgun&lt;/code&gt; and &lt;code&gt;sasl_passwd_mailgun.db&lt;/code&gt; contain plain text of your app password, to secure the access, you need to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
 sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_passwd_mailgun.db ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
 &lt;p&gt;Postfix&amp;rsquo;s main configuration file is &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt;. See the following my own configuration for your reference.&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js&#34;&gt;&lt;/script&gt;
 
@@ -644,9 +657,8 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;p&gt;In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.&lt;/p&gt;
 &lt;h3 id=&#34;testing-and-troubleshooting&#34;&gt;Testing and Troubleshooting&lt;/h3&gt;
 &lt;p&gt;When config file is done, reload Postfix configurations without having to restart the service:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postfix reload ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For SMTP testing, I personally like to use 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sudo postfix reload ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
@@ -657,11 +669,10 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd_mailgun /etc/postfix/sasl/sasl_pas
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
-# and
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo tail -f /var/log/syslog ;
+&lt;span style=&#34;color:#75715e&#34;&gt;# and&lt;/span&gt;
 sudo tail -f /var/log/mail.err ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
 &lt;p&gt;On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.&lt;/p&gt;
 &lt;p&gt;Let me know if you have any questions or comments.&lt;/p&gt;
 </description>
@@ -727,21 +738,17 @@ sudo tail -f /var/log/mail.err ;
 &lt;p&gt;The rest of the post is using Ubuntu as an example, but the approach should work for most recent Linux distro in general.&lt;/p&gt;
 &lt;h2 id=&#34;postfix&#34;&gt;Postfix&lt;/h2&gt;
 &lt;p&gt;Postfix can be easily installed on almost any Linux distro. On Ubuntu, run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install libsasl2-modules postfix ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your@gmail.com&lt;/code&gt; with your actual Gmail; &lt;code&gt;abcdefghijk123&lt;/code&gt; with your actual app password.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[smtp.gmail.com]:587 your@gmail.com:abcdefghijk123
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postmap /etc/postfix/sasl/sasl_passwd ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Gmail SMTP authentication.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install libsasl2-modules postfix ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then create a file &lt;code&gt;/etc/postfix/sasl/sasl_passwd&lt;/code&gt;. Copy the following line into the file, replacing &lt;code&gt;your@gmail.com&lt;/code&gt; with your actual Gmail; &lt;code&gt;abcdefghijk123&lt;/code&gt; with your actual app password.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[smtp.gmail.com]:587 your@gmail.com:abcdefghijk123
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo postmap /etc/postfix/sasl/sasl_passwd ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If all went well, you have a new file as &lt;code&gt;/etc/postfix/sasl/sasl_passwd.db&lt;/code&gt;. It&amp;rsquo;s what Postfix will be reading from for Gmail SMTP authentication.&lt;/p&gt;
 &lt;h3 id=&#34;secure-the-passwords&#34;&gt;Secure the passwords&lt;/h3&gt;
 &lt;p&gt;Both &lt;code&gt;sasl_passwd&lt;/code&gt; and &lt;code&gt;sasl_passwd.db&lt;/code&gt; contain plain text of your app password, to secure the access, you need to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
-sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+sudo chmod &lt;span style=&#34;color:#ae81ff&#34;&gt;0600&lt;/span&gt; /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setting-up&#34;&gt;Setting up&lt;/h3&gt;
 &lt;p&gt;Postfix&amp;rsquo;s main configuration file is &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt;. See the following my own configuration for your reference.&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ecf545d57925a815b274a981b1775622.js&#34;&gt;&lt;/script&gt;
 
@@ -764,9 +771,8 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 &lt;p&gt;In the example above, I am allowing anonymous SMTP authentication from mynetworks. The argument can be made that attackers will be after more valuable targets than fiddling with Postfix relay service provided the local network is compromised.&lt;/p&gt;
 &lt;h3 id=&#34;testing-and-troubleshooting&#34;&gt;Testing and Troubleshooting&lt;/h3&gt;
 &lt;p&gt;When config file is done, reload Postfix configurations without having to restart the service:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo postfix reload ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For SMTP testing, I personally like to use 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo postfix reload ;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For SMTP testing, I personally like to use 
 &lt;a href=&#34;http://www.jetmore.org/john/code/swaks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swaks&lt;/a&gt;, a purpose-built Perl script.&lt;/p&gt;
 &lt;p&gt;With swaks installed, it will be just a one-liner to send out a testing mail:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./swaks &lt;span style=&#34;color:#ae81ff&#34;&gt;\
@@ -777,11 +783,10 @@ sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db ;
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --h-Subject: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello world&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --body &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Testing some Mailgun awesomness!&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you suspect something went wrong, go check the logs:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo tail -f /var/log/syslog ;
-# and
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo tail -f /var/log/syslog ;
+&lt;span style=&#34;color:#75715e&#34;&gt;# and&lt;/span&gt;
 sudo tail -f /var/log/mail.err ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
 &lt;p&gt;On a side note, there are lots of tweaks can be done on the Postfix end depending on what you need to achieve, but this simple guide should be able to get you started quickly.&lt;/p&gt;
 &lt;p&gt;Let me know if you have any questions or comments. On my post I will be discussing setting up a 
 &lt;a href=&#34;https://www.mailgun.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mailgun&lt;/a&gt; relay. Stay tuned!&lt;/p&gt;

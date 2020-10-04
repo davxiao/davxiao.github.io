@@ -4,7 +4,182 @@
   
   <url>
     <loc>https://davidxiao.me/authors/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/categories/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/cheatsheet/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/author/david-xiao/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/python/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/python/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/python3-cheatsheet/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tags/</loc>
+    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/</loc>
+    <lastmod>2020-09-17T23:53:30-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</loc>
+    <lastmod>2020-09-17T23:53:23-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/aws/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/aws/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/cloudtrail/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/cybersecurity/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/iam/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/iam/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/information-security/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/user-identity/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/one-time-password-and-hotp-totp/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/otp/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/stride/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/threat-modeling/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/threat-modeling-and-stride-model/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/threat-modeling/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/ssh/</loc>
+    <lastmod>2020-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/ssh-and-tls/</loc>
+    <lastmod>2020-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/tls/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/tls/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/pilot-in-the-making/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/aviation/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/c172/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/ppl/</loc>
+    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,32 +188,7 @@
   </url>
   
   <url>
-    <loc>https://davidxiao.me/categories/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/author/david-xiao/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://davidxiao.me/category/reading/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tags/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -53,13 +203,28 @@
   </url>
   
   <url>
-    <loc>https://davidxiao.me/tag/cheatsheet/</loc>
-    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
+    <loc>https://davidxiao.me/category/coding/</loc>
+    <lastmod>2020-06-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://davidxiao.me/category/coding/</loc>
-    <lastmod>2020-06-12T00:00:00+00:00</lastmod>
+    <loc>https://davidxiao.me/tag/javascript/</loc>
+    <lastmod>2020-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/notes-from-my-journey-in-reactjs/</loc>
+    <lastmod>2020-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/react/</loc>
+    <lastmod>2020-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/react.js/</loc>
+    <lastmod>2020-06-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -94,11 +259,6 @@
   
   <url>
     <loc>https://davidxiao.me/category/site-building/</loc>
-    <lastmod>2020-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/tls/</loc>
     <lastmod>2020-06-11T00:00:00+00:00</lastmod>
   </url>
   

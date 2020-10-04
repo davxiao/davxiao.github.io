@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Information Security | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/category/information-security/</link>
+      <atom:link href="https://davidxiao.me/category/information-security/index.xml" rel="self" type="application/rss+xml" />
+    <description>Information Security</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Information Security</title>
+      <link>https://davidxiao.me/category/information-security/</link>
+    </image>
+    
+    <item>
+      <title>Extract User Identity from AWS Cloudtrail</title>
+      <link>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</guid>
+      <description>&lt;h2 id=&#34;why-do-i-care&#34;&gt;Why Do I Care&lt;/h2&gt;
+&lt;p&gt;Cloudtrail is an essential service in AWS that provides the source of truth on what has happened at API and event level.&lt;/p&gt;
+&lt;p&gt;Whether you are troubleshooting or investigating something on AWS, being able to look up user identity across the Cloudtrail event logs can be very helpful.&lt;/p&gt;
+&lt;p&gt;By default AWS provides 90 days of event history and you can look up on key fields such as &lt;code&gt;User name&lt;/code&gt;, &lt;code&gt;event time&lt;/code&gt; or &lt;code&gt;event id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In some cases that&amp;rsquo;s all you need.&lt;/p&gt;
+&lt;p&gt;But there are cases where you need to go beyond the 90 days and want to be able to extract user identity information from Cloudtrail logs directly.&lt;/p&gt;
+&lt;p&gt;For example, you may wish to write a Lambda function to auto-tag any new EC2 instances with username of the creator, eventid, eventtime when a user is creating new EC2 instances.&lt;/p&gt;
+&lt;p&gt;For another example, you may need to search history go past 90 days to look for information like &lt;code&gt;WHO did WHAT and WHEN&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In those cases, understand the JSON structure of Cloudtrail log and specifically the identity related portion comes handy.&lt;/p&gt;
+&lt;h2 id=&#34;eventtype&#34;&gt;eventType&lt;/h2&gt;
+&lt;p&gt;Cloudtrail records various types of events. In each JSON record, &lt;code&gt;eventType&lt;/code&gt; indicates the type of the event. Each event type has a different JSON structure.&lt;/p&gt;
+&lt;p&gt;The following types cover the most cases I&amp;rsquo;m aware of but the list is not intended to be exhaustivee - I will add to it as I learn.&lt;/p&gt;
+&lt;h3 id=&#34;awsapicall&#34;&gt;AwsApiCall&lt;/h3&gt;
+&lt;p&gt;API call is the most common event type. It represents an API call on an AWS service.&lt;/p&gt;
+&lt;p&gt;The great thing about this event type is it can be triggered on CloudWatch event. &lt;em&gt;update: recently CloudWatch Event is renamed to AWS EventBridge&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;awsconsolesignin&#34;&gt;AwsConsoleSignIn&lt;/h3&gt;
+&lt;p&gt;This type of event is generated when a user signed in on AWS management console.&lt;/p&gt;
+&lt;h3 id=&#34;awsserviceevent&#34;&gt;AwsServiceEvent&lt;/h3&gt;
+&lt;p&gt;Services such as AWS SSO generates such type of event when authenticating or federating a user.&lt;/p&gt;
+&lt;h2 id=&#34;useridentitytype&#34;&gt;userIdentity.type&lt;/h2&gt;
+&lt;p&gt;On each record, the userIdentity block represents the identity information. Various types of userIdentity exists. The most common ones are: &lt;code&gt;IAMUser&lt;/code&gt;, &lt;code&gt;AssumedRole&lt;/code&gt;, &lt;code&gt;AWSService&lt;/code&gt;, &lt;code&gt;SAMLUser&lt;/code&gt; and &lt;code&gt;Unknown&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;iamuser&#34;&gt;IAMUser&lt;/h3&gt;
+&lt;p&gt;The below json is extracted from a Cloudtrail event that represents an API call made by an IAM user. User name can be extracted from the &lt;code&gt;userIdentity.userName&lt;/code&gt; field.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAUWQOET4WMTL6OV3SZ&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:user/tool-poc&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AKIAUWQOET4WFCRTJDF5&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tool-poc&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1e85a381-9e58-4612-a8d5-abc30ff95f65&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In another example, the eventType is different but userIdentity block structure looks similar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAVBHXPSQ567GPQHO75&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::346263884858:user/admin&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-12T18:05:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;signin.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ConsoleLogin&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0b8f0958-8507-4526-b8f5-d56741ccae77&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsConsoleSignIn&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;assumedrole&#34;&gt;AssumedRole&lt;/h3&gt;
+&lt;p&gt;AssumedRole is when an identity assumes an AWS role. The identity could be IAM user in the same account, user from another AWS account, AWS service or a SAML provider.&lt;/p&gt;
+&lt;p&gt;Below are a few examples.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:alice@example.com&#34;&gt;alice@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJKUFA6XAMROQBJRNA:alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/assume-admin-role-an-account/alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;e7f3be2f-a81b-4a87-975f-eaac58faca9e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AutoScaling&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJ6TYGYS2TFMOQYEY2:AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/AWSServiceRoleForAutoScaling/AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;b67837c3-f90c-49c9-8750-02adef205f64&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAI4O72XO7XFD2BHDUA:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/Sandbox-SSO-PowerUser/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;5921eee9-7a54-4672-84d5-9a64a81822e4&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAVBHXPSQ577YYUL4QC:test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::346263884858:assumed-role/AWSReservedSSO_AWSAdministratorAccess_33ca3b9a1184d671/test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a1b2f460-0288-4937-b850-12b521a10230&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AssumeRoleSession&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.07&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM:AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/CloudHealth/AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIAUWQOET4WKMRLT5G6&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionContext&amp;#34;: &lt;/span&gt;{
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionIssuer&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Role&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:role/CloudHealth&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;CloudHealth&amp;#34;&lt;/span&gt;
+      },
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;attributes&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;creationDate&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:53:25Z&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;mfaAuthenticated&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+      }
+    }
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T14:08:27Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dynamodb.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ListTables&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;34.230.249.2&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;de0f486d-c1ff-4032-9e86-17ba166f687e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;samluser&#34;&gt;SAMLUser&lt;/h3&gt;
+&lt;p&gt;This type of userIdentity are most commonly seen in &lt;code&gt;AssumeRoleWithSAML&lt;/code&gt; event.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SAMLUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;identityProvider&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-08T13:22:03Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRoleWithSAML&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;72.21.217.22&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;892c55be-2ab1-4e0e-a80f-5e04f05b625d&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;awsservice&#34;&gt;AWSService&lt;/h3&gt;
+&lt;p&gt;For this type of userIdentity, it simply does not have a real user. Instead, it&amp;rsquo;s AWS service that is performing an action.&lt;/p&gt;
+&lt;p&gt;User name     (blank)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWSService&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;invokedBy&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:43:16Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRole&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;93fd006e-a58f-4304-a9a1-04136ca8a1c3&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;unknown&#34;&gt;Unknown&lt;/h3&gt;
+&lt;p&gt;This is commonly seen in &lt;code&gt;AwsServiceEvent&lt;/code&gt; event. I&amp;rsquo;ve seen AWS SSO produces this type of event but I&amp;rsquo;m not aware of what else AWS services produce it.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Unknown&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;90677f325d-ffd9565d-ac85-4753-8dc6-502c67f1c727&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test@example.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:35:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sso.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authenticate&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;75.15.150.17&amp;#34;&lt;/span&gt;,
+  ...
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;63e0001b-e2fa-49b0-bf29-b7c92d977266&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsServiceEvent&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;recipientAccountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>One Time Password, HOTP and TOTP</title>
+      <link>https://davidxiao.me/post/one-time-password-and-hotp-totp/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/one-time-password-and-hotp-totp/</guid>
+      <description>&lt;p&gt;OTP is very common in today&amp;rsquo;s MFA implementation.&lt;/p&gt;
+&lt;h2 id=&#34;hotp&#34;&gt;HOTP&lt;/h2&gt;
+&lt;p&gt;HOTP stands for HMAC-based One-time Password algorithm. It computes the value with the following inputs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A cryptographic hash method, H (default is SHA-1)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A secret key, K, which is an arbitrary byte string, and must remain private&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A counter, C, which counts the number of iterations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A HOTP value length, d (6–10, default is 6, and 6–8 is recommended)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;totp&#34;&gt;TOTP&lt;/h2&gt;
+&lt;p&gt;TOTP stands for Time-based One-time Password algorithm (TOTP). It is an extension of HOTP that generates a one-time password (OTP) by instead taking uniqueness from the current time.&lt;/p&gt;
+&lt;p&gt;More often than not, time is downsampled into larger durations (e.g., 30 seconds) to allow for validity between the parties.&lt;/p&gt;
+&lt;p&gt;To establish TOTP authentication, the authenticatee and authenticator must pre-establish both the HOTP parameters and the following TOTP parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;T0, the Unix time from which to start counting time steps (default is 0)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TX, an interval which will be used to calculate the value of the counter CT (default is 30 seconds)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SSH and TLS: Differences and Similarities</title>
+      <link>https://davidxiao.me/post/ssh-and-tls/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/ssh-and-tls/</guid>
+      <description>&lt;p&gt;Both TLS and SSH are security protocols aimed to solve a specific set of problems.&lt;/p&gt;
+&lt;p&gt;TLS is the transport layer of HTTPS protocol while SSH is designed to replace plaintext Telnet protocol.&lt;/p&gt;
+&lt;p&gt;Architecture wise, TLS is relatively simple: It has a handshake protocol that does the authentication and agrees on a session key that will be used to encrypt the rest of the communication.&lt;/p&gt;
+&lt;p&gt;SSH is more 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_Shell#Architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;complicated&lt;/a&gt; than TLS. It has the following main components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;transport layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;user authentication layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;connection layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Six SSH related RFC are published in relate to SSH: 4251, 4252, 4253, 4254, 425 and 4256.&lt;/p&gt;
+&lt;h2 id=&#34;ssh-transport-layer&#34;&gt;SSH Transport Layer&lt;/h2&gt;
+&lt;p&gt;Transport layer handles key exchange, server authentication and sets up encryption, compression and integrity verification. It exposes to the upper layer an programmatic interface for sending and receiving plaintext data. The transport layer also arranges for key re-exchange, usually after 1 GB of data has been transferred or after 1 hour has passed, whichever occurs first.&lt;/p&gt;
+&lt;h2 id=&#34;user-authentication-layer&#34;&gt;User Authentication Layer&lt;/h2&gt;
+&lt;p&gt;It handles client authentication and provides a number of authentication methods. Widely used user-authentication methods include password, publickey, keyboard-interactive, GSSAPI authentication which allows SSH to authenticate using external mechanisms such as Kerberos 5 or NTLM, providing single sign-on capability to SSH sessions.&lt;/p&gt;
+&lt;h2 id=&#34;connection-layer&#34;&gt;Connection Layer&lt;/h2&gt;
+&lt;p&gt;It defines the concept of channels in SSH. A single SSH connection can host multiple channels simultaneously, each transferring data in both directions. Standard channel types include: shell for terminal shells; SFTP and exec requests (including SCP transfers); direct-tcpip for client-to-server forwarded connections; forwarded-tcpip for server-to-client forwarded connections etc.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TLS Handshake in a Nutshell</title>
+      <link>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</guid>
+      <description>&lt;p&gt;At a high level, the following occurs during a TLS handshake:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD;
+    A[Client establishes a TCP connection to the server] --&amp;gt;B[Client sends Hello and list of cipher suites including TLS version] --&amp;gt;C[Server sends Hello, selected suite and certificate] --&amp;gt; D[Client validates certificate]
+    D --&amp;gt; E[Client and server starts key exchange process. &amp;lt;br/&amp;gt;RSA and Diffie-Hellman are two common KEP algogirhtms]
+    E --&amp;gt; F{Key Exchange Protocol}
+    F --&amp;gt;|RSA| G[When both client and server have &amp;lt;br/&amp;gt;the client random, the server random, &amp;lt;br/&amp;gt;and the premaster secret, each side &amp;lt;br/&amp;gt;independently combine these three inputs&amp;lt;br/&amp;gt; to come up with the session keys. &amp;lt;br/&amp;gt;They should both arrive at the same value]
+    F --&amp;gt;|DH| H[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value using DH algorithm&amp;lt;br/&amp;gt; usually accompanied by RSA signature]
+    G --&amp;gt;I[Regardless of which KEP was used, &amp;lt;br/&amp;gt;the rest of the session uses the agreed key, an ephemeral symmetric key, &amp;lt;br/&amp;gt;to encrypt the communication both ways going forward]
+    H --&amp;gt;I
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Read more about DH 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;key-takeaways-about-the-keps&#34;&gt;Key Takeaways About the KEPs&lt;/h2&gt;
+&lt;p&gt;👉 DH achieves forward secrecy while RSA does not.&lt;/p&gt;
+&lt;p&gt;👉 DH handshake takes longer than RSA.&lt;/p&gt;
+&lt;h2 id=&#34;what-else-you-need-to-know-about-tls&#34;&gt;What Else You Need To Know about TLS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TLS 1.0 and TLS 1.1 are no longer secure and should be avoided. A best practice is to use TLS version is 1.2 or later at the time of writing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HTTPS means &amp;ldquo;HTTP over TLS&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Both SSH and TLS are purpose-built for secure communication over the Internet, but they are very different in many ways. Check out 
+&lt;a href=&#34;https://davidxiao.me/post/ssh-and-tls/&#34;&gt;my another post&lt;/a&gt; where I explain the differences between the two.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;glossary&#34;&gt;Glossary&lt;/h2&gt;
+&lt;h3 id=&#34;cipher-suite&#34;&gt;Cipher Suite&lt;/h3&gt;
+&lt;p&gt;A cipher suite is a set of algorithms. It usually contain include: a key exchange algorithm, a bulk encryption algorithm, and a message authentication code (MAC) algorithm.&lt;/p&gt;
+&lt;p&gt;For example, &lt;code&gt;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&lt;/code&gt; means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ECDHE_RSA indicates the key exchange algorithm being used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AES_128_GCM indicates the block cipher being used to encrypt the message stream, together with the block cipher mode of operation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SHA256 indicates the message authentication algorithm which is used to authenticate a message.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ecdhe_rsa-key-exchange-algorithm&#34;&gt;ECDHE_RSA key exchange algorithm&lt;/h3&gt;
+&lt;p&gt;In a nutshell, it is ECDHE signed by RSA. Signing defeats man-in-the-middle attack. See detail 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Elliptic-curve_Diffie-Hellman&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

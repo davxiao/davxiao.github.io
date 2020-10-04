@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>stride | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/stride/</link>
+      <atom:link href="https://davidxiao.me/tag/stride/index.xml" rel="self" type="application/rss+xml" />
+    <description>stride</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>stride</title>
+      <link>https://davidxiao.me/tag/stride/</link>
+    </image>
+    
+    <item>
+      <title>Threat Modeling and STRIDE Model</title>
+      <link>https://davidxiao.me/post/threat-modeling-and-stride-model/</link>
+      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/threat-modeling-and-stride-model/</guid>
+      <description>&lt;p&gt;TLDR: This post is my collection of articles related to threat modeling and Microsoft STRIDE threat model.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-threat-modeling&#34;&gt;What Is Threat Modeling&lt;/h2&gt;
+&lt;p&gt;At a high level, threat modeling is a process of putting the &amp;ldquo;bad guy&amp;rdquo; hat on and conducting an security assessment over a system (such as a website or a mobile app) to identify and prioritize threats and mitigations.&lt;/p&gt;
+&lt;p&gt;A more complete definition can be found on 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Threat_model&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are many ways to do threat modeling. Depending on the types of system and workloads that are in scope, the applicable threats can vary a lot.&lt;/p&gt;
+&lt;p&gt;For example, threat modeling over a set of highly scalable workloads deployed on MS Azure might start from a threat library that includes portential threats relevant to Azure services in use, while assessing over a simple web application hosted on on-prem data center might start from a different set of threats relevant to host based security and OWASP Top 10.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-stride&#34;&gt;What Is STRIDE&lt;/h2&gt;
+&lt;p&gt;STRIDE is both a threat model framework and a methodology that developed and adopted in Microsoft over the years.&lt;/p&gt;
+&lt;p&gt;STRIDE stands for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spoofing&lt;/strong&gt;: Impersonating something or someone else.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tampering&lt;/strong&gt;: Modifying data or code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Repudiation&lt;/strong&gt;: Claiming to have not performed an action.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Information Disclosure&lt;/strong&gt;: Exposing information to someone not authorized to see it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Denial of Service&lt;/strong&gt;: Deny or degrade service to users.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Elevation of Privilege&lt;/strong&gt;: Gain capabilities without proper authorization.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Microsoft suggests the following approach when conducting a threat modeling:&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-threat-modeling-process&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://docs.microsoft.com/en-us/azure/security/develop/media/threat-modeling-tool-getting-started/sdlapproach.png&#34; data-caption=&#34;Threat Modeling Process&#34;&gt;
+
+
+  &lt;img src=&#34;https://docs.microsoft.com/en-us/azure/security/develop/media/threat-modeling-tool-getting-started/sdlapproach.png&#34; alt=&#34;&#34;  &gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Threat Modeling Process
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;most-current-articles&#34;&gt;Most Current Articles&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling&lt;/a&gt;. A high level overview.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Azure Threat Modeling Tool&lt;/a&gt;, the framework and the tool. 02/16/2017&lt;/p&gt;
+&lt;h2 id=&#34;older-references&#34;&gt;Older References&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.microsoft.com/security/blog/2007/09/11/stride-chart/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;STRIDE chart&lt;/a&gt; 09/11/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-once-again&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling, once again&lt;/a&gt; 08/30/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-drawing-the-diagram&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling again. Drawing the diagram&lt;/a&gt; 08/31/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-stride&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, STRIDE&lt;/a&gt; 09/04/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-stride-mitigations&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, STRIDE Mitigations&lt;/a&gt; 09/05/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-what-does-stride-have-to-do-with-threat-modeling&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, What does STRIDE have to do with threat modeling&lt;/a&gt; 09/07/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-stride-per-element&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, STRIDE per Element&lt;/a&gt; 09/10/2007&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.microsoft.com/en-us/archive/blogs/larryosterman/threat-modeling-again-threat-modeling-playsound&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Threat Modeling Again, Threat Modeling PlaySound&lt;/a&gt; 09/11/2007&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

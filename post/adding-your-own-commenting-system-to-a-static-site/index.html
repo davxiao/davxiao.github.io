@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="If you are looking for integrating a commenting system on your site but also like to have control over its infrastructure and data, this is how I did it.">
+  <meta name="description" content="If you are looking for guidance on integrating an open-source commenting system such as Remark42 to your site, here is how I did it.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/">
@@ -38,7 +38,7 @@
   
   
   
-  <meta name="theme-color" content="#2962ff">
+  <meta name="theme-color" content="#06805E">
   
 
   
@@ -60,8 +60,6 @@
     
     
 
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
     
 
     
@@ -183,7 +181,7 @@
   
   
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,300,300i%7CMerriweather+Sans:400,400i,300,300i%7CRoboto+Mono&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
   
 
   
@@ -223,10 +221,13 @@
   
   <meta property="twitter:card" content="summary_large_image">
   
+  <meta property="twitter:site" content="@davxiao">
+  <meta property="twitter:creator" content="@davxiao">
+  
   <meta property="og:site_name" content="DAVID&#39;S GARAGE">
   <meta property="og:url" content="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/">
   <meta property="og:title" content="Integrating a Self-Hosting Commenting System to Your Site | DAVID&#39;S GARAGE">
-  <meta property="og:description" content="If you are looking for integrating a commenting system on your site but also like to have control over its infrastructure and data, this is how I did it."><meta property="og:image" content="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/featured.jpg">
+  <meta property="og:description" content="If you are looking for guidance on integrating an open-source commenting system such as Remark42 to your site, here is how I did it."><meta property="og:image" content="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/featured.jpg">
   <meta property="twitter:image" content="https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/featured.jpg"><meta property="og:locale" content="en-us">
   
     
@@ -280,7 +281,7 @@
       "url": "https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "If you are looking for integrating a commenting system on your site but also like to have control over its infrastructure and data, this is how I did it."
+  "description": "If you are looking for guidance on integrating an open-source commenting system such as Remark42 to your site, here is how I did it."
 }
 </script>
 
@@ -432,23 +433,6 @@
       
 
       
-      <li class="nav-item dropdown theme-dropdown">
-        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
-          <i class="fas fa-palette" aria-hidden="true"></i>
-        </a>
-        <div class="dropdown-menu">
-          <a href="#" class="dropdown-item js-set-theme-light">
-            <span>Light</span>
-          </a>
-          <a href="#" class="dropdown-item js-set-theme-dark">
-            <span>Dark</span>
-          </a>
-          <a href="#" class="dropdown-item js-set-theme-auto">
-            <span>Automatic</span>
-          </a>
-        </div>
-      </li>
-      
 
       
 
@@ -527,7 +511,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    4 min read
   </span>
   
 
@@ -539,7 +523,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/site-building/">Site-Building</a>, <a href="/category/homelab/">Homelab</a>, <a href="/category/cloud/">Cloud</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="/category/homelab/">Homelab</a>, <a href="/category/site-building/">Site-Building</a>, <a href="/category/cloud/">Cloud</a></span>
   
 
 </div>
@@ -574,9 +558,10 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p><em>TLDR 👉 It talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a Hugo static site which is built on Hugo and using academic theme.</em></p>
-<p>Before getting started, have a look at any post on my blog at 
-<a href="https://davidxiao.me/" target="_blank" rel="noopener">davidxiao.me</a> and see the way commenting works. If you like what you saw, please read on.</p>
+      <p>TLDR;</p>
+<p><em>👉 This post talks about hosting remark42 commenting system as Docker container; Leveraging Cloudflare to protect the remark42 endpoint; Integrating remark42 to a static site which is built on Hugo and academic theme.</em></p>
+<p>Before getting started, take a look at the posts on my blog at 
+<a href="https://davidxiao.me/" target="_blank" rel="noopener">davidxiao.me</a> and see the way commenting works.</p>
 <h2 id="what-will-be-covered-in-this-post">What Will be Covered in This Post</h2>
 <ul>
 <li>
@@ -589,40 +574,40 @@
 <p>Integrate remark42 to your Hugo site</p>
 </li>
 </ul>
-<h2 id="step-1-hosting-remark42">Step 1. Hosting Remark42</h2>
+<h2 id="step-1-deploy-remark42-on-your-host">Step 1. Deploy Remark42 on your Host</h2>
 <p>
 <a href="https://remark42.com/" target="_blank" rel="noopener">Remark42</a> is an open source commenting system that can be deployed as container. It&rsquo;s self-contained with little external dependencies. You can find deployement guide on its Remark42&rsquo;s git repo.</p>
 <p>Feel free to do container your way but if you are interested in what tool I use for docker management, it&rsquo;s 
 <a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a>.</p>
 <p>I have the following parameters on my remark42 container:</p>
-<pre><code>REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">REMARK_URL              make sure it has the full path if you are using reverse proxy and rewrites, e.g. https://api.davidxiao.me/remark42
 SITE	                site id. For example: davidxiao
 SECRET	                required. can be a long and hard-to-guess string
 DEBUG	                true
 AUTH_GOOGLE_CID         your own value
-AUTH_GOOGLE_CSEC        same
-AUTH_FACEBOOK_CID       same
-AUTH_FACEBOOK_CSEC      same
-AUTH_TWITTER_CID        same
-AUTH_TWITTER_CSEC       same
-AUTH_GITHUB_CID         same
-AUTH_GITHUB_CSEC        same
+AUTH_GOOGLE_CSEC        your own value
+AUTH_FACEBOOK_CID       your own value
+AUTH_FACEBOOK_CSEC      your own value
+AUTH_TWITTER_CID        your own value
+AUTH_TWITTER_CSEC       your own value
+AUTH_GITHUB_CID         your own value
+AUTH_GITHUB_CSEC        your own value
 ADMIN_SHARED_EMAIL      mail address that will receive notifications such as new comments
-NOTIFY_EMAIL_ADMIN	true
-NOTIFY_TYPE	        email
-NOTIFY_EMAIL_FROM	mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
-AUTH_EMAIL_FROM	        same as above
+NOTIFY_EMAIL_ADMIN	    true
+NOTIFY_TYPE	            email
+NOTIFY_EMAIL_FROM	    mail address that is in the same domain see Mailgun settings. For example, mine is remark42@davidxiao.me
+AUTH_EMAIL_FROM	        your own value
 ADMIN_SHARED_ID	        OAuth authenticated user id that has admin access. see https://github.com/umputun/remark42#admin-users
-SMTP_HOST	        smtp.mailgun.org
-SMTP_PORT	        465
-SMTP_TLS	        true
+SMTP_HOST	            smtp.mailgun.org
+SMTP_PORT	            465
+SMTP_TLS	            true
 SMTP_USERNAME	        SMTP credential from Mailgun
-SMTP_PASSWORD	        
-</code></pre><p>NOTES: for more detail on Remark42 email configuration, check this 
-<a href="https://github.com/umputun/remark42/blob/master/docs/email.md" target="_blank" rel="noopener">page</a></p>
+SMTP_PASSWORD	        your own credential
+</code></pre></div><p>For more detail on how to configure email configuration on Remark42, check 
+<a href="https://github.com/umputun/remark42/blob/master/docs/email.md" target="_blank" rel="noopener">this</a> out.</p>
 <h3 id="app-registration-on-the-oauth-providers">App Registration on the OAuth Providers</h3>
-<p>Before you can complete app registration on the 
-<a href="https://en.wikipedia.org/wiki/List_of_OAuth_providers" target="_blank" rel="noopener">OAuth providers</a> supported by Remark42 (Google, facebook, twitter, github), you would need to determine the domain name of your Remark42 api endpoint.</p>
+<p>Before registering you Remark42 app on google, facebook, twitter and github (the 
+<a href="https://en.wikipedia.org/wiki/List_of_OAuth_providers" target="_blank" rel="noopener">OAuth providers</a> Remark42 supports), you would need to determine the domain name of your Remark42 api endpoint.</p>
 
 
 
@@ -660,27 +645,43 @@ SMTP_PASSWORD
 
 </figure>
 
-<p>Using a dynamic DNS (DDNS) would allow you to update IP address when your endpoint IP changes. If you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, DDNS can be helpful.</p>
-<p>Selecting a proper one as your DDNS provider is important to your solution. There are a few reasons.</p>
-<p>Each OAuth provider has its own rules over what kind of OAuth redirect URIs is allowed, some just don&rsquo;t allow certain DDNS domains. For instance, facebook does not allow any <code>duckdns.org</code> domain as part of redirect URIs at time of writing.</p>
-<p>Second, a typical DDNS provider would resolve your domain to your public IP. It&rsquo;s what DDNS does. But for our purpose of hosting web apps, it&rsquo;s not a great idea to expose your public IP as it could be exploited during an attack. CDN is a better approach but some DDNS providers may not offer that.</p>
-<p>Service availability is another concern. Without any service level agreement, your API will become inaccessible when the DDNS it relies on stops working.</p>
-<p>Last, the security posture of some DDNS providers can be doubtful. When the service platform itself gets compromised, bad things could happen really quickly before you are made aware of as end user.</p>
-<p>👉 See my solution in twofold:</p>
+<p>DDNS(Dynamic DNS) comes in handy whether you are hosting Remark42 container on cloud such as AWS EC2 or on your homelab, since it allows you to update DNS A records whenever your endpoint IP changes.</p>
+<div class="alert alert-note">
+  <div>
+    <p>Selecting a DDNS provider is important for a few reasons.</p>
 <ul>
 <li>
-<p>Use a large-scale commercial DNS provider that supports DNS management over API, or even better - when it offers CDN protection over your origin endpoint.</p>
+<p>Protection of your host&rsquo;s public IP is important for self-hosting web apps. Using DDNS alone means your domain name gets resolved to your public IP.  DDNS + CDN is a better approach.</p>
 </li>
 <li>
-<p>Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &ldquo;tunneled through&rdquo; a single domain name when needed. See 
-<a href="https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/">here</a> for detail.</p>
+<p>Each OAuth provider has its own rules over whether an given OAuth redirect URI is allowed. For example, facebook does not allow any <code>duckdns.org</code> as part of redirect URI at time of writing.</p>
+</li>
+<li>
+<p>Service availability concern. Your app will become inaccessible when the DDNS it relies on stops working.</p>
+</li>
+<li>
+<p>The security posture of the DDNS provider. If the service provider gets compromised, you DDNS domain name can be &ldquo;hijacked&rdquo;.</p>
 </li>
 </ul>
-<p>With respect to DDNS provider, I landed on Cloudflare after having reviewed a few choices including Cloudflare, Duckdns, No-IP. See my Cloudflare DDNS setup 
-<a href="https://davidxiao.me/post/dynamic-dns-on-cloudflare/">here</a>.</p>
+  </div>
+</div>
+<p>My approach:</p>
+<ul>
+<li>
+<p>Set up your public endpoint leveraging a DNS provider such as Cloudflare that has large operating scale, supports DDNS management over API and offers CDN protection over your private endpoint. See 
+<a href="https://davidxiao.me/post/dynamic-dns-on-cloudflare/">here</a> for more.</p>
+</li>
+<li>
+<p>On your private endpoint, Use a reverse proxy such as Nginx to rewrite URLs so that multiple apps can be &ldquo;tunneled through&rdquo; a single domain name when needed. See 
+<a href="https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/">here</a> for more.</p>
+</li>
+<li>
+<p>Use Nginx control policy to restrict access to only Cloudflare IPs and local trusted networks.</p>
+</li>
+</ul>
 <h2 id="step-2-protecttunnel-your-endpoint">Step 2. Protect(tunnel) your Endpoint</h2>
-<p>I assume you are using Cloudflare as DNS provider as it&rsquo;s a prerequisite if you need to enable Cloudflare CDN.</p>
-<p>To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case that&rsquo;s <code>api.davidxiao.me</code>.</p>
+<p>You need to use Cloudflare as DNS provider before enabling Cloudflare CDN.</p>
+<p>To enable CDN, first go to Cloudflare portal and enable CDN for your remark42 subdomain. In my case it&rsquo;s <code>api.davidxiao.me</code>.</p>
 
 
 
@@ -840,14 +841,14 @@ SMTP_PASSWORD
 
 <h2 id="step-3-integrate-remark42-to-your-hugo-site">Step 3. Integrate Remark42 to Your Hugo Site</h2>
 <p>Override the <code>comments.html</code> template by:</p>
-<pre><code>$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
-</code></pre>
-<p>and modify the new one as you see fit.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cp your-project-root/themes/academic/layouts/partials/comments.html your-project-root/layouts/partials/comments.html
+</code></pre></div><p>and modify the new one as you see fit.</p>
 <p>The following is my modified version of <code>comments.html</code>.</p>
 <script type="application/javascript" src="https://gist.github.com/davxiao/2c4373dbbf55823ccb3460cd79b37ee5.js"></script>
 
 <h2 id="conclusion">Conclusion</h2>
-<p>Congrats! You&rsquo;ve got the remark42 commenting system integrated to your Hugo site. Comment, Suggestion, and Feedback are all welcome!</p>
+<p>Congrats! You&rsquo;ve got the remark42 commenting system integrated to your Hugo site.</p>
+<p>Comments and Feedback are welcome!</p>
 
     </div>
 
@@ -859,17 +860,17 @@ SMTP_PASSWORD
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/cloudflare/">cloudflare</a>
-  
   <a class="badge badge-light" href="/tag/self-hosting/">self-hosting</a>
-  
-  <a class="badge badge-light" href="/tag/docker/">docker</a>
   
   <a class="badge badge-light" href="/tag/hugo/">hugo</a>
   
   <a class="badge badge-light" href="/tag/hugo-academic/">hugo-academic</a>
   
   <a class="badge badge-light" href="/tag/remark42/">remark42</a>
+  
+  <a class="badge badge-light" href="/tag/cloudflare/">cloudflare</a>
+  
+  <a class="badge badge-light" href="/tag/docker/">docker</a>
   
 </div>
 
@@ -930,32 +931,6 @@ SMTP_PASSWORD
         </a>
       </li>
     
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://web.whatsapp.com/send?text=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site%20https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/" target="_blank" rel="noopener" class="share-btn-whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/&amp;title=Integrating%20a%20Self-Hosting%20Commenting%20System%20to%20Your%20Site" target="_blank" rel="noopener" class="share-btn-weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-    
   </ul>
 </div>
 
@@ -968,7 +943,7 @@ SMTP_PASSWORD
 
 <section id="comments">
   <hr>
-  <h2>Comments</h2><div id="remark42"></div>
+  <div id="remark42"></div>
   <script>
     var remark_config = {
       host: "https://api.davidxiao.me/remark42", 
@@ -999,7 +974,7 @@ SMTP_PASSWORD
                       
                       
       max_shown_comments: 10, 
-      theme: 'dark', 
+      theme: 'light', 
       locale: 'en' 
     };
 
@@ -1054,7 +1029,10 @@ SMTP_PASSWORD
 
     
     
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key="></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha256-7vjlAeb8OaTrCXZkCNun9djzuB2owUsaO72kXaFDBJs=" crossorigin="anonymous"></script>
+      
     
 
     

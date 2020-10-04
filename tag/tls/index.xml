@@ -5,12 +5,96 @@
     <link>https://davidxiao.me/tag/tls/</link>
       <atom:link href="https://davidxiao.me/tag/tls/index.xml" rel="self" type="application/rss+xml" />
     <description>tls</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 11 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>tls</title>
       <link>https://davidxiao.me/tag/tls/</link>
     </image>
+    
+    <item>
+      <title>SSH and TLS: Differences and Similarities</title>
+      <link>https://davidxiao.me/post/ssh-and-tls/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/ssh-and-tls/</guid>
+      <description>&lt;p&gt;Both TLS and SSH are security protocols aimed to solve a specific set of problems.&lt;/p&gt;
+&lt;p&gt;TLS is the transport layer of HTTPS protocol while SSH is designed to replace plaintext Telnet protocol.&lt;/p&gt;
+&lt;p&gt;Architecture wise, TLS is relatively simple: It has a handshake protocol that does the authentication and agrees on a session key that will be used to encrypt the rest of the communication.&lt;/p&gt;
+&lt;p&gt;SSH is more 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_Shell#Architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;complicated&lt;/a&gt; than TLS. It has the following main components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;transport layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;user authentication layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;connection layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Six SSH related RFC are published in relate to SSH: 4251, 4252, 4253, 4254, 425 and 4256.&lt;/p&gt;
+&lt;h2 id=&#34;ssh-transport-layer&#34;&gt;SSH Transport Layer&lt;/h2&gt;
+&lt;p&gt;Transport layer handles key exchange, server authentication and sets up encryption, compression and integrity verification. It exposes to the upper layer an programmatic interface for sending and receiving plaintext data. The transport layer also arranges for key re-exchange, usually after 1 GB of data has been transferred or after 1 hour has passed, whichever occurs first.&lt;/p&gt;
+&lt;h2 id=&#34;user-authentication-layer&#34;&gt;User Authentication Layer&lt;/h2&gt;
+&lt;p&gt;It handles client authentication and provides a number of authentication methods. Widely used user-authentication methods include password, publickey, keyboard-interactive, GSSAPI authentication which allows SSH to authenticate using external mechanisms such as Kerberos 5 or NTLM, providing single sign-on capability to SSH sessions.&lt;/p&gt;
+&lt;h2 id=&#34;connection-layer&#34;&gt;Connection Layer&lt;/h2&gt;
+&lt;p&gt;It defines the concept of channels in SSH. A single SSH connection can host multiple channels simultaneously, each transferring data in both directions. Standard channel types include: shell for terminal shells; SFTP and exec requests (including SCP transfers); direct-tcpip for client-to-server forwarded connections; forwarded-tcpip for server-to-client forwarded connections etc.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TLS Handshake in a Nutshell</title>
+      <link>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</guid>
+      <description>&lt;p&gt;At a high level, the following occurs during a TLS handshake:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD;
+    A[Client establishes a TCP connection to the server] --&amp;gt;B[Client sends Hello and list of cipher suites including TLS version] --&amp;gt;C[Server sends Hello, selected suite and certificate] --&amp;gt; D[Client validates certificate]
+    D --&amp;gt; E[Client and server starts key exchange process. &amp;lt;br/&amp;gt;RSA and Diffie-Hellman are two common KEP algogirhtms]
+    E --&amp;gt; F{Key Exchange Protocol}
+    F --&amp;gt;|RSA| G[When both client and server have &amp;lt;br/&amp;gt;the client random, the server random, &amp;lt;br/&amp;gt;and the premaster secret, each side &amp;lt;br/&amp;gt;independently combine these three inputs&amp;lt;br/&amp;gt; to come up with the session keys. &amp;lt;br/&amp;gt;They should both arrive at the same value]
+    F --&amp;gt;|DH| H[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value using DH algorithm&amp;lt;br/&amp;gt; usually accompanied by RSA signature]
+    G --&amp;gt;I[Regardless of which KEP was used, &amp;lt;br/&amp;gt;the rest of the session uses the agreed key, an ephemeral symmetric key, &amp;lt;br/&amp;gt;to encrypt the communication both ways going forward]
+    H --&amp;gt;I
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Read more about DH 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;key-takeaways-about-the-keps&#34;&gt;Key Takeaways About the KEPs&lt;/h2&gt;
+&lt;p&gt;👉 DH achieves forward secrecy while RSA does not.&lt;/p&gt;
+&lt;p&gt;👉 DH handshake takes longer than RSA.&lt;/p&gt;
+&lt;h2 id=&#34;what-else-you-need-to-know-about-tls&#34;&gt;What Else You Need To Know about TLS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TLS 1.0 and TLS 1.1 are no longer secure and should be avoided. A best practice is to use TLS version is 1.2 or later at the time of writing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HTTPS means &amp;ldquo;HTTP over TLS&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Both SSH and TLS are purpose-built for secure communication over the Internet, but they are very different in many ways. Check out 
+&lt;a href=&#34;https://davidxiao.me/post/ssh-and-tls/&#34;&gt;my another post&lt;/a&gt; where I explain the differences between the two.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;glossary&#34;&gt;Glossary&lt;/h2&gt;
+&lt;h3 id=&#34;cipher-suite&#34;&gt;Cipher Suite&lt;/h3&gt;
+&lt;p&gt;A cipher suite is a set of algorithms. It usually contain include: a key exchange algorithm, a bulk encryption algorithm, and a message authentication code (MAC) algorithm.&lt;/p&gt;
+&lt;p&gt;For example, &lt;code&gt;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&lt;/code&gt; means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ECDHE_RSA indicates the key exchange algorithm being used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AES_128_GCM indicates the block cipher being used to encrypt the message stream, together with the block cipher mode of operation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SHA256 indicates the message authentication algorithm which is used to authenticate a message.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ecdhe_rsa-key-exchange-algorithm&#34;&gt;ECDHE_RSA key exchange algorithm&lt;/h3&gt;
+&lt;p&gt;In a nutshell, it is ECDHE signed by RSA. Signing defeats man-in-the-middle attack. See detail 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Elliptic-curve_Diffie-Hellman&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Secure Your HTTPS / SSL / TLS</title>

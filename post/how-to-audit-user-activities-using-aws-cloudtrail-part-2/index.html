@@ -1,0 +1,1155 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="David Xiao">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Overview When auditing system events or performing an investigation to understand what happened, it is imperative to identify the IAM principal, to establish traceability and timelines.
+In context of AWS CloudTrail, it means looking up events pertaining to the IAM principal and actions in question as well as looking for useful information inside such events.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#06805E">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i%7CKarla:400,400i,700,700i%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@davxiao">
+  <meta property="twitter:creator" content="@davxiao">
+  
+  <meta property="og:site_name" content="DAVID&#39;S GARAGE">
+  <meta property="og:url" content="https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/">
+  <meta property="og:title" content="Audit User Actions Using CloudTrail - Part 2 | DAVID&#39;S GARAGE">
+  <meta property="og:description" content="Overview When auditing system events or performing an investigation to understand what happened, it is imperative to identify the IAM principal, to establish traceability and timelines.
+In context of AWS CloudTrail, it means looking up events pertaining to the IAM principal and actions in question as well as looking for useful information inside such events."><meta property="og:image" content="https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-09-17T23:53:30-04:00">
+    
+    <meta property="article:modified_time" content="2020-09-17T23:53:30-04:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/"
+  },
+  "headline": "Audit User Actions Using CloudTrail - Part 2",
+  
+  "datePublished": "2020-09-17T23:53:30-04:00",
+  "dateModified": "2020-09-17T23:53:30-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "David Xiao"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "DAVID'S GARAGE",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Overview When auditing system events or performing an investigation to understand what happened, it is imperative to identify the IAM principal, to establish traceability and timelines.\nIn context of AWS CloudTrail, it means looking up events pertaining to the IAM principal and actions in question as well as looking for useful information inside such events."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Audit User Actions Using CloudTrail - Part 2 | DAVID&#39;S GARAGE</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">DAVID&#39;S GARAGE</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">DAVID&#39;S GARAGE</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post/"><span>All Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/author/david-xiao/"><span>About Me</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Audit User Actions Using CloudTrail - Part 2</h1>
+
+  
+  <p class="page-subtitle">Cross-Account Access via AssumeRole</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Sep 17, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="overview">Overview</h2>
+<p>When auditing system events or performing an investigation to understand what happened, it is imperative to identify the IAM principal, to establish traceability and timelines.</p>
+<p>In context of AWS CloudTrail, it means looking up events pertaining to the IAM principal and actions in question as well as looking for useful information inside such events.</p>
+<p>When a user assumes role cross-account in a multi-account environment, it can be done two ways: either programatically or via AWS management console.</p>
+<p>Since either way generates different CloudTrail events, I will disuss two examples in this post respectively.</p>
+<h2 id="assume-role-programmatically-cross-account">Assume Role Programmatically Cross-Account</h2>
+<h2 id="assume-role-via-aws-console-cross-account">Assume Role via AWS Console Cross-Account</h2>
+<p>A typical investigation flow that involves cross-account assumerole goes like this:</p>
+<ul>
+<li>
+<p>Step 1: Identify an event on CloudTrail that needs investigation</p>
+</li>
+<li>
+<p>Step 2: Identify the closest <code>AssumeRole</code> event that happens before the event in question</p>
+</li>
+<li>
+<p>Step 3: Locate the closest <code>SwitchRole</code> event that happens at the same time of <code>AssumeRole</code>. If found, it indicates the user session was established via AWS Console</p>
+</li>
+<li>
+<p>Step 4: If you have access to the Identity Account, locate the AssumeRole</p>
+</li>
+</ul>
+<p>In the following example, we investigate a &ldquo;suspicious&rdquo; <code>CreateUser</code> event.</p>
+<p>Identity Account: <code>203016562928</code></p>
+<p>IAM username: <code>bob@example.com</code></p>
+<p>Role Account: <code>776613361644</code></p>
+<p>Role Name: <code>assume-admin-role-example</code></p>
+<p>CreateUser</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;eventVersion&#34;</span>: <span style="color:#e6db74">&#34;1.05&#34;</span>,
+  <span style="color:#f92672">&#34;userIdentity&#34;</span>: {
+    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;AssumedRole&#34;</span>,
+    <span style="color:#f92672">&#34;principalId&#34;</span>: <span style="color:#e6db74">&#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&#34;</span>,
+    <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&#34;</span>,
+    <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>,
+    <span style="color:#f92672">&#34;accessKeyId&#34;</span>: <span style="color:#e6db74">&#34;ASIA3JUODO7W6YEVI655&#34;</span>,
+    <span style="color:#f92672">&#34;sessionContext&#34;</span>: {
+      <span style="color:#f92672">&#34;sessionIssuer&#34;</span>: {
+        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;Role&#34;</span>,
+        <span style="color:#f92672">&#34;principalId&#34;</span>: <span style="color:#e6db74">&#34;AROAJBP4A5WSXVNY72RLE&#34;</span>,
+        <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::776613361644:role/assume-admin-role-example&#34;</span>,
+        <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>,
+        <span style="color:#f92672">&#34;userName&#34;</span>: <span style="color:#e6db74">&#34;assume-admin-role-example&#34;</span>
+      },
+      <span style="color:#f92672">&#34;webIdFederationData&#34;</span>: {},
+      <span style="color:#f92672">&#34;attributes&#34;</span>: {
+        <span style="color:#f92672">&#34;mfaAuthenticated&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
+        <span style="color:#f92672">&#34;creationDate&#34;</span>: <span style="color:#e6db74">&#34;2020-09-17T19:04:10Z&#34;</span>
+      }
+    }
+  },
+  <span style="color:#f92672">&#34;eventTime&#34;</span>: <span style="color:#e6db74">&#34;2020-09-17T19:05:08Z&#34;</span>,
+  <span style="color:#f92672">&#34;eventSource&#34;</span>: <span style="color:#e6db74">&#34;iam.amazonaws.com&#34;</span>,
+  <span style="color:#f92672">&#34;eventName&#34;</span>: <span style="color:#e6db74">&#34;CreateUser&#34;</span>,
+  <span style="color:#f92672">&#34;awsRegion&#34;</span>: <span style="color:#e6db74">&#34;us-east-1&#34;</span>,
+  <span style="color:#f92672">&#34;sourceIPAddress&#34;</span>: <span style="color:#e6db74">&#34;75.15.154.15&#34;</span>,
+  <span style="color:#f92672">&#34;userAgent&#34;</span>: <span style="color:#e6db74">&#34;console.amazonaws.com&#34;</span>,
+  <span style="color:#f92672">&#34;requestParameters&#34;</span>: {
+    <span style="color:#f92672">&#34;userName&#34;</span>: <span style="color:#e6db74">&#34;test-no-permission&#34;</span>,
+    <span style="color:#f92672">&#34;tags&#34;</span>: []
+  },
+  <span style="color:#f92672">&#34;responseElements&#34;</span>: {
+    <span style="color:#f92672">&#34;user&#34;</span>: {
+      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/&#34;</span>,
+      <span style="color:#f92672">&#34;userName&#34;</span>: <span style="color:#e6db74">&#34;test-no-permission&#34;</span>,
+      <span style="color:#f92672">&#34;userId&#34;</span>: <span style="color:#e6db74">&#34;AIDA3JUODO7W7VCWFDJMM&#34;</span>,
+      <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::776613361644:user/test-no-permission&#34;</span>,
+      <span style="color:#f92672">&#34;createDate&#34;</span>: <span style="color:#e6db74">&#34;Sep 17, 2020 7:05:08 PM&#34;</span>
+    }
+  },
+  <span style="color:#f92672">&#34;requestID&#34;</span>: <span style="color:#e6db74">&#34;cc58c060-fe96-4678-b0bf-b888f12bf008&#34;</span>,
+  <span style="color:#f92672">&#34;eventID&#34;</span>: <span style="color:#e6db74">&#34;38d0221b-61e0-47d6-9c45-7eb2dc55125b&#34;</span>,
+  <span style="color:#f92672">&#34;eventType&#34;</span>: <span style="color:#e6db74">&#34;AwsApiCall&#34;</span>,
+  <span style="color:#f92672">&#34;recipientAccountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>
+}
+</code></pre></div><p>AssumeRole</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;eventVersion&#34;</span>: <span style="color:#e6db74">&#34;1.05&#34;</span>,
+  <span style="color:#f92672">&#34;userIdentity&#34;</span>: {
+    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;AWSAccount&#34;</span>,
+    <span style="color:#f92672">&#34;principalId&#34;</span>: <span style="color:#e6db74">&#34;AIDAS6RF25DXSM2CA5KAD&#34;</span>,
+    <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;203016562928&#34;</span>
+  },
+  <span style="color:#f92672">&#34;eventTime&#34;</span>: <span style="color:#e6db74">&#34;2020-09-17T19:04:10Z&#34;</span>,
+  <span style="color:#f92672">&#34;eventSource&#34;</span>: <span style="color:#e6db74">&#34;sts.amazonaws.com&#34;</span>,
+  <span style="color:#f92672">&#34;eventName&#34;</span>: <span style="color:#e6db74">&#34;AssumeRole&#34;</span>,
+  <span style="color:#f92672">&#34;awsRegion&#34;</span>: <span style="color:#e6db74">&#34;us-east-1&#34;</span>,
+  <span style="color:#f92672">&#34;sourceIPAddress&#34;</span>: <span style="color:#e6db74">&#34;AWS Internal&#34;</span>,
+  <span style="color:#f92672">&#34;userAgent&#34;</span>: <span style="color:#e6db74">&#34;AWS Internal&#34;</span>,
+  <span style="color:#f92672">&#34;requestParameters&#34;</span>: {
+    <span style="color:#f92672">&#34;roleArn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::776613361644:role/assume-admin-role-example&#34;</span>,
+    <span style="color:#f92672">&#34;roleSessionName&#34;</span>: <span style="color:#e6db74">&#34;bob@example.com&#34;</span>
+  },
+  <span style="color:#f92672">&#34;responseElements&#34;</span>: {
+    <span style="color:#f92672">&#34;credentials&#34;</span>: {
+      <span style="color:#f92672">&#34;accessKeyId&#34;</span>: <span style="color:#e6db74">&#34;ASIA3JUODO7WTIO2PI64&#34;</span>,
+      <span style="color:#f92672">&#34;expiration&#34;</span>: <span style="color:#e6db74">&#34;Sep 17, 2020 8:04:10 PM&#34;</span>,
+      <span style="color:#f92672">&#34;sessionToken&#34;</span>: <span style="color:#e6db74">&#34;IQoJb3JpZ2luX2VjEAMaCXVzLWVhc3QtMSJIMEYCIQDsEwOWhE/9cNh+Xpg+V6r8ug3ULRnoOCPNCQhorh13xgIhAIfc+u8ttYNsjLQJRMvo7EnDXMkOAViMFuU7Mma8zjGEKqMCCBwQARoMNzc2NjEzMzYxNjQ1Igyt06eMsyzHkQJRK84qgAIF/jUW99caWE07piwWI2EGTHU2KMx6ioRz3uDbDS24GKy3XvQRalC+5YTZoOQDQvpziRmO33BEzM6Ws5TBTggo/yXGAJRQthB8IqiGkbsClbOG8cYsuhRXK3+yK8OHhCSfr0ehO2SYNiaqEClyT9n8QtEmkQawN56IiOoE9HBzTA7xxYbj7XULL/okog7D3l18NG32rxhHS1ACDN3ro9RGjrPicn9PHFfBqvK+uP3JJQVlcQZu6yGVvtH3rIiYdwAo5bSEc3G9G/LSEiwh47o7NrTOzrRsznARBgefSPs9K3qIgMpZHs3DgqJ0TID1k5y1w4KlPvL36C/+LEmxckNYMKrmjvsFOpwBGDQAVghEOsvntE328Yt2M9Yv0x55cZ5RPJ2pGtQW4geb8+aT2ThZ1zSGwlnvMM8TE+HAwUs0+GQwZbp5UpIiDYLzUeZ0pYWVBHmv/YzN3w0bSKTrC8Jc/0aAaUnxmKMkH5AWO6pBelw8KtVIvd9BwKgBQKVo+tsAVGEdKbVTlwOvLcuhWonCvjoxPCiPgNR05HF8QANbpWet0p+k&#34;</span>
+    },
+    <span style="color:#f92672">&#34;assumedRoleUser&#34;</span>: {
+      <span style="color:#f92672">&#34;assumedRoleId&#34;</span>: <span style="color:#e6db74">&#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&#34;</span>,
+      <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&#34;</span>
+    }
+  },
+  <span style="color:#f92672">&#34;requestID&#34;</span>: <span style="color:#e6db74">&#34;fdbb008c-63ce-4207-8171-b041d6f38672&#34;</span>,
+  <span style="color:#f92672">&#34;eventID&#34;</span>: <span style="color:#e6db74">&#34;40b4d219-0448-436f-9420-cdd3dc654b44&#34;</span>,
+  <span style="color:#f92672">&#34;resources&#34;</span>: [
+    {
+      <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>,
+      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;AWS::IAM::Role&#34;</span>,
+      <span style="color:#f92672">&#34;ARN&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::776613361644:role/assume-admin-role-example&#34;</span>
+    }
+  ],
+  <span style="color:#f92672">&#34;eventType&#34;</span>: <span style="color:#e6db74">&#34;AwsApiCall&#34;</span>,
+  <span style="color:#f92672">&#34;recipientAccountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>,
+  <span style="color:#f92672">&#34;sharedEventID&#34;</span>: <span style="color:#e6db74">&#34;19ee34b2-52bd-4dfa-8c8e-cf68344062a6&#34;</span>
+}
+</code></pre></div><p>SwitchRole</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;eventVersion&#34;</span>: <span style="color:#e6db74">&#34;1.05&#34;</span>,
+  <span style="color:#f92672">&#34;userIdentity&#34;</span>: {
+    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;AssumedRole&#34;</span>,
+    <span style="color:#f92672">&#34;principalId&#34;</span>: <span style="color:#e6db74">&#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&#34;</span>,
+    <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&#34;</span>,
+    <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>
+  },
+  <span style="color:#f92672">&#34;eventTime&#34;</span>: <span style="color:#e6db74">&#34;2020-09-17T19:04:10Z&#34;</span>,
+  <span style="color:#f92672">&#34;eventSource&#34;</span>: <span style="color:#e6db74">&#34;signin.amazonaws.com&#34;</span>,
+  <span style="color:#f92672">&#34;eventName&#34;</span>: <span style="color:#e6db74">&#34;SwitchRole&#34;</span>,
+  <span style="color:#f92672">&#34;awsRegion&#34;</span>: <span style="color:#e6db74">&#34;us-east-1&#34;</span>,
+  <span style="color:#f92672">&#34;sourceIPAddress&#34;</span>: <span style="color:#e6db74">&#34;75.15.154.15&#34;</span>,
+  <span style="color:#f92672">&#34;userAgent&#34;</span>: <span style="color:#e6db74">&#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36&#34;</span>,
+  <span style="color:#f92672">&#34;requestParameters&#34;</span>: <span style="color:#66d9ef">null</span>,
+  <span style="color:#f92672">&#34;responseElements&#34;</span>: {
+    <span style="color:#f92672">&#34;SwitchRole&#34;</span>: <span style="color:#e6db74">&#34;Success&#34;</span>
+  },
+  <span style="color:#f92672">&#34;additionalEventData&#34;</span>: {
+    <span style="color:#f92672">&#34;SwitchFrom&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::203016562928:user/bob@example.com&#34;</span>,
+    <span style="color:#f92672">&#34;RedirectTo&#34;</span>: <span style="color:#e6db74">&#34;https://console.aws.amazon.com/console/home&#34;</span>
+  },
+  <span style="color:#f92672">&#34;eventID&#34;</span>: <span style="color:#e6db74">&#34;70627092-0c9c-4163-9975-42ffcc50a37a&#34;</span>,
+  <span style="color:#f92672">&#34;eventType&#34;</span>: <span style="color:#e6db74">&#34;AwsConsoleSignIn&#34;</span>,
+  <span style="color:#f92672">&#34;recipientAccountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>
+}
+</code></pre></div><p>in the source account look up for AssumeRole around the same time with the same &ldquo;sharedEventID&rdquo;
+AssumeRole</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;eventVersion&#34;</span>: <span style="color:#e6db74">&#34;1.05&#34;</span>,
+  <span style="color:#f92672">&#34;userIdentity&#34;</span>: {
+    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;IAMUser&#34;</span>,
+    <span style="color:#f92672">&#34;principalId&#34;</span>: <span style="color:#e6db74">&#34;AIDAS6RF25DXSM2CA5KAD&#34;</span>,
+    <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::203016562928:user/bob@example.com&#34;</span>,
+    <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;203016562928&#34;</span>,
+    <span style="color:#f92672">&#34;accessKeyId&#34;</span>: <span style="color:#e6db74">&#34;ASIAS6RF25DXQR3PH2AX&#34;</span>,
+    <span style="color:#f92672">&#34;userName&#34;</span>: <span style="color:#e6db74">&#34;bob@example.com&#34;</span>,
+    <span style="color:#f92672">&#34;sessionContext&#34;</span>: {
+      <span style="color:#f92672">&#34;sessionIssuer&#34;</span>: {},
+      <span style="color:#f92672">&#34;webIdFederationData&#34;</span>: {},
+      <span style="color:#f92672">&#34;attributes&#34;</span>: {
+        <span style="color:#f92672">&#34;mfaAuthenticated&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
+        <span style="color:#f92672">&#34;creationDate&#34;</span>: <span style="color:#e6db74">&#34;2020-09-17T13:58:45Z&#34;</span>
+      }
+    },
+    <span style="color:#f92672">&#34;invokedBy&#34;</span>: <span style="color:#e6db74">&#34;AWS Internal&#34;</span>
+  },
+  <span style="color:#f92672">&#34;eventTime&#34;</span>: <span style="color:#e6db74">&#34;2020-09-17T19:04:10Z&#34;</span>,
+  <span style="color:#f92672">&#34;eventSource&#34;</span>: <span style="color:#e6db74">&#34;sts.amazonaws.com&#34;</span>,
+  <span style="color:#f92672">&#34;eventName&#34;</span>: <span style="color:#e6db74">&#34;AssumeRole&#34;</span>,
+  <span style="color:#f92672">&#34;awsRegion&#34;</span>: <span style="color:#e6db74">&#34;us-east-1&#34;</span>,
+  <span style="color:#f92672">&#34;sourceIPAddress&#34;</span>: <span style="color:#e6db74">&#34;AWS Internal&#34;</span>,
+  <span style="color:#f92672">&#34;userAgent&#34;</span>: <span style="color:#e6db74">&#34;AWS Internal&#34;</span>,
+  <span style="color:#f92672">&#34;requestParameters&#34;</span>: {
+    <span style="color:#f92672">&#34;roleArn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::776613361644:role/assume-admin-role-example&#34;</span>,
+    <span style="color:#f92672">&#34;roleSessionName&#34;</span>: <span style="color:#e6db74">&#34;bob@example.com&#34;</span>
+  },
+  <span style="color:#f92672">&#34;responseElements&#34;</span>: {
+    <span style="color:#f92672">&#34;credentials&#34;</span>: {
+      <span style="color:#f92672">&#34;accessKeyId&#34;</span>: <span style="color:#e6db74">&#34;ASIA3JUODO7WTIO2PI64&#34;</span>,
+      <span style="color:#f92672">&#34;expiration&#34;</span>: <span style="color:#e6db74">&#34;Sep 17, 2020 8:04:10 PM&#34;</span>,
+      <span style="color:#f92672">&#34;sessionToken&#34;</span>: <span style="color:#e6db74">&#34;IQoJb3JpZ2luX2VjEAMaCXVzLWVhc3QtMSJIMEYCIQDsEwOWhE/9cNh+Xpg+V6r8ug3ULRnoOCPNCQhorh13xgIhAIfc+u8ttYNsjLQJRMvo7EnDXMkOAViMFuU7Mma8zjGEKqMCCBwQARoMNzc2NjEzMzYxNjQ1Igyt06eMsyzHkQJRK84qgAIF/jUW99caWE07piwWI2EGTHU2KMx6ioRz3uDbDS24GKy3XvQRalC+5YTZoOQDQvpziRmO33BEzM6Ws5TBTggo/yXGAJRQthB8IqiGkbsClbOG8cYsuhRXK3+yK8OHhCSfr0ehO2SYNiaqEClyT9n8QtEmkQawN56IiOoE9HBzTA7xxYbj7XULL/okog7D3l18NG32rxhHS1ACDN3ro9RGjrPicn9PHFfBqvK+uP3JJQVlcQZu6yGVvtH3rIiYdwAo5bSEc3G9G/LSEiwh47o7NrTOzrRsznARBgefSPs9K3qIgMpZHs3DgqJ0TID1k5y1w4KlPvL36C/+LEmxckNYMKrmjvsFOpwBGDQAVghEOsvntE328Yt2M9Yv0x55cZ5RPJ2pGtQW4geb8+aT2ThZ1zSGwlnvMM8TE+HAwUs0+GQwZbp5UpIiDYLzUeZ0pYWVBHmv/YzN3w0bSKTrC8Jc/0aAaUnxmKMkH5AWO6pBelw8KtVIvd9BwKgBQKVo+tsAVGEdKbVTlwOvLcuhWonCvjoxPCiPgNR05HF8QANbpWet0p+k&#34;</span>
+    },
+    <span style="color:#f92672">&#34;assumedRoleUser&#34;</span>: {
+      <span style="color:#f92672">&#34;assumedRoleId&#34;</span>: <span style="color:#e6db74">&#34;AROAJBP4A5WSXVNY72RLE:bob@example.com&#34;</span>,
+      <span style="color:#f92672">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:sts::776613361644:assumed-role/assume-admin-role-example/bob@example.com&#34;</span>
+    }
+  },
+  <span style="color:#f92672">&#34;requestID&#34;</span>: <span style="color:#e6db74">&#34;fdbb008c-63ce-4207-8171-b041d6f38672&#34;</span>,
+  <span style="color:#f92672">&#34;eventID&#34;</span>: <span style="color:#e6db74">&#34;14fb06e3-5649-4fc3-a274-226ba85c8be6&#34;</span>,
+  <span style="color:#f92672">&#34;resources&#34;</span>: [
+    {
+      <span style="color:#f92672">&#34;accountId&#34;</span>: <span style="color:#e6db74">&#34;776613361644&#34;</span>,
+      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;AWS::IAM::Role&#34;</span>,
+      <span style="color:#f92672">&#34;ARN&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::776613361644:role/assume-admin-role-example&#34;</span>
+    }
+  ],
+  <span style="color:#f92672">&#34;eventType&#34;</span>: <span style="color:#e6db74">&#34;AwsApiCall&#34;</span>,
+  <span style="color:#f92672">&#34;recipientAccountId&#34;</span>: <span style="color:#e6db74">&#34;203016562928&#34;</span>,
+  <span style="color:#f92672">&#34;sharedEventID&#34;</span>: <span style="color:#e6db74">&#34;19ee34b2-52bd-4dfa-8c8e-cf68344062a6&#34;</span>
+}
+</code></pre></div><h2 id="reference">Reference</h2>
+<p>
+<a href="https://aws.amazon.com/blogs/security/how-to-audit-cross-account-roles-using-aws-cloudtrail-and-amazon-cloudwatch-events/" target="_blank" rel="noopener">How to Audit Cross-Account Roles Using AWS CloudTrail and Amazon CloudWatch Events</a></p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/&amp;text=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%202" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/&amp;t=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%202" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%202&amp;body=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/&amp;title=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%202" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/david-xiao/avatar_huc9a803f18ab730e706c7c1ec5503b96b_29954_270x270_fill_lanczos_center_2.png" alt="David Xiao">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="https://davidxiao.me/">David Xiao</a></h5>
+        <h6 class="card-subtitle">Sr. Cloud Engineer</h6>
+        <p class="card-text">My interests include cybersecurity and public cloud such as AWS.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/davxiao" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/davxiao" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.facebook.com/davxiao" target="_blank" rel="noopener">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/davxiao" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+<section id="comments">
+  <hr>
+  <div id="remark42"></div>
+  <script>
+    var remark_config = {
+      host: "https://api.davidxiao.me/remark42", 
+      site_id: 'davidxiao',
+      components: ['embed'], 
+                            
+                            
+                            
+                            
+                            
+      url: "https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/", 
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+      max_shown_comments: 10, 
+      theme: 'light', 
+      locale: 'en' 
+    };
+
+    (function(c) {
+      for(var i = 0; i < c.length; i++){
+        var d = document, s = d.createElement('script');
+        s.src = remark_config.host + '/web/' +c[i] +'.js';
+        s.defer = true;
+        (d.head || d.body).appendChild(s);
+      }
+    })(remark_config.components || ['embed']);
+  </script>
+</section>
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+
+    
+
+    
+    
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key="></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha256-7vjlAeb8OaTrCXZkCNun9djzuB2owUsaO72kXaFDBJs=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+    <script>const code_highlighting = false;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank">LICENSE: CC-BY-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
+  </p>
+  
+  <p class="powered-by">
+    ©2020 David Xiao. 
+
+    Made with ❤️ , the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>, <a href="https://remark42.com/" target="_blank" rel="noopener">Remark42</a>, <a href="https://cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a> and <a href="https://firebase.google.com/" target="_blank" rel="noopener">Firebase</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
