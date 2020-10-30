@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="AWS CloudTrail is an essential service that records user actions and systems events. This is the first post of a series that demonstrates how to leverage CloudTrail to identify the IAM principal and establish timelines. This post is focused on same account access.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/">
@@ -227,8 +227,8 @@
   
   <meta property="og:site_name" content="DAVID&#39;S GARAGE">
   <meta property="og:url" content="https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/">
-  <meta property="og:title" content="How to Audit User Activities Using Aws Cloudtrail Part 1 | DAVID&#39;S GARAGE">
-  <meta property="og:description" content=""><meta property="og:image" content="https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:title" content="Audit User Actions Using CloudTrail - Part 1 | DAVID&#39;S GARAGE">
+  <meta property="og:description" content="AWS CloudTrail is an essential service that records user actions and systems events. This is the first post of a series that demonstrates how to leverage CloudTrail to identify the IAM principal and establish timelines. This post is focused on same account access."><meta property="og:image" content="https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
@@ -260,7 +260,7 @@
     "@type": "WebPage",
     "@id": "https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/"
   },
-  "headline": "How to Audit User Activities Using Aws Cloudtrail Part 1",
+  "headline": "Audit User Actions Using CloudTrail - Part 1",
   
   "datePublished": "2020-09-17T23:53:23-04:00",
   "dateModified": "2020-09-17T23:53:23-04:00",
@@ -278,7 +278,7 @@
       "url": "https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": ""
+  "description": "AWS CloudTrail is an essential service that records user actions and systems events. This is the first post of a series that demonstrates how to leverage CloudTrail to identify the IAM principal and establish timelines. This post is focused on same account access."
 }
 </script>
 
@@ -296,7 +296,7 @@
 
 
 
-  <title>How to Audit User Activities Using Aws Cloudtrail Part 1 | DAVID&#39;S GARAGE</title>
+  <title>Audit User Actions Using CloudTrail - Part 1 | DAVID&#39;S GARAGE</title>
 
 </head>
 
@@ -460,8 +460,10 @@
   
   
 <div class="article-container pt-3">
-  <h1>How to Audit User Activities Using Aws Cloudtrail Part 1</h1>
+  <h1>Audit User Actions Using CloudTrail - Part 1</h1>
 
+  
+  <p class="page-subtitle">Same Account Access</p>
   
 
   
@@ -470,6 +472,16 @@
 
 <div class="article-metadata">
 
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/author/david-xiao/">David Xiao</a></span>
+  </div>
   
   
 
@@ -546,7 +558,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/&amp;text=How%20to%20Audit%20User%20Activities%20Using%20Aws%20Cloudtrail%20Part%201" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/&amp;text=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%201" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -559,7 +571,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/&amp;t=How%20to%20Audit%20User%20Activities%20Using%20Aws%20Cloudtrail%20Part%201" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/&amp;t=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%201" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -572,7 +584,7 @@
       
       
       <li>
-        <a href="mailto:?subject=How%20to%20Audit%20User%20Activities%20Using%20Aws%20Cloudtrail%20Part%201&amp;body=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%201&amp;body=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -585,7 +597,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/&amp;title=How%20to%20Audit%20User%20Activities%20Using%20Aws%20Cloudtrail%20Part%201" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/&amp;title=Audit%20User%20Actions%20Using%20CloudTrail%20-%20Part%201" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -605,7 +617,8 @@
 
 
   
-  
+    
+    
 
 
 
@@ -706,6 +719,7 @@
   
 
 
+  
 
 
 

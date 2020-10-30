@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>diffiehellman | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/diffiehellman/</link>
+      <atom:link href="https://davidxiao.me/tag/diffiehellman/index.xml" rel="self" type="application/rss+xml" />
+    <description>diffiehellman</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>diffiehellman</title>
+      <link>https://davidxiao.me/tag/diffiehellman/</link>
+    </image>
+    
+    <item>
+      <title>Diffie-Hellman Key Exchange in a Nutshell</title>
+      <link>https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/</guid>
+      <description>
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/M-0qt6tdHzk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;step-by-step&#34;&gt;Step by Step&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Alice and Bob agree publicly on a prime modulus 17, and a generator 3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alice selects a private random number 15&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alice calculates 3^15 mod 17 (three to the power fifteen mod seventeen), sends the result 6 publicly to Bob&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bob selects a private random number 13&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bob calculates 3^13 mod 17, sends the result 12 publicly to Alice&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alice takes Bob&amp;rsquo;s public result and raise it to the power of her own private number and mod it, i.e. calculates 12^15 mod 17, the result is 10&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bob does the same procedure as Alice, i.e. calculates 6^13 mod 17, the result is 10 (the same)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An analysis of how calculation in step 6 and step 7 are done shows that either side actually did the same calculation with the exponents in a different order. In mathematics, when you flip the exponent, the result doesn&amp;rsquo;t change.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-exponents-in-a-different-order&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/diffi-hellman-calc_huc017b7bd1cc0ac869fac4b9cae0b36dd_199354_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Exponents in a different order&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/diffi-hellman-calc_huc017b7bd1cc0ac869fac4b9cae0b36dd_199354_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;998&#34; height=&#34;672&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Exponents in a different order
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

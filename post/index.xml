@@ -5,7 +5,7 @@
     <link>https://davidxiao.me/post/</link>
       <atom:link href="https://davidxiao.me/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Fri, 02 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
@@ -13,12 +13,327 @@
     </image>
     
     <item>
+      <title>OWASP Top Ten</title>
+      <link>https://davidxiao.me/post/owasp-top-ten/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/owasp-top-ten/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;OWASP Top 10 Web Application Security Risks is a 
+&lt;a href=&#34;https://owasp.org/www-project-top-ten/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;security project&lt;/a&gt; commonly referenced in web security and application security space.&lt;/p&gt;
+&lt;p&gt;The following table provides a quick summary of what are the Top 10 and how easy and effective to mitigate them using WAF (web application firewall).&lt;/p&gt;
+&lt;p&gt;😈 effective&lt;/p&gt;
+&lt;p&gt;🤔 possible with some considerations&lt;/p&gt;
+&lt;p&gt;😨 not considered broadly effective or as a primary mitigation&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;ID&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;OWASP Item&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Mitigate with WAF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Injection&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;😈&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Broken Authentication&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;😨&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Sensitive Data Exposure&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;😨&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;XML External Entities XXE&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;😈&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Broken Access Control&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;🤔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Security Misconfiguration&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;🤔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Cross-Site Scripting XSS&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;😈&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;8&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Insecure Deserialization&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;🤔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;9&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Using Components with Known Vulnerabilities&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;😨&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;10&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Insufficient Logging &amp;amp; Monitoring&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;😨&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;1-injection&#34;&gt;1. Injection&lt;/h2&gt;
+&lt;p&gt;Most common form is SQL injection. There are other forms of injection such as OS and LDAP injection. The attacker’s hostile data can trick the interpreter into executing unintended commands or accessing data without proper authorization.&lt;/p&gt;
+&lt;p&gt;WAF: It is usually effective in matching and mitigating such attacks.&lt;/p&gt;
+&lt;h2 id=&#34;2-broken-authentication&#34;&gt;2. Broken Authentication&lt;/h2&gt;
+&lt;p&gt;To obtain these credentials, attackers either relying on vulnerabilities in the way client-server communication is implemented or targeting how tokens are generated, stored, transferred or invalidated by the application.&lt;/p&gt;
+&lt;p&gt;Attackers then use the credentials to impersonate legitimate users and make requests to your web applications using those tokens.&lt;/p&gt;
+&lt;p&gt;WAF is hard to mitigate this type of attacks in general. You might be able to add compromised or stolen tokens to a blacklist WAF rule.&lt;/p&gt;
+&lt;h2 id=&#34;3-sensitive-data-exposure&#34;&gt;3. Sensitive Data Exposure&lt;/h2&gt;
+&lt;p&gt;Many web applications and APIs do not properly protect sensitive data, such as financial, healthcare, and PII. Attackers may steal or modify such weakly protected data to conduct credit card fraud, identity theft, or other crimes. Sensitive data may be compromised without extra protection, such as encryption at rest or in transit, and requires special precautions when exchanged with the browser.&lt;/p&gt;
+&lt;p&gt;WAF is typically hard to mitigate such kind of risks. For example, data has been decrypted from the connection level for WAF inspection so WAF has no impact on enforcing encryption hygiene.&lt;/p&gt;
+&lt;h2 id=&#34;4-xml-external-entities-xxe&#34;&gt;4. XML External Entities (XXE)&lt;/h2&gt;
+&lt;p&gt;Many older or poorly configured XML processors evaluate external entity references within XML documents. External entities can be used to disclose internal files using the file URI handler, internal file shares, internal port scanning, remote code execution, and denial of service attacks.&lt;/p&gt;
+&lt;p&gt;WAF can be helpful in mitigating this type of risk as long as the entity references can be matched as pattern.&lt;/p&gt;
+&lt;h2 id=&#34;5-broken-access-control&#34;&gt;5. Broken Access Control&lt;/h2&gt;
+&lt;p&gt;It allows internal objects to be manipulated without the requestor’s access permissions being properly validated.&lt;/p&gt;
+&lt;p&gt;Depending on the specific workload, this can lead to exposure of unauthorized data, manipulation of internal web application state, path traversal, and local file inclusion.&lt;/p&gt;
+&lt;p&gt;WAF can be effective against certain types of such attack by matching dangerous HTTP request patterns that can indicate path traversal attempts, or remote and local file inclusion.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;https://example.com/download.php?file=..%2F..%2Fetc%2Fpasswd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;6-security-misconfiguration&#34;&gt;6. Security Misconfiguration&lt;/h2&gt;
+&lt;p&gt;This is commonly a result of insecure default configurations or enabling verbose error messages containing sensitive information.&lt;/p&gt;
+&lt;p&gt;To mitigate the risk, operating systems, frameworks, libraries and applications be securely configured and stay up-to-date in a timely fashion.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;Leaving default directory listings enabled on production web servers. This allows malicious users to browse for files that are hosted by the web server.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;WAF can be leveraged to mitigate attempts as long as the HTTP request patterns that attempt to exploit them are recognizable.&lt;/p&gt;
+&lt;p&gt;These patterns, however, are also application-stack specific. They depend on the operating system, web server, frameworks, or the programming languages your code uses.&lt;/p&gt;
+&lt;h2 id=&#34;7-cross-site-scripting-xss&#34;&gt;7. Cross-Site Scripting XSS&lt;/h2&gt;
+&lt;p&gt;XSS flaws occur whenever an application includes untrusted data in a new web page without proper validation or escaping, or updates an existing web page with user-supplied data using a browser API that can create HTML or JavaScript.&lt;/p&gt;
+&lt;p&gt;Attackers leverage this flow to execute scripts in the victim’s browser which can retrieve user cookies or redirect the user to malicious sites.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stored XSS Attacks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;aka Persistent XSS. The injected script is permanently stored on the target server such as database or a comment field on a web page etc. The victim retrieves the malicious script when it visits the web page.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reflected XSS Attacks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/9xyRKZbv5kQ&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+aka Non-Persistent XSS. The injected script is reflected back to the same visitor via various forms such as in an error message, search result, or any other response when server response includes some or all of the input sent to the server as part of the request.&lt;/p&gt;
+&lt;p&gt;For example, when username &lt;code&gt;bob&lt;/code&gt; log on failed, a vulnerable server produces error message that includes &lt;code&gt;bob&lt;/code&gt; without proper escaping and safety checks.&lt;/p&gt;
+&lt;p&gt;An attacker can validate if a target website is vulnerable by constructing a deliberating input as username that includes executable JS code in &lt;code&gt;&amp;lt;script&amp;gt;...&amp;lt;/script&amp;gt;&lt;/code&gt; code block and attempting to submit it on the web site. If the JS code can be reflected back to the same visitor&amp;rsquo;s browser and got executed, the validation is successful.&lt;/p&gt;
+&lt;p&gt;Combined with the delivery technique discussed in the next paragraphs, attacker would be able to exploit this vulnerability and pull off an attack.&lt;/p&gt;
+&lt;p&gt;Reflected attacks are delivered to victims via another means such as in a phishing e-mail. When a user is tricked into clicking on a malicious link from the email, it submits a specially crafted form with some JS code to obtain sensitive such as &lt;code&gt;document.cookie&lt;/code&gt; to a website such as a online bank website that has XSS vulnerability.&lt;/p&gt;
+&lt;p&gt;The injected JS code travels to the vulnerable bank website, which in turn reflects the JS code back to the user’s browser as part of the HTML. The browser will execute the JS code and allow it to obtain the cookie because the JS appears to come from the same origin.&lt;/p&gt;
+&lt;p&gt;From OWASP:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;XSS flaws can be difficult to identify and remove from a web application. The best way to find flaws is to perform a security review of the code and search for all places where input from an HTTP request could possibly make its way into the HTML output.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;WAF is relatively easy to mitigate this type of attack in common scenarios because they require specific key HTML tag names in the HTTP request.&lt;/p&gt;
+&lt;h2 id=&#34;8-insecure-deserialization&#34;&gt;8. Insecure Deserialization&lt;/h2&gt;
+&lt;p&gt;Insecure deserialization often leads to remote code execution. Even if deserialization flaws do not result in remote code execution, they can be used to perform attacks, including replay attacks, injection attacks, and privilege escalation attacks.&lt;/p&gt;
+&lt;p&gt;WAF is relatively effective in mitigating this type of attacks but there are some considerations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;It would require creating custom rules to match known patterns. These patterns are application specific and require more in-depth knowledge of those applications.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Take into account the limits the service imposes on such rules.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;9-using-components-with-known-vulnerabilities&#34;&gt;9. Using Components with Known Vulnerabilities&lt;/h2&gt;
+&lt;p&gt;Components, such as libraries, frameworks, and other software modules, run with the same privileges as the application. If a vulnerable component is exploited, such an attack can facilitate serious data loss or server takeover. Applications and APIs using components with known vulnerabilities may undermine application defenses and enable various attacks and impacts.&lt;/p&gt;
+&lt;p&gt;WAF is not considered the primary mitigating control for such risks. As secondary control, one can use WAF to filter and block HTTP requests to
+functionality of such components that you aren’t using in your applications.
+This helps reduce the attack surface of those components.&lt;/p&gt;
+&lt;h2 id=&#34;10-insufficient-logging--monitoring&#34;&gt;10. Insufficient Logging &amp;amp; Monitoring&lt;/h2&gt;
+&lt;p&gt;Insufficient logging and monitoring, coupled with missing or ineffective integration with incident response, allows attackers to further attack systems, maintain persistence, pivot to more systems, and tamper, extract, or destroy data. Most breach studies show time to detect a breach is over 200 days, typically detected by external parties rather than internal processes or monitoring.&lt;/p&gt;
+&lt;p&gt;WAF is not considered the primary mitigating control for such risks. WAF can be produce its own logs for further consumption and analysis.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Diffie-Hellman Key Exchange in a Nutshell</title>
+      <link>https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/</guid>
+      <description>
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/M-0qt6tdHzk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;step-by-step&#34;&gt;Step by Step&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Alice and Bob agree publicly on a prime modulus 17, and a generator 3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alice selects a private random number 15&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alice calculates 3^15 mod 17 (three to the power fifteen mod seventeen), sends the result 6 publicly to Bob&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bob selects a private random number 13&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bob calculates 3^13 mod 17, sends the result 12 publicly to Alice&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alice takes Bob&amp;rsquo;s public result and raise it to the power of her own private number and mod it, i.e. calculates 12^15 mod 17, the result is 10&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bob does the same procedure as Alice, i.e. calculates 6^13 mod 17, the result is 10 (the same)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An analysis of how calculation in step 6 and step 7 are done shows that either side actually did the same calculation with the exponents in a different order. In mathematics, when you flip the exponent, the result doesn&amp;rsquo;t change.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-exponents-in-a-different-order&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/diffi-hellman-calc_huc017b7bd1cc0ac869fac4b9cae0b36dd_199354_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Exponents in a different order&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/diffi-hellman-calc_huc017b7bd1cc0ac869fac4b9cae0b36dd_199354_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;998&#34; height=&#34;672&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Exponents in a different order
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Sign Client Certificate Using Self Signed CA Certificate</title>
+      <link>https://davidxiao.me/post/sign-client-certificate-using-self-signed-ca-certificate/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/sign-client-certificate-using-self-signed-ca-certificate/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;When TLS mutual authentication is put in place between controller node and work nodes in a cluster setting, it&amp;rsquo;s not uncommon to see client certificates signed by either self-signed CA or private CA.&lt;/p&gt;
+&lt;p&gt;This post covers how to generate a self-signed root CA and to sign a client certificate using &lt;code&gt;openssl&lt;/code&gt;. In cases when private CA is employed instead, the client certificate signing portion is still relevant.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The configuration described in this post is for testing only. It is NOT secure for production use.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;self-signed-ca-certificate&#34;&gt;Self-signed CA Certificate&lt;/h2&gt;
+&lt;p&gt;Before we start, let&amp;rsquo;s create a root directory called &lt;code&gt;tls-cert&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Under the root directory, we create a sub directory and some files:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] mkdir ca
+[tls-cert] mkdir ca/ca.db.certs
+[tls-cert] touch ca/ca.db.index
+[tls-cert] echo &amp;#34;123456&amp;#34; &amp;gt; ca/ca.db.serial
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next step is to generate a CA key: in this example it&amp;rsquo;s 2048-bit RSA:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl genrsa -out ca/ca.key 2048
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next is to create a self-signed X509 certificate out of the CA key. The client keys will be signed with it later.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl req -new -x509 -days 365 -key ca/ca.key -out ca/ca.crt
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &amp;#39;.&amp;#39;, the field will be left blank.
+-----
+Country Name (2 letter code) []:.
+State or Province Name (full name) []:.
+Locality Name (eg, city) []:.
+Organization Name (eg, company) []:ca-org-name
+Organizational Unit Name (eg, section) []:ca-orgunit-name
+Common Name (eg, fully qualified host name) []:ca-common-name
+Email Address []:admin@ca.com
+[tls-cert]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;client-certificate&#34;&gt;Client certificate&lt;/h2&gt;
+&lt;p&gt;Now that we&amp;rsquo;ve generated CA certificate, it&amp;rsquo;s time to generate a private key for the client and create a CSR (Certificate Signing Request)for the key:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl req -new -newkey rsa:2048 -nodes -keyout client.key -out client-key-sign-req.pem
+Generating a 2048 bit RSA private key
+...................................................................................................+++
+........+++
+writing new private key to &amp;#39;client.key&amp;#39;
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &amp;#39;.&amp;#39;, the field will be left blank.
+-----
+Country Name (2 letter code) []:.
+State or Province Name (full name) []:.
+Locality Name (eg, city) []:.
+Organization Name (eg, company) []:client-org-name
+Organizational Unit Name (eg, section) []:client-orgunit-name
+Common Name (eg, fully qualified host name) []:client-common-name
+Email Address []:admin@client.com
+
+Please enter the following &amp;#39;extra&amp;#39; attributes
+to be sent with your certificate request
+A challenge password []:
+[tls-cert]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;openssl needs to know a few parameters in order to sign the CSR. Let&amp;rsquo;s put all the parameters into a file and save it as &lt;code&gt;ca.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ac12f7ebe4e37079ed279f3ce9bc85a9.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;With that sorted out, the last step is to sign the CSR file &lt;code&gt;client-key-sign-req.pem&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl ca -config ca.conf -out client-certificate.pem.crt -infiles client-key-sign-req.pem
+Using configuration from ca.conf
+Check that the request matches the signature
+Signature ok
+The Subject&amp;#39;s Distinguished Name is as follows
+organizationName      :ASN.1 12:&amp;#39;client-org-name&amp;#39;
+organizationalUnitName:ASN.1 12:&amp;#39;client-orgunit-name&amp;#39;
+commonName            :ASN.1 12:&amp;#39;client-common-name&amp;#39;
+emailAddress          :IA5STRING:&amp;#39;admin@client.com&amp;#39;
+Certificate is to be certified until Oct 11 02:08:05 2021 GMT (365 days)
+Sign the certificate? [y/n]:y
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+[tls-cert]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;ve produced the following files in this example:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ca/ca.key&lt;/code&gt;: private key of the self-signed root CA. It must be kept secret at all times.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ca/ca.crt&lt;/code&gt;: CA certificate of the root CA. It should be made available to whichever party that needs to verify the certificates that were signed by the root CA.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;client.key&lt;/code&gt;: private key of the client certificate. It must be kept secret except during the client authentication process.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;client-certificate.pem.crt&lt;/code&gt;: CA certificate of the client. It should be made available to whichever party that needs to verify the identity of the client.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Python3 CheatSheet</title>
       <link>https://davidxiao.me/post/python3-cheatsheet/</link>
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/python3-cheatsheet/</guid>
       <description>&lt;p&gt;TLDR;&lt;/p&gt;
-&lt;p&gt;This post is my tiny collection of python3 code snippets. It comes in handy when manipulating string and list.&lt;/p&gt;
+&lt;p&gt;This post is my collection of python3 code snippets. It comes in handy when manipulating string and list.&lt;/p&gt;
 &lt;h2 id=&#34;single-or-double-quoted-string&#34;&gt;single or double quoted string&lt;/h2&gt;
 &lt;p&gt;In Python, such sequence of characters is included inside single or double quotes. There is no difference in single or double quoted string. Both can be used interchangeably.&lt;/p&gt;
 &lt;h2 id=&#34;remove-a-few-elements-from-the-beginning&#34;&gt;Remove a few elements from the beginning&lt;/h2&gt;
@@ -140,6 +455,31 @@ replace_s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span styl
 
 res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(find_s, replace_s)
 &lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;welcome what what the jungle&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;detect-duplicate-items-in-a-list&#34;&gt;detect duplicate items in a list&lt;/h2&gt;
+&lt;p&gt;method 1: loop&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;has_dup&lt;/span&gt;(lst):
+  flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range (len(lst)):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range (i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,len(lst)):
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (lst[i] &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; lst[j]):
+          flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (flag &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; True
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; False
+  
+l&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;]  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(has_dup(l))
+&lt;span style=&#34;color:#75715e&#34;&gt;# False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;method 2: create a temp set&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;set&lt;/code&gt; is a series of hashable objects, in a way it&amp;rsquo;s like &lt;code&gt;dict&lt;/code&gt; but the main difference between the two is that a dict item contains both key and value while a set item contains only key.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; set(s)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (len(s) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; len(res)):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;no duplicates found&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;duplicates found&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# duplicates found&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;remove-duplicate-words-in-a-string&#34;&gt;remove duplicate words in a string&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unique_list&lt;/span&gt;(l):
   ulist &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
@@ -156,9 +496,10 @@ offset &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&
 res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join([chr(ord(c)&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;offset) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; s])
 &lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;Uijt!jt!b!qmbjoufyu!nfttbhf&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-regex-to-split-complicated-string-into-words&#34;&gt;Use regex to split complicated string into words&lt;/h2&gt;
+&lt;p&gt;Compared to string.split() method, regex approach preserves separators in the result so that it&amp;rsquo;s possible to re-construct the original string from the result.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
 s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Words, words, words.   &amp;#39;&lt;/span&gt;
-res&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;([,. ]+)&amp;#39;&lt;/span&gt;, s) &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#39;(...)&amp;#39; enables the matched separators included in the result list. Remove &amp;#39;()&amp;#39; so that separators will not be included.&lt;/span&gt;
+res&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;([,. ]+)&amp;#39;&lt;/span&gt;, s) &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#39;(...)&amp;#39; enables the matched separators preserved in the result list.&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;Words&amp;#39;, &amp;#39;, &amp;#39;, &amp;#39;words&amp;#39;, &amp;#39;, &amp;#39;, &amp;#39;words&amp;#39;, &amp;#39;.   &amp;#39;, &amp;#39;&amp;#39;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-regex-to-search-a-pattern&#34;&gt;Use regex to search a pattern&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
@@ -212,6 +553,94 @@ s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;c
 words &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split()
 [wordlength(x) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; words]
 &lt;span style=&#34;color:#75715e&#34;&gt;# maxlen = 14&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-both-index-and-value-when-looping-a-list&#34;&gt;get both index and value when looping a list&lt;/h2&gt;
+&lt;p&gt;for both string and list&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i, value &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; enumerate(s):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;index &amp;#34;&lt;/span&gt;, i, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;value &amp;#34;&lt;/span&gt;, value)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;create-a-list-of-empty-items&#34;&gt;create a list of empty items&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [None]&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [None, None, None, None]&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Note this is different&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;determine-if-a-list-is-sorted&#34;&gt;determine if a list is sorted&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;]
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (s &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; sorted(s)):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sorted&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;not sorted&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;looping-a-dict&#34;&gt;looping a dict&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;ages &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Peter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Isabel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Anna&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Thomas&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bob&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Joseph&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Maria&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Gabriel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+}
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# loop to get all keys&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ages:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(x)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# loop to get all value&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ages:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(ages[x])
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# loop to get both keys and values&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; name, age &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ages&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;items():
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(name, age)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;nested-dict&#34;&gt;nested dict&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;students &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Peter&amp;#34;&lt;/span&gt;: {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;age&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Lisbon&amp;#34;&lt;/span&gt;},
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Isabel&amp;#34;&lt;/span&gt;: {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;age&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sesimbra&amp;#34;&lt;/span&gt;},
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Anna&amp;#34;&lt;/span&gt;: {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;age&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Lisbon&amp;#34;&lt;/span&gt;},
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; p_id, p_info &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; students&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;items():
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Person Name:&amp;#34;&lt;/span&gt;, p_id)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; key &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; p_info:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(key &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;:&amp;#39;&lt;/span&gt;, p_info[key])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;find-the-max-value-in-a-dict-and-return-the-key&#34;&gt;find the max value in a dict and return the key&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;ages &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Peter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Isabel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Anna&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Thomas&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bob&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Joseph&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Maria&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Gabriel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+  }
+
+value &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list(ages&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;values())
+key &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list(ages&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;keys())
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt; (key[value&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;index(max(value))])
+&lt;span style=&#34;color:#75715e&#34;&gt;# Maria&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-nested-list-to-cache-multiplication-results&#34;&gt;use nested list to cache multiplication results&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;): &lt;span style=&#34;color:#75715e&#34;&gt;#0-9&lt;/span&gt;
+  row &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;): &lt;span style=&#34;color:#75715e&#34;&gt;#0-9&lt;/span&gt;
+    row&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(i&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;j)
+  matrix&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(row)
+
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;multiply&lt;/span&gt;(x,y):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; matrix[x][y]
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;y
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(multiply(&lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# 54&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(multiply(&lt;span style=&#34;color:#ae81ff&#34;&gt;66&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;99&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# 6534&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
@@ -426,7 +855,7 @@ AssumeRole&lt;/p&gt;
     </item>
     
     <item>
-      <title>How to Audit User Activities Using Aws Cloudtrail Part 1</title>
+      <title>Audit User Actions Using CloudTrail - Part 1</title>
       <link>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</link>
       <pubDate>Thu, 17 Sep 2020 23:53:23 -0400</pubDate>
       <guid>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</guid>
@@ -819,14 +1248,16 @@ AssumeRole&lt;/p&gt;
     A[Client establishes a TCP connection to the server] --&amp;gt;B[Client sends Hello and list of cipher suites including TLS version] --&amp;gt;C[Server sends Hello, selected suite and certificate] --&amp;gt; D[Client validates certificate]
     D --&amp;gt; E[Client and server starts key exchange process. &amp;lt;br/&amp;gt;RSA and Diffie-Hellman are two common KEP algogirhtms]
     E --&amp;gt; F{Key Exchange Protocol}
-    F --&amp;gt;|RSA| G[When both client and server have &amp;lt;br/&amp;gt;the client random, the server random, &amp;lt;br/&amp;gt;and the premaster secret, each side &amp;lt;br/&amp;gt;independently combine these three inputs&amp;lt;br/&amp;gt; to come up with the session keys. &amp;lt;br/&amp;gt;They should both arrive at the same value]
-    F --&amp;gt;|DH| H[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value using DH algorithm&amp;lt;br/&amp;gt; usually accompanied by RSA signature]
-    G --&amp;gt;I[Regardless of which KEP was used, &amp;lt;br/&amp;gt;the rest of the session uses the agreed key, an ephemeral symmetric key, &amp;lt;br/&amp;gt;to encrypt the communication both ways going forward]
+    F --&amp;gt;|RSA| G[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value with client random,&amp;lt;br/&amp;gt; server random and premaster secret]
+    F --&amp;gt;|DH| H[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value over exchanging&amp;lt;br/&amp;gt;  a few DH parameters]
+    G --&amp;gt;I[Regardless of which KEP was used, &amp;lt;br/&amp;gt;the rest of the session uses the agreed symmetric key to encrypt &amp;lt;br/&amp;gt;the communication both ways going forward]
     H --&amp;gt;I
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Read more about DH 
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Read more about DH on 
+&lt;a href=&#34;https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/&#34;&gt;my post&lt;/a&gt; and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;key-takeaways-about-the-keps&#34;&gt;Key Takeaways About the KEPs&lt;/h2&gt;
-&lt;p&gt;👉 DH achieves forward secrecy while RSA does not.&lt;/p&gt;
+&lt;p&gt;👉 DH achieves 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Forward_secrecy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;forward secrecy&lt;/a&gt; while RSA does not.&lt;/p&gt;
 &lt;p&gt;👉 DH handshake takes longer than RSA.&lt;/p&gt;
 &lt;h2 id=&#34;what-else-you-need-to-know-about-tls&#34;&gt;What Else You Need To Know about TLS&lt;/h2&gt;
 &lt;ul&gt;

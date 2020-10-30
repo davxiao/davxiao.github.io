@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>x509 | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/x509/</link>
+      <atom:link href="https://davidxiao.me/tag/x509/index.xml" rel="self" type="application/rss+xml" />
+    <description>x509</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>x509</title>
+      <link>https://davidxiao.me/tag/x509/</link>
+    </image>
+    
+    <item>
+      <title>Sign Client Certificate Using Self Signed CA Certificate</title>
+      <link>https://davidxiao.me/post/sign-client-certificate-using-self-signed-ca-certificate/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/sign-client-certificate-using-self-signed-ca-certificate/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;When TLS mutual authentication is put in place between controller node and work nodes in a cluster setting, it&amp;rsquo;s not uncommon to see client certificates signed by either self-signed CA or private CA.&lt;/p&gt;
+&lt;p&gt;This post covers how to generate a self-signed root CA and to sign a client certificate using &lt;code&gt;openssl&lt;/code&gt;. In cases when private CA is employed instead, the client certificate signing portion is still relevant.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The configuration described in this post is for testing only. It is NOT secure for production use.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;self-signed-ca-certificate&#34;&gt;Self-signed CA Certificate&lt;/h2&gt;
+&lt;p&gt;Before we start, let&amp;rsquo;s create a root directory called &lt;code&gt;tls-cert&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Under the root directory, we create a sub directory and some files:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] mkdir ca
+[tls-cert] mkdir ca/ca.db.certs
+[tls-cert] touch ca/ca.db.index
+[tls-cert] echo &amp;#34;123456&amp;#34; &amp;gt; ca/ca.db.serial
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next step is to generate a CA key: in this example it&amp;rsquo;s 2048-bit RSA:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl genrsa -out ca/ca.key 2048
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next is to create a self-signed X509 certificate out of the CA key. The client keys will be signed with it later.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl req -new -x509 -days 365 -key ca/ca.key -out ca/ca.crt
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &amp;#39;.&amp;#39;, the field will be left blank.
+-----
+Country Name (2 letter code) []:.
+State or Province Name (full name) []:.
+Locality Name (eg, city) []:.
+Organization Name (eg, company) []:ca-org-name
+Organizational Unit Name (eg, section) []:ca-orgunit-name
+Common Name (eg, fully qualified host name) []:ca-common-name
+Email Address []:admin@ca.com
+[tls-cert]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;client-certificate&#34;&gt;Client certificate&lt;/h2&gt;
+&lt;p&gt;Now that we&amp;rsquo;ve generated CA certificate, it&amp;rsquo;s time to generate a private key for the client and create a CSR (Certificate Signing Request)for the key:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl req -new -newkey rsa:2048 -nodes -keyout client.key -out client-key-sign-req.pem
+Generating a 2048 bit RSA private key
+...................................................................................................+++
+........+++
+writing new private key to &amp;#39;client.key&amp;#39;
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &amp;#39;.&amp;#39;, the field will be left blank.
+-----
+Country Name (2 letter code) []:.
+State or Province Name (full name) []:.
+Locality Name (eg, city) []:.
+Organization Name (eg, company) []:client-org-name
+Organizational Unit Name (eg, section) []:client-orgunit-name
+Common Name (eg, fully qualified host name) []:client-common-name
+Email Address []:admin@client.com
+
+Please enter the following &amp;#39;extra&amp;#39; attributes
+to be sent with your certificate request
+A challenge password []:
+[tls-cert]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;openssl needs to know a few parameters in order to sign the CSR. Let&amp;rsquo;s put all the parameters into a file and save it as &lt;code&gt;ca.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/ac12f7ebe4e37079ed279f3ce9bc85a9.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;With that sorted out, the last step is to sign the CSR file &lt;code&gt;client-key-sign-req.pem&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;[tls-cert] openssl ca -config ca.conf -out client-certificate.pem.crt -infiles client-key-sign-req.pem
+Using configuration from ca.conf
+Check that the request matches the signature
+Signature ok
+The Subject&amp;#39;s Distinguished Name is as follows
+organizationName      :ASN.1 12:&amp;#39;client-org-name&amp;#39;
+organizationalUnitName:ASN.1 12:&amp;#39;client-orgunit-name&amp;#39;
+commonName            :ASN.1 12:&amp;#39;client-common-name&amp;#39;
+emailAddress          :IA5STRING:&amp;#39;admin@client.com&amp;#39;
+Certificate is to be certified until Oct 11 02:08:05 2021 GMT (365 days)
+Sign the certificate? [y/n]:y
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+[tls-cert]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;ve produced the following files in this example:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ca/ca.key&lt;/code&gt;: private key of the self-signed root CA. It must be kept secret at all times.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ca/ca.crt&lt;/code&gt;: CA certificate of the root CA. It should be made available to whichever party that needs to verify the certificates that were signed by the root CA.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;client.key&lt;/code&gt;: private key of the client certificate. It must be kept secret except during the client authentication process.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;client-certificate.pem.crt&lt;/code&gt;: CA certificate of the client. It should be made available to whichever party that needs to verify the identity of the client.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

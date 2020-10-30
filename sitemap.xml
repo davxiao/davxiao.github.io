@@ -3,32 +3,107 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://davidxiao.me/tag/applicationsecurity/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://davidxiao.me/authors/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/categories/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://davidxiao.me/tag/cheatsheet/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+    <loc>https://davidxiao.me/category/cybersecurity/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/author/david-xiao/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/owasp/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/owasp-top-ten/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://davidxiao.me/post/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/privacy/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tags/</loc>
+    <lastmod>2020-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/</loc>
+    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/diffiehellman/</loc>
+    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/category/encryption/</loc>
+    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/keyexchange/</loc>
+    <lastmod>2020-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/digitalcertificate/</loc>
+    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/selfsign/</loc>
+    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/post/sign-client-certificate-using-self-signed-ca-certificate/</loc>
+    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/tls/</loc>
+    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/x509/</loc>
+    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://davidxiao.me/tag/cheatsheet/</loc>
     <lastmod>2020-10-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -44,11 +119,6 @@
   
   <url>
     <loc>https://davidxiao.me/post/python3-cheatsheet/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tags/</loc>
     <lastmod>2020-10-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -149,11 +219,6 @@
   
   <url>
     <loc>https://davidxiao.me/category/tls/</loc>
-    <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/tls/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -429,11 +494,6 @@
   
   <url>
     <loc>https://davidxiao.me/tag/google-home/</loc>
-    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/privacy/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
   </url>
   

@@ -547,14 +547,16 @@
     A[Client establishes a TCP connection to the server] --&gt;B[Client sends Hello and list of cipher suites including TLS version] --&gt;C[Server sends Hello, selected suite and certificate] --&gt; D[Client validates certificate]
     D --&gt; E[Client and server starts key exchange process. &lt;br/&gt;RSA and Diffie-Hellman are two common KEP algogirhtms]
     E --&gt; F{Key Exchange Protocol}
-    F --&gt;|RSA| G[When both client and server have &lt;br/&gt;the client random, the server random, &lt;br/&gt;and the premaster secret, each side &lt;br/&gt;independently combine these three inputs&lt;br/&gt; to come up with the session keys. &lt;br/&gt;They should both arrive at the same value]
-    F --&gt;|DH| H[Both client and server independently &lt;br/&gt;agree on the same secret value using DH algorithm&lt;br/&gt; usually accompanied by RSA signature]
-    G --&gt;I[Regardless of which KEP was used, &lt;br/&gt;the rest of the session uses the agreed key, an ephemeral symmetric key, &lt;br/&gt;to encrypt the communication both ways going forward]
+    F --&gt;|RSA| G[Both client and server independently &lt;br/&gt;agree on the same secret value with client random,&lt;br/&gt; server random and premaster secret]
+    F --&gt;|DH| H[Both client and server independently &lt;br/&gt;agree on the same secret value over exchanging&lt;br/&gt;  a few DH parameters]
+    G --&gt;I[Regardless of which KEP was used, &lt;br/&gt;the rest of the session uses the agreed symmetric key to encrypt &lt;br/&gt;the communication both ways going forward]
     H --&gt;I
-</code></pre><p>Read more about DH 
-<a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation" target="_blank" rel="noopener">here</a></p>
+</code></pre><p>Read more about DH on 
+<a href="https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/">my post</a> and 
+<a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation" target="_blank" rel="noopener">wikipedia</a></p>
 <h2 id="key-takeaways-about-the-keps">Key Takeaways About the KEPs</h2>
-<p>👉 DH achieves forward secrecy while RSA does not.</p>
+<p>👉 DH achieves 
+<a href="https://en.wikipedia.org/wiki/Forward_secrecy" target="_blank" rel="noopener">forward secrecy</a> while RSA does not.</p>
 <p>👉 DH handshake takes longer than RSA.</p>
 <h2 id="what-else-you-need-to-know-about-tls">What Else You Need To Know about TLS</h2>
 <ul>

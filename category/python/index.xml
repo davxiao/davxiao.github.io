@@ -18,7 +18,7 @@
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/python3-cheatsheet/</guid>
       <description>&lt;p&gt;TLDR;&lt;/p&gt;
-&lt;p&gt;This post is my tiny collection of python3 code snippets. It comes in handy when manipulating string and list.&lt;/p&gt;
+&lt;p&gt;This post is my collection of python3 code snippets. It comes in handy when manipulating string and list.&lt;/p&gt;
 &lt;h2 id=&#34;single-or-double-quoted-string&#34;&gt;single or double quoted string&lt;/h2&gt;
 &lt;p&gt;In Python, such sequence of characters is included inside single or double quotes. There is no difference in single or double quoted string. Both can be used interchangeably.&lt;/p&gt;
 &lt;h2 id=&#34;remove-a-few-elements-from-the-beginning&#34;&gt;Remove a few elements from the beginning&lt;/h2&gt;
@@ -140,6 +140,31 @@ replace_s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span styl
 
 res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(find_s, replace_s)
 &lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;welcome what what the jungle&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;detect-duplicate-items-in-a-list&#34;&gt;detect duplicate items in a list&lt;/h2&gt;
+&lt;p&gt;method 1: loop&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;has_dup&lt;/span&gt;(lst):
+  flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range (len(lst)):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range (i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,len(lst)):
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (lst[i] &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; lst[j]):
+          flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (flag &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; True
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; False
+  
+l&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;]  
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(has_dup(l))
+&lt;span style=&#34;color:#75715e&#34;&gt;# False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;method 2: create a temp set&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;set&lt;/code&gt; is a series of hashable objects, in a way it&amp;rsquo;s like &lt;code&gt;dict&lt;/code&gt; but the main difference between the two is that a dict item contains both key and value while a set item contains only key.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; set(s)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (len(s) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; len(res)):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;no duplicates found&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;duplicates found&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# duplicates found&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;remove-duplicate-words-in-a-string&#34;&gt;remove duplicate words in a string&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unique_list&lt;/span&gt;(l):
   ulist &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
@@ -156,9 +181,10 @@ offset &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&
 res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join([chr(ord(c)&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;offset) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; s])
 &lt;span style=&#34;color:#75715e&#34;&gt;# res = &amp;#39;Uijt!jt!b!qmbjoufyu!nfttbhf&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-regex-to-split-complicated-string-into-words&#34;&gt;Use regex to split complicated string into words&lt;/h2&gt;
+&lt;p&gt;Compared to string.split() method, regex approach preserves separators in the result so that it&amp;rsquo;s possible to re-construct the original string from the result.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
 s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Words, words, words.   &amp;#39;&lt;/span&gt;
-res&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;([,. ]+)&amp;#39;&lt;/span&gt;, s) &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#39;(...)&amp;#39; enables the matched separators included in the result list. Remove &amp;#39;()&amp;#39; so that separators will not be included.&lt;/span&gt;
+res&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;([,. ]+)&amp;#39;&lt;/span&gt;, s) &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#39;(...)&amp;#39; enables the matched separators preserved in the result list.&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;Words&amp;#39;, &amp;#39;, &amp;#39;, &amp;#39;words&amp;#39;, &amp;#39;, &amp;#39;, &amp;#39;words&amp;#39;, &amp;#39;.   &amp;#39;, &amp;#39;&amp;#39;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-regex-to-search-a-pattern&#34;&gt;Use regex to search a pattern&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; re
@@ -212,6 +238,94 @@ s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;c
 words &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split()
 [wordlength(x) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; words]
 &lt;span style=&#34;color:#75715e&#34;&gt;# maxlen = 14&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-both-index-and-value-when-looping-a-list&#34;&gt;get both index and value when looping a list&lt;/h2&gt;
+&lt;p&gt;for both string and list&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;abcdef&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i, value &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; enumerate(s):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;index &amp;#34;&lt;/span&gt;, i, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;value &amp;#34;&lt;/span&gt;, value)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;create-a-list-of-empty-items&#34;&gt;create a list of empty items&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [None]&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [None, None, None, None]&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Note this is different&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# res = [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;determine-if-a-list-is-sorted&#34;&gt;determine if a list is sorted&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;]
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (s &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; sorted(s)):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sorted&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;not sorted&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;looping-a-dict&#34;&gt;looping a dict&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;ages &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Peter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Isabel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Anna&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Thomas&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bob&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Joseph&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Maria&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Gabriel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+}
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# loop to get all keys&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ages:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(x)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# loop to get all value&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ages:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(ages[x])
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# loop to get both keys and values&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; name, age &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; ages&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;items():
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(name, age)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;nested-dict&#34;&gt;nested dict&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;students &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Peter&amp;#34;&lt;/span&gt;: {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;age&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Lisbon&amp;#34;&lt;/span&gt;},
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Isabel&amp;#34;&lt;/span&gt;: {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;age&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Sesimbra&amp;#34;&lt;/span&gt;},
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Anna&amp;#34;&lt;/span&gt;: {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;age&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Lisbon&amp;#34;&lt;/span&gt;},
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; p_id, p_info &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; students&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;items():
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Person Name:&amp;#34;&lt;/span&gt;, p_id)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; key &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; p_info:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(key &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;:&amp;#39;&lt;/span&gt;, p_info[key])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;find-the-max-value-in-a-dict-and-return-the-key&#34;&gt;find the max value in a dict and return the key&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;ages &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Peter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Isabel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Anna&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Thomas&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bob&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Joseph&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Maria&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Gabriel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+  }
+
+value &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list(ages&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;values())
+key &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list(ages&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;keys())
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt; (key[value&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;index(max(value))])
+&lt;span style=&#34;color:#75715e&#34;&gt;# Maria&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-nested-list-to-cache-multiplication-results&#34;&gt;use nested list to cache multiplication results&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;): &lt;span style=&#34;color:#75715e&#34;&gt;#0-9&lt;/span&gt;
+  row &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;): &lt;span style=&#34;color:#75715e&#34;&gt;#0-9&lt;/span&gt;
+    row&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(i&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;j)
+  matrix&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(row)
+
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;multiply&lt;/span&gt;(x,y):
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; matrix[x][y]
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;y
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(multiply(&lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# 54&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(multiply(&lt;span style=&#34;color:#ae81ff&#34;&gt;66&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;99&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# 6534&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
