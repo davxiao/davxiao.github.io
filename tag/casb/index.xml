@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>casb | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/casb/</link>
+      <atom:link href="https://davidxiao.me/tag/casb/index.xml" rel="self" type="application/rss+xml" />
+    <description>casb</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Sun, 01 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>casb</title>
+      <link>https://davidxiao.me/tag/casb/</link>
+    </image>
+    
+    <item>
+      <title>CASB Deployment</title>
+      <link>https://davidxiao.me/post/casb-deployment/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/casb-deployment/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;Cloud Access Security Broker (CASB) is considered a common solution to mitigate 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Shadow_IT&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shadow IT&lt;/a&gt; and data exfiltration risks on many organization&amp;rsquo;s migrating to cloud journey.&lt;/p&gt;
+&lt;p&gt;This post discussed some common deployment architecture and use cases respectively.&lt;/p&gt;
+&lt;h2 id=&#34;casb-and-context-aware-access&#34;&gt;CASB and Context Aware Access&lt;/h2&gt;
+&lt;p&gt;CASB can mitigate data exfiltration risks from insider - it can correlate the download of sensitive data from a managed cloud service with the upload of that data to a personal cloud service.&lt;/p&gt;
+&lt;p&gt;Context Aware Access is focusing on mitigating authentication and authorization risks and promoting a &amp;ldquo;Zero Trust&amp;rdquo; access model in VPN-less settings.&lt;/p&gt;
+&lt;h2 id=&#34;reverse-proxy&#34;&gt;Reverse proxy&lt;/h2&gt;
+&lt;p&gt;A reverse proxy deployment steers browser-based cloud traffic from managed cloud apps to the CASB Cloud.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-reverse-proxy-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-reverse-proxy_hu017e6573fedb6f4ffbbf2e95ffcce1e0_168187_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Reverse Proxy Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-reverse-proxy_hu017e6573fedb6f4ffbbf2e95ffcce1e0_168187_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1366&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Reverse Proxy Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;A CASB in reverse proxy mode proxies all traffic to and from cloud apps. Unlike a forward proxy, the endpoint or network does not need to be managed.&lt;/p&gt;
+&lt;p&gt;A common approach is to leverage the organization&amp;rsquo;s identity solution (IdM), for example 
+&lt;a href=&#34;https://www.okta.com/partners/netskope/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Okta&lt;/a&gt;, to route traffic through the CASB reverse proxy following authentication. In this way, all traffic bound for a cloud service is pervasively steered over to the CASB proxy.&lt;/p&gt;
+&lt;p&gt;Reverse proxy is essentially the only deployment architecture that supports both managed and unmanaged devices accessing cloud apps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It supports web browser traffic only – native apps or sync clients may have non-web authentication methods. (e.g. JWT or other forms of API token)&lt;/p&gt;
+&lt;h2 id=&#34;forward-proxy&#34;&gt;Forward proxy&lt;/h2&gt;
+&lt;p&gt;CASB forwarder is deployed on-premises as a VM that steers local cloud and web traffic to the CASB Cloud.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-forward-proxy-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-forward-proxy_huc18acc3417bb8134010197d1ef2f99c9_137120_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Forward Proxy Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-forward-proxy_huc18acc3417bb8134010197d1ef2f99c9_137120_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1348&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Forward Proxy Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;There are two approaches:&lt;/p&gt;
+&lt;p&gt;If the organization has an existing secure web gateway, a common practice is to configure proxy chaining to the upstream CASB forward proxy.&lt;/p&gt;
+&lt;p&gt;If no secure web gateway exists, an endpoint agent can be deployed to route cloud traffic through the forward proxy.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It does not work well for either unmanaged devices or users that are accessing cloud over non-corporate network, e.g. at home.&lt;/p&gt;
+&lt;h2 id=&#34;api&#34;&gt;API&lt;/h2&gt;
+&lt;p&gt;Use API connectors to connect CASB to cloud apps like Office 365, Box, Salesforce that offer APIs to support visibility and policy enforcement.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-api-deployment-architecture&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-api_hubc44ddae637403f51b18d8f2fb9b06fb_135702_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;API Deployment Architecture&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-api_hubc44ddae637403f51b18d8f2fb9b06fb_135702_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1376&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    API Deployment Architecture
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Typical APIs such as audit trails of user activity, content inspection, user permissions on storage and security settings can be leveraged by CASB to enable visibility and policy enforcement.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Does not discover &amp;ldquo;Shadow IT&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CASB vendor may not support Cloud apps that end user currently uses or choose to use in the future.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;API based capabilities vary for each Cloud app.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;log-collection&#34;&gt;Log collection&lt;/h2&gt;
+&lt;p&gt;CASB can be configured to parse log traffic from a perimeter device. This provides cloud service discovery capabilities. Logs can be uploaded directly to the CASB Cloud or an on-premises log parser can be deployed to continuously send log data to the CASB.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-log-collection-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-log-collection_hu3c08d0c8dc295c8f332a5e87424853bb_133364_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Log Collection Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-log-collection_hu3c08d0c8dc295c8f332a5e87424853bb_133364_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1434&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Log Collection Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Logs may not be support off-the-shelf, customization may be required.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cloud_access_security_broker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia: CASB&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.netskope.com/products/deployment-options&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CASB Deployment Options (Netskope)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>onprem-networking | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/onprem-networking/</link>
+      <atom:link href="https://davidxiao.me/tag/onprem-networking/index.xml" rel="self" type="application/rss+xml" />
+    <description>onprem-networking</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Fri, 06 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>onprem-networking</title>
+      <link>https://davidxiao.me/tag/onprem-networking/</link>
+    </image>
+    
+    <item>
+      <title>Differences between On-Prem Networking and Cloud Networking</title>
+      <link>https://davidxiao.me/post/differences-between-on-premises-networking-and-public-cloud-networking/</link>
+      <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/differences-between-on-premises-networking-and-public-cloud-networking/</guid>
+      <description>&lt;h2 id=&#34;multiple-availablity-zone-and-cross-region&#34;&gt;Multiple Availablity Zone and Cross Region&lt;/h2&gt;
+&lt;p&gt;When it comes to high availability and scalability, cloud networking has an edge over data center networking.&lt;/p&gt;
+&lt;p&gt;Multiple Region and Availablity Zone and peered VPCs can be provisioned on-demand almost instantly on cloud while setting up a conventional data center could take weeks if not months.&lt;/p&gt;
+&lt;h2 id=&#34;full-control-over-the-network-infrastructure&#34;&gt;Full Control over the Network Infrastructure&lt;/h2&gt;
+&lt;p&gt;Cloud networking operates on the &amp;ldquo;Shared Responsibility Model&amp;rdquo; which means CSP manages the network infrastructure, things like VLAN tags are out of customer&amp;rsquo;s control.&lt;/p&gt;
+&lt;p&gt;Certain networking capabilities such as multicast routing is also not supported by every cloud provider. It is changing though, at the time of writing, AWS just announced support for 
+&lt;a href=&#34;https://docs.aws.amazon.com/vpc/latest/tgw/working-with-multicast.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;multicast on transit gateways&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;single-tenant-vs-multi-tenant&#34;&gt;Single Tenant vs Multi-Tenant&lt;/h2&gt;
+&lt;p&gt;Cloud network such as VPC typically runs on infrastructure that is shared with other customers while on-premises data center usually is owned by the organization.&lt;/p&gt;
+&lt;h2 id=&#34;api-and-compatibility&#34;&gt;API and Compatibility&lt;/h2&gt;
+&lt;p&gt;Cloud networking provides APIs that is an integral part of the Cloud service. For example, AWS VPC provides API that are integrated with EC2.&lt;/p&gt;
+&lt;p&gt;On-premises data centers use technologies of their choice. Some such as Cisco ACI and Nutanix provide their own set of APIs.&lt;/p&gt;
+&lt;h2 id=&#34;network-latency&#34;&gt;Network Latency&lt;/h2&gt;
+&lt;p&gt;On-premises networks can provide very low network latency. It&amp;rsquo;s not hard to find switches that provide nano second latency. For instance, Cisco has switches that have 39ns port-to-port latency.&lt;/p&gt;
+&lt;p&gt;CSPs like AWS are 
+&lt;a href=&#34;https://aws.amazon.com/blogs/compute/low-latency-computing-with-aws-local-zones-part-1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;catching up&lt;/a&gt; but is nowhere near as good yet.&lt;/p&gt;
+&lt;h2 id=&#34;legacy-systems-and-byod&#34;&gt;Legacy Systems and BYOD&lt;/h2&gt;
+&lt;p&gt;Legacy systems that are installed on the data center rely on specific HSM modules could be part of a mission critical system.&lt;/p&gt;
+&lt;p&gt;When planning on migrating such systems to cloud, &amp;ldquo;lift and shift&amp;rdquo; strategy don&amp;rsquo;t work because most cloud service providers do not allow BYOD.&lt;/p&gt;
+&lt;h2 id=&#34;ip-address-allocation&#34;&gt;IP Address Allocation&lt;/h2&gt;
+&lt;p&gt;Cloud networking usually reserve a few IPs on each subnet for the cloud infrastructure.&lt;/p&gt;
+&lt;p&gt;For example, AWS reserves first four IP addresses and the last IP address in each subnet CIDR block. See 
+&lt;a href=&#34;https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-sizing-ipv4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;detail&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

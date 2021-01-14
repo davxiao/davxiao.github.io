@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="Build and deploy a voice-activated app on Google Home in 10 minutes. It responds to your commands and plays personalized music if you ask! Not a bad way to play on someone&#39;s birthday, eh? :-)">
+  <meta name="description" content="Build and deploy a voice-activated app on Google Home in 10 minutes. The app will respond to your voice command and even play a piece of pre-defined music for you! Not a bad way to celebrate someone&#39;s birthday eh? :-)">
 
   
   <link rel="alternate" hreflang="en-us" href="https://davidxiao.me/post/building-your-first-app-on-google-home/">
@@ -226,8 +226,8 @@
   
   <meta property="og:site_name" content="DAVID&#39;S GARAGE">
   <meta property="og:url" content="https://davidxiao.me/post/building-your-first-app-on-google-home/">
-  <meta property="og:title" content="Building Your First App on Google Home in 10 minutes | DAVID&#39;S GARAGE">
-  <meta property="og:description" content="Build and deploy a voice-activated app on Google Home in 10 minutes. It responds to your commands and plays personalized music if you ask! Not a bad way to play on someone&#39;s birthday, eh? :-)"><meta property="og:image" content="https://davidxiao.me/post/building-your-first-app-on-google-home/featured.jpg">
+  <meta property="og:title" content="Build Your First App on Google Home in 10 minutes | DAVID&#39;S GARAGE">
+  <meta property="og:description" content="Build and deploy a voice-activated app on Google Home in 10 minutes. The app will respond to your voice command and even play a piece of pre-defined music for you! Not a bad way to celebrate someone&#39;s birthday eh? :-)"><meta property="og:image" content="https://davidxiao.me/post/building-your-first-app-on-google-home/featured.jpg">
   <meta property="twitter:image" content="https://davidxiao.me/post/building-your-first-app-on-google-home/featured.jpg"><meta property="og:locale" content="en-us">
   
     
@@ -259,7 +259,7 @@
     "@type": "WebPage",
     "@id": "https://davidxiao.me/post/building-your-first-app-on-google-home/"
   },
-  "headline": "Building Your First App on Google Home in 10 minutes",
+  "headline": "Build Your First App on Google Home in 10 minutes",
   
   "image": [
     "https://davidxiao.me/post/building-your-first-app-on-google-home/featured.jpg"
@@ -281,7 +281,7 @@
       "url": "https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Build and deploy a voice-activated app on Google Home in 10 minutes. It responds to your commands and plays personalized music if you ask! Not a bad way to play on someone's birthday, eh? :-)"
+  "description": "Build and deploy a voice-activated app on Google Home in 10 minutes. The app will respond to your voice command and even play a piece of pre-defined music for you! Not a bad way to celebrate someone's birthday eh? :-)"
 }
 </script>
 
@@ -299,7 +299,7 @@
 
 
 
-  <title>Building Your First App on Google Home in 10 minutes | DAVID&#39;S GARAGE</title>
+  <title>Build Your First App on Google Home in 10 minutes | DAVID&#39;S GARAGE</title>
 
 </head>
 
@@ -442,9 +442,33 @@
 </nav>
 
 
-  <article class="article">
-
   
+<div class="container-fluid docs">
+    <div class="row flex-xl-nowrap">
+      <div class="d-none d-xl-block col-xl-3 docs-toc">
+        <ul class="nav toc-top">
+          <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+        </ul>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-a-new-project-on-google-actions-console">Create a New Project on Google Actions Console</a></li>
+    <li><a href="#specify-a-catchy-name-for-your-app">Specify a Catchy Name for Your App</a></li>
+    <li><a href="#add-actions-to-your-app">Add Actions to Your App</a>
+      <ul>
+        <li><a href="#use-case-1-simple-voice-commands-and-text-responses">Use Case 1: Simple Voice Commands and Text Responses</a></li>
+        <li><a href="#use-case-2-implement-custom-logic-using-cloud-function">Use Case 2: Implement custom logic using Cloud Function</a></li>
+        <li><a href="#testing-your-new-app-on-simulator">Testing Your New App on Simulator</a></li>
+        <li><a href="#deploying-to-your-google-home-device">Deploying to your Google Home Device</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        
+      </div>
+      <main class="col-12 col-md-0 col-xl-9 py-md-3 pl-md-5 docs-content" role="main">
+
+        <article class="article">
+            
 
 
 
@@ -472,7 +496,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>Building Your First App on Google Home in 10 minutes</h1>
+  <h1>Build Your First App on Google Home in 10 minutes</h1>
 
   
   <p class="page-subtitle">with Google Actions and Dialogflow</p>
@@ -554,17 +578,14 @@
 </div>
 
 
-
-  <div class="article-container">
-
-    <div class="article-style">
-      <p><em><strong>
-<a href="https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read" target="_blank" rel="noopener">TL;DR</a></strong></em></p>
-<p><em>This post will show you how to build and deploy a voice-activated app on Google Cloud in 10 minutes. It responds to your commands and plays personalized music if you ask! Not a bad way to play on someone&rsquo;s birthday, eh?</em></p>
+            <div class="article-container">
+              <div class="article-style">
+                <p>TL;DR</p>
+<p>This post will show you how to build and deploy a voice-activated app on Google Cloud in 10 minutes. The app will respond to your voice command and even play a piece of pre-defined music for you! Not a bad way to celebrate someone&rsquo;s birthday eh? :-)</p>
 <h2 id="create-a-new-project-on-google-actions-console">Create a New Project on Google Actions Console</h2>
-<p>The app is built on Google Cloud using Google Actions and Dialogflow. If you don&rsquo;t have a Google Actions account, click 
+<p>The app is built on Google Cloud using Google Actions and Dialogflow. If you don&rsquo;t have a Google Actions account yet, click 
 <a href="https://console.actions.google.com/" target="_blank" rel="noopener">here</a> to create a new one. It&rsquo;s free.</p>
-<p>When the account is created, go ahead and create a new project. Google Actions allows you to add Actions support to existing GCP projects, but we will create a new one to keep it simple.</p>
+<p>When the account is ready, go ahead and create a new project. Google Actions allows you to add Actions to any existing GCP projects, but we will create being creating a new project for simplicity.</p>
 
 
 
@@ -603,9 +624,9 @@
 </figure>
 
 <h2 id="specify-a-catchy-name-for-your-app">Specify a Catchy Name for Your App</h2>
-<p>You need to specify a catchy name for the app so that every time when you say those &ldquo;gateway words&rdquo; to the Google Home device, it will activate the app for you.</p>
-<p>Go to the project dashboard, click on &ldquo;Quick setup&rdquo; followed by &ldquo;Decide how your action is invoked&rdquo; and put the app name here. It may reject the name if it&rsquo;s too common or ambiguous, e.g. &ldquo;Hello&rdquo; is probably not a good choice here.</p>
-<p>For example, my app is called &ldquo;Hello Jukebox&rdquo;.</p>
+<p>Determine an activation phrase for the app so that every time when you say it, your app will be activated on the Google Home device.</p>
+<p>Go to the project dashboard, click on &ldquo;Quick setup&rdquo; followed by &ldquo;Decide how your action is invoked&rdquo; and put the app name here. It may reject your phrase name if it&rsquo;s considered too common or ambiguous, e.g. &ldquo;Hello&rdquo; is not a good choice here.</p>
+<p>Let&rsquo;s say the app is called &ldquo;Hello Jukebox&rdquo;.</p>
 
 
 
@@ -644,9 +665,9 @@
 </figure>
 
 <h2 id="add-actions-to-your-app">Add Actions to Your App</h2>
-<p>There is no secret sauce. An app is only as smart as what it&rsquo;s taught. This app will respond to voice commands and act accordingly based on the intents developeed for it. &ldquo;Intent&rdquo; is a Google term referring to a combination of voice command and its response.</p>
-<p>Within one app, developer can create as many intents as they want as long as no intent is stepping on one another&rsquo;s toes. For example, trying to create two separate intents both responding to the same command &ldquo;what is my favoriate color&rdquo; would be confusing to begin with.</p>
-<p>Within an intent, developer can decide on the kind of response it needs to give: it can be as simple as having Google Home say something or be more complicated with custom logic.</p>
+<p>An app is only as smart as what it&rsquo;s taught. There is no secret sauce in here. This app will respond to voice commands and act accordingly based on the &ldquo;Intent&rdquo;. &ldquo;Intent&rdquo; is a Google term referring to a combination of voice command and its corresponding response.</p>
+<p>Within an app, developers can create as many intents as they want so long as no intent is stepping on one another&rsquo;s toes. For example, trying to create two separate intents both responding to the same command &ldquo;what is my favoriate color&rdquo; would be confusing to begin with.</p>
+<p>Within an intent, developer can decide on the kind of response it needs to provide: it can be as simple as having Google Home say some words or be more complicated with custom logic.</p>
 
 
 
@@ -882,7 +903,7 @@
 <script type="application/javascript" src="https://gist.github.com/davxiao/8d0d35d3c88078e5fc96114d02c8ee6b.js"></script>
 
 <h3 id="testing-your-new-app-on-simulator">Testing Your New App on Simulator</h3>
-<p>Click on &ldquo;Google Assistant&rdquo; on the right bar to open the Simulator on Google Actions. From there you can tinker with your app until you&rsquo;re satisfied with it :-)</p>
+<p>Click on &ldquo;Google Assistant&rdquo; on the right bar to open the Simulator on Google Actions. From there you can tinker with your app until you&rsquo;re satisfied with it.</p>
 
 
 
@@ -922,7 +943,7 @@
 
 <h3 id="deploying-to-your-google-home-device">Deploying to your Google Home Device</h3>
 <p>Making your app available on 
-<a href="https://assistant.google.com/explore" target="_blank" rel="noopener">Google Assistant Actions Portal</a> sounds like a great idea, however the releasing process could take some time as Google needs to review and approve your app first before it can be released. Since my post promised you a 10-minute ride, let&rsquo;s rolling to get the freshly baked app onto your own Google Home device.</p>
+<a href="https://assistant.google.com/explore" target="_blank" rel="noopener">Google Assistant Actions Portal</a> sounds like a great idea, however the releasing process could take some time as Google needs to review and approve your app first. My post promised you a 10-minute ride, so let&rsquo;s take a detour to get your freshly baked app deployed onto your own Google Home device as Alpha testing thus bypassing the approval steps.</p>
 <p>On Actions console, click on &ldquo;Deploy&rdquo;, choose &ldquo;Alpha&rdquo;, click on &ldquo;Manage Alpha Testers&rdquo;, and add your own Google Home device account email here. You can then switch to your Google Home account and use the opt-in link received on the invitation email to accept the invite.</p>
 
 
@@ -962,11 +983,10 @@
 </figure>
 
 <p>When it&rsquo;s ready, click on &ldquo;Create a release&rdquo;, and wait it to complete. It can take a few minutes.</p>
-<p>Congrats! You&rsquo;ve just developed and deployed your first Google Home app in 10 minutes! Try say to your Google Home: &ldquo;Hey Google, Talk to your_app_name_here&rdquo; and see what happens :)</p>
+<p>Congrats! You&rsquo;ve just built and deployed your first Google Home app in 10 minutes! It&rsquo;s time to say out loud &ldquo;Hey Google, Talk to your_app_name_here&rdquo; and see what will happen next :)</p>
 
-    </div>
-
-    
+              </div>
+              
 
 
 
@@ -997,7 +1017,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://davidxiao.me/post/building-your-first-app-on-google-home/&amp;text=Building%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://davidxiao.me/post/building-your-first-app-on-google-home/&amp;text=Build%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1010,7 +1030,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://davidxiao.me/post/building-your-first-app-on-google-home/&amp;t=Building%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://davidxiao.me/post/building-your-first-app-on-google-home/&amp;t=Build%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1023,7 +1043,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Building%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes&amp;body=https://davidxiao.me/post/building-your-first-app-on-google-home/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Build%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes&amp;body=https://davidxiao.me/post/building-your-first-app-on-google-home/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1036,7 +1056,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://davidxiao.me/post/building-your-first-app-on-google-home/&amp;title=Building%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://davidxiao.me/post/building-your-first-app-on-google-home/&amp;title=Build%20Your%20First%20App%20on%20Google%20Home%20in%2010%20minutes" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1108,9 +1128,13 @@
   
 
 
-
+            </div>
+        </article>
+  
+      </main>
+    </div>
   </div>
-</article>
+  
 
       
 
@@ -1234,11 +1258,11 @@
   
 
   <p class="powered-by">
-    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank">LICENSE: CC-BY-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank">LICENSE: CC-BY-SA 4.0<br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
   </p>
   
   <p class="powered-by">
-    ©2020 David Xiao. 
+    ©2021 David Xiao. 
 
     Made with ❤️ , the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

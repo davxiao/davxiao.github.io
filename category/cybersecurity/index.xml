@@ -1,16 +1,510 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CyberSecurity | DAVID&#39;S GARAGE</title>
+    <title>Cybersecurity | DAVID&#39;S GARAGE</title>
     <link>https://davidxiao.me/category/cybersecurity/</link>
       <atom:link href="https://davidxiao.me/category/cybersecurity/index.xml" rel="self" type="application/rss+xml" />
-    <description>CyberSecurity</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <description>Cybersecurity</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Sat, 07 Nov 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>CyberSecurity</title>
+      <title>Cybersecurity</title>
       <link>https://davidxiao.me/category/cybersecurity/</link>
     </image>
+    
+    <item>
+      <title>Differences Between AWS Route 53 Failover and AWS ELB LB</title>
+      <link>https://davidxiao.me/post/differences-between-route53-failover-and-elb-failover/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/differences-between-route53-failover-and-elb-failover/</guid>
+      <description>&lt;h2 id=&#34;single-region-vs-global&#34;&gt;Single Region vs. Global&lt;/h2&gt;
+&lt;p&gt;ELB provides single-region failover and load balancing while Route 53(R53) operates at DNS level so that can failover across regions.&lt;/p&gt;
+&lt;h2 id=&#34;instant-failover&#34;&gt;Instant Failover&lt;/h2&gt;
+&lt;p&gt;ELB routes traffic off an unhealthy target (like an EC2) immediately when it is detected while R53 operates at DNS level, so when a client endpoint have cached DNS results in their DNS resolvers, it will not be effectively redirected until it passes TTL.&lt;/p&gt;
+&lt;h2 id=&#34;aws-vs-non-aws&#34;&gt;AWS vs Non-AWS&lt;/h2&gt;
+&lt;p&gt;ELB performs failover within the AWS target groups where only AWS resources can be registered. R53 operates at DNS level and is resource type agnostic.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Differences between On-Prem Networking and Cloud Networking</title>
+      <link>https://davidxiao.me/post/differences-between-on-premises-networking-and-public-cloud-networking/</link>
+      <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/differences-between-on-premises-networking-and-public-cloud-networking/</guid>
+      <description>&lt;h2 id=&#34;multiple-availablity-zone-and-cross-region&#34;&gt;Multiple Availablity Zone and Cross Region&lt;/h2&gt;
+&lt;p&gt;When it comes to high availability and scalability, cloud networking has an edge over data center networking.&lt;/p&gt;
+&lt;p&gt;Multiple Region and Availablity Zone and peered VPCs can be provisioned on-demand almost instantly on cloud while setting up a conventional data center could take weeks if not months.&lt;/p&gt;
+&lt;h2 id=&#34;full-control-over-the-network-infrastructure&#34;&gt;Full Control over the Network Infrastructure&lt;/h2&gt;
+&lt;p&gt;Cloud networking operates on the &amp;ldquo;Shared Responsibility Model&amp;rdquo; which means CSP manages the network infrastructure, things like VLAN tags are out of customer&amp;rsquo;s control.&lt;/p&gt;
+&lt;p&gt;Certain networking capabilities such as multicast routing is also not supported by every cloud provider. It is changing though, at the time of writing, AWS just announced support for 
+&lt;a href=&#34;https://docs.aws.amazon.com/vpc/latest/tgw/working-with-multicast.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;multicast on transit gateways&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;single-tenant-vs-multi-tenant&#34;&gt;Single Tenant vs Multi-Tenant&lt;/h2&gt;
+&lt;p&gt;Cloud network such as VPC typically runs on infrastructure that is shared with other customers while on-premises data center usually is owned by the organization.&lt;/p&gt;
+&lt;h2 id=&#34;api-and-compatibility&#34;&gt;API and Compatibility&lt;/h2&gt;
+&lt;p&gt;Cloud networking provides APIs that is an integral part of the Cloud service. For example, AWS VPC provides API that are integrated with EC2.&lt;/p&gt;
+&lt;p&gt;On-premises data centers use technologies of their choice. Some such as Cisco ACI and Nutanix provide their own set of APIs.&lt;/p&gt;
+&lt;h2 id=&#34;network-latency&#34;&gt;Network Latency&lt;/h2&gt;
+&lt;p&gt;On-premises networks can provide very low network latency. It&amp;rsquo;s not hard to find switches that provide nano second latency. For instance, Cisco has switches that have 39ns port-to-port latency.&lt;/p&gt;
+&lt;p&gt;CSPs like AWS are 
+&lt;a href=&#34;https://aws.amazon.com/blogs/compute/low-latency-computing-with-aws-local-zones-part-1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;catching up&lt;/a&gt; but is nowhere near as good yet.&lt;/p&gt;
+&lt;h2 id=&#34;legacy-systems-and-byod&#34;&gt;Legacy Systems and BYOD&lt;/h2&gt;
+&lt;p&gt;Legacy systems that are installed on the data center rely on specific HSM modules could be part of a mission critical system.&lt;/p&gt;
+&lt;p&gt;When planning on migrating such systems to cloud, &amp;ldquo;lift and shift&amp;rdquo; strategy don&amp;rsquo;t work because most cloud service providers do not allow BYOD.&lt;/p&gt;
+&lt;h2 id=&#34;ip-address-allocation&#34;&gt;IP Address Allocation&lt;/h2&gt;
+&lt;p&gt;Cloud networking usually reserve a few IPs on each subnet for the cloud infrastructure.&lt;/p&gt;
+&lt;p&gt;For example, AWS reserves first four IP addresses and the last IP address in each subnet CIDR block. See 
+&lt;a href=&#34;https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-sizing-ipv4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;detail&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Create VMs on Proxmox With Terraform</title>
+      <link>https://davidxiao.me/post/create-vms-on-proxmox-with-terraform/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/create-vms-on-proxmox-with-terraform/</guid>
+      <description>&lt;h2 id=&#34;sample-code&#34;&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;See my github repo &lt;a href=&#34;https://github.com/davxiao/tf-proxmox&#34;&gt;https://github.com/davxiao/tf-proxmox&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CASB Deployment</title>
+      <link>https://davidxiao.me/post/casb-deployment/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/casb-deployment/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;Cloud Access Security Broker (CASB) is considered a common solution to mitigate 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Shadow_IT&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shadow IT&lt;/a&gt; and data exfiltration risks on many organization&amp;rsquo;s migrating to cloud journey.&lt;/p&gt;
+&lt;p&gt;This post discussed some common deployment architecture and use cases respectively.&lt;/p&gt;
+&lt;h2 id=&#34;casb-and-context-aware-access&#34;&gt;CASB and Context Aware Access&lt;/h2&gt;
+&lt;p&gt;CASB can mitigate data exfiltration risks from insider - it can correlate the download of sensitive data from a managed cloud service with the upload of that data to a personal cloud service.&lt;/p&gt;
+&lt;p&gt;Context Aware Access is focusing on mitigating authentication and authorization risks and promoting a &amp;ldquo;Zero Trust&amp;rdquo; access model in VPN-less settings.&lt;/p&gt;
+&lt;h2 id=&#34;reverse-proxy&#34;&gt;Reverse proxy&lt;/h2&gt;
+&lt;p&gt;A reverse proxy deployment steers browser-based cloud traffic from managed cloud apps to the CASB Cloud.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-reverse-proxy-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-reverse-proxy_hu017e6573fedb6f4ffbbf2e95ffcce1e0_168187_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Reverse Proxy Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-reverse-proxy_hu017e6573fedb6f4ffbbf2e95ffcce1e0_168187_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1366&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Reverse Proxy Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;A CASB in reverse proxy mode proxies all traffic to and from cloud apps. Unlike a forward proxy, the endpoint or network does not need to be managed.&lt;/p&gt;
+&lt;p&gt;A common approach is to leverage the organization&amp;rsquo;s identity solution (IdM), for example 
+&lt;a href=&#34;https://www.okta.com/partners/netskope/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Okta&lt;/a&gt;, to route traffic through the CASB reverse proxy following authentication. In this way, all traffic bound for a cloud service is pervasively steered over to the CASB proxy.&lt;/p&gt;
+&lt;p&gt;Reverse proxy is essentially the only deployment architecture that supports both managed and unmanaged devices accessing cloud apps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It supports web browser traffic only – native apps or sync clients may have non-web authentication methods. (e.g. JWT or other forms of API token)&lt;/p&gt;
+&lt;h2 id=&#34;forward-proxy&#34;&gt;Forward proxy&lt;/h2&gt;
+&lt;p&gt;CASB forwarder is deployed on-premises as a VM that steers local cloud and web traffic to the CASB Cloud.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-forward-proxy-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-forward-proxy_huc18acc3417bb8134010197d1ef2f99c9_137120_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Forward Proxy Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-forward-proxy_huc18acc3417bb8134010197d1ef2f99c9_137120_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1348&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Forward Proxy Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;There are two approaches:&lt;/p&gt;
+&lt;p&gt;If the organization has an existing secure web gateway, a common practice is to configure proxy chaining to the upstream CASB forward proxy.&lt;/p&gt;
+&lt;p&gt;If no secure web gateway exists, an endpoint agent can be deployed to route cloud traffic through the forward proxy.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It does not work well for either unmanaged devices or users that are accessing cloud over non-corporate network, e.g. at home.&lt;/p&gt;
+&lt;h2 id=&#34;api&#34;&gt;API&lt;/h2&gt;
+&lt;p&gt;Use API connectors to connect CASB to cloud apps like Office 365, Box, Salesforce that offer APIs to support visibility and policy enforcement.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-api-deployment-architecture&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-api_hubc44ddae637403f51b18d8f2fb9b06fb_135702_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;API Deployment Architecture&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-api_hubc44ddae637403f51b18d8f2fb9b06fb_135702_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1376&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    API Deployment Architecture
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Typical APIs such as audit trails of user activity, content inspection, user permissions on storage and security settings can be leveraged by CASB to enable visibility and policy enforcement.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Does not discover &amp;ldquo;Shadow IT&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CASB vendor may not support Cloud apps that end user currently uses or choose to use in the future.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;API based capabilities vary for each Cloud app.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;log-collection&#34;&gt;Log collection&lt;/h2&gt;
+&lt;p&gt;CASB can be configured to parse log traffic from a perimeter device. This provides cloud service discovery capabilities. Logs can be uploaded directly to the CASB Cloud or an on-premises log parser can be deployed to continuously send log data to the CASB.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-log-collection-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-log-collection_hu3c08d0c8dc295c8f332a5e87424853bb_133364_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Log Collection Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-log-collection_hu3c08d0c8dc295c8f332a5e87424853bb_133364_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1434&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Log Collection Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Logs may not be support off-the-shelf, customization may be required.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cloud_access_security_broker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia: CASB&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.netskope.com/products/deployment-options&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CASB Deployment Options (Netskope)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What Is Zero Trust</title>
+      <link>https://davidxiao.me/post/what-is-zero-trust/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/what-is-zero-trust/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;This is the first post of a series that attempts to discuss Zero Trust in security from a conceptual and implementation perspective.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-zero-trust&#34;&gt;What is Zero Trust&lt;/h2&gt;
+&lt;p&gt;Zero Trust is a security model where app components and microservices are considered discrete from one another  - no component or microservice trusts any other by default.&lt;/p&gt;
+&lt;p&gt;Zero Trust by design does not trust the underlying internal network fabric, and extends it to things such as input and output validation at app and microservice level. For example, it mandates that input from any source is not trusted unless it can be verified otherwise.&lt;/p&gt;
+&lt;p&gt;Additional efforts can include designing a defense-in-depth approach to protect against individual components, microservices, or identities compromise.&lt;/p&gt;
+&lt;p&gt;While conventional network security seek to build a secure perimeter – everything within the perimeter is trusted and anything outside the perimeter is not, a Zero Trust system evaluates actions to reduce the risk of unauthorized access to data and resources.&lt;/p&gt;
+&lt;h2 id=&#34;zero-trust-principles&#34;&gt;Zero Trust Principles&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Never trust, always verify&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Connecting from a particular network must not determine which services user can access&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Access to services is granted based on what we know about the user and the device&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All access to services must be authenticated, authorized, and encrypted&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security-controls-in-enforcing-a-zero-trust-model&#34;&gt;Security Controls in Enforcing a Zero Trust Model&lt;/h2&gt;
+&lt;p&gt;Verifying identity&lt;/p&gt;
+&lt;p&gt;One components of a Zero Trust system is the ability to verify a user’s identity before access is granted to the corporate network.&lt;/p&gt;
+&lt;p&gt;Verifying devices&lt;/p&gt;
+&lt;p&gt;Unmanaged devices are an easy entry point for bad actors, ensuring that only healthy devices can access critical applications and data is vital for enterprise security.&lt;/p&gt;
+&lt;p&gt;Verifying access&lt;/p&gt;
+&lt;p&gt;Some scenarios require users to work from unmanaged devices. With those situations in mind, it transitioned from a corporate network approach to internet-first access methods, with a final goal of internet-only access methods in sight.&lt;/p&gt;
+&lt;p&gt;This strategy reduces users accessing the corporate network for most scenarios, and will establish a set of managed virtualized services that make applications and full functional desktop environments available to users with unmanaged devices.&lt;/p&gt;
+&lt;h2 id=&#34;emerging-technologies&#34;&gt;Emerging Technologies&lt;/h2&gt;
+&lt;p&gt;Context-Aware Access&lt;/p&gt;
+&lt;p&gt;[To be continued]&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;h4 id=&#34;how-to-think-about-zero-trust-architectures-on-awshttpsawsamazoncomblogspublicsectorhow-to-think-about-zero-trust-architectures-on-aws&#34;&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/publicsector/how-to-think-about-zero-trust-architectures-on-aws/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to think about Zero Trust architectures on AWS&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Zero Trust goes beyond building a network boundary between each microservice in your architecture. Beyond strengthening your component perimeters; rethink threat sources and investment to protect against them.&lt;/p&gt;
+&lt;p&gt;Zero Trust models are not always appropriate. It offers some security benefits, but it also introduces cost, complexity, and operational overhead for maintaining the overall system.&lt;/p&gt;
+&lt;p&gt;When considering Zero Trust architecture, evaluate all five pillars of the AWS 
+&lt;a href=&#34;https://aws.amazon.com/architecture/well-architected/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Well-Architected framework&lt;/a&gt; to properly balance your needs.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;beyondcorp-at-googlehttpscloudgooglecombeyondcorp&#34;&gt;
+&lt;a href=&#34;https://cloud.google.com/beyondcorp/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BeyondCorp at Google&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BeyondCorp is Google&amp;rsquo;s implementation of the zero trust security model.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;transitioning-to-modern-access-architecture-with-zero-trusthttpswwwmicrosoftcomen-usitshowcasetransitioning-to-modern-access-architecture-with-zero-trust&#34;&gt;
+&lt;a href=&#34;https://www.microsoft.com/en-us/itshowcase/transitioning-to-modern-access-architecture-with-zero-trust&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Transitioning to modern access architecture with Zero Trust&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft&amp;rsquo;s view on &amp;ldquo;Zero Trust&amp;rdquo; is based on the principle:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;never trust, always verify.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It protects organizations by managing and granting access based on the continual verification of identities, devices and services.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Explain Border Gateway Protocol in 5 Minutes</title>
+      <link>https://davidxiao.me/post/bgp-protocol-in-5-minutes/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/bgp-protocol-in-5-minutes/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;This post attempts to explain the BGP network protocol in plain English and answer those questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;what is it?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;how it works at a high level?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;what are the security concerns?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;in-a-nutshell&#34;&gt;In a Nutshell&lt;/h2&gt;
+&lt;p&gt;BGP is a routing method that enables the internet to function.&lt;/p&gt;
+&lt;p&gt;Today, BGP is widely used to route IP traffic between large scale inter-connected networks. For example, when routing between corporate networks or connecting on-prem data center to a cloud provider&amp;rsquo;s edge location, BGP is typically considered &lt;em&gt;de facto&lt;/em&gt; protocol.&lt;/p&gt;
+&lt;p&gt;Before diving into BGP, let&amp;rsquo;s start with a simple definition of network routing:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;strong&gt;name&lt;/strong&gt; of a resource indicates what we seek;&lt;/p&gt;
+&lt;p&gt;an &lt;strong&gt;address&lt;/strong&gt; indicates where it is;&lt;/p&gt;
+&lt;p&gt;and a &lt;strong&gt;route&lt;/strong&gt; tells us how to get there.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;- John F. Shoch&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;pre-bgp-era&#34;&gt;Pre-BGP Era&lt;/h2&gt;
+&lt;p&gt;In the pre-BGP era when internet was much smaller, separate networks like universities usually each maintain its own static routing table - meaning the routing table on each network is manually updated by the admin and contains IP prefixes the admin is made aware of.&lt;/p&gt;
+&lt;p&gt;When the scale of internet grows, the number of inter-connected networks increases and the inter-network topology started evolving from a tree-like topology to a mesh-like toplogy to allow for redundancy and scalability.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-tree-like-network-topology-vs-full-mesh-network-topology-brcredits-ziv-leyeshttpswwwimpervacomblogauthorziv&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/network-topology_hu797d3baa621a23261552e71c0eb4ad04_303475_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;tree-like network topology vs full-mesh network topology credits: Ziv Leyes&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/network-topology_hu797d3baa621a23261552e71c0eb4ad04_303475_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1290&#34; height=&#34;794&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    tree-like network topology vs full-mesh network topology &lt;br&gt;&lt;em&gt;credits:&lt;/em&gt; &lt;a href=&#34;https://www.imperva.com/blog/author/ziv/&#34;&gt;Ziv Leyes&lt;/a&gt;
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Over time, those changes altogether made the static routing no longer a sustainable approach.&lt;/p&gt;
+&lt;p&gt;Another new type of construct that emerged is what&amp;rsquo;s called Autonomous System (AS) architecture.&lt;/p&gt;
+&lt;p&gt;An AS can be an Internet Service Provider, a university or an entire corporate network, including multiple locations (IP addresses). Each AS is represented by a unique number called an &lt;strong&gt;ASN&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;At first, AS became the new level that inter-network operates on and routes against. As the internet continues to grow, it calls for a new protocol that can dynamically exchange routes information and decides on the routes depends on many other factors.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-routing&#34;&gt;BGP Routing&lt;/h2&gt;
+&lt;p&gt;In June 1989, the first version of a new routing protocol, known as the Border Gateway Protocol, was formalized.&lt;/p&gt;
+&lt;p&gt;BGP operates on OSI Layer 4, in other words, it understands IP address.&lt;/p&gt;
+&lt;p&gt;BGP is primarily designed to exchange routing and reachability information between AS on the Internet but can be used on private networks as well.&lt;/p&gt;
+&lt;p&gt;For example, a dedicated line between on-prem data center and a public cloud service provider (e.g. it&amp;rsquo;s called 
+&lt;a href=&#34;https://aws.amazon.com/directconnect/faqs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DirectConnect&lt;/a&gt; in AWS) can take advantage of BGP routing as well.&lt;/p&gt;
+&lt;p&gt;There are a range of ASNs that is reserved for private ASN. See 
+&lt;a href=&#34;https://www.arin.net/resources/guide/asn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-bgp-route-propagation-between-neighboring-domainsbrcredits-ziv-leyeshttpswwwimpervacomblogauthorziv&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/bgp-routing_hu9cec61300792d5bc68f64dde5d06c8cb_172621_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;BGP Route Propagation between Neighboring Domainscredits: Ziv Leyes&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/bgp-routing_hu9cec61300792d5bc68f64dde5d06c8cb_172621_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1234&#34; height=&#34;956&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    BGP Route Propagation between Neighboring Domains&lt;br&gt;&lt;em&gt;credits:&lt;/em&gt; &lt;a href=&#34;https://www.imperva.com/blog/author/ziv/&#34;&gt;Ziv Leyes&lt;/a&gt;
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Every AS in BGP has its border router that speaks the &amp;ldquo;BGP language&amp;rdquo; and connects to other AS. Sometimes the border router is also called BGP speaker.&lt;/p&gt;
+&lt;p&gt;As of August 2019 there are 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;over 92,000&lt;/a&gt; assigned ASN over the internet.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-operations&#34;&gt;BGP operations&lt;/h2&gt;
+&lt;p&gt;BGP neighbors, called peers, are established by manual configuration among routers to create a TCP session on port 179.&lt;/p&gt;
+&lt;p&gt;By design, routers running BGP accept advertised routes from other BGP routers by default. This allows for automatic and decentralized routing of traffic across the Internet.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-security-considerations&#34;&gt;BGP security considerations&lt;/h2&gt;
+&lt;p&gt;Unfortunately BGP is not secure by design.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Due to the extent to which BGP is embedded in the core systems of the Internet, and the number of different networks operated by many different organizations which collectively make up the Internet, correcting this vulnerability is a technically and economically challenging problem.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;- Wikipedia&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Cisco has published an article regarding protecting BGP:
+&lt;a href=&#34;https://tools.cisco.com/security/center/resources/protecting_border_gateway_protocol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Protecting Border Gateway Protocol for the Enterprise&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The main threats identified in the article above:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Route Manipulation&lt;/p&gt;
+&lt;p&gt;A malicious device alters the contents of the BGP routing table thus prevent traffic from reaching its intended destination without acknowledgement or notification.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Route Hijacking&lt;/p&gt;
+&lt;p&gt;A rogue BGP peer maliciously announces a victim&amp;rsquo;s prefixes in an effort to reroute some or all traffic to itself for untoward purposes. For example, to view traffic that the router would otherwise not be able to read.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Denial of Service (DoS)&lt;/p&gt;
+&lt;p&gt;A malicious host sends unexpected or undesirable BGP traffic to a victim in an attempt to expend all available BGP or compute resources results in a lack of resources for legit BGP traffic processing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Misconfiguration&lt;/p&gt;
+&lt;p&gt;Inadvertent mistakes among BGP peers can also have a disruptive impact on a router&amp;rsquo;s BGP process. Security controls should be applied to mitigate impacts from such kinds of incidents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://imperva.com/blog/bgp-routing-explained/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BGP for Humans: Making sense of Border Gateway Protocol&lt;/a&gt;, Ziv Leyes&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/architecture/internet-routing-and-traffic-engineering/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Internet Routing and Traffic Engineering&lt;/a&gt;, AWS Architecture Blog&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;RAS_traceroute_N45.pdf&#34;&gt;A Practical Guide to Troubleshooting with Traceroute&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Border_Gateway_Protocol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Border Gateway Protocol&lt;/a&gt;, Wikipedia&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>IoT Security</title>
+      <link>https://davidxiao.me/post/iot-security/</link>
+      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/iot-security/</guid>
+      <description>&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://cloud.google.com/blog/products/gcp/securing-cloud-connected-devices-with-cloud-iot-and-microchip&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Securing cloud-connected devices with Cloud IoT and Microchip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/iot/understanding-the-aws-iot-security-model/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Understanding the AWS IoT Security Model&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>OWASP Top Ten</title>
@@ -324,6 +818,342 @@ Data Base Updated
 &lt;p&gt;&lt;code&gt;ca/ca.crt&lt;/code&gt;: CA certificate of the root CA. It should be made available to whichever party that needs to verify the certificates that were signed by the root CA.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client.key&lt;/code&gt;: private key of the client certificate. It must be kept secret except during the client authentication process.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;client-certificate.pem.crt&lt;/code&gt;: CA certificate of the client. It should be made available to whichever party that needs to verify the identity of the client.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Extract User Identity from AWS Cloudtrail</title>
+      <link>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</guid>
+      <description>&lt;h2 id=&#34;why-do-i-care&#34;&gt;Why Do I Care&lt;/h2&gt;
+&lt;p&gt;Cloudtrail is an essential service in AWS that provides the source of truth on what has happened at API and event level.&lt;/p&gt;
+&lt;p&gt;Whether you are troubleshooting or investigating something on AWS, being able to look up user identity across the Cloudtrail event logs can be very helpful.&lt;/p&gt;
+&lt;p&gt;By default AWS provides 90 days of event history and you can look up on key fields such as &lt;code&gt;User name&lt;/code&gt;, &lt;code&gt;event time&lt;/code&gt; or &lt;code&gt;event id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In some cases that&amp;rsquo;s all you need.&lt;/p&gt;
+&lt;p&gt;But there are cases where you need to go beyond the 90 days and want to be able to extract user identity information from Cloudtrail logs directly.&lt;/p&gt;
+&lt;p&gt;For example, you may wish to write a Lambda function to auto-tag any new EC2 instances with username of the creator, eventid, eventtime when a user is creating new EC2 instances.&lt;/p&gt;
+&lt;p&gt;For another example, you may need to search history go past 90 days to look for information like &lt;code&gt;WHO did WHAT and WHEN&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In those cases, understand the JSON structure of Cloudtrail log and specifically the identity related portion comes handy.&lt;/p&gt;
+&lt;h2 id=&#34;eventtype&#34;&gt;eventType&lt;/h2&gt;
+&lt;p&gt;Cloudtrail records various types of events. In each JSON record, &lt;code&gt;eventType&lt;/code&gt; indicates the type of the event. Each event type has a different JSON structure.&lt;/p&gt;
+&lt;p&gt;The following types cover the most cases I&amp;rsquo;m aware of but the list is not intended to be exhaustivee - I will add to it as I learn.&lt;/p&gt;
+&lt;h3 id=&#34;awsapicall&#34;&gt;AwsApiCall&lt;/h3&gt;
+&lt;p&gt;API call is the most common event type. It represents an API call on an AWS service.&lt;/p&gt;
+&lt;p&gt;The great thing about this event type is it can be triggered on CloudWatch event. &lt;em&gt;update: recently CloudWatch Event is renamed to AWS EventBridge&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;awsconsolesignin&#34;&gt;AwsConsoleSignIn&lt;/h3&gt;
+&lt;p&gt;This type of event is generated when a user signed in on AWS management console.&lt;/p&gt;
+&lt;h3 id=&#34;awsserviceevent&#34;&gt;AwsServiceEvent&lt;/h3&gt;
+&lt;p&gt;Services such as AWS SSO generates such type of event when authenticating or federating a user.&lt;/p&gt;
+&lt;h2 id=&#34;useridentitytype&#34;&gt;userIdentity.type&lt;/h2&gt;
+&lt;p&gt;On each record, the userIdentity block represents the identity information. Various types of userIdentity exists. The most common ones are: &lt;code&gt;IAMUser&lt;/code&gt;, &lt;code&gt;AssumedRole&lt;/code&gt;, &lt;code&gt;AWSService&lt;/code&gt;, &lt;code&gt;SAMLUser&lt;/code&gt; and &lt;code&gt;Unknown&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;iamuser&#34;&gt;IAMUser&lt;/h3&gt;
+&lt;p&gt;The below json is extracted from a Cloudtrail event that represents an API call made by an IAM user. User name can be extracted from the &lt;code&gt;userIdentity.userName&lt;/code&gt; field.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAUWQOET4WMTL6OV3SZ&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:user/tool-poc&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AKIAUWQOET4WFCRTJDF5&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tool-poc&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1e85a381-9e58-4612-a8d5-abc30ff95f65&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In another example, the eventType is different but userIdentity block structure looks similar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;IAMUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AIDAVBHXPSQ567GPQHO75&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::346263884858:user/admin&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-12T18:05:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;signin.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ConsoleLogin&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0b8f0958-8507-4526-b8f5-d56741ccae77&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsConsoleSignIn&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;assumedrole&#34;&gt;AssumedRole&lt;/h3&gt;
+&lt;p&gt;AssumedRole is when an identity assumes an AWS role. The identity could be IAM user in the same account, user from another AWS account, AWS service or a SAML provider.&lt;/p&gt;
+&lt;p&gt;Below are a few examples.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:alice@example.com&#34;&gt;alice@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJKUFA6XAMROQBJRNA:alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/assume-admin-role-an-account/alice@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;e7f3be2f-a81b-4a87-975f-eaac58faca9e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AutoScaling&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAJ6TYGYS2TFMOQYEY2:AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/AWSServiceRoleForAutoScaling/AutoScaling&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;b67837c3-f90c-49c9-8750-02adef205f64&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAI4O72XO7XFD2BHDUA:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/Sandbox-SSO-PowerUser/bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;5921eee9-7a54-4672-84d5-9a64a81822e4&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAVBHXPSQ577YYUL4QC:test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::346263884858:assumed-role/AWSReservedSSO_AWSAdministratorAccess_33ca3b9a1184d671/test@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    ...
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a1b2f460-0288-4937-b850-12b521a10230&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;User name: AssumeRoleSession&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.07&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumedRole&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM:AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:sts::323225952045:assumed-role/CloudHealth/AssumeRoleSession&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accessKeyId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ASIAUWQOET4WKMRLT5G6&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionContext&amp;#34;: &lt;/span&gt;{
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sessionIssuer&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Role&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AROAIUHYOXFSUYZJIJQUM&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;arn&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;arn:aws:iam::323225952045:role/CloudHealth&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;323225952045&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;CloudHealth&amp;#34;&lt;/span&gt;
+      },
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;attributes&amp;#34;: &lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;creationDate&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:53:25Z&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;mfaAuthenticated&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+      }
+    }
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T14:08:27Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dynamodb.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ListTables&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;34.230.249.2&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;de0f486d-c1ff-4032-9e86-17ba166f687e&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;samluser&#34;&gt;SAMLUser&lt;/h3&gt;
+&lt;p&gt;This type of userIdentity are most commonly seen in &lt;code&gt;AssumeRoleWithSAML&lt;/code&gt; event.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:bob@example.com&#34;&gt;bob@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SAMLUser&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=:bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bob@example.com&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;identityProvider&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6DLJuKNu+27u3kwvB9BKCv71kco=&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-08T13:22:03Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRoleWithSAML&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;72.21.217.22&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;892c55be-2ab1-4e0e-a80f-5e04f05b625d&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;awsservice&#34;&gt;AWSService&lt;/h3&gt;
+&lt;p&gt;For this type of userIdentity, it simply does not have a real user. Instead, it&amp;rsquo;s AWS service that is performing an action.&lt;/p&gt;
+&lt;p&gt;User name     (blank)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AWSService&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;invokedBy&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:43:16Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sts.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AssumeRole&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticbeanstalk.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;93fd006e-a58f-4304-a9a1-04136ca8a1c3&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsApiCall&amp;#34;&lt;/span&gt;,
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;unknown&#34;&gt;Unknown&lt;/h3&gt;
+&lt;p&gt;This is commonly seen in &lt;code&gt;AwsServiceEvent&lt;/code&gt; event. I&amp;rsquo;ve seen AWS SSO produces this type of event but I&amp;rsquo;m not aware of what else AWS services produce it.&lt;/p&gt;
+&lt;p&gt;User name: &lt;a href=&#34;mailto:test@example.com&#34;&gt;test@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;{
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventVersion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.05&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userIdentity&amp;#34;: &lt;/span&gt;{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;type&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Unknown&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;principalId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;90677f325d-ffd9565d-ac85-4753-8dc6-502c67f1c727&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;accountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;userName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test@example.com&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventTime&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-09-15T13:35:04Z&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventSource&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sso.amazonaws.com&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventName&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authenticate&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;awsRegion&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;us-east-1&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;sourceIPAddress&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;75.15.150.17&amp;#34;&lt;/span&gt;,
+  ...
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventID&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;63e0001b-e2fa-49b0-bf29-b7c92d977266&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;eventType&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AwsServiceEvent&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#34;recipientAccountId&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;346263884858&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>One Time Password, HOTP and TOTP</title>
+      <link>https://davidxiao.me/post/one-time-password-and-hotp-totp/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/one-time-password-and-hotp-totp/</guid>
+      <description>&lt;p&gt;OTP is very common in today&amp;rsquo;s MFA implementation.&lt;/p&gt;
+&lt;h2 id=&#34;hotp&#34;&gt;HOTP&lt;/h2&gt;
+&lt;p&gt;HOTP stands for HMAC-based One-time Password algorithm. It computes the value with the following inputs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A cryptographic hash method, H (default is SHA-1)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A secret key, K, which is an arbitrary byte string, and must remain private&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A counter, C, which counts the number of iterations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A HOTP value length, d (6–10, default is 6, and 6–8 is recommended)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;totp&#34;&gt;TOTP&lt;/h2&gt;
+&lt;p&gt;TOTP stands for Time-based One-time Password algorithm (TOTP). It is an extension of HOTP that generates a one-time password (OTP) by instead taking uniqueness from the current time.&lt;/p&gt;
+&lt;p&gt;More often than not, time is downsampled into larger durations (e.g., 30 seconds) to allow for validity between the parties.&lt;/p&gt;
+&lt;p&gt;To establish TOTP authentication, the authenticatee and authenticator must pre-establish both the HOTP parameters and the following TOTP parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;T0, the Unix time from which to start counting time steps (default is 0)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TX, an interval which will be used to calculate the value of the counter CT (default is 30 seconds)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SSH and TLS: Differences and Similarities</title>
+      <link>https://davidxiao.me/post/ssh-and-tls/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/ssh-and-tls/</guid>
+      <description>&lt;p&gt;Both TLS and SSH are security protocols aimed to solve a specific set of problems.&lt;/p&gt;
+&lt;p&gt;TLS is the transport layer of HTTPS protocol while SSH is designed to replace plaintext Telnet protocol.&lt;/p&gt;
+&lt;p&gt;Architecture wise, TLS is relatively simple: It has a handshake protocol that does the authentication and agrees on a session key that will be used to encrypt the rest of the communication.&lt;/p&gt;
+&lt;p&gt;SSH is more 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_Shell#Architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;complicated&lt;/a&gt; than TLS. It has the following main components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;transport layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;user authentication layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;connection layer;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Six SSH related RFC are published in relate to SSH: 4251, 4252, 4253, 4254, 425 and 4256.&lt;/p&gt;
+&lt;h2 id=&#34;ssh-transport-layer&#34;&gt;SSH Transport Layer&lt;/h2&gt;
+&lt;p&gt;Transport layer handles key exchange, server authentication and sets up encryption, compression and integrity verification. It exposes to the upper layer an programmatic interface for sending and receiving plaintext data. The transport layer also arranges for key re-exchange, usually after 1 GB of data has been transferred or after 1 hour has passed, whichever occurs first.&lt;/p&gt;
+&lt;h2 id=&#34;user-authentication-layer&#34;&gt;User Authentication Layer&lt;/h2&gt;
+&lt;p&gt;It handles client authentication and provides a number of authentication methods. Widely used user-authentication methods include password, publickey, keyboard-interactive, GSSAPI authentication which allows SSH to authenticate using external mechanisms such as Kerberos 5 or NTLM, providing single sign-on capability to SSH sessions.&lt;/p&gt;
+&lt;h2 id=&#34;connection-layer&#34;&gt;Connection Layer&lt;/h2&gt;
+&lt;p&gt;It defines the concept of channels in SSH. A single SSH connection can host multiple channels simultaneously, each transferring data in both directions. Standard channel types include: shell for terminal shells; SFTP and exec requests (including SCP transfers); direct-tcpip for client-to-server forwarded connections; forwarded-tcpip for server-to-client forwarded connections etc.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TLS Handshake in a Nutshell</title>
+      <link>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</guid>
+      <description>&lt;p&gt;At a high level, the following occurs during a TLS handshake:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD;
+    A[Client establishes a TCP connection to the server] --&amp;gt;B[Client sends Hello and list of cipher suites including TLS version] --&amp;gt;C[Server sends Hello, selected suite and certificate] --&amp;gt; D[Client validates certificate]
+    D --&amp;gt; E[Client and server starts key exchange process. &amp;lt;br/&amp;gt;RSA and Diffie-Hellman are two common KEP algogirhtms]
+    E --&amp;gt; F{Key Exchange Protocol}
+    F --&amp;gt;|RSA| G[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value with client random,&amp;lt;br/&amp;gt; server random and premaster secret]
+    F --&amp;gt;|DH| H[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value over exchanging&amp;lt;br/&amp;gt;  a few DH parameters]
+    G --&amp;gt;I[Regardless of which KEP was used, &amp;lt;br/&amp;gt;the rest of the session uses the agreed symmetric key to encrypt &amp;lt;br/&amp;gt;the communication both ways going forward]
+    H --&amp;gt;I
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Read more about DH on 
+&lt;a href=&#34;https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/&#34;&gt;my post&lt;/a&gt; and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;key-takeaways-about-the-keps&#34;&gt;Key Takeaways About the KEPs&lt;/h2&gt;
+&lt;p&gt;👉 DH achieves 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Forward_secrecy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;forward secrecy&lt;/a&gt; while RSA does not.&lt;/p&gt;
+&lt;p&gt;👉 DH handshake takes longer than RSA.&lt;/p&gt;
+&lt;h2 id=&#34;what-else-you-need-to-know-about-tls&#34;&gt;What Else You Need To Know about TLS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TLS 1.0 and TLS 1.1 are no longer secure and should be avoided. A best practice is to use TLS version is 1.2 or later at the time of writing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HTTPS means &amp;ldquo;HTTP over TLS&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Both SSH and TLS are purpose-built for secure communication over the Internet, but they are very different in many ways. Check out 
+&lt;a href=&#34;https://davidxiao.me/post/ssh-and-tls/&#34;&gt;my another post&lt;/a&gt; where I explain the differences between the two.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;glossary&#34;&gt;Glossary&lt;/h2&gt;
+&lt;h3 id=&#34;cipher-suite&#34;&gt;Cipher Suite&lt;/h3&gt;
+&lt;p&gt;A cipher suite is a set of algorithms. It usually contain include: a key exchange algorithm, a bulk encryption algorithm, and a message authentication code (MAC) algorithm.&lt;/p&gt;
+&lt;p&gt;For example, &lt;code&gt;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&lt;/code&gt; means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ECDHE_RSA indicates the key exchange algorithm being used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AES_128_GCM indicates the block cipher being used to encrypt the message stream, together with the block cipher mode of operation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SHA256 indicates the message authentication algorithm which is used to authenticate a message.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ecdhe_rsa-key-exchange-algorithm&#34;&gt;ECDHE_RSA key exchange algorithm&lt;/h3&gt;
+&lt;p&gt;In a nutshell, it is ECDHE signed by RSA. Signing defeats man-in-the-middle attack. See detail 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Elliptic-curve_Diffie-Hellman&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

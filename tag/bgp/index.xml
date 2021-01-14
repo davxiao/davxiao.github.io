@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bgp | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/bgp/</link>
+      <atom:link href="https://davidxiao.me/tag/bgp/index.xml" rel="self" type="application/rss+xml" />
+    <description>bgp</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>bgp</title>
+      <link>https://davidxiao.me/tag/bgp/</link>
+    </image>
+    
+    <item>
+      <title>Explain Border Gateway Protocol in 5 Minutes</title>
+      <link>https://davidxiao.me/post/bgp-protocol-in-5-minutes/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/bgp-protocol-in-5-minutes/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;This post attempts to explain the BGP network protocol in plain English and answer those questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;what is it?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;how it works at a high level?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;what are the security concerns?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;in-a-nutshell&#34;&gt;In a Nutshell&lt;/h2&gt;
+&lt;p&gt;BGP is a routing method that enables the internet to function.&lt;/p&gt;
+&lt;p&gt;Today, BGP is widely used to route IP traffic between large scale inter-connected networks. For example, when routing between corporate networks or connecting on-prem data center to a cloud provider&amp;rsquo;s edge location, BGP is typically considered &lt;em&gt;de facto&lt;/em&gt; protocol.&lt;/p&gt;
+&lt;p&gt;Before diving into BGP, let&amp;rsquo;s start with a simple definition of network routing:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;strong&gt;name&lt;/strong&gt; of a resource indicates what we seek;&lt;/p&gt;
+&lt;p&gt;an &lt;strong&gt;address&lt;/strong&gt; indicates where it is;&lt;/p&gt;
+&lt;p&gt;and a &lt;strong&gt;route&lt;/strong&gt; tells us how to get there.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;- John F. Shoch&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;pre-bgp-era&#34;&gt;Pre-BGP Era&lt;/h2&gt;
+&lt;p&gt;In the pre-BGP era when internet was much smaller, separate networks like universities usually each maintain its own static routing table - meaning the routing table on each network is manually updated by the admin and contains IP prefixes the admin is made aware of.&lt;/p&gt;
+&lt;p&gt;When the scale of internet grows, the number of inter-connected networks increases and the inter-network topology started evolving from a tree-like topology to a mesh-like toplogy to allow for redundancy and scalability.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-tree-like-network-topology-vs-full-mesh-network-topology-brcredits-ziv-leyeshttpswwwimpervacomblogauthorziv&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/network-topology_hu797d3baa621a23261552e71c0eb4ad04_303475_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;tree-like network topology vs full-mesh network topology credits: Ziv Leyes&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/network-topology_hu797d3baa621a23261552e71c0eb4ad04_303475_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1290&#34; height=&#34;794&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    tree-like network topology vs full-mesh network topology &lt;br&gt;&lt;em&gt;credits:&lt;/em&gt; &lt;a href=&#34;https://www.imperva.com/blog/author/ziv/&#34;&gt;Ziv Leyes&lt;/a&gt;
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Over time, those changes altogether made the static routing no longer a sustainable approach.&lt;/p&gt;
+&lt;p&gt;Another new type of construct that emerged is what&amp;rsquo;s called Autonomous System (AS) architecture.&lt;/p&gt;
+&lt;p&gt;An AS can be an Internet Service Provider, a university or an entire corporate network, including multiple locations (IP addresses). Each AS is represented by a unique number called an &lt;strong&gt;ASN&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;At first, AS became the new level that inter-network operates on and routes against. As the internet continues to grow, it calls for a new protocol that can dynamically exchange routes information and decides on the routes depends on many other factors.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-routing&#34;&gt;BGP Routing&lt;/h2&gt;
+&lt;p&gt;In June 1989, the first version of a new routing protocol, known as the Border Gateway Protocol, was formalized.&lt;/p&gt;
+&lt;p&gt;BGP operates on OSI Layer 4, in other words, it understands IP address.&lt;/p&gt;
+&lt;p&gt;BGP is primarily designed to exchange routing and reachability information between AS on the Internet but can be used on private networks as well.&lt;/p&gt;
+&lt;p&gt;For example, a dedicated line between on-prem data center and a public cloud service provider (e.g. it&amp;rsquo;s called 
+&lt;a href=&#34;https://aws.amazon.com/directconnect/faqs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DirectConnect&lt;/a&gt; in AWS) can take advantage of BGP routing as well.&lt;/p&gt;
+&lt;p&gt;There are a range of ASNs that is reserved for private ASN. See 
+&lt;a href=&#34;https://www.arin.net/resources/guide/asn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-bgp-route-propagation-between-neighboring-domainsbrcredits-ziv-leyeshttpswwwimpervacomblogauthorziv&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/bgp-routing_hu9cec61300792d5bc68f64dde5d06c8cb_172621_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;BGP Route Propagation between Neighboring Domainscredits: Ziv Leyes&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/bgp-routing_hu9cec61300792d5bc68f64dde5d06c8cb_172621_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1234&#34; height=&#34;956&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    BGP Route Propagation between Neighboring Domains&lt;br&gt;&lt;em&gt;credits:&lt;/em&gt; &lt;a href=&#34;https://www.imperva.com/blog/author/ziv/&#34;&gt;Ziv Leyes&lt;/a&gt;
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Every AS in BGP has its border router that speaks the &amp;ldquo;BGP language&amp;rdquo; and connects to other AS. Sometimes the border router is also called BGP speaker.&lt;/p&gt;
+&lt;p&gt;As of August 2019 there are 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;over 92,000&lt;/a&gt; assigned ASN over the internet.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-operations&#34;&gt;BGP operations&lt;/h2&gt;
+&lt;p&gt;BGP neighbors, called peers, are established by manual configuration among routers to create a TCP session on port 179.&lt;/p&gt;
+&lt;p&gt;By design, routers running BGP accept advertised routes from other BGP routers by default. This allows for automatic and decentralized routing of traffic across the Internet.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-security-considerations&#34;&gt;BGP security considerations&lt;/h2&gt;
+&lt;p&gt;Unfortunately BGP is not secure by design.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Due to the extent to which BGP is embedded in the core systems of the Internet, and the number of different networks operated by many different organizations which collectively make up the Internet, correcting this vulnerability is a technically and economically challenging problem.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;- Wikipedia&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Cisco has published an article regarding protecting BGP:
+&lt;a href=&#34;https://tools.cisco.com/security/center/resources/protecting_border_gateway_protocol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Protecting Border Gateway Protocol for the Enterprise&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The main threats identified in the article above:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Route Manipulation&lt;/p&gt;
+&lt;p&gt;A malicious device alters the contents of the BGP routing table thus prevent traffic from reaching its intended destination without acknowledgement or notification.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Route Hijacking&lt;/p&gt;
+&lt;p&gt;A rogue BGP peer maliciously announces a victim&amp;rsquo;s prefixes in an effort to reroute some or all traffic to itself for untoward purposes. For example, to view traffic that the router would otherwise not be able to read.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Denial of Service (DoS)&lt;/p&gt;
+&lt;p&gt;A malicious host sends unexpected or undesirable BGP traffic to a victim in an attempt to expend all available BGP or compute resources results in a lack of resources for legit BGP traffic processing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Misconfiguration&lt;/p&gt;
+&lt;p&gt;Inadvertent mistakes among BGP peers can also have a disruptive impact on a router&amp;rsquo;s BGP process. Security controls should be applied to mitigate impacts from such kinds of incidents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://imperva.com/blog/bgp-routing-explained/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BGP for Humans: Making sense of Border Gateway Protocol&lt;/a&gt;, Ziv Leyes&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/architecture/internet-routing-and-traffic-engineering/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Internet Routing and Traffic Engineering&lt;/a&gt;, AWS Architecture Blog&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;RAS_traceroute_N45.pdf&#34;&gt;A Practical Guide to Troubleshooting with Traceroute&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Border_Gateway_Protocol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Border Gateway Protocol&lt;/a&gt;, Wikipedia&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

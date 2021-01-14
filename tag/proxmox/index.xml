@@ -5,12 +5,22 @@
     <link>https://davidxiao.me/tag/proxmox/</link>
       <atom:link href="https://davidxiao.me/tag/proxmox/index.xml" rel="self" type="application/rss+xml" />
     <description>proxmox</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Tue, 03 Nov 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>proxmox</title>
       <link>https://davidxiao.me/tag/proxmox/</link>
     </image>
+    
+    <item>
+      <title>Create VMs on Proxmox With Terraform</title>
+      <link>https://davidxiao.me/post/create-vms-on-proxmox-with-terraform/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/create-vms-on-proxmox-with-terraform/</guid>
+      <description>&lt;h2 id=&#34;sample-code&#34;&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;See my github repo &lt;a href=&#34;https://github.com/davxiao/tf-proxmox&#34;&gt;https://github.com/davxiao/tf-proxmox&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>My Homelab Setup From Hardware to KVM - Part 1</title>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zerotrust | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/zerotrust/</link>
+      <atom:link href="https://davidxiao.me/tag/zerotrust/index.xml" rel="self" type="application/rss+xml" />
+    <description>zerotrust</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>zerotrust</title>
+      <link>https://davidxiao.me/tag/zerotrust/</link>
+    </image>
+    
+    <item>
+      <title>What Is Zero Trust</title>
+      <link>https://davidxiao.me/post/what-is-zero-trust/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/what-is-zero-trust/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;This is the first post of a series that attempts to discuss Zero Trust in security from a conceptual and implementation perspective.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-zero-trust&#34;&gt;What is Zero Trust&lt;/h2&gt;
+&lt;p&gt;Zero Trust is a security model where app components and microservices are considered discrete from one another  - no component or microservice trusts any other by default.&lt;/p&gt;
+&lt;p&gt;Zero Trust by design does not trust the underlying internal network fabric, and extends it to things such as input and output validation at app and microservice level. For example, it mandates that input from any source is not trusted unless it can be verified otherwise.&lt;/p&gt;
+&lt;p&gt;Additional efforts can include designing a defense-in-depth approach to protect against individual components, microservices, or identities compromise.&lt;/p&gt;
+&lt;p&gt;While conventional network security seek to build a secure perimeter – everything within the perimeter is trusted and anything outside the perimeter is not, a Zero Trust system evaluates actions to reduce the risk of unauthorized access to data and resources.&lt;/p&gt;
+&lt;h2 id=&#34;zero-trust-principles&#34;&gt;Zero Trust Principles&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Never trust, always verify&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Connecting from a particular network must not determine which services user can access&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Access to services is granted based on what we know about the user and the device&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All access to services must be authenticated, authorized, and encrypted&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security-controls-in-enforcing-a-zero-trust-model&#34;&gt;Security Controls in Enforcing a Zero Trust Model&lt;/h2&gt;
+&lt;p&gt;Verifying identity&lt;/p&gt;
+&lt;p&gt;One components of a Zero Trust system is the ability to verify a user’s identity before access is granted to the corporate network.&lt;/p&gt;
+&lt;p&gt;Verifying devices&lt;/p&gt;
+&lt;p&gt;Unmanaged devices are an easy entry point for bad actors, ensuring that only healthy devices can access critical applications and data is vital for enterprise security.&lt;/p&gt;
+&lt;p&gt;Verifying access&lt;/p&gt;
+&lt;p&gt;Some scenarios require users to work from unmanaged devices. With those situations in mind, it transitioned from a corporate network approach to internet-first access methods, with a final goal of internet-only access methods in sight.&lt;/p&gt;
+&lt;p&gt;This strategy reduces users accessing the corporate network for most scenarios, and will establish a set of managed virtualized services that make applications and full functional desktop environments available to users with unmanaged devices.&lt;/p&gt;
+&lt;h2 id=&#34;emerging-technologies&#34;&gt;Emerging Technologies&lt;/h2&gt;
+&lt;p&gt;Context-Aware Access&lt;/p&gt;
+&lt;p&gt;[To be continued]&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;h4 id=&#34;how-to-think-about-zero-trust-architectures-on-awshttpsawsamazoncomblogspublicsectorhow-to-think-about-zero-trust-architectures-on-aws&#34;&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/publicsector/how-to-think-about-zero-trust-architectures-on-aws/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to think about Zero Trust architectures on AWS&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Zero Trust goes beyond building a network boundary between each microservice in your architecture. Beyond strengthening your component perimeters; rethink threat sources and investment to protect against them.&lt;/p&gt;
+&lt;p&gt;Zero Trust models are not always appropriate. It offers some security benefits, but it also introduces cost, complexity, and operational overhead for maintaining the overall system.&lt;/p&gt;
+&lt;p&gt;When considering Zero Trust architecture, evaluate all five pillars of the AWS 
+&lt;a href=&#34;https://aws.amazon.com/architecture/well-architected/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Well-Architected framework&lt;/a&gt; to properly balance your needs.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;beyondcorp-at-googlehttpscloudgooglecombeyondcorp&#34;&gt;
+&lt;a href=&#34;https://cloud.google.com/beyondcorp/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BeyondCorp at Google&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BeyondCorp is Google&amp;rsquo;s implementation of the zero trust security model.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;transitioning-to-modern-access-architecture-with-zero-trusthttpswwwmicrosoftcomen-usitshowcasetransitioning-to-modern-access-architecture-with-zero-trust&#34;&gt;
+&lt;a href=&#34;https://www.microsoft.com/en-us/itshowcase/transitioning-to-modern-access-architecture-with-zero-trust&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Transitioning to modern access architecture with Zero Trust&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft&amp;rsquo;s view on &amp;ldquo;Zero Trust&amp;rdquo; is based on the principle:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;never trust, always verify.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It protects organizations by managing and granting access based on the continual verification of identities, devices and services.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>IoT Security</title>
+      <link>https://davidxiao.me/post/iot-security/</link>
+      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/iot-security/</guid>
+      <description>&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://cloud.google.com/blog/products/gcp/securing-cloud-connected-devices-with-cloud-iot-and-microchip&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Securing cloud-connected devices with Cloud IoT and Microchip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/iot/understanding-the-aws-iot-security-model/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Understanding the AWS IoT Security Model&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

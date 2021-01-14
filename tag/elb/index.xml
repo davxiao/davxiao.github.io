@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>elb | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/elb/</link>
+      <atom:link href="https://davidxiao.me/tag/elb/index.xml" rel="self" type="application/rss+xml" />
+    <description>elb</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Sat, 07 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>elb</title>
+      <link>https://davidxiao.me/tag/elb/</link>
+    </image>
+    
+    <item>
+      <title>Differences Between AWS Route 53 Failover and AWS ELB LB</title>
+      <link>https://davidxiao.me/post/differences-between-route53-failover-and-elb-failover/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/differences-between-route53-failover-and-elb-failover/</guid>
+      <description>&lt;h2 id=&#34;single-region-vs-global&#34;&gt;Single Region vs. Global&lt;/h2&gt;
+&lt;p&gt;ELB provides single-region failover and load balancing while Route 53(R53) operates at DNS level so that can failover across regions.&lt;/p&gt;
+&lt;h2 id=&#34;instant-failover&#34;&gt;Instant Failover&lt;/h2&gt;
+&lt;p&gt;ELB routes traffic off an unhealthy target (like an EC2) immediately when it is detected while R53 operates at DNS level, so when a client endpoint have cached DNS results in their DNS resolvers, it will not be effectively redirected until it passes TTL.&lt;/p&gt;
+&lt;h2 id=&#34;aws-vs-non-aws&#34;&gt;AWS vs Non-AWS&lt;/h2&gt;
+&lt;p&gt;ELB performs failover within the AWS target groups where only AWS resources can be registered. R53 operates at DNS level and is resource type agnostic.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

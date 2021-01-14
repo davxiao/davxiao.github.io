@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tcp | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/tcp/</link>
+      <atom:link href="https://davidxiao.me/tag/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <description>tcp</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Mon, 31 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>tcp</title>
+      <link>https://davidxiao.me/tag/tcp/</link>
+    </image>
+    
+    <item>
+      <title>TLS Handshake in a Nutshell</title>
+      <link>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</guid>
+      <description>&lt;p&gt;At a high level, the following occurs during a TLS handshake:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD;
+    A[Client establishes a TCP connection to the server] --&amp;gt;B[Client sends Hello and list of cipher suites including TLS version] --&amp;gt;C[Server sends Hello, selected suite and certificate] --&amp;gt; D[Client validates certificate]
+    D --&amp;gt; E[Client and server starts key exchange process. &amp;lt;br/&amp;gt;RSA and Diffie-Hellman are two common KEP algogirhtms]
+    E --&amp;gt; F{Key Exchange Protocol}
+    F --&amp;gt;|RSA| G[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value with client random,&amp;lt;br/&amp;gt; server random and premaster secret]
+    F --&amp;gt;|DH| H[Both client and server independently &amp;lt;br/&amp;gt;agree on the same secret value over exchanging&amp;lt;br/&amp;gt;  a few DH parameters]
+    G --&amp;gt;I[Regardless of which KEP was used, &amp;lt;br/&amp;gt;the rest of the session uses the agreed symmetric key to encrypt &amp;lt;br/&amp;gt;the communication both ways going forward]
+    H --&amp;gt;I
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Read more about DH on 
+&lt;a href=&#34;https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/&#34;&gt;my post&lt;/a&gt; and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;key-takeaways-about-the-keps&#34;&gt;Key Takeaways About the KEPs&lt;/h2&gt;
+&lt;p&gt;👉 DH achieves 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Forward_secrecy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;forward secrecy&lt;/a&gt; while RSA does not.&lt;/p&gt;
+&lt;p&gt;👉 DH handshake takes longer than RSA.&lt;/p&gt;
+&lt;h2 id=&#34;what-else-you-need-to-know-about-tls&#34;&gt;What Else You Need To Know about TLS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TLS 1.0 and TLS 1.1 are no longer secure and should be avoided. A best practice is to use TLS version is 1.2 or later at the time of writing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HTTPS means &amp;ldquo;HTTP over TLS&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Both SSH and TLS are purpose-built for secure communication over the Internet, but they are very different in many ways. Check out 
+&lt;a href=&#34;https://davidxiao.me/post/ssh-and-tls/&#34;&gt;my another post&lt;/a&gt; where I explain the differences between the two.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;glossary&#34;&gt;Glossary&lt;/h2&gt;
+&lt;h3 id=&#34;cipher-suite&#34;&gt;Cipher Suite&lt;/h3&gt;
+&lt;p&gt;A cipher suite is a set of algorithms. It usually contain include: a key exchange algorithm, a bulk encryption algorithm, and a message authentication code (MAC) algorithm.&lt;/p&gt;
+&lt;p&gt;For example, &lt;code&gt;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&lt;/code&gt; means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ECDHE_RSA indicates the key exchange algorithm being used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AES_128_GCM indicates the block cipher being used to encrypt the message stream, together with the block cipher mode of operation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SHA256 indicates the message authentication algorithm which is used to authenticate a message.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ecdhe_rsa-key-exchange-algorithm&#34;&gt;ECDHE_RSA key exchange algorithm&lt;/h3&gt;
+&lt;p&gt;In a nutshell, it is ECDHE signed by RSA. Signing defeats man-in-the-middle attack. See detail 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Elliptic-curve_Diffie-Hellman&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

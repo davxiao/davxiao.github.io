@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gimp | DAVID&#39;S GARAGE</title>
+    <link>https://davidxiao.me/tag/gimp/</link>
+      <atom:link href="https://davidxiao.me/tag/gimp/index.xml" rel="self" type="application/rss+xml" />
+    <description>gimp</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Mon, 09 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>gimp</title>
+      <link>https://davidxiao.me/tag/gimp/</link>
+    </image>
+    
+    <item>
+      <title>Convert Any Image Into Pixel Art Using Gimp</title>
+      <link>https://davidxiao.me/post/convert-any-image-into-pixel-art-using-gimp/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/convert-any-image-into-pixel-art-using-gimp/</guid>
+      <description>&lt;p&gt;If you like to add some vintage like retro game feeling to your website, try use pixel art images might be a good idea. Here&amp;rsquo;s a quick howto.&lt;/p&gt;
+&lt;h2 id=&#34;install-gimp&#34;&gt;Install GIMP&lt;/h2&gt;
+&lt;p&gt;GIMP is an open source image processing program available on macOS, Linux and Windows. Visit &lt;a href=&#34;https://www.gimp.org/&#34;&gt;https://www.gimp.org/&lt;/a&gt; to download and install.&lt;/p&gt;
+&lt;p&gt;If you are like me who uses macOS and have the mighty 
+&lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;homebrew&lt;/a&gt; package manager installed, simply run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;brew install gimp
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;start-converting&#34;&gt;Start Converting&lt;/h2&gt;
+&lt;p&gt;Start the gimp, open your image-to-be-converted, then from the menu select &lt;code&gt;Filters/Blur/Pixelize...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;On the dialog box, you want to adjust &lt;code&gt;Block Width&lt;/code&gt; and preview the results.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-adjust-the-block-width&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/convert-any-image-into-pixel-art-using-gimp/pixelize_hu4682fd5c439477f7cfd5e4827093b976_372836_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Adjust the Block Width&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/convert-any-image-into-pixel-art-using-gimp/pixelize_hu4682fd5c439477f7cfd5e4827093b976_372836_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;2148&#34; height=&#34;1180&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Adjust the Block Width
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

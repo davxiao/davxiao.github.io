@@ -5,7 +5,7 @@
     <link>https://davidxiao.me/tag/cloud/</link>
       <atom:link href="https://davidxiao.me/tag/cloud/index.xml" rel="self" type="application/rss+xml" />
     <description>cloud</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021 David Xiao</copyright><lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>cloud</title>
@@ -13,17 +13,16 @@
     </image>
     
     <item>
-      <title>Building Your First App on Google Home in 10 minutes</title>
+      <title>Build Your First App on Google Home in 10 minutes</title>
       <link>https://davidxiao.me/post/building-your-first-app-on-google-home/</link>
       <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
       <guid>https://davidxiao.me/post/building-your-first-app-on-google-home/</guid>
-      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TL;DR&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This post will show you how to build and deploy a voice-activated app on Google Cloud in 10 minutes. It responds to your commands and plays personalized music if you ask! Not a bad way to play on someone&amp;rsquo;s birthday, eh?&lt;/em&gt;&lt;/p&gt;
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;This post will show you how to build and deploy a voice-activated app on Google Cloud in 10 minutes. The app will respond to your voice command and even play a piece of pre-defined music for you! Not a bad way to celebrate someone&amp;rsquo;s birthday eh? :-)&lt;/p&gt;
 &lt;h2 id=&#34;create-a-new-project-on-google-actions-console&#34;&gt;Create a New Project on Google Actions Console&lt;/h2&gt;
-&lt;p&gt;The app is built on Google Cloud using Google Actions and Dialogflow. If you don&amp;rsquo;t have a Google Actions account, click 
+&lt;p&gt;The app is built on Google Cloud using Google Actions and Dialogflow. If you don&amp;rsquo;t have a Google Actions account yet, click 
 &lt;a href=&#34;https://console.actions.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; to create a new one. It&amp;rsquo;s free.&lt;/p&gt;
-&lt;p&gt;When the account is created, go ahead and create a new project. Google Actions allows you to add Actions support to existing GCP projects, but we will create a new one to keep it simple.&lt;/p&gt;
+&lt;p&gt;When the account is ready, go ahead and create a new project. Google Actions allows you to add Actions to any existing GCP projects, but we will create being creating a new project for simplicity.&lt;/p&gt;
 
 
 
@@ -62,9 +61,9 @@
 &lt;/figure&gt;
 
 &lt;h2 id=&#34;specify-a-catchy-name-for-your-app&#34;&gt;Specify a Catchy Name for Your App&lt;/h2&gt;
-&lt;p&gt;You need to specify a catchy name for the app so that every time when you say those &amp;ldquo;gateway words&amp;rdquo; to the Google Home device, it will activate the app for you.&lt;/p&gt;
-&lt;p&gt;Go to the project dashboard, click on &amp;ldquo;Quick setup&amp;rdquo; followed by &amp;ldquo;Decide how your action is invoked&amp;rdquo; and put the app name here. It may reject the name if it&amp;rsquo;s too common or ambiguous, e.g. &amp;ldquo;Hello&amp;rdquo; is probably not a good choice here.&lt;/p&gt;
-&lt;p&gt;For example, my app is called &amp;ldquo;Hello Jukebox&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Determine an activation phrase for the app so that every time when you say it, your app will be activated on the Google Home device.&lt;/p&gt;
+&lt;p&gt;Go to the project dashboard, click on &amp;ldquo;Quick setup&amp;rdquo; followed by &amp;ldquo;Decide how your action is invoked&amp;rdquo; and put the app name here. It may reject your phrase name if it&amp;rsquo;s considered too common or ambiguous, e.g. &amp;ldquo;Hello&amp;rdquo; is not a good choice here.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s say the app is called &amp;ldquo;Hello Jukebox&amp;rdquo;.&lt;/p&gt;
 
 
 
@@ -103,9 +102,9 @@
 &lt;/figure&gt;
 
 &lt;h2 id=&#34;add-actions-to-your-app&#34;&gt;Add Actions to Your App&lt;/h2&gt;
-&lt;p&gt;There is no secret sauce. An app is only as smart as what it&amp;rsquo;s taught. This app will respond to voice commands and act accordingly based on the intents developeed for it. &amp;ldquo;Intent&amp;rdquo; is a Google term referring to a combination of voice command and its response.&lt;/p&gt;
-&lt;p&gt;Within one app, developer can create as many intents as they want as long as no intent is stepping on one another&amp;rsquo;s toes. For example, trying to create two separate intents both responding to the same command &amp;ldquo;what is my favoriate color&amp;rdquo; would be confusing to begin with.&lt;/p&gt;
-&lt;p&gt;Within an intent, developer can decide on the kind of response it needs to give: it can be as simple as having Google Home say something or be more complicated with custom logic.&lt;/p&gt;
+&lt;p&gt;An app is only as smart as what it&amp;rsquo;s taught. There is no secret sauce in here. This app will respond to voice commands and act accordingly based on the &amp;ldquo;Intent&amp;rdquo;. &amp;ldquo;Intent&amp;rdquo; is a Google term referring to a combination of voice command and its corresponding response.&lt;/p&gt;
+&lt;p&gt;Within an app, developers can create as many intents as they want so long as no intent is stepping on one another&amp;rsquo;s toes. For example, trying to create two separate intents both responding to the same command &amp;ldquo;what is my favoriate color&amp;rdquo; would be confusing to begin with.&lt;/p&gt;
+&lt;p&gt;Within an intent, developer can decide on the kind of response it needs to provide: it can be as simple as having Google Home say some words or be more complicated with custom logic.&lt;/p&gt;
 
 
 
@@ -341,7 +340,7 @@
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/davxiao/8d0d35d3c88078e5fc96114d02c8ee6b.js&#34;&gt;&lt;/script&gt;
 
 &lt;h3 id=&#34;testing-your-new-app-on-simulator&#34;&gt;Testing Your New App on Simulator&lt;/h3&gt;
-&lt;p&gt;Click on &amp;ldquo;Google Assistant&amp;rdquo; on the right bar to open the Simulator on Google Actions. From there you can tinker with your app until you&amp;rsquo;re satisfied with it :-)&lt;/p&gt;
+&lt;p&gt;Click on &amp;ldquo;Google Assistant&amp;rdquo; on the right bar to open the Simulator on Google Actions. From there you can tinker with your app until you&amp;rsquo;re satisfied with it.&lt;/p&gt;
 
 
 
@@ -381,7 +380,7 @@
 
 &lt;h3 id=&#34;deploying-to-your-google-home-device&#34;&gt;Deploying to your Google Home Device&lt;/h3&gt;
 &lt;p&gt;Making your app available on 
-&lt;a href=&#34;https://assistant.google.com/explore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Assistant Actions Portal&lt;/a&gt; sounds like a great idea, however the releasing process could take some time as Google needs to review and approve your app first before it can be released. Since my post promised you a 10-minute ride, let&amp;rsquo;s rolling to get the freshly baked app onto your own Google Home device.&lt;/p&gt;
+&lt;a href=&#34;https://assistant.google.com/explore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Assistant Actions Portal&lt;/a&gt; sounds like a great idea, however the releasing process could take some time as Google needs to review and approve your app first. My post promised you a 10-minute ride, so let&amp;rsquo;s take a detour to get your freshly baked app deployed onto your own Google Home device as Alpha testing thus bypassing the approval steps.&lt;/p&gt;
 &lt;p&gt;On Actions console, click on &amp;ldquo;Deploy&amp;rdquo;, choose &amp;ldquo;Alpha&amp;rdquo;, click on &amp;ldquo;Manage Alpha Testers&amp;rdquo;, and add your own Google Home device account email here. You can then switch to your Google Home account and use the opt-in link received on the invitation email to accept the invite.&lt;/p&gt;
 
 
@@ -421,7 +420,7 @@
 &lt;/figure&gt;
 
 &lt;p&gt;When it&amp;rsquo;s ready, click on &amp;ldquo;Create a release&amp;rdquo;, and wait it to complete. It can take a few minutes.&lt;/p&gt;
-&lt;p&gt;Congrats! You&amp;rsquo;ve just developed and deployed your first Google Home app in 10 minutes! Try say to your Google Home: &amp;ldquo;Hey Google, Talk to your_app_name_here&amp;rdquo; and see what happens :)&lt;/p&gt;
+&lt;p&gt;Congrats! You&amp;rsquo;ve just built and deployed your first Google Home app in 10 minutes! It&amp;rsquo;s time to say out loud &amp;ldquo;Hey Google, Talk to your_app_name_here&amp;rdquo; and see what will happen next :)&lt;/p&gt;
 </description>
     </item>
     

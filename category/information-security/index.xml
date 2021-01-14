@@ -5,12 +5,451 @@
     <link>https://davidxiao.me/category/information-security/</link>
       <atom:link href="https://davidxiao.me/category/information-security/index.xml" rel="self" type="application/rss+xml" />
     <description>Information Security</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020 David Xiao</copyright><lastBuildDate>Sun, 01 Nov 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://davidxiao.me/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Information Security</title>
       <link>https://davidxiao.me/category/information-security/</link>
     </image>
+    
+    <item>
+      <title>CASB Deployment</title>
+      <link>https://davidxiao.me/post/casb-deployment/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/casb-deployment/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;Cloud Access Security Broker (CASB) is considered a common solution to mitigate 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Shadow_IT&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shadow IT&lt;/a&gt; and data exfiltration risks on many organization&amp;rsquo;s migrating to cloud journey.&lt;/p&gt;
+&lt;p&gt;This post discussed some common deployment architecture and use cases respectively.&lt;/p&gt;
+&lt;h2 id=&#34;casb-and-context-aware-access&#34;&gt;CASB and Context Aware Access&lt;/h2&gt;
+&lt;p&gt;CASB can mitigate data exfiltration risks from insider - it can correlate the download of sensitive data from a managed cloud service with the upload of that data to a personal cloud service.&lt;/p&gt;
+&lt;p&gt;Context Aware Access is focusing on mitigating authentication and authorization risks and promoting a &amp;ldquo;Zero Trust&amp;rdquo; access model in VPN-less settings.&lt;/p&gt;
+&lt;h2 id=&#34;reverse-proxy&#34;&gt;Reverse proxy&lt;/h2&gt;
+&lt;p&gt;A reverse proxy deployment steers browser-based cloud traffic from managed cloud apps to the CASB Cloud.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-reverse-proxy-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-reverse-proxy_hu017e6573fedb6f4ffbbf2e95ffcce1e0_168187_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Reverse Proxy Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-reverse-proxy_hu017e6573fedb6f4ffbbf2e95ffcce1e0_168187_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1366&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Reverse Proxy Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;A CASB in reverse proxy mode proxies all traffic to and from cloud apps. Unlike a forward proxy, the endpoint or network does not need to be managed.&lt;/p&gt;
+&lt;p&gt;A common approach is to leverage the organization&amp;rsquo;s identity solution (IdM), for example 
+&lt;a href=&#34;https://www.okta.com/partners/netskope/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Okta&lt;/a&gt;, to route traffic through the CASB reverse proxy following authentication. In this way, all traffic bound for a cloud service is pervasively steered over to the CASB proxy.&lt;/p&gt;
+&lt;p&gt;Reverse proxy is essentially the only deployment architecture that supports both managed and unmanaged devices accessing cloud apps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It supports web browser traffic only – native apps or sync clients may have non-web authentication methods. (e.g. JWT or other forms of API token)&lt;/p&gt;
+&lt;h2 id=&#34;forward-proxy&#34;&gt;Forward proxy&lt;/h2&gt;
+&lt;p&gt;CASB forwarder is deployed on-premises as a VM that steers local cloud and web traffic to the CASB Cloud.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-forward-proxy-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-forward-proxy_huc18acc3417bb8134010197d1ef2f99c9_137120_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Forward Proxy Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-forward-proxy_huc18acc3417bb8134010197d1ef2f99c9_137120_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1348&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Forward Proxy Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;There are two approaches:&lt;/p&gt;
+&lt;p&gt;If the organization has an existing secure web gateway, a common practice is to configure proxy chaining to the upstream CASB forward proxy.&lt;/p&gt;
+&lt;p&gt;If no secure web gateway exists, an endpoint agent can be deployed to route cloud traffic through the forward proxy.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It does not work well for either unmanaged devices or users that are accessing cloud over non-corporate network, e.g. at home.&lt;/p&gt;
+&lt;h2 id=&#34;api&#34;&gt;API&lt;/h2&gt;
+&lt;p&gt;Use API connectors to connect CASB to cloud apps like Office 365, Box, Salesforce that offer APIs to support visibility and policy enforcement.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-api-deployment-architecture&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-api_hubc44ddae637403f51b18d8f2fb9b06fb_135702_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;API Deployment Architecture&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-api_hubc44ddae637403f51b18d8f2fb9b06fb_135702_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1376&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    API Deployment Architecture
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Typical APIs such as audit trails of user activity, content inspection, user permissions on storage and security settings can be leveraged by CASB to enable visibility and policy enforcement.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Does not discover &amp;ldquo;Shadow IT&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CASB vendor may not support Cloud apps that end user currently uses or choose to use in the future.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;API based capabilities vary for each Cloud app.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;log-collection&#34;&gt;Log collection&lt;/h2&gt;
+&lt;p&gt;CASB can be configured to parse log traffic from a perimeter device. This provides cloud service discovery capabilities. Logs can be uploaded directly to the CASB Cloud or an on-premises log parser can be deployed to continuously send log data to the CASB.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-log-collection-deployment&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/casb-deployment/casb-log-collection_hu3c08d0c8dc295c8f332a5e87424853bb_133364_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Log Collection Deployment&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/casb-deployment/casb-log-collection_hu3c08d0c8dc295c8f332a5e87424853bb_133364_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;500px&#34; height=&#34;1434&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Log Collection Deployment
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Logs may not be support off-the-shelf, customization may be required.&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cloud_access_security_broker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia: CASB&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.netskope.com/products/deployment-options&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CASB Deployment Options (Netskope)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What Is Zero Trust</title>
+      <link>https://davidxiao.me/post/what-is-zero-trust/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/what-is-zero-trust/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;This is the first post of a series that attempts to discuss Zero Trust in security from a conceptual and implementation perspective.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-zero-trust&#34;&gt;What is Zero Trust&lt;/h2&gt;
+&lt;p&gt;Zero Trust is a security model where app components and microservices are considered discrete from one another  - no component or microservice trusts any other by default.&lt;/p&gt;
+&lt;p&gt;Zero Trust by design does not trust the underlying internal network fabric, and extends it to things such as input and output validation at app and microservice level. For example, it mandates that input from any source is not trusted unless it can be verified otherwise.&lt;/p&gt;
+&lt;p&gt;Additional efforts can include designing a defense-in-depth approach to protect against individual components, microservices, or identities compromise.&lt;/p&gt;
+&lt;p&gt;While conventional network security seek to build a secure perimeter – everything within the perimeter is trusted and anything outside the perimeter is not, a Zero Trust system evaluates actions to reduce the risk of unauthorized access to data and resources.&lt;/p&gt;
+&lt;h2 id=&#34;zero-trust-principles&#34;&gt;Zero Trust Principles&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Never trust, always verify&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Connecting from a particular network must not determine which services user can access&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Access to services is granted based on what we know about the user and the device&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All access to services must be authenticated, authorized, and encrypted&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security-controls-in-enforcing-a-zero-trust-model&#34;&gt;Security Controls in Enforcing a Zero Trust Model&lt;/h2&gt;
+&lt;p&gt;Verifying identity&lt;/p&gt;
+&lt;p&gt;One components of a Zero Trust system is the ability to verify a user’s identity before access is granted to the corporate network.&lt;/p&gt;
+&lt;p&gt;Verifying devices&lt;/p&gt;
+&lt;p&gt;Unmanaged devices are an easy entry point for bad actors, ensuring that only healthy devices can access critical applications and data is vital for enterprise security.&lt;/p&gt;
+&lt;p&gt;Verifying access&lt;/p&gt;
+&lt;p&gt;Some scenarios require users to work from unmanaged devices. With those situations in mind, it transitioned from a corporate network approach to internet-first access methods, with a final goal of internet-only access methods in sight.&lt;/p&gt;
+&lt;p&gt;This strategy reduces users accessing the corporate network for most scenarios, and will establish a set of managed virtualized services that make applications and full functional desktop environments available to users with unmanaged devices.&lt;/p&gt;
+&lt;h2 id=&#34;emerging-technologies&#34;&gt;Emerging Technologies&lt;/h2&gt;
+&lt;p&gt;Context-Aware Access&lt;/p&gt;
+&lt;p&gt;[To be continued]&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;h4 id=&#34;how-to-think-about-zero-trust-architectures-on-awshttpsawsamazoncomblogspublicsectorhow-to-think-about-zero-trust-architectures-on-aws&#34;&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/publicsector/how-to-think-about-zero-trust-architectures-on-aws/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to think about Zero Trust architectures on AWS&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Zero Trust goes beyond building a network boundary between each microservice in your architecture. Beyond strengthening your component perimeters; rethink threat sources and investment to protect against them.&lt;/p&gt;
+&lt;p&gt;Zero Trust models are not always appropriate. It offers some security benefits, but it also introduces cost, complexity, and operational overhead for maintaining the overall system.&lt;/p&gt;
+&lt;p&gt;When considering Zero Trust architecture, evaluate all five pillars of the AWS 
+&lt;a href=&#34;https://aws.amazon.com/architecture/well-architected/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Well-Architected framework&lt;/a&gt; to properly balance your needs.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;beyondcorp-at-googlehttpscloudgooglecombeyondcorp&#34;&gt;
+&lt;a href=&#34;https://cloud.google.com/beyondcorp/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BeyondCorp at Google&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BeyondCorp is Google&amp;rsquo;s implementation of the zero trust security model.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;transitioning-to-modern-access-architecture-with-zero-trusthttpswwwmicrosoftcomen-usitshowcasetransitioning-to-modern-access-architecture-with-zero-trust&#34;&gt;
+&lt;a href=&#34;https://www.microsoft.com/en-us/itshowcase/transitioning-to-modern-access-architecture-with-zero-trust&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Transitioning to modern access architecture with Zero Trust&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft&amp;rsquo;s view on &amp;ldquo;Zero Trust&amp;rdquo; is based on the principle:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;never trust, always verify.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It protects organizations by managing and granting access based on the continual verification of identities, devices and services.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Explain Border Gateway Protocol in 5 Minutes</title>
+      <link>https://davidxiao.me/post/bgp-protocol-in-5-minutes/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/bgp-protocol-in-5-minutes/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;This post attempts to explain the BGP network protocol in plain English and answer those questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;what is it?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;how it works at a high level?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;what are the security concerns?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;in-a-nutshell&#34;&gt;In a Nutshell&lt;/h2&gt;
+&lt;p&gt;BGP is a routing method that enables the internet to function.&lt;/p&gt;
+&lt;p&gt;Today, BGP is widely used to route IP traffic between large scale inter-connected networks. For example, when routing between corporate networks or connecting on-prem data center to a cloud provider&amp;rsquo;s edge location, BGP is typically considered &lt;em&gt;de facto&lt;/em&gt; protocol.&lt;/p&gt;
+&lt;p&gt;Before diving into BGP, let&amp;rsquo;s start with a simple definition of network routing:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;strong&gt;name&lt;/strong&gt; of a resource indicates what we seek;&lt;/p&gt;
+&lt;p&gt;an &lt;strong&gt;address&lt;/strong&gt; indicates where it is;&lt;/p&gt;
+&lt;p&gt;and a &lt;strong&gt;route&lt;/strong&gt; tells us how to get there.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;- John F. Shoch&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;pre-bgp-era&#34;&gt;Pre-BGP Era&lt;/h2&gt;
+&lt;p&gt;In the pre-BGP era when internet was much smaller, separate networks like universities usually each maintain its own static routing table - meaning the routing table on each network is manually updated by the admin and contains IP prefixes the admin is made aware of.&lt;/p&gt;
+&lt;p&gt;When the scale of internet grows, the number of inter-connected networks increases and the inter-network topology started evolving from a tree-like topology to a mesh-like toplogy to allow for redundancy and scalability.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-tree-like-network-topology-vs-full-mesh-network-topology-brcredits-ziv-leyeshttpswwwimpervacomblogauthorziv&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/network-topology_hu797d3baa621a23261552e71c0eb4ad04_303475_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;tree-like network topology vs full-mesh network topology credits: Ziv Leyes&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/network-topology_hu797d3baa621a23261552e71c0eb4ad04_303475_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1290&#34; height=&#34;794&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    tree-like network topology vs full-mesh network topology &lt;br&gt;&lt;em&gt;credits:&lt;/em&gt; &lt;a href=&#34;https://www.imperva.com/blog/author/ziv/&#34;&gt;Ziv Leyes&lt;/a&gt;
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Over time, those changes altogether made the static routing no longer a sustainable approach.&lt;/p&gt;
+&lt;p&gt;Another new type of construct that emerged is what&amp;rsquo;s called Autonomous System (AS) architecture.&lt;/p&gt;
+&lt;p&gt;An AS can be an Internet Service Provider, a university or an entire corporate network, including multiple locations (IP addresses). Each AS is represented by a unique number called an &lt;strong&gt;ASN&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;At first, AS became the new level that inter-network operates on and routes against. As the internet continues to grow, it calls for a new protocol that can dynamically exchange routes information and decides on the routes depends on many other factors.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-routing&#34;&gt;BGP Routing&lt;/h2&gt;
+&lt;p&gt;In June 1989, the first version of a new routing protocol, known as the Border Gateway Protocol, was formalized.&lt;/p&gt;
+&lt;p&gt;BGP operates on OSI Layer 4, in other words, it understands IP address.&lt;/p&gt;
+&lt;p&gt;BGP is primarily designed to exchange routing and reachability information between AS on the Internet but can be used on private networks as well.&lt;/p&gt;
+&lt;p&gt;For example, a dedicated line between on-prem data center and a public cloud service provider (e.g. it&amp;rsquo;s called 
+&lt;a href=&#34;https://aws.amazon.com/directconnect/faqs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DirectConnect&lt;/a&gt; in AWS) can take advantage of BGP routing as well.&lt;/p&gt;
+&lt;p&gt;There are a range of ASNs that is reserved for private ASN. See 
+&lt;a href=&#34;https://www.arin.net/resources/guide/asn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-bgp-route-propagation-between-neighboring-domainsbrcredits-ziv-leyeshttpswwwimpervacomblogauthorziv&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/bgp-routing_hu9cec61300792d5bc68f64dde5d06c8cb_172621_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;BGP Route Propagation between Neighboring Domainscredits: Ziv Leyes&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://davidxiao.me/post/bgp-protocol-in-5-minutes/bgp-routing_hu9cec61300792d5bc68f64dde5d06c8cb_172621_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1234&#34; height=&#34;956&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    BGP Route Propagation between Neighboring Domains&lt;br&gt;&lt;em&gt;credits:&lt;/em&gt; &lt;a href=&#34;https://www.imperva.com/blog/author/ziv/&#34;&gt;Ziv Leyes&lt;/a&gt;
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Every AS in BGP has its border router that speaks the &amp;ldquo;BGP language&amp;rdquo; and connects to other AS. Sometimes the border router is also called BGP speaker.&lt;/p&gt;
+&lt;p&gt;As of August 2019 there are 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;over 92,000&lt;/a&gt; assigned ASN over the internet.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-operations&#34;&gt;BGP operations&lt;/h2&gt;
+&lt;p&gt;BGP neighbors, called peers, are established by manual configuration among routers to create a TCP session on port 179.&lt;/p&gt;
+&lt;p&gt;By design, routers running BGP accept advertised routes from other BGP routers by default. This allows for automatic and decentralized routing of traffic across the Internet.&lt;/p&gt;
+&lt;h2 id=&#34;bgp-security-considerations&#34;&gt;BGP security considerations&lt;/h2&gt;
+&lt;p&gt;Unfortunately BGP is not secure by design.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Due to the extent to which BGP is embedded in the core systems of the Internet, and the number of different networks operated by many different organizations which collectively make up the Internet, correcting this vulnerability is a technically and economically challenging problem.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;- Wikipedia&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Cisco has published an article regarding protecting BGP:
+&lt;a href=&#34;https://tools.cisco.com/security/center/resources/protecting_border_gateway_protocol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Protecting Border Gateway Protocol for the Enterprise&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The main threats identified in the article above:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Route Manipulation&lt;/p&gt;
+&lt;p&gt;A malicious device alters the contents of the BGP routing table thus prevent traffic from reaching its intended destination without acknowledgement or notification.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Route Hijacking&lt;/p&gt;
+&lt;p&gt;A rogue BGP peer maliciously announces a victim&amp;rsquo;s prefixes in an effort to reroute some or all traffic to itself for untoward purposes. For example, to view traffic that the router would otherwise not be able to read.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BGP Denial of Service (DoS)&lt;/p&gt;
+&lt;p&gt;A malicious host sends unexpected or undesirable BGP traffic to a victim in an attempt to expend all available BGP or compute resources results in a lack of resources for legit BGP traffic processing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Misconfiguration&lt;/p&gt;
+&lt;p&gt;Inadvertent mistakes among BGP peers can also have a disruptive impact on a router&amp;rsquo;s BGP process. Security controls should be applied to mitigate impacts from such kinds of incidents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://imperva.com/blog/bgp-routing-explained/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BGP for Humans: Making sense of Border Gateway Protocol&lt;/a&gt;, Ziv Leyes&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/architecture/internet-routing-and-traffic-engineering/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Internet Routing and Traffic Engineering&lt;/a&gt;, AWS Architecture Blog&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;RAS_traceroute_N45.pdf&#34;&gt;A Practical Guide to Troubleshooting with Traceroute&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Border_Gateway_Protocol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Border Gateway Protocol&lt;/a&gt;, Wikipedia&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>IoT Security</title>
+      <link>https://davidxiao.me/post/iot-security/</link>
+      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://davidxiao.me/post/iot-security/</guid>
+      <description>&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://cloud.google.com/blog/products/gcp/securing-cloud-connected-devices-with-cloud-iot-and-microchip&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Securing cloud-connected devices with Cloud IoT and Microchip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/blogs/iot/understanding-the-aws-iot-security-model/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Understanding the AWS IoT Security Model&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Extract User Identity from AWS Cloudtrail</title>
