@@ -9,7 +9,16 @@
       <link>https://davidxiao.me/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 31 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jan 2023 11:59:33 -0800</lastBuildDate><atom:link href="https://davidxiao.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross-Project Runtime Service Account in Google Cloud Functions</title>
+      <link>https://davidxiao.me/posts/cross-project-runtime-service-account-in-google-cloud-functions/</link>
+      <pubDate>Thu, 05 Jan 2023 11:59:33 -0800</pubDate>
+      
+      <guid>https://davidxiao.me/posts/cross-project-runtime-service-account-in-google-cloud-functions/</guid>
+      <description>Test abc</description>
+    </item>
+    
     <item>
       <title>SAML, OIDC and OAuth 2.0 in a Nutshell</title>
       <link>https://davidxiao.me/posts/saml-oidc-oauth20-in-a-nutshell/</link>
