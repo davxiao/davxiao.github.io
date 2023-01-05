@@ -9,16 +9,7 @@
       <link>https://davidxiao.me/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Jan 2023 11:59:33 -0800</lastBuildDate><atom:link href="https://davidxiao.me/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Cross-Project Runtime Service Account in Google Cloud Functions</title>
-      <link>https://davidxiao.me/posts/cross-project-runtime-service-account-in-google-cloud-functions/</link>
-      <pubDate>Thu, 05 Jan 2023 11:59:33 -0800</pubDate>
-      
-      <guid>https://davidxiao.me/posts/cross-project-runtime-service-account-in-google-cloud-functions/</guid>
-      <description>Test abc</description>
-    </item>
-    
+    <lastBuildDate>Wed, 31 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SAML, OIDC and OAuth 2.0 in a Nutshell</title>
       <link>https://davidxiao.me/posts/saml-oidc-oauth20-in-a-nutshell/</link>
@@ -293,16 +284,6 @@ Kubernetes security best practices It covers a few suggestions on what can you d
       
       <guid>https://davidxiao.me/posts/notes-from-my-journey-in-reactjs/</guid>
       <description>The Good, &lt;del&gt;the Bad and the Ugly.&lt;/del&gt;</description>
-    </item>
-    
-    <item>
-      <title>My Bike Notes</title>
-      <link>https://davidxiao.me/posts/my-bike-notes/</link>
-      <pubDate>Sat, 13 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://davidxiao.me/posts/my-bike-notes/</guid>
-      <description>A drop bar road bike in black painting fell off my bike rack between around 4-5pm when I was driving westbound on St.John between Yonge and Bathurst then Southbound on Bathurst towards Richmond Hill. I turned around in ten minutes but did not see it. If anyone has it please DM me. Much appreciated!
-Devinci HATCHET APEX G/57cm standover 774 wheelbase 1061 700c x 45mm / 650b x 2.1 tire clearance http://www.</description>
     </item>
     
     <item>
