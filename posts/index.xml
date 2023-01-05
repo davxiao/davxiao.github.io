@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/posts/</link>
+    <description>Recent content in Posts on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SAML, OIDC and OAuth 2.0 in a Nutshell</title>
+      <link>https://davidxiao.me/posts/saml-oidc-oauth20-in-a-nutshell/</link>
+      <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/saml-oidc-oauth20-in-a-nutshell/</guid>
+      <description>SAML and OIDC What is the Real Difference Between SAML and OIDC
+Both SAML and OIDC are authentication protocols and some times were referred to as identity protocols.
+The basic login flow for both is the same.
+A user logs in to the Identity Provider. The user selects which app to access. The user’s information is passed from the IdP to the user’s browser or other endpoint. The endpoint passes the information on to the application.</description>
+    </item>
+    
+    <item>
+      <title>A few basic Hebrew words you can learn</title>
+      <link>https://davidxiao.me/posts/three-hebrew-words-you-can-learn/</link>
+      <pubDate>Fri, 19 Aug 2022 10:40:46 -0700</pubDate>
+      
+      <guid>https://davidxiao.me/posts/three-hebrew-words-you-can-learn/</guid>
+      <description>Toda - Thank You &amp;ldquo;Toda&amp;rdquo; is pronounced basically &amp;ldquo;toh-DAH,&amp;rdquo; with the emphasis on the second syllable. This is important — if you put the stress on the first syllable (&amp;ldquo;TOH-dah&amp;rdquo;) it will make the word sound bizarre and may make it hard to understand you. It&amp;rsquo;s like pronouncing the English word &amp;ldquo;enough&amp;rdquo; as &amp;ldquo;EE-nuff&amp;rdquo; not &amp;ldquo;ee-NUFF&amp;rdquo;.
+If you want to express sincere appreciation, say &amp;ldquo;Toda Raba&amp;rdquo; which means &amp;ldquo;Thank you very much&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Build Your Own OVMF Firmware for Qemu VM</title>
+      <link>https://davidxiao.me/posts/build-your-own-ovmf-firmware-for-qemu/</link>
+      <pubDate>Sun, 24 Jul 2022 12:49:46 -0700</pubDate>
+      
+      <guid>https://davidxiao.me/posts/build-your-own-ovmf-firmware-for-qemu/</guid>
+      <description>Overall Reference https://wiki.ubuntu.com/UEFI/EDK2
+My Environment Hypervisor OS: Ubuntu 20.04 LTS
+Kernel: 5.4
+QEMU: 6.1
+Guest OS Type: pc-q35-6.1
+Before You Start It does not seem to support zsh and oh-my-zsh, if you are using those as default shell like me, please first run bash and then rest of the commands in this guide. If your nasm version is less than 2.15.05 it may have some compatibility issue per this. To install nasm_2.</description>
+    </item>
+    
+    <item>
+      <title>A not so complete guide on building a home server</title>
+      <link>https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/</link>
+      <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/</guid>
+      <description>This is a curated, opinionated guide to building a full-stack home server from hardware to application. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more.</description>
+    </item>
+    
+    <item>
+      <title>Deploy a web app within 5 minutes</title>
+      <link>https://davidxiao.me/posts/deploy-a-demo-app-to-appengine-on-google-cloud/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/deploy-a-demo-app-to-appengine-on-google-cloud/</guid>
+      <description>Learn how to deploy a demo Python 3 web application on Google Cloud AppEngine. AppEngine is a managed platform on Google Cloud that allows customers to quickly deploy a scalable application without provisoning infrastructure.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Site-to-Site VPN between My Homelab and AWS</title>
+      <link>https://davidxiao.me/posts/setting-up-site-2-site-vpn-between-my-homelab-and-aws/</link>
+      <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/setting-up-site-2-site-vpn-between-my-homelab-and-aws/</guid>
+      <description>References Simulating Site-to-Site VPN Customer Gateways Using strongSwan
+AWS Site-to-Site VPN with IPSec VPN (Strongwan) and BGP (FRRouting)
+Building a Scalable and Secure Multi-VPC AWS Network Infrastructure</description>
+    </item>
+    
+    <item>
+      <title>Convert Any Image Into Pixel Art Using Gimp</title>
+      <link>https://davidxiao.me/posts/convert-any-image-into-pixel-art-using-gimp/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/convert-any-image-into-pixel-art-using-gimp/</guid>
+      <description>If you like to add some vintage like retro game feeling to your website, try use pixel art images might be a good idea. Here&amp;rsquo;s a quick howto.</description>
+    </item>
+    
+    <item>
+      <title>Differences Between AWS Route 53 Failover and AWS ELB LB</title>
+      <link>https://davidxiao.me/posts/differences-between-route53-failover-and-elb-failover/</link>
+      <pubDate>Sat, 07 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/differences-between-route53-failover-and-elb-failover/</guid>
+      <description>This post provides clarity over the differences between AWS R3 failover and ELB LB.</description>
+    </item>
+    
+    <item>
+      <title>Differences between On-Prem Networking and Cloud Networking</title>
+      <link>https://davidxiao.me/posts/differences-between-on-premises-networking-and-public-cloud-networking/</link>
+      <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/differences-between-on-premises-networking-and-public-cloud-networking/</guid>
+      <description>This post discusses some of the major differences between on-prem data center networking and cloud networking.</description>
+    </item>
+    
+    <item>
+      <title>Create VMs on Proxmox With Terraform</title>
+      <link>https://davidxiao.me/posts/create-vms-on-proxmox-with-terraform/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/create-vms-on-proxmox-with-terraform/</guid>
+      <description>Create new VMs on Proxmox by using API and cloning from existing VM template. All code is in Terraform. Sample code is provided on github repo.</description>
+    </item>
+    
+    <item>
+      <title>k8s Security</title>
+      <link>https://davidxiao.me/posts/k8s-security/</link>
+      <pubDate>Sat, 31 Oct 2020 23:04:50 -0400</pubDate>
+      
+      <guid>https://davidxiao.me/posts/k8s-security/</guid>
+      <description>Over the past few months I&amp;rsquo;ve collected a few good resources regarding Kubernetes security.
+I will add more as I learn.
+Reference Securing a Cluster This document covers topics related to protecting a cluster from accidental or malicious access and provides recommendations on overall security.
+CIS Kubernetes Benchmark version 1.6.1 Released in October 2020, it provides prescriptive guidance for establishing a secure configuration posture for Kubernetes.
+Kubernetes security best practices It covers a few suggestions on what can you do to make your Kubernetes workloads more secure.</description>
+    </item>
+    
+    <item>
+      <title>CASB Deployment</title>
+      <link>https://davidxiao.me/posts/casb-deployment/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/casb-deployment/</guid>
+      <description>Cloud Access Security Broker (CASB) is considered a common solution to mitigate &amp;ldquo;shadow IT&amp;rdquo; and data exfiltration risks on many organization&amp;rsquo;s journey to cloud.</description>
+    </item>
+    
+    <item>
+      <title>What Is Zero Trust</title>
+      <link>https://davidxiao.me/posts/what-is-zero-trust/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/what-is-zero-trust/</guid>
+      <description>This is the first post of a series that attempts to discuss Zero Trust in security from a conceptual and implementation perspective.</description>
+    </item>
+    
+    <item>
+      <title>Explain Border Gateway Protocol in 5 Minutes</title>
+      <link>https://davidxiao.me/posts/bgp-protocol-in-5-minutes/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/bgp-protocol-in-5-minutes/</guid>
+      <description>This post attempts to explain the Border Gateway Protocol in plain English: what it is; how it works at a high level and some of the threats from a security perspective.</description>
+    </item>
+    
+    <item>
+      <title>IoT Security</title>
+      <link>https://davidxiao.me/posts/iot-security/</link>
+      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/iot-security/</guid>
+      <description>IoT security is a relatively new area that presents its own unique challenges. This post discusses some of the security risks and possible solutions.</description>
+    </item>
+    
+    <item>
+      <title>OWASP Top Ten</title>
+      <link>https://davidxiao.me/posts/owasp-top-ten/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/owasp-top-ten/</guid>
+      <description>The OWASP Top 10 represents a broad consensus about the most common and critical security risks to web applications. It can be used as reference for web application security.</description>
+    </item>
+    
+    <item>
+      <title>Diffie-Hellman Key Exchange in a Nutshell</title>
+      <link>https://davidxiao.me/posts/diffie-hellman-key-exchange-in-a-nutshell/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/diffie-hellman-key-exchange-in-a-nutshell/</guid>
+      <description>DH key exchange is a critical component in virtually every PKI implementation. Having a working knowledge of what it is and how it works would help in understanding PKI as a whole.</description>
+    </item>
+    
+    <item>
+      <title>Sign Client Certificate Using Self Signed CA Certificate</title>
+      <link>https://davidxiao.me/posts/sign-client-certificate-using-self-signed-ca-certificate/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/sign-client-certificate-using-self-signed-ca-certificate/</guid>
+      <description>In a cluster setting where TLS mutual authentication is required, it&amp;rsquo;s not uncommon to see client certificates signed by either self-signed root CA or private CA.</description>
+    </item>
+    
+    <item>
+      <title>Python3 CheatSheet</title>
+      <link>https://davidxiao.me/posts/python3-cheatsheet/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/python3-cheatsheet/</guid>
+      <description>This post is my collection of python3 code snippets including string and list manipulation.</description>
+    </item>
+    
+    <item>
+      <title>Audit User Actions Using CloudTrail - Part 2</title>
+      <link>https://davidxiao.me/posts/how-to-audit-user-activities-using-aws-cloudtrail-part-2/</link>
+      <pubDate>Thu, 17 Sep 2020 23:53:30 -0400</pubDate>
+      
+      <guid>https://davidxiao.me/posts/how-to-audit-user-activities-using-aws-cloudtrail-part-2/</guid>
+      <description>This is the second post of a series that demonstrates how to leverage AWS CloudTrail in auditing user actions. This post is focused on cross account access.</description>
+    </item>
+    
+    <item>
+      <title>Audit User Actions Using CloudTrail - Part 1</title>
+      <link>https://davidxiao.me/posts/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</link>
+      <pubDate>Thu, 17 Sep 2020 23:53:23 -0400</pubDate>
+      
+      <guid>https://davidxiao.me/posts/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</guid>
+      <description>AWS CloudTrail is an essential service that records user actions and systems events. This is the first post of a series that demonstrates how to leverage CloudTrail to identify the IAM principal and establish timelines. This post is focused on same account access.</description>
+    </item>
+    
+    <item>
+      <title>Extract User Identity from AWS Cloudtrail</title>
+      <link>https://davidxiao.me/posts/extract-user-identity-from-aws-cloudtrail/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/extract-user-identity-from-aws-cloudtrail/</guid>
+      <description>Whether you are troubleshooting or investigating something on AWS, being able to look up user identity across the Cloudtrail event logs can be very helpful.</description>
+    </item>
+    
+    <item>
+      <title>One Time Password, HOTP and TOTP</title>
+      <link>https://davidxiao.me/posts/one-time-password-and-hotp-totp/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/one-time-password-and-hotp-totp/</guid>
+      <description>All you need to know about OTP from a security perspective.</description>
+    </item>
+    
+    <item>
+      <title>Threat Modeling and STRIDE Model</title>
+      <link>https://davidxiao.me/posts/threat-modeling-and-stride-model/</link>
+      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/threat-modeling-and-stride-model/</guid>
+      <description>This post is my collection of articles related to threat modeling and Microsoft STRIDE threat model.</description>
+    </item>
+    
+    <item>
+      <title>SSH and TLS: Differences and Similarities</title>
+      <link>https://davidxiao.me/posts/ssh-and-tls/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/ssh-and-tls/</guid>
+      <description>Review the differences and similarities between the two protocols from an architecture and security perspective.</description>
+    </item>
+    
+    <item>
+      <title>TLS Handshake in a Nutshell</title>
+      <link>https://davidxiao.me/posts/tls-handshake-in-a-nutshell/</link>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/tls-handshake-in-a-nutshell/</guid>
+      <description>A quick overview of TLS handshake</description>
+    </item>
+    
+    <item>
+      <title>A New Pilot in the Making</title>
+      <link>https://davidxiao.me/posts/pilot-in-the-making/</link>
+      <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/pilot-in-the-making/</guid>
+      <description>This is some of the notes I took when taking PPL flight lessons.</description>
+    </item>
+    
+    <item>
+      <title>What I have Been Reading</title>
+      <link>https://davidxiao.me/posts/what-ive-been-reading/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/what-ive-been-reading/</guid>
+      <description>My reading list of nonfiction books. I enjoy reading them but you can draw your own conclusions.</description>
+    </item>
+    
+    <item>
+      <title>Notes from My Journey Learning Javascript and React.js</title>
+      <link>https://davidxiao.me/posts/notes-from-my-journey-in-reactjs/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/notes-from-my-journey-in-reactjs/</guid>
+      <description>The Good, &lt;del&gt;the Bad and the Ugly.&lt;/del&gt;</description>
+    </item>
+    
+    <item>
+      <title>My Bike Notes</title>
+      <link>https://davidxiao.me/posts/my-bike-notes/</link>
+      <pubDate>Sat, 13 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/my-bike-notes/</guid>
+      <description>A drop bar road bike in black painting fell off my bike rack between around 4-5pm when I was driving westbound on St.John between Yonge and Bathurst then Southbound on Bathurst towards Richmond Hill. I turned around in ten minutes but did not see it. If anyone has it please DM me. Much appreciated!
+Devinci HATCHET APEX G/57cm standover 774 wheelbase 1061 700c x 45mm / 650b x 2.1 tire clearance http://www.</description>
+    </item>
+    
+    <item>
+      <title>My Awesome GitHub CheatSheet</title>
+      <link>https://davidxiao.me/posts/my-awesome-github-cheatsheet/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/my-awesome-github-cheatsheet/</guid>
+      <description>An awesome list of useful git slash github commands I compiled over time.</description>
+    </item>
+    
+    <item>
+      <title>Secure Your HTTPS / SSL / TLS</title>
+      <link>https://davidxiao.me/posts/secure-your-https-ssl-tls/</link>
+      <pubDate>Thu, 11 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/secure-your-https-ssl-tls/</guid>
+      <description>To site owners: Just because you&amp;rsquo;ve enabled HTTPS does not mean it&amp;rsquo;s sound and secure. TLS v1.0 and v1.1 is unsecure and phasing out.</description>
+    </item>
+    
+    <item>
+      <title>Dynamic DNS on Cloudflare in 5 Minutes</title>
+      <link>https://davidxiao.me/posts/dynamic-dns-on-cloudflare/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/dynamic-dns-on-cloudflare/</guid>
+      <description>You will need the following to get dynamic DNS working on Cloudflare:
+Cloudflare as your DNS provider. Migrating from your current DNS provider over to Cloudflare is easy and free whether you are using Godaddy, Namecheap or another one.
+Get API token set up on Cloudflare.
+Install cloudflare-cli.
+Cloudflare API token Cloudflare Token is preferred way over API key as token enables added security by allowing to specify access level with permissions and resources.</description>
+    </item>
+    
+    <item>
+      <title>Hosting Multiple Apps With Nginx Rewrite Rules</title>
+      <link>https://davidxiao.me/posts/hosting-multiple-containers-with-nginx-rewrite-rules/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/hosting-multiple-containers-with-nginx-rewrite-rules/</guid>
+      <description>A reverse proxy such as Nginx will come in handy if you need to host multiple apps on a single domain. Here&amp;rsquo;s a 5-minute how-to.</description>
+    </item>
+    
+    <item>
+      <title>Integrating a Self-Hosting Commenting System to Your Site</title>
+      <link>https://davidxiao.me/posts/adding-your-own-commenting-system-to-a-static-site/</link>
+      <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/adding-your-own-commenting-system-to-a-static-site/</guid>
+      <description>If you are looking for guidance on integrating an open-source commenting system such as Remark42 to your site, here is how I did it.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up a Mailgun Relay With Postfix</title>
+      <link>https://davidxiao.me/posts/setting-up-a-mailgun-relay-with-postfix/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/setting-up-a-mailgun-relay-with-postfix/</guid>
+      <description>Set up a Postfix server on local network that relays outgoing emails through Mailgun SMTP.</description>
+    </item>
+    
+    <item>
+      <title>Setting up a Gmail Relay With Postfix</title>
+      <link>https://davidxiao.me/posts/setting-up-a-gmail-relay-with-postfix/</link>
+      <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/setting-up-a-gmail-relay-with-postfix/</guid>
+      <description>Set up Postfix that relays outgoing emails through your personal Gmail account.</description>
+    </item>
+    
+    <item>
+      <title>My Homelab Setup From Hardware to KVM - Part 2</title>
+      <link>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-2/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-2/</guid>
+      <description>Install and configure Proxmox as KVM hypervisor.</description>
+    </item>
+    
+    <item>
+      <title>My Homelab Setup From Hardware to KVM - Part 1</title>
+      <link>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-1/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-1/</guid>
+      <description>I plan on writing a few posts about my Homelab project. This is the first one focusing on the hardware spec and networking</description>
+    </item>
+    
+    <item>
+      <title>Build Your First App on Google Home in 10 minutes</title>
+      <link>https://davidxiao.me/posts/building-your-first-app-on-google-home/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/building-your-first-app-on-google-home/</guid>
+      <description>Build and deploy a voice-activated app on Google Home in 10 minutes. The app will respond to your voice command and even play a piece of pre-defined music for you! Not a bad way to celebrate someone&amp;rsquo;s birthday eh? :-)</description>
+    </item>
+    
+    <item>
+      <title>Cross Compile MMDVMHost on Ubuntu</title>
+      <link>https://davidxiao.me/posts/cross-compile-mmdvmhost-on-ubuntu/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/cross-compile-mmdvmhost-on-ubuntu/</guid>
+      <description>A quick &amp;ldquo;How-to&amp;rdquo; guide to compiling raspberry-pi programs on Ubuntu 20.04 using pi toolchain. This post takes Pi Zero W (BCM2708 chip) as an example but the approach would be applicable to other Pi systems.</description>
+    </item>
+    
+    <item>
+      <title>Building a website in 2020</title>
+      <link>https://davidxiao.me/posts/building-a-website-in-2020/</link>
+      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/building-a-website-in-2020/</guid>
+      <description>If you are interested in building a personal blog site in a cost efficent way, this post discusses about creating a website from the ground up with minimal vendor dependency and high levels of autonomy using Hugo and Firebase.</description>
+    </item>
+    
+  </channel>
+</rss>

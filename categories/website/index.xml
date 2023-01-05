@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>website on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/categories/website/</link>
+    <description>Recent content in website on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 09 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/categories/website/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Convert Any Image Into Pixel Art Using Gimp</title>
+      <link>https://davidxiao.me/posts/convert-any-image-into-pixel-art-using-gimp/</link>
+      <pubDate>Mon, 09 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/convert-any-image-into-pixel-art-using-gimp/</guid>
+      <description>If you like to add some vintage like retro game feeling to your website, try use pixel art images might be a good idea. Here&amp;rsquo;s a quick howto.</description>
+    </item>
+    
+  </channel>
+</rss>

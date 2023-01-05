@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>static website on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/tags/static-website/</link>
+    <description>Recent content in static website on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/tags/static-website/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a website in 2020</title>
+      <link>https://davidxiao.me/posts/building-a-website-in-2020/</link>
+      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/building-a-website-in-2020/</guid>
+      <description>If you are interested in building a personal blog site in a cost efficent way, this post discusses about creating a website from the ground up with minimal vendor dependency and high levels of autonomy using Hugo and Firebase.</description>
+    </item>
+    
+  </channel>
+</rss>

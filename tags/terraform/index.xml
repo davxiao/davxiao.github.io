@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>terraform on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/tags/terraform/</link>
+    <description>Recent content in terraform on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 03 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create VMs on Proxmox With Terraform</title>
+      <link>https://davidxiao.me/posts/create-vms-on-proxmox-with-terraform/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/create-vms-on-proxmox-with-terraform/</guid>
+      <description>Create new VMs on Proxmox by using API and cloning from existing VM template. All code is in Terraform. Sample code is provided on github repo.</description>
+    </item>
+    
+  </channel>
+</rss>

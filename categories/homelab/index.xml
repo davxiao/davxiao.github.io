@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>homelab on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/categories/homelab/</link>
+    <description>Recent content in homelab on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 21 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/categories/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A not so complete guide on building a home server</title>
+      <link>https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/</link>
+      <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/</guid>
+      <description>This is a curated, opinionated guide to building a full-stack home server from hardware to application. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more.</description>
+    </item>
+    
+    <item>
+      <title>Dynamic DNS on Cloudflare in 5 Minutes</title>
+      <link>https://davidxiao.me/posts/dynamic-dns-on-cloudflare/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/dynamic-dns-on-cloudflare/</guid>
+      <description>You will need the following to get dynamic DNS working on Cloudflare:
+Cloudflare as your DNS provider. Migrating from your current DNS provider over to Cloudflare is easy and free whether you are using Godaddy, Namecheap or another one.
+Get API token set up on Cloudflare.
+Install cloudflare-cli.
+Cloudflare API token Cloudflare Token is preferred way over API key as token enables added security by allowing to specify access level with permissions and resources.</description>
+    </item>
+    
+    <item>
+      <title>Hosting Multiple Apps With Nginx Rewrite Rules</title>
+      <link>https://davidxiao.me/posts/hosting-multiple-containers-with-nginx-rewrite-rules/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/hosting-multiple-containers-with-nginx-rewrite-rules/</guid>
+      <description>A reverse proxy such as Nginx will come in handy if you need to host multiple apps on a single domain. Here&amp;rsquo;s a 5-minute how-to.</description>
+    </item>
+    
+    <item>
+      <title>Integrating a Self-Hosting Commenting System to Your Site</title>
+      <link>https://davidxiao.me/posts/adding-your-own-commenting-system-to-a-static-site/</link>
+      <pubDate>Tue, 09 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/adding-your-own-commenting-system-to-a-static-site/</guid>
+      <description>If you are looking for guidance on integrating an open-source commenting system such as Remark42 to your site, here is how I did it.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up a Mailgun Relay With Postfix</title>
+      <link>https://davidxiao.me/posts/setting-up-a-mailgun-relay-with-postfix/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/setting-up-a-mailgun-relay-with-postfix/</guid>
+      <description>Set up a Postfix server on local network that relays outgoing emails through Mailgun SMTP.</description>
+    </item>
+    
+    <item>
+      <title>Setting up a Gmail Relay With Postfix</title>
+      <link>https://davidxiao.me/posts/setting-up-a-gmail-relay-with-postfix/</link>
+      <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/setting-up-a-gmail-relay-with-postfix/</guid>
+      <description>Set up Postfix that relays outgoing emails through your personal Gmail account.</description>
+    </item>
+    
+    <item>
+      <title>My Homelab Setup From Hardware to KVM - Part 2</title>
+      <link>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-2/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-2/</guid>
+      <description>Install and configure Proxmox as KVM hypervisor.</description>
+    </item>
+    
+    <item>
+      <title>My Homelab Setup From Hardware to KVM - Part 1</title>
+      <link>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-1/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-1/</guid>
+      <description>I plan on writing a few posts about my Homelab project. This is the first one focusing on the hardware spec and networking</description>
+    </item>
+    
+  </channel>
+</rss>

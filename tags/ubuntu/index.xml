@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ubuntu on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 21 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A not so complete guide on building a home server</title>
+      <link>https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/</link>
+      <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/</guid>
+      <description>This is a curated, opinionated guide to building a full-stack home server from hardware to application. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more.</description>
+    </item>
+    
+  </channel>
+</rss>

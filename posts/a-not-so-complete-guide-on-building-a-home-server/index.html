@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>A not so complete guide on building a home server | David Xiao&#39;s Garage</title>
+<meta name="keywords" content="cybersecurity, homelab, ubuntu, kvm, passthrough">
+<meta name="description" content="This is a curated, opinionated guide to building a full-stack home server from hardware to application. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more.">
+<meta name="author" content="David Xiao">
+<link rel="canonical" href="https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.deec51b4ebb14229cda677d98d194ddeeebc27943c57f551ca001ed945bcb9ec.css" integrity="sha256-3uxRtOuxQinNpnfZjRlN3u68J5Q8V/VRygAe2UW8uew=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://davidxiao.me/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://davidxiao.me/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://davidxiao.me/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://davidxiao.me/apple-touch-icon.png">
+<link rel="mask-icon" href="https://davidxiao.me/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="A not so complete guide on building a home server" />
+<meta property="og:description" content="This is a curated, opinionated guide to building a full-stack home server from hardware to application. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/" /><meta property="og:image" content="https://davidxiao.me/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-21T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://davidxiao.me/papermod-cover.png"/>
+
+<meta name="twitter:title" content="A not so complete guide on building a home server"/>
+<meta name="twitter:description" content="This is a curated, opinionated guide to building a full-stack home server from hardware to application. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://davidxiao.me/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "A not so complete guide on building a home server",
+      "item": "https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A not so complete guide on building a home server",
+  "name": "A not so complete guide on building a home server",
+  "description": "This is a curated, opinionated guide to building a full-stack home server from hardware to application. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more.",
+  "keywords": [
+    "cybersecurity", "homelab", "ubuntu", "kvm", "passthrough"
+  ],
+  "articleBody": "TL;DR\nThis is a curated, opinionated guide to building a home server. The vision is to build a computing environment under the budget of USD $3,000 with commercially available hardware. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. (why not just use proxmox?) As a platform, it allows the enthusiasts to experiment and try out new stuff such as PCI passthrough, AWS Site-to-Site VPN and more.\nHardware The hardware list.\nComponent Configuration Retail Price in USD CPU 16-core AMD Ryzen 9 5950X (Vermeer) $799 Motherboard ASRock Rack xX570D4U-2L2T $519 Memory 64GB. 2x32GB DDR4 3200 ECC Unbuffered DIMM. Model: Kingston KSM32ED8/32ME 2x$199 Storage 1TB M.2 SSD. Model: SAMSUNG 980 PRO $199 GPU Nvidia RTX 3090 Founders Edition 24GB $1,499 PSU 850W Seasonic FOCUS PX-850 $159 Case Corsair 5000D Airflow ATX Mid-Tower $159 CPU cooler Corsair iCUE H150i RGB Pro XT, 360mm Radiator $145 The reasoning behind the hardware I pulled together for this build are:\nThe home server needs to have hardware level remote server management capabilities and 10G network. ASRock Rack X570D4U-2L2T checks all the boxes by having a built-in IPMI and 2x10G ethernet ports.\nAs a leisure gaming enthusiast, Nvidia 3090 provides excellent performance for PC games and HDR10 in 4k if not 8k. The card gets it done no matter what kind of GPU thirsty task I through at her. That said, Nvidia 3080Ti may be a good alternative choice here with comparable gaming performance and a more affordable price tag.\n64GB ECC memory ensures the server will have sufficient memory to run multiple VMs for most reasonable tasks and provides extra stability as ECC.\nThis build does not include any HDD other than the 1TB SSD as I already have a NAS at home. From a security and operational perspective, I believe having a dedicated storage, i.e. a NAS, as part of the home lab has certain advantages than having an all-in-one general purpose server that does both computing and storage.\nUEFI BIOS configuration Disable CSM to enforce UEFI boot. Enable onboard VGA.\nInstall and upgrade Windows 10 Create a bootable Windows 10 USB stick to install Windows. Install windows on the whole available space. When it’s installed, use the computer management to allocate sufficient disk space for ubuntu. In my case, I reserved about 500GB space for ubuntu.\nInstall and upgrade ubuntu When windows 10 is installed, create a bootable ubuntu USB stick to install ubuntu.\n# sudo apt-get update; # sudo apt-get install dist-upgrade; (reboot)\n(optional) Config NICs for a faster boot During the ubuntu boot-up, it will wait for some time for each network interface to be up. Configuring each unused network interface as “optional” will significantly speed up the boot time.\n# sudo vi /etc/netplan/00-installer-config.yaml Add “optional: true” under each network interface that is not in use. (reboot)\nInstall Oh-my-zsh Since we will be using the command line pretty extensively for the rest of the guide, having omz and extensions like history-substring-search and zsh-autosuggestions would make our life a little easier.\n# sudo apt install zsh # sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions Edit ~/.zshrc, replace source $ZSH/oh-my-zsh.sh with the following:\nplugins=(git history-substring-search zsh-autosuggestions) source $ZSH/oh-my-zsh.sh PROMPT=\"%{$fg[cyan]%}ubuntu %{$reset_color%}%D{%f}|%D{%k:%M}%{$fg[cyan]%} [%c] %{$reset_color%}\" bindkey \"^[a\" backward-word bindkey \"^[e\" forward-word export PROMPT_EOL_MARK='' Restart the session. Everything oh-my-zsh should work now.\ninstall nvidia cuda toolkit The nvidia display driver is included as part of the CUDA toolkit\n(optional) disable gdm3 at boot up To disable gdm3 if needed, run:\n# sudo systemctl stop gdm3; sudo systemctl disable gdm3; Install ASPEED VGA driver IMPORTANT: Ensure the Onboard VGA is Enabled before installing the vga driver.\n# wget --no-check-certificate https://www.aspeedtech.com/file/support/Linux_DRM_LTS_112.zip; # unzip Linux_DRM_LTS_112.zip; # sudo apt-get install linux-headers-$(uname -r); # sudo dpkg -i ~/Linux_DRM/DKMS/ast-drm-linux5.04.deb; If next boot fails, revert to initrd.img-5.4.0-80-generic.old-dkms image. Run:\nupdate-initramfs....... If you see the following warning message W: Possible missing firmware /lib/firmware/ast_dp501_fw.bin for module ast, it’s related to a hard coded file location in the kernel module and can be safely disregarded. (reboot)\n(optional) to verify if the ast driver is loaded, run lspci|grep VGA;. If the driver is loaded, the output should look like: 29:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 41)\nDisable cloud-init sudo touch /etc/cloud/cloud-init.disabled;\nInstall cockpit console In this section we will be installing the cockpit admin console and its virtual-machine component.\nsudo apt-get install cockpit cockpit-machines;\nWhen complete, visit https://:9090/ on your browser. If you are using Chrome on macOS you may see this screen without a button that allows you to proceed. There’s a trick to get through: Click anywhere on the page and type thisisunsafe to proceed.\n(optional) To fix the Software updates issue with ubuntu/cockpit combination, run:\nsudo systemctl enable network-manager.service;\nsudo systemctl disable systemd-networkd.service;\n(optional) Install a X Window Manager sudo apt install ubuntu-mate-desktop;\nWhen prompted, select “lightdm”. When installation is complete, run “sudo systemctl disable lightdm.service; sudo systemctl stop lightdm.service;”\nFor a quick test, run “mate-session” in a X11 forwarding enabled SSH session to start the Mate X window manager.\n(optional) Enable Chrome Remote Desktop references:\nhttps://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine#installing_chrome_remote_desktop_on_the_vm_instance https://support.google.com/chrome/answer/1649523 wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb;\nsudo apt-get install –assume-yes ./chrome-remote-desktop_current_amd64.deb;\nsudo bash -c ’echo “exec /etc/X11/Xsession /usr/bin/mate-session” » /etc/chrome-remote-desktop-session'\nOn macOS, visit https://remotedesktop.google.com/ on Chrome and follow instructions to complete the configuration. You should then have Chrome remote desktop access out of the box.\n(optional) Enable X11 Forwarding This step is only needed when you prefer to use X window server as opposed to Chrome Remote Desktop for remote access.\nIn order to remotely access the X window applications on the ubuntu host via X11,\nsudo vi /etc/ssh/sshd_config\nand ensure X11Forwarding is set to yes.\nFrom the guest OS (e.g. macOS), start a X window system, then open a terminal and run “ssh -X user@ubuntu” to connect to the remote host. When successfully logged in, run “xterm” on the remote host, the xterm window should show up on the macOS desktop.\nGPU passthrough References:\nhttps://mathiashueber.com/pci-passthrough-ubuntu-2004-virtual-machine/\nhttps://mathiashueber.com/storage-setup-virtual-machines/\nInstall required packages sudo apt install bridge-utils;\nubuntu 20.04.02 comes with virt-manager 2.2, we wanted to install version 3.2 from source sudo apt install gir1.2-gtk-vnc-2.0 gir1.2-gtksource-4 gir1.2-libvirt-glib-1.0 gir1.2-spiceclientglib-2.0 gir1.2-spiceclientgtk-3.0 libgtksourceview-4-0 libgtksourceview-4-common; #install dependant libs for virt-manager;\nwget https://virt-manager.org/download/sources/virt-manager/virt-manager-3.2.0.tar.gz;\ntar xzvf virt-manager-3.2.0.tar.gz;\ncd virt-manager-3.2.0;\nsudo ./setup.py install;\nsudo vi /etc/default/grub;\nEdit the line which starts with GRUB_CMDLINE_LINUX_DEFAULT to match:\nGRUB_CMDLINE_LINUX_DEFAULT=“amd_iommu=on iommu=pt”\nsudo update-grub;\n(reboot)\nConfirm the IOMMU kernel parameters by running cat /proc/cmdline;\nVerify if IOMMU is enabled by running dmesg |grep AMD-Vi;\nIf it’s enabled, the output would look like:\n[ 0.360711] pci 0000:00:00.2: AMD-Vi: IOMMU performance counters supported\n[ 0.362643] pci 0000:00:00.2: AMD-Vi: Found IOMMU cap 0x40\n[ 0.362645] pci 0000:00:00.2: AMD-Vi: Extended features (0x58f77ef22294ade):\n[ 0.362648] AMD-Vi: Interrupt remapping enabled\n[ 0.362648] AMD-Vi: Virtual APIC enabled\n[ 0.362649] AMD-Vi: X2APIC enabled\n[ 0.362725] AMD-Vi: Lazy IO/TLB flushing enabled\nDetermine IOMMU devices and groups Caveat: If you are planning to make hardware changes, e.g. installing a new M2.SSD or adding a new GPU, be aware that the PCI lane numbers and IOMMU group numbers may change after the installation. If you already have the GPU passthrough setup up and running, you need to plan it accordingly so that it won’t catch you off guard.\nEdit and run the following script as iommu.sh\nSource: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Ensuring_that_the_groups_are_valid\n#!/bin/bash\nshopt -s nullglob\nfor g in find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V; do\necho “IOMMU Group ${g##*/}:”\nfor d in $g/devices/*; do\necho -e “\\t$(lspci -nns ${d##*/})”\ndone;\ndone;\nLook for the GPU to be passed through. It should look like the following:\nIOMMU Group 28:\n2d:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:2204] (rev a1)\n2d:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:1aef] (rev a1)\nsudo vi /etc/default/grub\nGRUB_CMDLINE_LINUX_DEFAULT=“video=efifb:off amd_iommu=on iommu=pt kvm.ignore_msrs=1 vfio-pci.ids=10de:2204,10de:1aef”\n**** “video=efifb:off” is needed. See the discussion here. ****\nsudo update-grub\n(reboot)\nRun lspci -nnv\nLook for the line “Kernel driver in use” for the GPU and its audio part. It should indicate Kernel driver in use: vfio-pci\n2d:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:2204] (rev a1) (prog-if 00 [VGA controller])\nSubsystem: NVIDIA Corporation Device [10de:147d]\nFlags: fast devsel, IRQ 255\nMemory at fb000000 (32-bit, non-prefetchable) [size=16M]\nMemory at 7fe0000000 (64-bit, prefetchable) [size=256M]\nMemory at 7ff0000000 (64-bit, prefetchable) [size=32M]\nI/O ports at f000 [disabled] [size=128]\nExpansion ROM at fc000000 [disabled] [size=512K]\nCapabilities: Kernel driver in use: vfio-pci\nKernel modules: nvidiafb, nouveau\n2d:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:1aef] (rev a1)\nSubsystem: NVIDIA Corporation Device [10de:147d]\nFlags: fast devsel, IRQ 255\nMemory at fc080000 (32-bit, non-prefetchable) [disabled] [size=16K]\nCapabilities: Kernel driver in use: vfio-pci\nKernel modules: snd_hda_intel\nMake sure you have Windows 10 ISO and virtio windows drivers ready for installation. virtio files can be downloaded here https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/\n(optional) USB passthrough\nUse the following script (usb.sh) to determine what bus and iommu group each USB device has attached to.\nSource: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#USB_controller\n#!/bin/bash for usb_ctrl in /sys/bus/pci/devices/*/usb*; do pci_path=${usb_ctrl%/*}; iommu_group=$(readlink $pci_path/iommu_group); echo \"Bus $(cat $usb_ctrl/busnum) --\u003e ${pci_path##*/} (IOMMU group ${iommu_group##*/})\"; lsusb -s ${usb_ctrl#*/usb}:; echo; done *** Troubleshooting Notes and Solution on isolating USB keyboard and mouse *** Device passthrough is done on an IOMMU group level, in other words, when passing through a device, not just the device itself but also each and every other device in the same IOMMU group will be passed though.\nIn a perfect world, there should be an IOMMU group that includes only USB devices and nothing else. In the real world, there may be other types of devices in the group which makes the passthrough messy. Unfortunately in my case that’s the case.\nGiven the IOMMU group 20 includes not just USB keyboard and mouse but a few other devices such as “American Megatrends Virtual Keyboard and Mouse”, we need to find a way to move the USB devices into a separate and isolated IOMMU group, otherwise the USB device passthrough won’t work(tested).\n(optional) manually compile and install QEMU The default QEMU version that ubuntu 20.04 repo includes is QEMU 4.2. To get the current QEMU version 6.1 rc3, I decided to manually install it.\nThe binaries are installed under /usr/local/bin.\ncd\nsudo apt-get install build-essential gcc pkg-config glib-2.0 libglib2.0-dev libsdl1.2-dev libaio-dev libcap-dev libattr1-dev libpixman-1-dev libusb-1.0-0-dev\nwget https://download.qemu.org/qemu-6.1.0-rc3.tar.xz\ntar xvJf qemu-6.1.0-rc3.tar.xz\ncd qemu-6.1.0-rc3\npython3 -m venv py3-env\nsource ./py3-env/bin/activate\npip3 install ninja\n./configure –target-list=x86_64-linux-user,x86_64-softmmu –disable-debug-info –enable-libusb\nmake -j24 #utilize multiple cores on my 5950X cpu\nsudo make install\nWhen QEMU manual installation is complete, edit /etc/libvirt/qemu/win10.xml and change the line as follows:\n/usr/local/bin/qemu-system-x86_64 (reboot)\nStart the vm using virt-manager. If you see the following error:\nError starting domain: internal error: Failed to start QEMU binary /usr/local/bin/qemu-system-x86_64 for probing: libvirt: error : cannot execute binary /usr/local/bin/qemu-system-x86_64: Permission denied\nTraceback (most recent call last):\nFile “/usr/share/virt-manager/virtManager/asyncjob.py”, line 65, in cb_wrapper\ncallback(asyncjob, *args, **kwargs)\nFile “/usr/share/virt-manager/virtManager/asyncjob.py”, line 101, in tmpcb\ncallback(*args, **kwargs)\nFile “/usr/share/virt-manager/virtManager/object/libvirtobject.py”, line 57, in newfn\nret = fn(self, *args, **kwargs)\nFile “/usr/share/virt-manager/virtManager/object/domain.py”, line 1329, in startup\nself._backend.create()\nFile “/usr/lib/python3/dist-packages/libvirt.py”, line 1234, in create\nif ret == -1: raise libvirtError (‘virDomainCreate() failed’, dom=self)\nlibvirt.libvirtError: internal error: Failed to start QEMU binary /usr/local/bin/qemu-system-x86_64 for probing: libvirt: error : cannot execute binary /usr/local/bin/qemu-system-x86_64: Permission denied\nIt may need to change some apparmor config.\nIn /etc/apparmor.d/abstractions/libvirt-qemu\nadd\n/usr/local/share/qemu/** r,\nand add\n/usr/local/bin/qemu-system-x86_64 rmix,\n/usr/local/bin/qemu-x86_64 rmix,\nIn /etc/apparmor.d/usr.sbin.libvirtd\nadd\n/usr/local/bin/* PUx,\nWhen complete, run\nsudo systemctl reload apparmor\n",
+  "wordCount" : "1877",
+  "inLanguage": "en",
+  "datePublished": "2021-08-21T00:00:00Z",
+  "dateModified": "2021-08-21T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "David Xiao"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "David Xiao's Garage",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://davidxiao.me/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://davidxiao.me/" accesskey="h" title="David Xiao&#39;s Garage (Alt + H)">David Xiao&#39;s Garage</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://davidxiao.me/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://davidxiao.me/">Home</a>&nbsp;»&nbsp;<a href="https://davidxiao.me/posts/">Posts</a></div>
+    <h1 class="post-title">
+      A not so complete guide on building a home server
+    </h1>
+    <div class="post-meta"><span title='2021-08-21 00:00:00 +0000 UTC'>August 21, 2021</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;David Xiao&nbsp;|&nbsp;<a href="https://github.com/davxiao/davidxiao-web/tree/master/content/posts/a-not-so-complete-guide-on-building-a-home-server/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#hardware" aria-label="Hardware">Hardware</a></li>
+                <li>
+                    <a href="#uefi-bios-configuration" aria-label="UEFI BIOS configuration">UEFI BIOS configuration</a></li>
+                <li>
+                    <a href="#install-and-upgrade-windows-10" aria-label="Install and upgrade Windows 10">Install and upgrade Windows 10</a></li>
+                <li>
+                    <a href="#install-and-upgrade-ubuntu" aria-label="Install and upgrade ubuntu">Install and upgrade ubuntu</a></li>
+                <li>
+                    <a href="#optional-config-nics-for-a-faster-boot" aria-label="(optional) Config NICs for a faster boot">(optional) Config NICs for a faster boot</a></li>
+                <li>
+                    <a href="#install-oh-my-zsh" aria-label="Install Oh-my-zsh">Install Oh-my-zsh</a></li>
+                <li>
+                    <a href="#install-nvidia-cuda-toolkit" aria-label="install nvidia cuda toolkit">install nvidia cuda toolkit</a><ul>
+                        
+                <li>
+                    <a href="#optional-disable-gdm3-at-boot-up" aria-label="(optional) disable gdm3 at boot up">(optional) disable gdm3 at boot up</a></li></ul>
+                </li>
+                <li>
+                    <a href="#install-aspeed-vga-driver" aria-label="Install ASPEED VGA driver">Install ASPEED VGA driver</a></li>
+                <li>
+                    <a href="#disable-cloud-init" aria-label="Disable cloud-init">Disable cloud-init</a></li>
+                <li>
+                    <a href="#install-cockpit-console" aria-label="Install cockpit console">Install cockpit console</a></li>
+                <li>
+                    <a href="#optional-install-a-x-window-manager" aria-label="(optional) Install a X Window Manager">(optional) Install a X Window Manager</a></li>
+                <li>
+                    <a href="#optional-enable-chrome-remote-desktop" aria-label="(optional) Enable Chrome Remote Desktop">(optional) Enable Chrome Remote Desktop</a></li>
+                <li>
+                    <a href="#optional-enable-x11-forwarding" aria-label="(optional) Enable X11 Forwarding">(optional) Enable X11 Forwarding</a></li>
+                <li>
+                    <a href="#gpu-passthrough" aria-label="GPU passthrough">GPU passthrough</a><ul>
+                        
+                <li>
+                    <a href="#install-required-packages" aria-label="Install required packages">Install required packages</a><ul>
+                        
+                <li>
+                    <a href="#ubuntu-200402-comes-with-virt-manager-22-we-wanted-to-install-version-32-from-source" aria-label="ubuntu 20.04.02 comes with virt-manager 2.2, we wanted to install version 3.2 from source">ubuntu 20.04.02 comes with virt-manager 2.2, we wanted to install version 3.2 from source</a></li></ul>
+                </li>
+                <li>
+                    <a href="#determine-iommu-devices-and-groups" aria-label="Determine IOMMU devices and groups">Determine IOMMU devices and groups</a><ul>
+                        
+                <li>
+                    <a href="#-troubleshooting-notes-and-solution-on-isolating-usb-keyboard-and-mouse-" aria-label="*** Troubleshooting Notes and Solution on isolating USB keyboard and mouse ***">*** Troubleshooting Notes and Solution on isolating USB keyboard and mouse ***</a></li></ul>
+                </li>
+                <li>
+                    <a href="#optional-manually-compile-and-install-qemu" aria-label="(optional) manually compile and install QEMU">(optional) manually compile and install QEMU</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>TL;DR</p>
+<p>This is a curated, opinionated guide to building a home server. The vision is to build a computing environment under the budget of USD $3,000 with commercially available hardware. The goal is to provide a linux environment that can manage VMs, containers and microvms with ease. (why not just use proxmox?) As a platform, it allows the enthusiasts to experiment and try out new stuff such as <a href="https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF">PCI passthrough</a>, <a href="https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html">AWS Site-to-Site VPN</a> and more.</p>
+<h2 id="hardware">Hardware<a hidden class="anchor" aria-hidden="true" href="#hardware">#</a></h2>
+<p>The hardware list.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Configuration  </th>
+<th>Retail Price in USD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>16-core AMD Ryzen 9 5950X (Vermeer)</td>
+<td>$799  </td>
+</tr>
+<tr>
+<td>Motherboard</td>
+<td><a href="https://www.asrockrack.com/general/productdetail.asp?Model=X570D4U-2L2T">ASRock Rack xX570D4U-2L2T</a></td>
+<td> $519</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>64GB. 2x32GB DDR4 3200 ECC Unbuffered DIMM. Model: Kingston KSM32ED8/32ME</td>
+<td>2x$199  </td>
+</tr>
+<tr>
+<td>Storage</td>
+<td> 1TB M.2 SSD. Model: SAMSUNG 980 PRO</td>
+<td>  $199</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Nvidia RTX 3090 Founders Edition 24GB  </td>
+<td>$1,499  </td>
+</tr>
+<tr>
+<td>PSU  </td>
+<td>850W Seasonic FOCUS PX-850  </td>
+<td>$159  </td>
+</tr>
+<tr>
+<td>Case</td>
+<td>Corsair 5000D Airflow ATX Mid-Tower  </td>
+<td>$159  </td>
+</tr>
+<tr>
+<td>CPU cooler</td>
+<td> Corsair iCUE H150i RGB Pro XT, 360mm Radiator</td>
+<td>$145  </td>
+</tr>
+</tbody>
+</table>
+<p>The reasoning behind the hardware I pulled together for this build are:</p>
+<p>The home server needs to have hardware level remote server management capabilities and 10G network. ASRock Rack X570D4U-2L2T checks all the boxes by having a built-in IPMI and  2x10G ethernet ports.</p>
+<p>As a leisure gaming enthusiast, Nvidia 3090 provides excellent performance for PC games and HDR10 in 4k if not 8k. The card gets it done no matter what kind of GPU thirsty task I through at her. That said, Nvidia 3080Ti may be a good alternative choice here with comparable gaming performance and a more affordable price tag.</p>
+<p>64GB ECC memory ensures the server will have sufficient memory to run multiple VMs for most reasonable tasks and provides extra stability as ECC.</p>
+<p>This build does not include any HDD other than the 1TB SSD as I already have a  NAS at home. From a security and operational perspective, I  believe having a dedicated storage, i.e. a NAS, as part of the home lab has certain advantages than having an all-in-one general purpose server that does both computing and storage.</p>
+<h2 id="uefi-bios-configuration">UEFI BIOS configuration<a hidden class="anchor" aria-hidden="true" href="#uefi-bios-configuration">#</a></h2>
+<p>Disable CSM to enforce UEFI boot.
+Enable onboard VGA.</p>
+<h2 id="install-and-upgrade-windows-10">Install and upgrade Windows 10<a hidden class="anchor" aria-hidden="true" href="#install-and-upgrade-windows-10">#</a></h2>
+<p>Create a bootable Windows 10 USB stick to install Windows.
+Install windows on the whole available space. When it&rsquo;s installed, use the computer management to allocate sufficient disk space for ubuntu.
+In my case, I reserved about 500GB space for ubuntu.</p>
+<h2 id="install-and-upgrade-ubuntu">Install and upgrade ubuntu<a hidden class="anchor" aria-hidden="true" href="#install-and-upgrade-ubuntu">#</a></h2>
+<p>When windows 10 is installed, create a bootable ubuntu USB stick to install ubuntu.</p>
+<pre tabindex="0"><code># sudo apt-get update;
+# sudo apt-get install dist-upgrade;
+</code></pre><p>(reboot)</p>
+<h2 id="optional-config-nics-for-a-faster-boot">(optional) Config NICs for a faster boot<a hidden class="anchor" aria-hidden="true" href="#optional-config-nics-for-a-faster-boot">#</a></h2>
+<p>During the ubuntu boot-up, it will wait for some time for each network interface to be up. Configuring each unused network interface as “optional” will significantly speed up the boot time.</p>
+<pre tabindex="0"><code># sudo vi /etc/netplan/00-installer-config.yaml
+</code></pre><p>Add “optional: true” under each network interface that is not in use.
+(reboot)</p>
+<h2 id="install-oh-my-zsh">Install Oh-my-zsh<a hidden class="anchor" aria-hidden="true" href="#install-oh-my-zsh">#</a></h2>
+<p>Since we will be using the command line pretty extensively for the rest of the guide, having omz and extensions like history-substring-search and zsh-autosuggestions would make our life a little easier.</p>
+<p> </p>
+<pre tabindex="0"><code># sudo apt install zsh
+
+# sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34;
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+</code></pre><p>Edit ~/.zshrc, replace source $ZSH/oh-my-zsh.sh with the following:</p>
+<pre tabindex="0"><code>plugins=(git history-substring-search zsh-autosuggestions)
+source $ZSH/oh-my-zsh.sh
+PROMPT=&#34;%{$fg[cyan]%}ubuntu %{$reset_color%}%D{%f}|%D{%k:%M}%{$fg[cyan]%} [%c] %{$reset_color%}&#34;
+bindkey &#34;^[a&#34; backward-word
+bindkey &#34;^[e&#34; forward-word
+export PROMPT_EOL_MARK=&#39;&#39;
+</code></pre><p>Restart the session. Everything oh-my-zsh should work now.</p>
+<h2 id="install-nvidia-cuda-toolkit">install nvidia cuda toolkit<a hidden class="anchor" aria-hidden="true" href="#install-nvidia-cuda-toolkit">#</a></h2>
+<p>The nvidia display driver is included as part of the <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=20.04&amp;target_type=deb_network">CUDA toolkit</a></p>
+<h3 id="optional-disable-gdm3-at-boot-up">(optional) disable gdm3 at boot up<a hidden class="anchor" aria-hidden="true" href="#optional-disable-gdm3-at-boot-up">#</a></h3>
+<p>To disable gdm3 if needed, run:</p>
+<pre tabindex="0"><code># sudo systemctl stop gdm3; sudo systemctl disable gdm3;
+</code></pre><h2 id="install-aspeed-vga-driver">Install ASPEED VGA driver<a hidden class="anchor" aria-hidden="true" href="#install-aspeed-vga-driver">#</a></h2>
+<p>IMPORTANT: Ensure the Onboard VGA is Enabled before installing the vga driver.</p>
+<p><img loading="lazy" src="https://lh5.googleusercontent.com/6Orec7uNCLSvyLhYDkjbokTXTQnY7uRnoieogS6UyxwP3T65TTGxnNB14RExNSqrJlznt5sKRUEj5FNLajhO3JZQ3YYIRZHunsSv7VD4MNtNkEc2HHE2PjFe2B7gTAUQMvZX9PEg" alt=""  />
+</p>
+<p> </p>
+<pre tabindex="0"><code># wget --no-check-certificate https://www.aspeedtech.com/file/support/Linux_DRM_LTS_112.zip;
+
+# unzip Linux_DRM_LTS_112.zip;
+
+# sudo apt-get install linux-headers-$(uname -r);
+
+# sudo dpkg -i ~/Linux_DRM/DKMS/ast-drm-linux5.04.deb;
+</code></pre><p>If next boot fails, revert to initrd.img-5.4.0-80-generic.old-dkms image.
+Run:</p>
+<pre tabindex="0"><code>update-initramfs.......
+</code></pre><p>If you see the following warning message <code>W: Possible missing firmware /lib/firmware/ast_dp501_fw.bin for module ast</code>, it&rsquo;s related to a hard coded file location in the kernel module and can be safely disregarded.
+(reboot)</p>
+<p><em>(optional) to verify if the ast driver is loaded, run <code>lspci|grep VGA;</code>. If the driver is loaded, the output should look like: <code>29:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 41)</code></em></p>
+<h2 id="disable-cloud-init">Disable cloud-init<a hidden class="anchor" aria-hidden="true" href="#disable-cloud-init">#</a></h2>
+<p>sudo touch /etc/cloud/cloud-init.disabled;</p>
+<p> </p>
+<h2 id="install-cockpit-console">Install cockpit console<a hidden class="anchor" aria-hidden="true" href="#install-cockpit-console">#</a></h2>
+<p>In this section we will be installing the cockpit admin console and its virtual-machine component.</p>
+<p> </p>
+<p>sudo apt-get install cockpit cockpit-machines;</p>
+<p> </p>
+<p>When complete, visit <a href="https://localhost:9090">https://<your-server-ip>:9090/</a> on your browser. If you are using Chrome on macOS you may see this screen without a button that allows you to proceed. There’s a trick to get through: Click anywhere on the page and type thisisunsafe to proceed.</p>
+<p><img loading="lazy" src="https://lh3.googleusercontent.com/Ih0kTBgtDwRqqXx5YcSDBFIip8YS4NUYlemt86IAJcQkQJY8ywuAKhO7k9-mZyq0T1-HftVSZgvLz0E3GVhPS8IjPdczGgoLcEG_aUpwjGM5Ks6BfMIj848nY5yuzhF-QEIMDfiO" alt=""  />
+</p>
+<p> </p>
+<p>(optional) To fix the Software updates issue with ubuntu/cockpit combination, run:</p>
+<p>sudo systemctl enable network-manager.service;</p>
+<p>sudo systemctl disable systemd-networkd.service;</p>
+<p> </p>
+<p><img loading="lazy" src="https://lh5.googleusercontent.com/9AifugMZbw7dMlpl9eIru7_cWeCDpwRj2Voag_8G9TgHOcEYDn5rO1suC6znRiv7lwJB8yMqNpBalHwxnsUer0osIvlpCuwknOVoXbBMkm-Lju9G5eEt0qkcNCF3niu0EedL6wxD" alt=""  />
+</p>
+<p> 
+ 
+ </p>
+<h2 id="optional-install-a-x-window-manager">(optional) Install a X Window Manager<a hidden class="anchor" aria-hidden="true" href="#optional-install-a-x-window-manager">#</a></h2>
+<p>sudo apt install ubuntu-mate-desktop;</p>
+<p> </p>
+<p>When prompted, select “lightdm”. When installation is complete, run “sudo systemctl disable lightdm.service; sudo systemctl stop lightdm.service;”</p>
+<p> </p>
+<p>For a quick test, run “mate-session” in a X11 forwarding enabled SSH session to start the Mate X window manager.</p>
+<p> 
+ </p>
+<h2 id="optional-enable-chrome-remote-desktop">(optional) Enable Chrome Remote Desktop<a hidden class="anchor" aria-hidden="true" href="#optional-enable-chrome-remote-desktop">#</a></h2>
+<p>references:</p>
+<ul>
+<li>  <a href="https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine#installing_chrome_remote_desktop_on_the_vm_instance">https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine#installing_chrome_remote_desktop_on_the_vm_instance</a>
+   </li>
+<li>  <a href="https://support.google.com/chrome/answer/1649523">https://support.google.com/chrome/answer/1649523</a>
+   </li>
+</ul>
+<p> </p>
+<p>wget <a href="https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb;">https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb;</a></p>
+<p>sudo apt-get install &ndash;assume-yes ./chrome-remote-desktop_current_amd64.deb;</p>
+<p>sudo bash -c &rsquo;echo &ldquo;exec /etc/X11/Xsession /usr/bin/mate-session&rdquo; &raquo; /etc/chrome-remote-desktop-session'</p>
+<p> 
+ </p>
+<p>On macOS, visit <a href="https://remotedesktop.google.com/">https://remotedesktop.google.com/</a> on Chrome and follow instructions to complete the configuration. You should then have Chrome remote desktop access out of the box.</p>
+<p> </p>
+<p><img loading="lazy" src="https://lh4.googleusercontent.com/wTD1tRr7Bcd6XRIjRBmUF4B-wgQpCYsNfD3I33J6Pu3Pu5GOggREciPWQ4lNSnMCra57fTLFVVSnk_f_0tzG_ushZZdWRhekqwXzrD3fHmKgN9N2xAD9zHe4G7QPV4cA9tp5Rzco" alt=""  />
+</p>
+<h2 id="optional-enable-x11-forwarding">(optional) Enable X11 Forwarding<a hidden class="anchor" aria-hidden="true" href="#optional-enable-x11-forwarding">#</a></h2>
+<p>This step is only needed when you prefer to use X window server as opposed to Chrome Remote Desktop for remote access.</p>
+<p> </p>
+<p>In order to remotely access the X window applications on the ubuntu host via X11,</p>
+<p>sudo vi /etc/ssh/sshd_config</p>
+<p>and ensure X11Forwarding is set to yes.</p>
+<p> </p>
+<p>From the guest OS (e.g. macOS), start a X window system, then open a terminal and run “ssh -X user@ubuntu” to connect to the remote host. When successfully logged in, run “xterm” on the remote host, the xterm window should show up on the macOS desktop.</p>
+<p> 
+ </p>
+<h2 id="gpu-passthrough">GPU passthrough<a hidden class="anchor" aria-hidden="true" href="#gpu-passthrough">#</a></h2>
+<p>References:</p>
+<p><a href="https://mathiashueber.com/pci-passthrough-ubuntu-2004-virtual-machine/">https://mathiashueber.com/pci-passthrough-ubuntu-2004-virtual-machine/</a></p>
+<p><a href="https://mathiashueber.com/storage-setup-virtual-machines/">https://mathiashueber.com/storage-setup-virtual-machines/</a></p>
+<p> </p>
+<h3 id="install-required-packages">Install required packages<a hidden class="anchor" aria-hidden="true" href="#install-required-packages">#</a></h3>
+<p> </p>
+<p>sudo apt install bridge-utils;</p>
+<p> </p>
+<h4 id="ubuntu-200402-comes-with-virt-manager-22-we-wanted-to-install-version-32-from-source">ubuntu 20.04.02 comes with virt-manager 2.2, we wanted to install version 3.2 from source<a hidden class="anchor" aria-hidden="true" href="#ubuntu-200402-comes-with-virt-manager-22-we-wanted-to-install-version-32-from-source">#</a></h4>
+<p>sudo apt install gir1.2-gtk-vnc-2.0 gir1.2-gtksource-4 gir1.2-libvirt-glib-1.0 gir1.2-spiceclientglib-2.0 gir1.2-spiceclientgtk-3.0 libgtksourceview-4-0 libgtksourceview-4-common; #install dependant libs for virt-manager;</p>
+<p>wget <a href="https://virt-manager.org/download/sources/virt-manager/virt-manager-3.2.0.tar.gz">https://virt-manager.org/download/sources/virt-manager/virt-manager-3.2.0.tar.gz</a>;</p>
+<p>tar xzvf virt-manager-3.2.0.tar.gz;</p>
+<p>cd virt-manager-3.2.0;</p>
+<p>sudo ./setup.py install;</p>
+<p> 
+ 
+ 
+ </p>
+<p>sudo vi /etc/default/grub;</p>
+<p> </p>
+<p>Edit the line which starts with GRUB_CMDLINE_LINUX_DEFAULT to match:</p>
+<p> </p>
+<p>GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;amd_iommu=on iommu=pt&rdquo;</p>
+<p> </p>
+<p>sudo update-grub;</p>
+<p> </p>
+<p>(reboot)</p>
+<p> </p>
+<p>Confirm the IOMMU kernel parameters by running cat /proc/cmdline;</p>
+<p> </p>
+<p>Verify if IOMMU is enabled by running dmesg |grep AMD-Vi;</p>
+<p>If it’s enabled, the output would look like:</p>
+<p> </p>
+<p>[ 0.360711] pci 0000:00:00.2: AMD-Vi: IOMMU performance counters supported</p>
+<p>[ 0.362643] pci 0000:00:00.2: AMD-Vi: Found IOMMU cap 0x40</p>
+<p>[ 0.362645] pci 0000:00:00.2: AMD-Vi: Extended features (0x58f77ef22294ade):</p>
+<p>[ 0.362648] AMD-Vi: Interrupt remapping enabled</p>
+<p>[ 0.362648] AMD-Vi: Virtual APIC enabled</p>
+<p>[ 0.362649] AMD-Vi: X2APIC enabled</p>
+<p>[ 0.362725] AMD-Vi: Lazy IO/TLB flushing enabled</p>
+<p> 
+ </p>
+<h3 id="determine-iommu-devices-and-groups">Determine IOMMU devices and groups<a hidden class="anchor" aria-hidden="true" href="#determine-iommu-devices-and-groups">#</a></h3>
+<p> </p>
+<p>Caveat: If you are planning to make hardware changes, e.g. installing a new M2.SSD or adding a new GPU, be aware that the PCI lane numbers and IOMMU group numbers may change after the installation. If you already have the GPU passthrough setup up and running, you need to plan it accordingly so that it won’t catch you off guard.</p>
+<p> </p>
+<p>Edit and run the following script as iommu.sh</p>
+<p>Source: <a href="https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Ensuring_that_the_groups_are_valid">https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Ensuring_that_the_groups_are_valid</a></p>
+<p> </p>
+<p>#!/bin/bash</p>
+<p>shopt -s nullglob</p>
+<p>for  g  in  <code>find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V</code>; do</p>
+<p>echo  &ldquo;IOMMU Group ${g##*/}:&rdquo;</p>
+<p>for  d  in  $g/devices/*; do</p>
+<p>echo -e &ldquo;\t$(lspci -nns ${d##*/})&rdquo;</p>
+<p>done;</p>
+<p>done;</p>
+<p>Look for the GPU to be passed through. It should look like the following:</p>
+<p> </p>
+<p>IOMMU Group 28:</p>
+<p>2d:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:2204] (rev a1)</p>
+<p>2d:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:1aef] (rev a1)</p>
+<p> 
+ </p>
+<p>sudo vi /etc/default/grub</p>
+<p> </p>
+<p>GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;video=efifb:off amd_iommu=on iommu=pt kvm.ignore_msrs=1 vfio-pci.ids=10de:2204,10de:1aef&rdquo;</p>
+<p> </p>
+<p>**** &ldquo;video=efifb:off&rdquo; is needed. See the discussion <a href="https://listman.redhat.com/archives/vfio-users/2016-March/msg00089.html">here</a>. ****</p>
+<p> </p>
+<p>sudo update-grub</p>
+<p> </p>
+<p>(reboot)</p>
+<p> </p>
+<p>Run lspci -nnv</p>
+<p>Look for the line &ldquo;Kernel driver in use&rdquo; for the GPU and its audio part. It should indicate Kernel driver in use: vfio-pci</p>
+<p> </p>
+<p>2d:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:2204] (rev a1) (prog-if 00 [VGA controller])</p>
+<p>Subsystem: NVIDIA Corporation Device [10de:147d]</p>
+<p>Flags: fast devsel, IRQ 255</p>
+<p>Memory at fb000000 (32-bit, non-prefetchable) [size=16M]</p>
+<p>Memory at 7fe0000000 (64-bit, prefetchable) [size=256M]</p>
+<p>Memory at 7ff0000000 (64-bit, prefetchable) [size=32M]</p>
+<p>I/O ports at f000 [disabled] [size=128]</p>
+<p>Expansion ROM at fc000000 [disabled] [size=512K]</p>
+<p>Capabilities: <access denied></p>
+<p>Kernel driver in use: vfio-pci</p>
+<p>Kernel modules: nvidiafb, nouveau</p>
+<p> </p>
+<p>2d:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:1aef] (rev a1)</p>
+<p>Subsystem: NVIDIA Corporation Device [10de:147d]</p>
+<p>Flags: fast devsel, IRQ 255</p>
+<p>Memory at fc080000 (32-bit, non-prefetchable) [disabled] [size=16K]</p>
+<p>Capabilities: <access denied></p>
+<p>Kernel driver in use: vfio-pci</p>
+<p>Kernel modules: snd_hda_intel</p>
+<p> 
+ </p>
+<p>Make sure you have Windows 10 ISO and virtio windows drivers ready for installation. virtio files can be downloaded here <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/</a></p>
+<p> </p>
+<p>(optional) USB passthrough</p>
+<p> </p>
+<p>Use the following script (usb.sh) to determine what bus and iommu group each USB device has attached to.</p>
+<p>Source: <a href="https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#USB_controller">https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#USB_controller</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span>  usb_ctrl  in /sys/bus/pci/devices/*/usb*<span class="p">;</span> <span class="k">do</span> <span class="nv">pci_path</span><span class="o">=</span><span class="si">${</span><span class="nv">usb_ctrl</span><span class="p">%/*</span><span class="si">}</span><span class="p">;</span> <span class="nv">iommu_group</span><span class="o">=</span><span class="k">$(</span>readlink <span class="nv">$pci_path</span>/iommu_group<span class="k">)</span><span class="p">;</span> <span class="nb">echo</span>  <span class="s2">&#34;Bus </span><span class="k">$(</span>cat <span class="nv">$usb_ctrl</span>/busnum<span class="k">)</span><span class="s2"> --&gt; </span><span class="si">${</span><span class="nv">pci_path</span><span class="p">##*/</span><span class="si">}</span><span class="s2"> (IOMMU group </span><span class="si">${</span><span class="nv">iommu_group</span><span class="p">##*/</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">;</span> lsusb -s <span class="si">${</span><span class="nv">usb_ctrl</span><span class="p">#*/usb</span><span class="si">}</span>:<span class="p">;</span> echo<span class="p">;</span> <span class="k">done</span>
+</span></span></code></pre></div><h4 id="-troubleshooting-notes-and-solution-on-isolating-usb-keyboard-and-mouse-">*** Troubleshooting Notes and Solution on isolating USB keyboard and mouse ***<a hidden class="anchor" aria-hidden="true" href="#-troubleshooting-notes-and-solution-on-isolating-usb-keyboard-and-mouse-">#</a></h4>
+<p> </p>
+<p>Device passthrough is done on an IOMMU group level, in other words, when passing through a device, not just the device itself but also each and every other device in the same IOMMU group will be passed though.</p>
+<p> </p>
+<p>In a perfect world, there should be an IOMMU group that includes only USB devices and nothing else. In the real world, there may be other types of devices in the group which makes the passthrough messy. Unfortunately in my case that’s the case.</p>
+<p> </p>
+<p>Given the IOMMU group 20 includes not just USB keyboard and mouse but a few other devices such as “American Megatrends Virtual Keyboard and Mouse”, we need to find a way to move the USB devices into a separate and isolated IOMMU group, otherwise the USB device passthrough won’t work(tested).</p>
+<p><img loading="lazy" src="https://lh4.googleusercontent.com/-7NMZAaKfytOYNJcFQQ-I-gms8pKId-FMg8rl_vLFc-W4n5XzhYdtIRK2Ha-sehFd3rO8LLAEcr2BI8EqDLuGAFrTPAOGIbZcY50I_p1c5t_XO4C-v3c-PmnzHKq9jqPdCsH_9qz" alt=""  />
+</p>
+<p> </p>
+<h3 id="optional-manually-compile-and-install-qemu">(optional) manually compile and install QEMU<a hidden class="anchor" aria-hidden="true" href="#optional-manually-compile-and-install-qemu">#</a></h3>
+<p> </p>
+<p>The default QEMU version that ubuntu 20.04 repo includes is QEMU 4.2. To get the current QEMU version 6.1 rc3, I decided to manually install it.</p>
+<p> </p>
+<p>The binaries are installed under /usr/local/bin.</p>
+<p> </p>
+<p>cd</p>
+<p>sudo apt-get install build-essential gcc pkg-config glib-2.0 libglib2.0-dev libsdl1.2-dev libaio-dev libcap-dev libattr1-dev libpixman-1-dev libusb-1.0-0-dev</p>
+<p>wget <a href="https://download.qemu.org/qemu-6.1.0-rc3.tar.xz">https://download.qemu.org/qemu-6.1.0-rc3.tar.xz</a></p>
+<p>tar xvJf qemu-6.1.0-rc3.tar.xz</p>
+<p>cd qemu-6.1.0-rc3</p>
+<p>python3 -m venv py3-env</p>
+<p>source ./py3-env/bin/activate</p>
+<p>pip3 install ninja</p>
+<p>./configure &ndash;target-list=x86_64-linux-user,x86_64-softmmu &ndash;disable-debug-info &ndash;enable-libusb</p>
+<p>make -j24 #utilize multiple cores on my 5950X cpu</p>
+<p>sudo make install</p>
+<p> 
+ </p>
+<p>When QEMU manual installation is complete, edit /etc/libvirt/qemu/win10.xml and change the <code>&lt;emulator&gt;</code> line as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;emulator&gt;</span>/usr/local/bin/qemu-system-x86_64<span class="nt">&lt;/emulator&gt;</span>
+</span></span></code></pre></div><p> </p>
+<p>(reboot)</p>
+<p> </p>
+<p>Start the vm using virt-manager. If you see the following error:</p>
+<p> </p>
+<p>Error starting domain: internal error: Failed to start QEMU binary /usr/local/bin/qemu-system-x86_64 for probing: libvirt: error : cannot execute binary /usr/local/bin/qemu-system-x86_64: Permission denied</p>
+<p> </p>
+<p>Traceback (most recent call last):</p>
+<p>File &ldquo;/usr/share/virt-manager/virtManager/asyncjob.py&rdquo;, line 65, in cb_wrapper</p>
+<p>callback(asyncjob, *args, **kwargs)</p>
+<p>File &ldquo;/usr/share/virt-manager/virtManager/asyncjob.py&rdquo;, line 101, in tmpcb</p>
+<p>callback(*args, **kwargs)</p>
+<p>File &ldquo;/usr/share/virt-manager/virtManager/object/libvirtobject.py&rdquo;, line 57, in newfn</p>
+<p>ret = fn(self, *args, **kwargs)</p>
+<p>File &ldquo;/usr/share/virt-manager/virtManager/object/domain.py&rdquo;, line 1329, in startup</p>
+<p>self._backend.create()</p>
+<p>File &ldquo;/usr/lib/python3/dist-packages/libvirt.py&rdquo;, line 1234, in create</p>
+<p>if ret == -1: raise libvirtError (&lsquo;virDomainCreate() failed&rsquo;, dom=self)</p>
+<p>libvirt.libvirtError: internal error: Failed to start QEMU binary /usr/local/bin/qemu-system-x86_64 for probing: libvirt: error : cannot execute binary /usr/local/bin/qemu-system-x86_64: Permission denied</p>
+<p> </p>
+<p>It may need to change some apparmor config.</p>
+<p> </p>
+<p>In /etc/apparmor.d/abstractions/libvirt-qemu</p>
+<p>add</p>
+<p>/usr/local/share/qemu/** r,</p>
+<p>and add</p>
+<p>/usr/local/bin/qemu-system-x86_64 rmix,</p>
+<p>/usr/local/bin/qemu-x86_64 rmix,</p>
+<p> </p>
+<p>In /etc/apparmor.d/usr.sbin.libvirtd</p>
+<p>add</p>
+<p>/usr/local/bin/* PUx,</p>
+<p> </p>
+<p>When complete, run</p>
+<p>sudo systemctl reload apparmor</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://davidxiao.me/tags/cybersecurity/">cybersecurity</a></li>
+      <li><a href="https://davidxiao.me/tags/homelab/">homelab</a></li>
+      <li><a href="https://davidxiao.me/tags/ubuntu/">ubuntu</a></li>
+      <li><a href="https://davidxiao.me/tags/kvm/">kvm</a></li>
+      <li><a href="https://davidxiao.me/tags/passthrough/">passthrough</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://davidxiao.me/posts/build-your-own-ovmf-firmware-for-qemu/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Build Your Own OVMF Firmware for Qemu VM</span>
+  </a>
+  <a class="next" href="https://davidxiao.me/posts/deploy-a-demo-app-to-appengine-on-google-cloud/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Deploy a web app within 5 minutes</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A not so complete guide on building a home server on twitter"
+        href="https://twitter.com/intent/tweet/?text=A%20not%20so%20complete%20guide%20on%20building%20a%20home%20server&amp;url=https%3a%2f%2fdavidxiao.me%2fposts%2fa-not-so-complete-guide-on-building-a-home-server%2f&amp;hashtags=cybersecurity%2chomelab%2cubuntu%2ckvm%2cpassthrough">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A not so complete guide on building a home server on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdavidxiao.me%2fposts%2fa-not-so-complete-guide-on-building-a-home-server%2f&amp;title=A%20not%20so%20complete%20guide%20on%20building%20a%20home%20server&amp;summary=A%20not%20so%20complete%20guide%20on%20building%20a%20home%20server&amp;source=https%3a%2f%2fdavidxiao.me%2fposts%2fa-not-so-complete-guide-on-building-a-home-server%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A not so complete guide on building a home server on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fdavidxiao.me%2fposts%2fa-not-so-complete-guide-on-building-a-home-server%2f&title=A%20not%20so%20complete%20guide%20on%20building%20a%20home%20server">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A not so complete guide on building a home server on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdavidxiao.me%2fposts%2fa-not-so-complete-guide-on-building-a-home-server%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A not so complete guide on building a home server on whatsapp"
+        href="https://api.whatsapp.com/send?text=A%20not%20so%20complete%20guide%20on%20building%20a%20home%20server%20-%20https%3a%2f%2fdavidxiao.me%2fposts%2fa-not-so-complete-guide-on-building-a-home-server%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A not so complete guide on building a home server on telegram"
+        href="https://telegram.me/share/url?text=A%20not%20so%20complete%20guide%20on%20building%20a%20home%20server&amp;url=https%3a%2f%2fdavidxiao.me%2fposts%2fa-not-so-complete-guide-on-building-a-home-server%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://davidxiao.me/">David Xiao&#39;s Garage</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,659 +1,422 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://davidxiao.me/authors/</loc>
-    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/author/david-xiao/</loc>
-    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
   <url>
     <loc>https://davidxiao.me/</loc>
-    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/</loc>
-    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/setting-up-site-2-site-vpn-between-my-homelab-and-aws/</loc>
-    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/</loc>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/saml-oidc-oauth20-in-a-nutshell/</loc>
+    <lastmod>2022-08-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/three-hebrew-words-you-can-learn/</loc>
+    <lastmod>2022-08-19T10:40:46-07:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/build-your-own-ovmf-firmware-for-qemu/</loc>
+    <lastmod>2022-07-24T12:49:46-07:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/a-not-so-complete-guide-on-building-a-home-server/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://davidxiao.me/categories/</loc>
-    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/convert-any-image-into-pixel-art-using-gimp/</loc>
-    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/gimp/</loc>
-    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/pixelart/</loc>
-    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cybersecurity/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/tags/homelab/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/categories/homelab/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/tags/kvm/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/tags/passthrough/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://davidxiao.me/tags/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/tags/ubuntu/</loc>
+    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/tags/appengine/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/categories/cybersecurity/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/deploy-a-demo-app-to-appengine-on-google-cloud/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/setting-up-site-2-site-vpn-between-my-homelab-and-aws/</loc>
+    <lastmod>2020-11-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/convert-any-image-into-pixel-art-using-gimp/</loc>
     <lastmod>2020-11-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/website/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/gimp/</loc>
     <lastmod>2020-11-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/cybersecurity/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/pixelart/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/categories/website/</loc>
+    <lastmod>2020-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/posts/differences-between-route53-failover-and-elb-failover/</loc>
     <lastmod>2020-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/differences-between-route53-failover-and-elb-failover/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/elb/</loc>
     <lastmod>2020-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/elb/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/failover/</loc>
     <lastmod>2020-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/failover/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/health-check/</loc>
     <lastmod>2020-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/health-check/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/route-53/</loc>
     <lastmod>2020-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/route-53/</loc>
-    <lastmod>2020-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cloud-networking/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cloud-networking/</loc>
     <lastmod>2020-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/differences-between-on-premises-networking-and-public-cloud-networking/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/differences-between-on-premises-networking-and-public-cloud-networking/</loc>
     <lastmod>2020-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/networking/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/networking/</loc>
     <lastmod>2020-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/onprem-networking/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/onprem-networking/</loc>
     <lastmod>2020-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/create-vms-on-proxmox-with-terraform/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/create-vms-on-proxmox-with-terraform/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/proxmox/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/proxmox/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/terraform/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/terraform/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/k8s-security/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/k8s-security/</loc>
     <lastmod>2020-10-31T23:04:50-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/casb/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/casb/</loc>
     <lastmod>2020-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/casb-deployment/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/casb-deployment/</loc>
     <lastmod>2020-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/what-is-zero-trust/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/what-is-zero-trust/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/zerotrust/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/zerotrust/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/bgp/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/bgp/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/bgp-protocol-in-5-minutes/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/bgp-protocol-in-5-minutes/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/iot-security/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/iot-security/</loc>
     <lastmod>2020-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/applicationsecurity/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/applicationsecurity/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/owasp/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/owasp/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/owasp-top-ten/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/owasp-top-ten/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://davidxiao.me/privacy/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/diffie-hellman-key-exchange-in-a-nutshell/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/diffie-hellman-key-exchange-in-a-nutshell/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/diffiehellman/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/diffiehellman/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/encryption/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/encryption/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/keyexchange/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/keyexchange/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/digitalcertificate/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/digitalcertificate/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/selfsign/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/selfsign/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/sign-client-certificate-using-self-signed-ca-certificate/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/sign-client-certificate-using-self-signed-ca-certificate/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/tls/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/tls/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/x509/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/x509/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cheatsheet/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cheatsheet/</loc>
     <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/python/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/python/</loc>
     <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/python/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/python/</loc>
     <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/python3-cheatsheet/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/python3-cheatsheet/</loc>
     <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-2/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/how-to-audit-user-activities-using-aws-cloudtrail-part-2/</loc>
     <lastmod>2020-09-17T23:53:30-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/how-to-audit-user-activities-using-aws-cloudtrail-part-1/</loc>
     <lastmod>2020-09-17T23:53:23-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/aws/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/aws/</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cloudtrail/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cloudtrail/</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/extract-user-identity-from-aws-cloudtrail/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/extract-user-identity-from-aws-cloudtrail/</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/iam/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/iam/</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/one-time-password-and-hotp-totp/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/one-time-password-and-hotp-totp/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/otp/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/otp/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cybersecurity/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/stride/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/stride/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/threat-modeling/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/threat-modeling/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/threat-modeling-and-stride-model/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/threat-modeling-and-stride-model/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/threat-modeling/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/threat-modeling/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/ssh/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/ssh/</loc>
     <lastmod>2020-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/ssh-and-tls/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/ssh-and-tls/</loc>
     <lastmod>2020-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/tcp/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/tcp/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/tls-handshake-in-a-nutshell/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/tls-handshake-in-a-nutshell/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/pilot-in-the-making/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/pilot-in-the-making/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/aviation/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/aviation/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/c172/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/c172/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/ppl/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/ppl/</loc>
     <lastmod>2020-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/book/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/book/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/reading/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/reading/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/thomas-sowell/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/thomas-sowell/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/what-ive-been-reading/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/what-ive-been-reading/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/coding/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/coding/</loc>
     <lastmod>2020-06-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/javascript/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/javascript/</loc>
     <lastmod>2020-06-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/notes-from-my-journey-in-reactjs/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/notes-from-my-journey-in-reactjs/</loc>
     <lastmod>2020-06-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/react/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/react/</loc>
     <lastmod>2020-06-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/react.js/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/react.js/</loc>
     <lastmod>2020-06-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/git/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/my-bike-notes/</loc>
+    <lastmod>2020-06-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/tags/git/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/github/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/github/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/my-awesome-github-cheatsheet/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/my-awesome-github-cheatsheet/</loc>
     <lastmod>2020-06-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/https/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/https/</loc>
     <lastmod>2020-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/secure-your-https-ssl-tls/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/secure-your-https-ssl-tls/</loc>
     <lastmod>2020-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/security/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/security/</loc>
     <lastmod>2020-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/site-building/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/site-building/</loc>
     <lastmod>2020-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cloudflare/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cloudflare/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/ddns/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/ddns/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/dynamic-dns-on-cloudflare/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/dynamic-dns-on-cloudflare/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/dynamic-dns/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/dynamic-dns/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/homelab/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/hosting-multiple-containers-with-nginx-rewrite-rules/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/hosting-multiple-containers-with-nginx-rewrite-rules/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/nginx/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/nginx/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/nginx-rewrite/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/nginx-rewrite/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/self-hosting/</loc>
     <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/self-hosting/</loc>
-    <lastmod>2020-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/cloud/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/cloud/</loc>
     <lastmod>2020-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/docker/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/docker/</loc>
     <lastmod>2020-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/hugo/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/hugo/</loc>
     <lastmod>2020-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/hugo-academic/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/hugo-academic/</loc>
     <lastmod>2020-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/adding-your-own-commenting-system-to-a-static-site/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/adding-your-own-commenting-system-to-a-static-site/</loc>
     <lastmod>2020-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/remark42/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/remark42/</loc>
     <lastmod>2020-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/homelab/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/mailgun/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/mailgun/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/mailgun-relay/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/mailgun-relay/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/postfix/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/postfix/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/setting-up-a-mailgun-relay-with-postfix/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/setting-up-a-mailgun-relay-with-postfix/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/gmail/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/gmail/</loc>
     <lastmod>2020-06-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/gmail-relay/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/gmail-relay/</loc>
     <lastmod>2020-06-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/setting-up-a-gmail-relay-with-postfix/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/setting-up-a-gmail-relay-with-postfix/</loc>
     <lastmod>2020-06-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-2/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-2/</loc>
     <lastmod>2020-05-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/amd-ryzen/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/amd-ryzen/</loc>
     <lastmod>2020-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/kvm/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/my-homelab-setup-from-hardware-to-kvm-part-1/</loc>
     <lastmod>2020-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/my-homelab-setup-from-hardware-to-kvm-part-1/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/pve/</loc>
     <lastmod>2020-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/pve/</loc>
-    <lastmod>2020-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/building-your-first-app-on-google-home/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/building-your-first-app-on-google-home/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cloud/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cloud/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/gcp/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/gcp/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/google-cloud-function/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/google-cloud-function/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/google-home/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/google-home/</loc>
     <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/c-/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/c&#43;&#43;/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cmake/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cmake/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/cross-compile-mmdvmhost-on-ubuntu/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/cross-compile-mmdvmhost-on-ubuntu/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/cross-compile/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/cross-compile/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/linux/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/linux/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/category/raspberry-pi/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/categories/raspberry-pi/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/raspberrypi/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/raspberrypi/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/post/building-a-website-in-2020/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/posts/building-a-website-in-2020/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/firehose/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/firehose/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/markdown/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/markdown/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://davidxiao.me/tag/static-website/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/tags/static-website/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://davidxiao.me/authors/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/authors/david-xiao/</loc>
+  </url><url>
+    <loc>https://davidxiao.me/series/</loc>
   </url>
-  
-  <url>
-    <loc>https://davidxiao.me/publication_types/</loc>
-  </url>
-  
 </urlset>

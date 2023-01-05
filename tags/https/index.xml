@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>https on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/tags/https/</link>
+    <description>Recent content in https on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 11 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/tags/https/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secure Your HTTPS / SSL / TLS</title>
+      <link>https://davidxiao.me/posts/secure-your-https-ssl-tls/</link>
+      <pubDate>Thu, 11 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/secure-your-https-ssl-tls/</guid>
+      <description>To site owners: Just because you&amp;rsquo;ve enabled HTTPS does not mean it&amp;rsquo;s sound and secure. TLS v1.0 and v1.1 is unsecure and phasing out.</description>
+    </item>
+    
+  </channel>
+</rss>

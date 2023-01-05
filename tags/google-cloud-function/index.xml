@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>google cloud function on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/tags/google-cloud-function/</link>
+    <description>Recent content in google cloud function on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/tags/google-cloud-function/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build Your First App on Google Home in 10 minutes</title>
+      <link>https://davidxiao.me/posts/building-your-first-app-on-google-home/</link>
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/building-your-first-app-on-google-home/</guid>
+      <description>Build and deploy a voice-activated app on Google Home in 10 minutes. The app will respond to your voice command and even play a piece of pre-defined music for you! Not a bad way to celebrate someone&amp;rsquo;s birthday eh? :-)</description>
+    </item>
+    
+  </channel>
+</rss>

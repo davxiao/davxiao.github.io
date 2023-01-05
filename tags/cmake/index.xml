@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>cmake on David Xiao&#39;s Garage</title>
+    <link>https://davidxiao.me/tags/cmake/</link>
+    <description>Recent content in cmake on David Xiao&#39;s Garage</description>
+    <image>
+      <url>https://davidxiao.me/papermod-cover.png</url>
+      <link>https://davidxiao.me/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross Compile MMDVMHost on Ubuntu</title>
+      <link>https://davidxiao.me/posts/cross-compile-mmdvmhost-on-ubuntu/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://davidxiao.me/posts/cross-compile-mmdvmhost-on-ubuntu/</guid>
+      <description>A quick &amp;ldquo;How-to&amp;rdquo; guide to compiling raspberry-pi programs on Ubuntu 20.04 using pi toolchain. This post takes Pi Zero W (BCM2708 chip) as an example but the approach would be applicable to other Pi systems.</description>
+    </item>
+    
+  </channel>
+</rss>
