@@ -9,6 +9,7 @@
       <link>https://davidxiao.me/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <lastBuildDate>Wed, 31 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://davidxiao.me/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SAML, OIDC and OAuth 2.0 in a Nutshell</title>

@@ -433,11 +433,11 @@
 </span></span></code></pre></div><h2 id="use-regex-to-search-a-pattern">Use regex to search a pattern<a hidden class="anchor" aria-hidden="true" href="#use-regex-to-search-a-pattern">#</a></h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
 </span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Welcome to the jungle...&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;to +the +(\w+)&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># match &#39;to +the +(\w+)&#39; as a whole</span>
+</span></span><span class="line"><span class="cl"><span class="k">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;to +the +(\w+)&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="k">match</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># match &#39;to +the +(\w+)&#39; as a whole</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># res = &#39;to the jungle&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># match &#39;(\w+)&#39; portion</span>
+</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># match &#39;(\w+)&#39; portion</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># res = &#39;jungle&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no match found&#39;</span><span class="p">)</span>
@@ -449,9 +449,9 @@
 </span></span></code></pre></div><p>regular expression approach</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
 </span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Welcome to the jungle. It is a big jungle with many animals. Lion is the king of the jungle.&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;jungle&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">match</span><span class="p">)</span> <span class="c1"># return a list of string</span>
+</span></span><span class="line"><span class="cl"><span class="k">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;jungle&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="k">match</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="k">match</span><span class="p">)</span> <span class="c1"># return a list of string</span>
 </span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no match found&#39;</span><span class="p">)</span>
 </span></span></code></pre></div><h2 id="escape-string-into-html-text">escape string into html text<a hidden class="anchor" aria-hidden="true" href="#escape-string-into-html-text">#</a></h2>
